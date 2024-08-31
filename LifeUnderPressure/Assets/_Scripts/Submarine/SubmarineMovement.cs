@@ -10,12 +10,18 @@ public class SubmarineMovement : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private float rotationLimit = 20f;
     [SerializeField] private float rotationSpeed = 20f;
+    [Header("Bumping")]
+    [SerializeField] private float maxBumpDuration = 2f;
     [Header("Debug")]
     [SerializeField] private TMP_Text inputText = null;
     [SerializeField] private TMP_Text inputMouseText = null;
     [SerializeField] private TMP_Text velocityText = null;
     [SerializeField] private TMP_Text rotationText = null;
     [SerializeField] private TMP_Text speedText = null;
+    [SerializeField] private TMP_Text bumpText = null;
+
+    private bool bumped = false;
+    private float bump = 0f;
 
     private Rigidbody rb;
     private Vector3 input;
@@ -42,6 +48,7 @@ public class SubmarineMovement : MonoBehaviour
         velocityText.text = "Velocity: " + rb.velocity;
         rotationText.text = "Rotation: " + transform.eulerAngles.x + "; " + transform.eulerAngles.y + "; " + transform.eulerAngles.z;
         speedText.text = "Speed: " + rb.velocity.magnitude;
+        bumpText.text = "bumped: " + bumped;
     }
     private void FixedUpdate()
     {
@@ -67,6 +74,13 @@ public class SubmarineMovement : MonoBehaviour
         }
         else rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deltaTime);
 
+        if (bumped)
+        {
+            bump -= deltaTime;
+            if (bump <= 0f) bumped = false;
+            return;
+        }
+
         Vector3 inputModified = new Vector3(
             input.x * sideSpeedLimit, 
             input.y * floatSpeedLimit, 
@@ -89,6 +103,16 @@ public class SubmarineMovement : MonoBehaviour
             rb.velocity.z + velocityChange.z
             );
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Bumping
+        Vector3 impulse = collision.GetContact(0).impulse;
+
+        bump = impulse.magnitude * 0.25f;
+        bumped = impulse.magnitude > 0f ? true : false;
+        rb.velocity += impulse * 0.8f;
+    }
+
 
 
     public static Vector3 PositionFlat(Vector3 position)
