@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.UIElements;
 
 public class Scanner : MonoBehaviour
@@ -53,15 +54,25 @@ public class Scanner : MonoBehaviour
         }
 
 
-        if (!scanning) return;  
+        if (!scanning) return;
 
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0.0f)
+        if (Scanning())
         {
-            DisplayInfo(scanTimer, timeLeft);
-            ResetScanner();
+            timeLeft -= Time.deltaTime;
+            if (timeLeft <= 0.0f)
+            {
+                DisplayInfo(scanTimer, timeLeft);
+                ResetScanner();
 
+            }
         }
+        else if (timeLeft <= scanTimer)
+        {
+            timeLeft += Time.deltaTime; 
+        }
+
+
+
 
         updateScanner.Invoke(BarValue(scanTimer, timeLeft));
         ScannerAnimation();
@@ -95,7 +106,7 @@ public class Scanner : MonoBehaviour
 
         if (currentFish == null)
         {
-            currentFish = ClosestFish(hitColliders);
+            currentFish = ClosestToCameraFish(hitColliders);
             return true;
         }
         else
@@ -105,15 +116,17 @@ public class Scanner : MonoBehaviour
         }
     }
 
+#region ClosestFishDetection
+
     private Collider ClosestFish(Collider[] hitColliders)
     {
         Collider closestFish = hitColliders[0];
 
-        float minDist = Vector3.Distance(pivotPoint.position, closestFish.gameObject.transform.position);
+        float minDist = (pivotPoint.position - closestFish.gameObject.transform.position).sqrMagnitude;
 
         foreach(var collider in hitColliders)
         {
-            float tempDist = Vector3.Distance(pivotPoint.position, collider.gameObject.transform.position);
+            float tempDist = (pivotPoint.position - collider.gameObject.transform.position).sqrMagnitude;
             if (tempDist < minDist)
             {
                 minDist = tempDist;
@@ -125,6 +138,33 @@ public class Scanner : MonoBehaviour
 
         return closestFish;
     }
+
+    private Collider ClosestToCameraFish(Collider[] hitColliders)
+    {
+
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        Collider closestFish = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var collider in hitColliders)
+        {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(collider.gameObject.transform.position);
+
+            float distance = Vector2.Distance(screenCenter, screenPos);
+            if (distance < minDist)
+            {
+                minDist = distance;
+                closestFish = collider;
+            }
+
+        }
+        Debug.Log(closestFish.name);
+
+        return closestFish;
+    }
+
+#endregion
 
     public void DisplayInfo(float fishTimer, float timeLeft)
     {
