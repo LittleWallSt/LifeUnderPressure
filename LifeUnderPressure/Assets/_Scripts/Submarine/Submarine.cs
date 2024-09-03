@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(SubmarineMovement))]
+[RequireComponent(typeof(Health))]
 public class Submarine : MonoBehaviour
 {
     [SerializeField] private TMP_Text heightText = null;

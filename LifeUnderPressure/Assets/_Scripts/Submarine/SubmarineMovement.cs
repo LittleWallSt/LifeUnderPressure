@@ -6,6 +6,7 @@ public class SubmarineMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float sideSpeedLimit = 3f;
     [SerializeField] private float forwardSpeedLimit = 4f;
+    [SerializeField] private float backwardSpeedLimit = 2f;
     [SerializeField] private float floatSpeedLimit = 2f;
     [Header("Rotation")]
     [SerializeField] private float rotationLimit = 20f;
@@ -84,7 +85,7 @@ public class SubmarineMovement : MonoBehaviour
         Vector3 inputModified = new Vector3(
             input.x * sideSpeedLimit,
             input.y * floatSpeedLimit,
-            input.z * forwardSpeedLimit
+            input.z * (input.z >= 0f ? forwardSpeedLimit : backwardSpeedLimit)
             );
         if (input.x != 0f && input.z != 0f)
         {
