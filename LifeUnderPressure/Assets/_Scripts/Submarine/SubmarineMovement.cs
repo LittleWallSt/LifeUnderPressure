@@ -6,6 +6,7 @@ public class SubmarineMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float sideSpeedLimit = 3f;
     [SerializeField] private float forwardSpeedLimit = 4f;
+    [SerializeField] private float backwardSpeedLimit = 2f;
     [SerializeField] private float floatSpeedLimit = 2f;
     [Header("Rotation")]
     [SerializeField] private float rotationLimit = 20f;
@@ -19,6 +20,7 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private TMP_Text rotationText = null;
     [SerializeField] private TMP_Text speedText = null;
     [SerializeField] private TMP_Text bumpText = null;
+    [SerializeField] private TMP_Text rotationVelocityText = null;
 
     private bool bumped = false;
     private float bump = 0f;
@@ -26,10 +28,12 @@ public class SubmarineMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 input;
     private Vector2 mouse;
+    private Vector2 rotationVelocity;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         input = new Vector3();
+        rotationVelocity = Vector3.zero;
 
         // Lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,38 +46,34 @@ public class SubmarineMovement : MonoBehaviour
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        // Debug texts
-        inputText.text = "Input: " + input.x + "; " + input.y + "; " + input.z;
-        inputMouseText.text = "Mouse: " + mouse.x + "; " + mouse.y;
-        velocityText.text = "Velocity: " + rb.velocity;
-        rotationText.text = "Rotation: " + transform.eulerAngles.x + "; " + transform.eulerAngles.y + "; " + transform.eulerAngles.z;
-        speedText.text = "Speed: " + rb.velocity.magnitude;
-        bumpText.text = "bumped: " + bumped;
+        DebugUpdate();
     }
+
+    private void DebugUpdate()
+    {
+        // Debug texts
+        if (inputText) inputText.text = "Input: " + input.x + "; " + input.y + "; " + input.z;
+        if (inputMouseText) inputMouseText.text = "Mouse: " + mouse.x + "; " + mouse.y;
+        if (velocityText) velocityText.text = "Velocity: " + rb.velocity;
+        if (rotationText) rotationText.text = "Rotation: " + transform.eulerAngles.x + "; " + transform.eulerAngles.y + "; " + transform.eulerAngles.z;
+        if (speedText) speedText.text = "Speed: " + rb.velocity.magnitude;
+        if (bumpText) bumpText.text = "bumped: " + bumped;
+        if (rotationVelocityText) rotationVelocityText.text = "R. Velocity: " + rotationVelocity;
+    }
+
     private void FixedUpdate()
     {
         float deltaTime = Time.fixedDeltaTime;
-        // Calculate new rotation
-        Vector3 rotation = transform.eulerAngles + new Vector3(-mouse.y, mouse.x, 0f);
 
-        // Check for rotation X limit
-        if (rotation.x > rotationLimit && rotation.x < 180f)
-        {
-            rotation.x = rotationLimit;
-        }
-        else if (rotation.x < 360f - rotationLimit && rotation.x >= 180f)
-        {
-            rotation.x = 360f - rotationLimit;
-        }
-        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, rotation, rotationSpeed * Time.fixedDeltaTime);
+        VelocityUpdate(deltaTime);
+        RotationUpdate(deltaTime);
+        PositionUpdate(deltaTime);
 
-        // Update Velocity
-        if(input == Vector3.zero)
-        { 
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deltaTime / 2f);
-        }
-        else rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deltaTime);
+    }
 
+    private void PositionUpdate(float deltaTime)
+    {
+        // Bumping process
         if (bumped)
         {
             bump -= deltaTime;
@@ -81,12 +81,13 @@ public class SubmarineMovement : MonoBehaviour
             return;
         }
 
+        // Update position
         Vector3 inputModified = new Vector3(
-            input.x * sideSpeedLimit, 
-            input.y * floatSpeedLimit, 
-            input.z * forwardSpeedLimit
+            input.x * sideSpeedLimit,
+            input.y * floatSpeedLimit,
+            input.z * (input.z >= 0f ? forwardSpeedLimit : backwardSpeedLimit)
             );
-        if(input.x != 0f && input.z != 0f)
+        if (input.x != 0f && input.z != 0f)
         {
             inputModified.x *= 0.71f;
             inputModified.z *= 0.71f;
@@ -98,12 +99,57 @@ public class SubmarineMovement : MonoBehaviour
             );
 
         rb.velocity = new Vector3(
-            rb.velocity.x + velocityChange.x, 
-            rb.velocity.y + velocityChange.y, 
+            rb.velocity.x + velocityChange.x,
+            rb.velocity.y + velocityChange.y,
             rb.velocity.z + velocityChange.z
             );
     }
+
+    private void VelocityUpdate(float deltaTime)
+    {
+        // Update rotation velocity
+        if (mouse == Vector2.zero)
+        {
+            rotationVelocity = Vector2.Lerp(rotationVelocity, Vector2.zero, deltaTime / 2f);
+        }
+        else rotationVelocity = Vector2.Lerp(rotationVelocity, Vector2.zero, deltaTime);
+
+        // Update Velocity
+        if (input == Vector3.zero)
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deltaTime / 2f);
+        }
+        else rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, deltaTime);
+    }
+
+    private void RotationUpdate(float deltaTime)
+    {
+
+
+        // Calculate new rotation
+        rotationVelocity += new Vector2(-mouse.y, mouse.x) * deltaTime;
+        Vector3 rotation = transform.eulerAngles + (Vector3)rotationVelocity;
+
+        // Check for rotation X limit
+        if (rotation.x > rotationLimit && rotation.x < 180f)
+        {
+            rotation.x = rotationLimit;
+        }
+        else if (rotation.x < 360f - rotationLimit && rotation.x >= 180f)
+        {
+            rotation.x = 360f - rotationLimit;
+        }
+
+        // Update rotation
+        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, rotation, rotationSpeed * Time.fixedDeltaTime);
+    }
+
     private void OnCollisionEnter(Collision collision)
+    {
+        BumpCollision(collision);
+    }
+
+    private void BumpCollision(Collision collision)
     {
         // Bumping
         Vector3 impulse = collision.GetContact(0).impulse;
@@ -112,8 +158,6 @@ public class SubmarineMovement : MonoBehaviour
         bumped = impulse.magnitude > 0f ? true : false;
         rb.velocity += impulse * 0.8f;
     }
-
-
 
     public static Vector3 PositionFlat(Vector3 position)
     {
