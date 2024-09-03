@@ -10,6 +10,7 @@ public class Scanner : MonoBehaviour
     [Header("Calibration values")]
     [SerializeField] float scanTimer = 3f;
     [SerializeField] float scanAnimationSpeed = 1.5f;
+    [SerializeField] float depletingSpeed;
     [SerializeField] int fishLayer = 8;
 
     [Header("Borders")]
@@ -24,6 +25,7 @@ public class Scanner : MonoBehaviour
     float timeLeft;
     float range;
     bool scanning;
+    Quaternion initialRotation;
 
     public Action<string, string> scanFinished;
     public Action<float> updateScanner;
@@ -34,6 +36,7 @@ public class Scanner : MonoBehaviour
     {
         fishLayerMask = (1 << fishLayer);
         range = borders.transform.localScale.z / 2;
+        initialRotation = scanRect.transform.localRotation;
         timeLeft = scanTimer;
         scanRect.SetActive(false);
         scanning = false; 
@@ -43,32 +46,39 @@ public class Scanner : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKey(KeyCode.F)) scanning = !scanning;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ResetScanner();
 
-        
-
-        updateScanner.Invoke(BarValue(scanTimer, timeLeft));
-        ScannerAnimation();
+        }
 
 
-        if (!scanning) return; ////////
+        if (!scanning) return;  
 
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0.0f)
         {
             DisplayInfo(scanTimer, timeLeft);
-            timeLeft = scanTimer;
+            ResetScanner();
+
         }
 
+        updateScanner.Invoke(BarValue(scanTimer, timeLeft));
+        ScannerAnimation();
 
     }
 
     private void ScannerAnimation()
     {
-        scanRect.SetActive(true);
-        float newY = Mathf.Sin(Time.time * scanAnimationSpeed) * range;
+        
 
-        scanRect.transform.localPosition = new Vector3(scanRect.transform.localPosition.x, scanRect.transform.localPosition.y, newY);
+        float newY = Mathf.PingPong(Time.time * scanAnimationSpeed, 50f * 2) - 50f; 
+
+        scanRect.transform.localRotation = initialRotation* Quaternion.Euler(newY, 0, 0);  
+
+        /*float newY = Mathf.Sin(Time.time * scanAnimationSpeed) * range;
+
+        scanRect.transform.localPosition = new Vector3(scanRect.transform.localPosition.x, scanRect.transform.localPosition.y, newY);*/
     }
 
     private float BarValue(float fishTimer, float timeLeft)
@@ -90,6 +100,7 @@ public class Scanner : MonoBehaviour
         }
         else
         {
+            Debug.Log(hitColliders.Contains(currentFish));
             return hitColliders.Contains(currentFish);
         }
     }
@@ -118,8 +129,15 @@ public class Scanner : MonoBehaviour
     public void DisplayInfo(float fishTimer, float timeLeft)
     {
         scanFinished.Invoke("Nemo", "Blup blup");
-        scanning = false;
         currentFish = null;
-        scanRect.SetActive(false);
     }
+
+    private void ResetScanner()
+    {
+        scanning = !scanning;
+        scanRect.SetActive(scanning);
+        timeLeft = scanTimer;
+    }
+
+    
 }
