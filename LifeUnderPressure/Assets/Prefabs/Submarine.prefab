@@ -4283,6 +4283,8 @@ GameObject:
   m_Component:
   - component: {fileID: 409380971382807985}
   - component: {fileID: 8604898470998559302}
+  - component: {fileID: 6457192390758754892}
+  - component: {fileID: 1078021638836957442}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -4298,7 +4300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8408860143801451377}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.22781654, y: 0.21584935, z: -0.051786177, w: -0.9480648}
+  m_LocalRotation: {x: 0.22782014, y: -0.2158524, z: 0.051787466, w: 0.9480632}
   m_LocalPosition: {x: -3.456, y: -59.989, z: 9.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4317,7 +4319,7 @@ Transform:
   - {fileID: 1161145486254127991}
   - {fileID: 4958264838481845562}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 52.65, y: 122.8, z: -3.4}
+  m_LocalEulerAnglesHint: {x: 27.022, y: -25.655, z: -0.01}
 --- !u!95 &8604898470998559302
 Animator:
   serializedVersion: 5
@@ -4339,6 +4341,58 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6457192390758754892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408860143801451377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a96e8c16aef8d469a2e987476f0e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sideSpeedLimit: 3
+  forwardSpeedLimit: 4
+  floatSpeedLimit: 2
+  rotationLimit: 60
+  rotationSpeed: 250
+  maxBumpDuration: 2
+  inputText: {fileID: 0}
+  inputMouseText: {fileID: 0}
+  velocityText: {fileID: 0}
+  rotationText: {fileID: 0}
+  speedText: {fileID: 0}
+  bumpText: {fileID: 0}
+  rotationVelocityText: {fileID: 0}
+--- !u!54 &1078021638836957442
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408860143801451377}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.92
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!1 &8419524572803582262
 GameObject:
   m_ObjectHideFlags: 0
