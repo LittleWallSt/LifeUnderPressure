@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.UIElements;
 
 public class Scanner : MonoBehaviour
@@ -21,15 +20,17 @@ public class Scanner : MonoBehaviour
 
 
     LayerMask fishLayerMask;
-    
+    Quaternion initialRotation;
 
     float timeLeft;
     float range;
     bool scanning;
-    Quaternion initialRotation;
+    bool locked;
+    
 
     public Action<string, string> scanFinished;
     public Action<float> updateScanner;
+    public Action<Vector3> targetLock;
 
     public Collider currentFish;
 
@@ -40,18 +41,29 @@ public class Scanner : MonoBehaviour
         initialRotation = scanRect.transform.localRotation;
         timeLeft = scanTimer;
         scanRect.SetActive(false);
-        scanning = false; 
+        scanning = false;
+        locked = false;
 
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !scanning)
         {
-            ResetScanner();
-
+            if (!locked)
+            {
+                locked = true;
+            } else
+            {
+                ResetScanner();
+                locked = false;
+            }
         }
+
+        if(locked) ChooseTarget();
+        if (currentFish!= null) { targetLock.Invoke(currentFish.transform.position); }
+
 
 
         if (!scanning) return;
@@ -63,6 +75,7 @@ public class Scanner : MonoBehaviour
             {
                 DisplayInfo(scanTimer, timeLeft);
                 ResetScanner();
+                
 
             }
         }
@@ -79,17 +92,20 @@ public class Scanner : MonoBehaviour
 
     }
 
+    private void ChooseTarget()
+    {
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
+            Quaternion.identity, fishLayerMask);
+
+        if (hitColliders.Length == 0) return;
+
+        currentFish = ClosestToCameraFish(hitColliders);
+    }
+
     private void ScannerAnimation()
     {
-        
-
         float newY = Mathf.PingPong(Time.time * scanAnimationSpeed, 50f * 2) - 50f; 
-
         scanRect.transform.localRotation = initialRotation* Quaternion.Euler(newY, 0, 0);  
-
-        /*float newY = Mathf.Sin(Time.time * scanAnimationSpeed) * range;
-
-        scanRect.transform.localPosition = new Vector3(scanRect.transform.localPosition.x, scanRect.transform.localPosition.y, newY);*/
     }
 
     private float BarValue(float fishTimer, float timeLeft)
@@ -97,7 +113,7 @@ public class Scanner : MonoBehaviour
         return (fishTimer - timeLeft) / fishTimer;
     }
     
-    public bool Scanning()
+    public bool Scanning() //returns True if fish is still within Radar collider
     {
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
             Quaternion.identity, fishLayerMask);
@@ -111,7 +127,6 @@ public class Scanner : MonoBehaviour
         }
         else
         {
-            Debug.Log(hitColliders.Contains(currentFish));
             return hitColliders.Contains(currentFish);
         }
     }
@@ -139,10 +154,9 @@ public class Scanner : MonoBehaviour
         return closestFish;
     }
 
-    private Collider ClosestToCameraFish(Collider[] hitColliders)
+    private Collider ClosestToCameraFish(Collider[] hitColliders) // return Fish collider that is closest to the center
     {
-
-        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+        Vector2 screenCenter = Camera.main.ViewportToScreenPoint(new Vector2(0.5f, 0.5f));
 
         Collider closestFish = null;
         float minDist = Mathf.Infinity;
@@ -159,7 +173,6 @@ public class Scanner : MonoBehaviour
             }
 
         }
-        Debug.Log(closestFish.name);
 
         return closestFish;
     }
@@ -168,7 +181,7 @@ public class Scanner : MonoBehaviour
 
     public void DisplayInfo(float fishTimer, float timeLeft)
     {
-        scanFinished.Invoke("Nemo", "Blup blup");
+        scanFinished.Invoke(currentFish.name, "Blup blup");
         currentFish = null;
     }
 
