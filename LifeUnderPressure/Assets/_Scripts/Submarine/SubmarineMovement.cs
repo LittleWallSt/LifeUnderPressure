@@ -13,14 +13,6 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 20f;
     [Header("Bumping")]
     [SerializeField] private float maxBumpDuration = 2f;
-    [Header("Debug")]
-    [SerializeField] private TMP_Text inputText = null;
-    [SerializeField] private TMP_Text inputMouseText = null;
-    [SerializeField] private TMP_Text velocityText = null;
-    [SerializeField] private TMP_Text rotationText = null;
-    [SerializeField] private TMP_Text speedText = null;
-    [SerializeField] private TMP_Text bumpText = null;
-    [SerializeField] private TMP_Text rotationVelocityText = null;
 
     private bool bumped = false;
     private float bump = 0f;
@@ -33,11 +25,16 @@ public class SubmarineMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         input = new Vector3();
-        rotationVelocity = Vector3.zero;
+        ResetMovement();
 
         // Lock and hide cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    public void ResetMovement()
+    {
+        rotationVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
     private void Update()
     {
@@ -45,20 +42,6 @@ public class SubmarineMovement : MonoBehaviour
         float inputUp = Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-
-        DebugUpdate();
-    }
-
-    private void DebugUpdate()
-    {
-        // Debug texts
-        if (inputText) inputText.text = "Input: " + input.x + "; " + input.y + "; " + input.z;
-        if (inputMouseText) inputMouseText.text = "Mouse: " + mouse.x + "; " + mouse.y;
-        if (velocityText) velocityText.text = "Velocity: " + rb.velocity;
-        if (rotationText) rotationText.text = "Rotation: " + transform.eulerAngles.x + "; " + transform.eulerAngles.y + "; " + transform.eulerAngles.z;
-        if (speedText) speedText.text = "Speed: " + rb.velocity.magnitude;
-        if (bumpText) bumpText.text = "bumped: " + bumped;
-        if (rotationVelocityText) rotationVelocityText.text = "R. Velocity: " + rotationVelocity;
     }
 
     private void FixedUpdate()
@@ -167,4 +150,18 @@ public class SubmarineMovement : MonoBehaviour
     {
         return new Vector3(position.x, 0f, position.z).normalized;
     }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 500, 80), string.Format("Input: {0}; {1}; {2}", input.x, input.y, input.z), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 80, 500, 80), string.Format("Mouse: {0}; {1}", mouse.x, mouse.y), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 150, 500, 80), string.Format("Velocity: {0}", rb.velocity), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 220, 500, 80), string.Format("Rotation: {0}; {1}; {2}", transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 290, 500, 80), string.Format("Speed: {0}", rb.velocity.magnitude), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 360, 500, 80), string.Format("Bumped: {0}", bumped), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 430, 500, 80), string.Format("R. Velocity: {0}", rotationVelocity), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(10, 500, 500, 80), string.Format("Time: {0}", Time.time), InternalSettings.Get.DebugStyle);
+    
+    }
+
 }
