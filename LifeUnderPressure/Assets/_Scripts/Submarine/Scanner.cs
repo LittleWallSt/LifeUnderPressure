@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Scanner : MonoBehaviour
 {
@@ -26,10 +25,12 @@ public class Scanner : MonoBehaviour
     float range;
     bool scanning;
     bool locked;
+    bool fishLost;
     
 
     public Action<string, string> scanFinished;
     public Action<float> updateScanner;
+    public Action<bool> lockActive;
     public Action<Vector3> targetLock;
 
     public Collider currentFish;
@@ -58,6 +59,7 @@ public class Scanner : MonoBehaviour
             {
                 ResetScanner();
                 locked = false;
+                lockActive.Invoke(true);
             }
         }
 
@@ -70,9 +72,12 @@ public class Scanner : MonoBehaviour
 
         if (Scanning())
         {
+            if(fishLost) lockActive.Invoke(true);
+            fishLost = false;
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0.0f)
             {
+                lockActive.Invoke(false);
                 DisplayInfo(scanTimer, timeLeft);
                 ResetScanner();
                 
@@ -81,10 +86,11 @@ public class Scanner : MonoBehaviour
         }
         else if (timeLeft <= scanTimer)
         {
-            timeLeft += Time.deltaTime; 
+            timeLeft += Time.deltaTime;
+            if (!fishLost) lockActive.Invoke(false);
+            fishLost = true;
+
         }
-
-
 
 
         updateScanner.Invoke(BarValue(scanTimer, timeLeft));
@@ -122,8 +128,8 @@ public class Scanner : MonoBehaviour
 
         if (currentFish == null)
         {
-            currentFish = ClosestToCameraFish(hitColliders);
-            return true;
+            //currentFish = ClosestToCameraFish(hitColliders);
+            return false;
         }
         else
         {
