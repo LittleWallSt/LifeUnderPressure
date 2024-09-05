@@ -262,7 +262,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.3132075, g: 0.02777499, b: 0.02777499, a: 1}
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   highlights:
     m_OverrideState: 1
     m_Value: {r: 0.4943396, g: 0.4943396, b: 0.4943396, a: 1}
@@ -287,7 +287,7 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: -0.2966395}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.29663974}
+    m_Value: {x: 0.94434994, y: 0.9924595, z: 1, w: -0.29663974}
   highlights:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.2966401}
@@ -360,16 +360,16 @@ MonoBehaviour:
     m_Value: -0.12
   contrast:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: -30
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: 113
+    m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -23
+    m_Value: 63
 --- !u!114 &3047492750485301240
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -385,10 +385,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.829743, z: 0.98952895, w: -0.09269988}
+    m_Value: {x: 0.95743567, y: 1, z: 0.9761, w: -0.09269988}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.81559736, y: 0.8457333, z: 1, w: -0.07647748}
+    m_Value: {x: 0.95394176, y: 0.98466, z: 1, w: -0.07647748}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.83861476, y: 0.8789608, z: 1, w: 0.29663938}
+    m_Value: {x: 0.8750043, y: 0.9412962, z: 1, w: 0.29663938}
