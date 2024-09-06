@@ -9,11 +9,11 @@ public class SonarRadar : MonoBehaviour
     [SerializeField] float tickTime = 4f;
     [SerializeField] int fishLayer = 8;
 
-    [SerializeField] float[] maxDistance;
+    [SerializeField] float[] maxDistanceRadius;
     int upgradeLevel;
     float timeLeft;
 
-    GameObject scanArea;
+    [SerializeField] GameObject scanArea;
     LayerMask fishLayerMask;
 
 
@@ -22,6 +22,8 @@ public class SonarRadar : MonoBehaviour
     private void Start()
     {
         fishLayerMask = (1 << fishLayer);
+        if (maxDistanceRadius.Length>0) 
+            ChangeMaxDistance(maxDistanceRadius[0]);
     }
 
     private void Update()
@@ -31,17 +33,16 @@ public class SonarRadar : MonoBehaviour
         {
             timeLeft = tickTime;
 
-            sonarBeep.Invoke(0.5f, Vector3.forward);
 
-            /*Collider[] fishes = fishInArea();
+            Collider[] fishes = fishInArea();
 
             if (fishes.Length > 0)
             {
                 foreach (Collider fish in fishes)
                 {
-
+                    sonarBeep.Invoke(DistPercentage(fish), fishDirection(fish));
                 }
-            }*/
+            }
         }
     }
     
@@ -52,14 +53,19 @@ public class SonarRadar : MonoBehaviour
             Quaternion.identity, fishLayerMask);
     }
 
+    private void ChangeMaxDistance(float maxDistRad)
+    {
+        scanArea.transform.localScale = new Vector3(maxDistRad*2, maxDistRad*2, maxDistRad*2);
+    }
+
 
     public float DistPercentage(Collider fish)
     {
         float dist = Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
             new Vector3(fish.transform.position.x, 0, fish.transform.position.z)); 
 
-        if (maxDistance.Length == 0) return 1;
-        return dist / maxDistance[maxDistance.Length - 1];
+        if (maxDistanceRadius.Length == 0) return 1;
+        return dist / maxDistanceRadius[maxDistanceRadius.Length - 1];
 
     }
 

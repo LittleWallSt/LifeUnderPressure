@@ -16,12 +16,10 @@ public class SonarUI : MonoBehaviour
     [SerializeField] Color fishUp;
     [SerializeField] Color fishDown;
     [SerializeField] float fadeDuration = 2f;
-    Image image;
 
     public GameObject randFish;
 
     
-    Vector2 submarineLoc = Vector2.zero;
 
     float screenWidth;
     float screenHeight;
