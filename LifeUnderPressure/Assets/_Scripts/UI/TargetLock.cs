@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class TargetLock : MonoBehaviour
 {
@@ -11,13 +8,21 @@ public class TargetLock : MonoBehaviour
     [SerializeField] Canvas canvas;
     [SerializeField] Scanner scanner;
 
+    Image lockImage;
+
+
+    Color basicColor = Color.white;
+    Color activeColor = Color.cyan;
+
 
 
     private RectTransform LockPosition;
     private void Start()
     {
+        scanner.lockActive += ActivateLock;
         scanner.targetLock += LockOnTarget;
         LockPosition = GetComponent<RectTransform>();
+        lockImage = GetComponent<Image>();
         initPos = Camera.main.ViewportToScreenPoint(new Vector2(0f, 0f));
         LockPosition.anchoredPosition = initPos;
     }
@@ -26,6 +31,11 @@ public class TargetLock : MonoBehaviour
     private void LockOnTarget(Vector3 pos)
     {
         MoveToTarget(pos);
+    }
+
+    private void ActivateLock(bool active)
+    {
+        lockImage.color = active? activeColor : basicColor;
     }
 
    private void MoveToTarget(Vector3 target)
