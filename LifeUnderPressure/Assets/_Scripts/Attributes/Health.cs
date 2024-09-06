@@ -29,9 +29,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void ResetHealth()
     {
         hp = maxHealth;
+    }
+    private void Start()
+    {
+        ResetHealth();
     }
     public void DealDamage(float damage)
     {

@@ -530,7 +530,7 @@ MonoBehaviour:
   level: 0
   volumeCollider: {fileID: 770806320}
   depthRange: {x: 0, y: 20}
-  gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.50980395}
+  gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.68235296}
 --- !u!114 &770806319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   level: 1
   volumeCollider: {fileID: 1263868703}
   depthRange: {x: 20, y: 40}
-  gizmoColor: {r: 1, g: 0.0056602955, b: 0.09229054, a: 0.50980395}
+  gizmoColor: {r: 0.16981131, g: 0, b: 0.015376567, a: 0.50980395}
 --- !u!1 &1287827229
 GameObject:
   m_ObjectHideFlags: 0

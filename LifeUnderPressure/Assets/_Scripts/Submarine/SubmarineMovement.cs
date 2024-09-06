@@ -4,18 +4,18 @@ using UnityEngine;
 public class SubmarineMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float sideSpeedLimit = 3f;
-    [SerializeField] private float forwardSpeedLimit = 4f;
-    [SerializeField] private float backwardSpeedLimit = 2f;
-    [SerializeField] private float floatSpeedLimit = 2f;
+    [SerializeField] private MovementVector movementVector;
     [Header("Rotation")]
     [SerializeField] private float rotationLimit = 20f;
     [SerializeField] private float rotationSpeed = 20f;
     [Header("Bumping")]
     [SerializeField] private float maxBumpDuration = 2f;
+    [SerializeField] private float bumpDurationModifier = 0.25f;
+    [SerializeField] private float bumpStrength = 0.8f;
+    [SerializeField] private float bumpDamageModifier = 10f;
 
     private bool bumped = false;
-    private float bump = 0f;
+    private float bumpDuration = 0f;
 
     private Rigidbody rb;
     private Vector3 input;
@@ -36,6 +36,10 @@ public class SubmarineMovement : MonoBehaviour
         rotationVelocity = Vector3.zero;
         rb.velocity = Vector3.zero;
     }
+    public void SetMovementVector(MovementVector newVector)
+    {
+        movementVector = newVector;
+    }
     private void Update()
     {
         // Get input
@@ -51,7 +55,6 @@ public class SubmarineMovement : MonoBehaviour
         VelocityUpdate(deltaTime);
         RotationUpdate(deltaTime);
         PositionUpdate(deltaTime);
-
     }
 
     private void PositionUpdate(float deltaTime)
@@ -59,16 +62,16 @@ public class SubmarineMovement : MonoBehaviour
         // Bumping process
         if (bumped)
         {
-            bump -= deltaTime;
-            if (bump <= 0f) bumped = false;
+            bumpDuration -= deltaTime;
+            if (bumpDuration <= 0f) bumped = false;
             return;
         }
 
         // Update position
         Vector3 inputModified = new Vector3(
-            input.x * sideSpeedLimit,
-            input.y * floatSpeedLimit,
-            input.z * (input.z >= 0f ? forwardSpeedLimit : backwardSpeedLimit)
+            input.x * movementVector.side,
+            input.y * movementVector.upward,
+            input.z * (input.z >= 0f ? movementVector.forward : movementVector.backward)
             );
         if (input.x != 0f && input.z != 0f)
         {
@@ -81,10 +84,10 @@ public class SubmarineMovement : MonoBehaviour
             inputModified.z * deltaTime
             );
 
-        rb.velocity = new Vector3(
-            rb.velocity.x + velocityChange.x,
-            rb.velocity.y + velocityChange.y,
-            rb.velocity.z + velocityChange.z
+        rb.velocity += new Vector3(
+            velocityChange.x,
+            velocityChange.y,
+            velocityChange.z
             );
     }
 
@@ -107,8 +110,6 @@ public class SubmarineMovement : MonoBehaviour
 
     private void RotationUpdate(float deltaTime)
     {
-
-
         // Calculate new rotation
         rotationVelocity += new Vector2(-mouse.y, mouse.x) * deltaTime;
         Vector3 rotation = transform.eulerAngles + (Vector3)rotationVelocity;
@@ -137,9 +138,12 @@ public class SubmarineMovement : MonoBehaviour
         // Bumping
         Vector3 impulse = collision.GetContact(0).impulse;
 
-        bump = impulse.magnitude * 0.25f;
+        bumpDuration = impulse.magnitude * bumpDurationModifier;
         bumped = impulse.magnitude > 0f ? true : false;
-        rb.velocity += impulse * 0.8f;
+        rb.velocity += impulse * bumpStrength;
+
+        float damage = impulse.magnitude * bumpDamageModifier;
+        GetComponent<Health>().DealDamage(damage);
     }
 
     public static Vector3 PositionFlat(Vector3 position)

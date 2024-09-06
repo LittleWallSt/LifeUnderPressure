@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,12 +9,17 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private int submarineLevel = 0;
     [SerializeField] private float inDeepMaxTime = 10f;
     [SerializeField] private float deepOffset = 0f;
+    [SerializeField] private float radiusOfHull = 10f;
+    [SerializeField] private float thicknessOfHull = 10f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
+
+    private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
     private Health health;
     private SubmarineMovement movement;
 
+    private double stress = 0f;
     private float inDeepTime = 0f;
     private void Awake()
     {
@@ -23,10 +29,22 @@ public class Submarine : MonoBehaviour, IDepthDependant
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
+
+        foreach(SubmarineUpgrade upgrade in GetComponents<SubmarineUpgrade>())
+        {
+            upgrades.Add(upgrade);
+            upgrade.Init(this, movement);
+        }
+    }
+    public void SetThicknessOfHull(float newThickness)
+    {
+        thicknessOfHull = newThickness;
     }
     private void FixedUpdate()
     {
         float depth = -transform.position.y;
+        stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
+        
         if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
     }
     private void Die()
@@ -35,6 +53,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
         movement.ResetMovement();
+        health.ResetHealth();
     }
 
     // IDepthDependant
@@ -77,5 +96,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + new Vector3(0f, deepOffset, 0f), 0.1f);
+    }
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(1000, 10, 500, 100), string.Format("Stress: {0}", stress), InternalSettings.Get.DebugStyle);
     }
 }
