@@ -4823,6 +4823,8 @@ GameObject:
   - component: {fileID: 3554050316684240136}
   - component: {fileID: 201767885911418638}
   - component: {fileID: 6457192390758754892}
+  - component: {fileID: 6763968442118710192}
+  - component: {fileID: 8095224013186788544}
   - component: {fileID: 1078021638836957442}
   - component: {fileID: 8350296131925559835}
   m_Layer: 0
@@ -4912,6 +4914,8 @@ MonoBehaviour:
   submarineLevel: 0
   inDeepMaxTime: 10
   deepOffset: -0.64
+  radiusOfHull: 3.2
+  thicknessOfHull: 0.1
   heightText: {fileID: 4048657896102895975}
   warningText: {fileID: 2843870540943983611}
 --- !u!114 &6457192390758754892
@@ -4926,13 +4930,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a96e8c16aef8d469a2e987476f0e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideSpeedLimit: 3
-  forwardSpeedLimit: 4
-  backwardSpeedLimit: 2
-  floatSpeedLimit: 2
+  movementVector:
+    forward: 4
+    side: 3
+    backward: 2
+    upward: 2
   rotationLimit: 60
   rotationSpeed: 250
   maxBumpDuration: 2
+  bumpDurationModifier: 0.25
+  bumpStrength: 0.8
+  bumpDamageModifier: 10
+--- !u!114 &6763968442118710192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408860143801451377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dccd3351f66652648a70be44815b93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLevel: 3
+  upgradeEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  upgrades:
+  - forward: 4
+    side: 3
+    backward: 2
+    upward: 2
+  - forward: 4.5
+    side: 3.33
+    backward: 2.33
+    upward: 2.33
+  - forward: 4.9
+    side: 3.55
+    backward: 2.66
+    upward: 2.8
+  - forward: 5.4
+    side: 3.9
+    backward: 2.95
+    upward: 3.2
+--- !u!114 &8095224013186788544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408860143801451377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0063233aa1fc11040a12a28fd7c5cff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLevel: 2
+  upgradeEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  upgrades:
+  - 0.08
+  - 0.1
+  - 0.15
 --- !u!54 &1078021638836957442
 Rigidbody:
   m_ObjectHideFlags: 0
