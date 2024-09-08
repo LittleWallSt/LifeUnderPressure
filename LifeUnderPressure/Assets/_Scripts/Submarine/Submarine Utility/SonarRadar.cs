@@ -69,31 +69,30 @@ public class SonarRadar : MonoBehaviour
             }
         } else
         {
-            if(timeFrames.Count == 0)
-            {
-                SonarAnimation = false;
-            }
-
-            if (frameIndex > framesPerSprite*numberOfSprites) frameIndex = 0;
-
-            Debug.Log(timeFrames.Count);
-            if (timeFrames.ContainsKey(frameIndex))
-            {
-                Vector3 angle;
-                int sIndex;
-                fishAngle(timeFrames[frameIndex], out angle, out sIndex);
-                sonarBeep.Invoke(DistPercentage(timeFrames[frameIndex]), angle);
-                timeFrames.Remove(frameIndex);
-            }
-            frameIndex++;
-            
+            SonarSignal();
         }
 
     }
 
     private void SonarSignal()
     {
+        if (timeFrames.Count == 0)
+        {
+            SonarAnimation = false;
+        }
 
+        if (frameIndex > framesPerSprite * numberOfSprites) frameIndex = 0;
+
+        Debug.Log(timeFrames.Count);
+        if (timeFrames.ContainsKey(frameIndex))
+        {
+            Vector3 angle;
+            int sIndex;
+            fishAngle(timeFrames[frameIndex], out angle, out sIndex);
+            sonarBeep.Invoke(DistPercentage(timeFrames[frameIndex]), angle);
+            timeFrames.Remove(frameIndex);
+        }
+        frameIndex++;
     }
     
     
