@@ -187,7 +187,6 @@ MonoBehaviour:
   fishUp: {r: 0.8075294, g: 0.9392111, b: 0.9411765, a: 1}
   fishDown: {r: 0.16810343, g: 0.7435344, b: 0.75, a: 1}
   fadeDuration: 2
-  randFish: {fileID: 1802568063}
 --- !u!1 &354973015
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &354973016
 Transform:
   m_ObjectHideFlags: 0
@@ -628,6 +627,7 @@ MonoBehaviour:
   fishLayer: 8
   maxDistanceRadius:
   - 5
+  submarine: {fileID: 1566869397}
   scanArea: {fileID: 735261299}
 --- !u!1 &735261299
 GameObject:
@@ -677,7 +677,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1972,6 +1972,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1566869397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8408860143801451377, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+    type: 3}
+  m_PrefabInstance: {fileID: 1278346861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572469769
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class ImageAnimation : MonoBehaviour
     public bool loop = true;
     public bool destroyOnEnd = false;
 
-    private int index = 0;
+    public int index = 0;
     private Image image;
     private int frame = 0;
 
