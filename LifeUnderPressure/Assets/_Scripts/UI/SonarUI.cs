@@ -16,12 +16,10 @@ public class SonarUI : MonoBehaviour
     [SerializeField] Color fishUp;
     [SerializeField] Color fishDown;
     [SerializeField] float fadeDuration = 2f;
-    Image image;
-
-    public GameObject randFish;
 
     
-    Vector2 submarineLoc = Vector2.zero;
+
+    
 
     float screenWidth;
     float screenHeight;
@@ -44,7 +42,6 @@ public class SonarUI : MonoBehaviour
     private Image DrawCircle(float distPercentage, Vector3 direction)
     {
         float rad = screenWidth/2*distPercentage;
-        Debug.Log(distPercentage);
         Vector3 circlePos =  new Vector3(rad*direction.x, rad*direction.z, 0);
         Image point = Instantiate(pointPrefab, Vector3.zero, Quaternion.identity);
         Vector3 originalSize = point.rectTransform.localScale;
@@ -55,7 +52,6 @@ public class SonarUI : MonoBehaviour
         point.rectTransform.localRotation= originalRot;
         point.rectTransform.localPosition = circlePos;
         point.color = CircleColor(direction);
-        Debug.Log(circlePos);
         
         return point;
 
