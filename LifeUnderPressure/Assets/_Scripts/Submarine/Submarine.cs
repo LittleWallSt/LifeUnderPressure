@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Submarine : MonoBehaviour, IDepthDependant
 {
-    [SerializeField] private int submarineLevel = 0;
     [SerializeField] private float inDeepMaxTime = 10f;
     [SerializeField] private float deepOffset = 0f;
     [SerializeField] private float radiusOfHull = 10f;
@@ -72,7 +71,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        bool allowed = submarineLevel >= level;
+        bool allowed = true;
         if (allowed)
         {
             inDeepTime = 0f;
