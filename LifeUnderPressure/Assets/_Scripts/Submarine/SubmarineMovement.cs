@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SubmarineMovement : MonoBehaviour
 {
+    [SerializeField] private bool debugMode = false;
     [Header("Movement")]
     [SerializeField] private MovementVector movementVector;
     [Header("Rotation")]
@@ -26,10 +27,6 @@ public class SubmarineMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         input = new Vector3();
         ResetMovement();
-
-        // Lock and hide cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
     public void ResetMovement()
     {
@@ -157,6 +154,8 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnGUI()
     {
+        if (!debugMode) return;
+
         GUI.Label(new Rect(10, 10, 500, 80), string.Format("Input: {0}; {1}; {2}", input.x, input.y, input.z), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 80, 500, 80), string.Format("Mouse: {0}; {1}", mouse.x, mouse.y), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 150, 500, 80), string.Format("Velocity: {0}", rb.velocity), InternalSettings.Get.DebugStyle);
@@ -165,7 +164,5 @@ public class SubmarineMovement : MonoBehaviour
         GUI.Label(new Rect(10, 360, 500, 80), string.Format("Bumped: {0}", bumped), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 430, 500, 80), string.Format("R. Velocity: {0}", rotationVelocity), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 500, 500, 80), string.Format("Time: {0}", Time.time), InternalSettings.Get.DebugStyle);
-    
     }
-
 }

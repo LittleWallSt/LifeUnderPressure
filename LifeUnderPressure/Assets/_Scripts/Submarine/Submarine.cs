@@ -13,6 +13,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private float thicknessOfHull = 10f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
+    [SerializeField] private UpgradeCanvas upgradeCanvas = null;
 
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
@@ -26,6 +27,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
+        upgradeCanvas.gameObject.SetActive(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -35,6 +37,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
             upgrades.Add(upgrade);
             upgrade.Init(this, movement);
         }
+    }
+    private void Start()
+    {
+        InternalSettings.EnableCursor(false);
     }
     public void SetThicknessOfHull(float newThickness)
     {
@@ -46,6 +52,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
         
         if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
+    }
+    private void Update()
+    {
+        if (!Input.GetKeyDown(KeyCode.Tab)) return;
+
+        upgradeCanvas.gameObject.SetActive(!upgradeCanvas.gameObject.activeSelf);
+        InternalSettings.EnableCursor(upgradeCanvas.gameObject.activeSelf);
     }
     private void Die()
     {
