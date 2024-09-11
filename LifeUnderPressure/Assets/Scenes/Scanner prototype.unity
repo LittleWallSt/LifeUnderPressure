@@ -345,6 +345,7 @@ MonoBehaviour:
   scanRect: {fileID: 769065074}
   borders: {fileID: 509275785}
   pivotPoint: {fileID: 769065075}
+  bar: {fileID: 1335898629}
   currentFish: {fileID: 0}
 --- !u!1 &470301202
 GameObject:
