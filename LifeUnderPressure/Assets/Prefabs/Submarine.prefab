@@ -1387,7 +1387,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 5897422571100704064}
+  m_Camera: {fileID: 6071548694955121423}
   m_PlaneDistance: 20
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -6975,7 +6975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a301332cbd87645970bc9c569eae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  submarineLevel: 0
   inDeepMaxTime: 10
   deepOffset: -0.64
   radiusOfHull: 3.2
