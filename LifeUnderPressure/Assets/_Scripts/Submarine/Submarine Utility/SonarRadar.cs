@@ -62,7 +62,10 @@ public class SonarRadar : MonoBehaviour
                     Vector3 angle;
                     int sIndex;
                     fishAngle(fish, out angle, out sIndex);
-                    timeFrames.Add(sIndex*framesPerSprite, fish);
+                    if (!timeFrames.ContainsKey(sIndex * framesPerSprite))
+                    {
+                        timeFrames.Add(sIndex * framesPerSprite, fish);
+                    }
 
                 }
 
@@ -83,7 +86,7 @@ public class SonarRadar : MonoBehaviour
 
         if (frameIndex > framesPerSprite * numberOfSprites) frameIndex = 0;
 
-        Debug.Log(timeFrames.Count);
+        //Debug.Log(timeFrames.Count);
         if (timeFrames.ContainsKey(frameIndex))
         {
             Vector3 angle;
@@ -139,7 +142,7 @@ public class SonarRadar : MonoBehaviour
         angle = new Vector3(-sonarPosition.x, 0, sonarPosition.y);
         spriteIndex = (int) ((-angleBetween>0? -angleBetween : (360 - angleBetween)) / 
             (360 / numberOfSprites));
-        Debug.Log(-angleBetween + " : " + spriteIndex);
+        //Debug.Log(-angleBetween + " : " + spriteIndex);
     }
     
 }
