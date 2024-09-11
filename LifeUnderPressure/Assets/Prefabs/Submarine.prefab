@@ -2367,8 +2367,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6808714783887903048}
   - component: {fileID: 5897422571100704064}
-  - component: {fileID: 1534713850814800245}
   - component: {fileID: 6547185080247447090}
+  - component: {fileID: 8215392364100951073}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2443,14 +2443,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1534713850814800245
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3836582034735415248}
-  m_Enabled: 1
 --- !u!114 &6547185080247447090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,6 +2488,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &8215392364100951073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836582034735415248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &3877630704574494166
 GameObject:
   m_ObjectHideFlags: 0
@@ -4014,6 +4019,7 @@ MonoBehaviour:
   scanRect: {fileID: 3746205185660000178}
   borders: {fileID: 6524086751029185398}
   pivotPoint: {fileID: 5297021472453822690}
+  bar: {fileID: 0}
   currentFish: {fileID: 0}
 --- !u!1 &5782905088420772597
 GameObject:

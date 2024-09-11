@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCellColor: {r: 1, g: 1, b: 1, a: 1}
   defaultCellColor: {r: 1, g: 1, b: 1, a: 1}
+  fishLayer:
+    serializedVersion: 2
+    m_Bits: 256
   debugStyle:
     m_Name: 
     m_Normal:
