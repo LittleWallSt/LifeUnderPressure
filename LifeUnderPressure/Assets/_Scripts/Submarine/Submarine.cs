@@ -10,6 +10,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private float deepOffset = 0f;
     [SerializeField] private float radiusOfHull = 10f;
     [SerializeField] private float thicknessOfHull = 10f;
+    [SerializeField] private float maxStressTreshold = 24f;
+    [SerializeField] private float stressDamageModifier = 0.25f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
@@ -19,7 +21,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private Health health;
     private SubmarineMovement movement;
 
-    private double stress = 0f;
+    private float stress = 0f;
     private float inDeepTime = 0f;
 
     public static Submarine Instance { get; private set; } = null;
@@ -55,6 +57,17 @@ public class Submarine : MonoBehaviour, IDepthDependant
         float depth = -transform.position.y;
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
         
+        if(stress > 100)
+        {
+            float diff = stress - 100f;
+            health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier);
+            warningText.gameObject.SetActive(true);
+        }
+        else
+        {
+            warningText.gameObject.SetActive(false);
+        }
+
         if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
     }
     private void Update()
@@ -116,6 +129,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void OnGUI()
     {
-        GUI.Label(new Rect(1000, 10, 500, 100), string.Format("Stress: {0}", stress), InternalSettings.Get.DebugStyle);
+        GUI.Label(new Rect(1000, 10, 500, 100), string.Format("LC Stress: {0}", stress), InternalSettings.Get.DebugStyle);
     }
 }
