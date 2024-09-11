@@ -15,6 +15,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
+    [SerializeField] private PauseMenu pauseMenu = null;
 
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
@@ -34,6 +35,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
         upgradeCanvas.gameObject.SetActive(false);
+        pauseMenu.EnableMenu(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -72,15 +74,29 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void Update()
     {
+        PauseMenuInput();
+        UpgradeCanvasInput();
+    }
+
+    private void PauseMenuInput()
+    {
+        if (!Input.GetKeyDown(KeyCode.Escape)) return;
+
+        pauseMenu.EnableMenu(!pauseMenu.gameObject.activeSelf);
+    }
+
+    private void UpgradeCanvasInput()
+    {
         if (!Input.GetKeyDown(KeyCode.Tab)) return;
 
         upgradeCanvas.gameObject.SetActive(!upgradeCanvas.gameObject.activeSelf);
         InternalSettings.EnableCursor(upgradeCanvas.gameObject.activeSelf);
     }
+
     private void Die()
     {
         Debug.Log("Submarine died");
-        transform.position = Vector3.zero;
+        transform.position = new Vector3(0f, -2f, 0f);
         transform.rotation = Quaternion.identity;
         movement.ResetMovement();
         health.ResetHealth();
