@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] GameObject scanRect;
     [SerializeField] GameObject borders;
     [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
+    [SerializeField] GameObject bar;
 
 
     LayerMask fishLayerMask;
@@ -55,15 +57,25 @@ public class Scanner : MonoBehaviour
             if (!locked)
             {
                 locked = true;
-            } else
+                scanRect.SetActive(true);
+            } else if(!getHitColliders())
             {
-                ResetScanner();
+                Debug.Log("worng one");
+                ResetScanner(false);
                 locked = false;
+            } else 
+            {
+                ResetScanner(true);
+                locked = false; // change placeds
                 lockActive.Invoke(true);
             }
         }
 
-        if(locked) ChooseTarget();
+        if (locked)
+        {
+            ChooseTarget();
+            ScannerAnimation();
+        }
         if (currentFish!= null) { targetLock.Invoke(currentFish.transform.position); }
 
 
@@ -75,27 +87,27 @@ public class Scanner : MonoBehaviour
             if(fishLost) lockActive.Invoke(true);
             fishLost = false;
             timeLeft -= Time.deltaTime;
+            ScannerAnimation();
+            
             if (timeLeft <= 0.0f)
             {
                 lockActive.Invoke(false);
-                DisplayInfo(scanTimer, timeLeft);
-                ResetScanner();
+                DisplayInfo();
+                ResetScanner(false);
                 
 
             }
         }
         else if (timeLeft <= scanTimer)
         {
-            timeLeft += Time.deltaTime;
+            timeLeft += Time.deltaTime/2;
             if (!fishLost) lockActive.Invoke(false);
             fishLost = true;
+            
 
         }
 
-
         updateScanner.Invoke(BarValue(scanTimer, timeLeft));
-        ScannerAnimation();
-
     }
 
     private void ChooseTarget()
@@ -106,6 +118,12 @@ public class Scanner : MonoBehaviour
         if (hitColliders.Length == 0) return;
 
         currentFish = ClosestToCameraFish(hitColliders);
+    }
+
+    private bool getHitColliders()
+    {
+        return (Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
+            Quaternion.identity, fishLayerMask).Length > 0);
     }
 
     private void ScannerAnimation()
@@ -185,16 +203,17 @@ public class Scanner : MonoBehaviour
 
 #endregion
 
-    public void DisplayInfo(float fishTimer, float timeLeft)
+    public void DisplayInfo(string name = "nemo", string fishInfo = "Blup blup")
     {
-        scanFinished.Invoke(currentFish.name, "Blup blup");
+        scanFinished.Invoke(currentFish.name, fishInfo);
         currentFish = null;
     }
 
-    private void ResetScanner()
+    private void ResetScanner(bool scan)
     {
-        scanning = !scanning;
-        scanRect.SetActive(scanning);
+        scanning = scan;
+        scanRect.SetActive(scan);
+        bar.SetActive(scan);
         timeLeft = scanTimer;
     }
 
