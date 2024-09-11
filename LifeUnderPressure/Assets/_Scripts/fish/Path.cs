@@ -13,7 +13,10 @@ public class Path : MonoBehaviour
     public int Length { get { return waypoints.Length; } }
     public Transform GetWaypoint(int index) {  return waypoints[index]; }
 
+
     public float Radius { get { return radius; } }
+
+    
 
     // Draws path in gizmos
     private void OnDrawGizmos()
