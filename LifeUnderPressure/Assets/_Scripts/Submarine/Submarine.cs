@@ -6,13 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Submarine : MonoBehaviour, IDepthDependant
 {
-    [SerializeField] private int submarineLevel = 0;
     [SerializeField] private float inDeepMaxTime = 10f;
     [SerializeField] private float deepOffset = 0f;
     [SerializeField] private float radiusOfHull = 10f;
     [SerializeField] private float thicknessOfHull = 10f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
+    [SerializeField] private UpgradeCanvas upgradeCanvas = null;
 
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
@@ -21,11 +21,17 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private double stress = 0f;
     private float inDeepTime = 0f;
+
+    public static Submarine Instance { get; private set; } = null;
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else { Destroy(gameObject); return; }
+
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
+        upgradeCanvas.gameObject.SetActive(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -35,6 +41,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
             upgrades.Add(upgrade);
             upgrade.Init(this, movement);
         }
+    }
+    private void Start()
+    {
+        InternalSettings.EnableCursor(false);
     }
     public void SetThicknessOfHull(float newThickness)
     {
@@ -46,6 +56,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
         
         if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
+    }
+    private void Update()
+    {
+        if (!Input.GetKeyDown(KeyCode.Tab)) return;
+
+        upgradeCanvas.gameObject.SetActive(!upgradeCanvas.gameObject.activeSelf);
+        InternalSettings.EnableCursor(upgradeCanvas.gameObject.activeSelf);
     }
     private void Die()
     {
@@ -59,7 +76,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        bool allowed = submarineLevel >= level;
+        bool allowed = true;
         if (allowed)
         {
             inDeepTime = 0f;

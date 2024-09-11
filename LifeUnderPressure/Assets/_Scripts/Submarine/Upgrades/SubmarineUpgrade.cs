@@ -11,9 +11,33 @@ public abstract class SubmarineUpgrade : MonoBehaviour
 
     protected int level = 0;
 
+    public int Level
+    {
+        get
+        {
+            return level;
+        }
+        private set
+        {
+            if (value > maxLevel)
+            {
+                Debug.Log("Overupgrading " + name);
+            }
+            else if (value < 0)
+            {
+                throw new System.Exception("Level cannot be less than 0");
+            }
+            else
+            {
+                level = value;
+                upgradeEvents[level].Invoke();
+            }
+        }
+    }
+    public int MaxLevel => maxLevel;
     protected virtual void SU_EditorSetup()
     {
-        if (upgradeEvents.Length != maxLevel + 1)
+        if (upgradeEvents == null || upgradeEvents.Length != maxLevel + 1)
         {
             upgradeEvents = new UnityEvent[maxLevel + 1];
         }
@@ -25,11 +49,12 @@ public abstract class SubmarineUpgrade : MonoBehaviour
 
     protected virtual void UpgradeLevel()
     {
-        if(level + 1 > maxLevel)
-        {
-            throw new System.Exception("Level up is exceeding the max level limit");
-        }
-        level++;
-        upgradeEvents[level].Invoke();
+        Level++;
+    }
+
+    // Debug
+    public void Debug_UpgradeLevel()
+    {
+        UpgradeLevel();
     }
 }

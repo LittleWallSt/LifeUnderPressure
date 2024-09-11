@@ -33,6 +33,12 @@ public class InternalSettings : MonoBehaviour
         mouseDelta = (Vector2)Input.mousePosition - lastMousePosition;
         lastMousePosition = Input.mousePosition;
     }
+    public static void EnableCursor(bool state)
+    {
+        // Lock and hide cursor
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = state;
+    }
     // Debug
     public GUIStyle DebugStyle => debugStyle;
 }
