@@ -32,89 +32,6 @@ Transform:
   - {fileID: 3429906597426426205}
   m_Father: {fileID: 3713413442002795595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2574641518288855872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1814492657999747544}
-  - component: {fileID: 241335671603960011}
-  - component: {fileID: 3074729821213495599}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1814492657999747544
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574641518288855872}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.031244516, z: 0.41871262}
-  m_LocalScale: {x: 0.80908, y: 0.80908, z: 0.80908}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7078515065875570282}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &241335671603960011
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574641518288855872}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3074729821213495599
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574641518288855872}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2863053123494265647
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,11 +106,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7078515065875570282}
-  - component: {fileID: 4280238064318099880}
-  - component: {fileID: 4373023946920620846}
-  - component: {fileID: 5637098237710488293}
   - component: {fileID: 4245285681294225189}
-  m_Layer: 0
+  - component: {fileID: 5672818725198563735}
+  m_Layer: 8
   m_Name: Fish Prototype 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,60 +129,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7645230572177112018}
-  - {fileID: 1814492657999747544}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 41.725, y: 0, z: 0}
---- !u!33 &4280238064318099880
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5117038511062740693}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4373023946920620846
-MeshRenderer:
+--- !u!114 &4245285681294225189
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5117038511062740693}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5637098237710488293
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishName: Nemo
+  fishInfo: 404-Not Found
+  scanTime: 0
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  path: {fileID: 0}
+  speed: 10
+  rotationSpeed: 1
+  alignmentThreshold: 5
+  avoidanceDetection: {x: 0, y: 0, z: 0}
+--- !u!65 &5672818725198563735
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,35 +180,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4245285681294225189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5117038511062740693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishName: Nemo
-  fishInfo: 404-Not Found
-  scanTime: 0
-  scaredFactor: 0
-  curiousFactor: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 10
-  rotationSpeed: 1
-  waypointRadius: 10
-  turnRadius: 3
-  alignmentThreshold: 5
-  avoidanceVector: {x: 10, y: 20, z: 10}
+  m_Size: {x: 0.08, y: 0.15, z: 0.39}
+  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!1 &5812940590618420305
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +240,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3072186392513399141}
   m_Father: {fileID: 7645230572177112018}
@@ -470,7 +337,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7645230572177112018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

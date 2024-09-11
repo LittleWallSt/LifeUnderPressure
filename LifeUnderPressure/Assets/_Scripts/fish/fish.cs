@@ -38,7 +38,7 @@ public class Fish : MonoBehaviour
     [SerializeField] private Path path;
     private int currentWaypointIndex = 0;
 
-    [SerializeField] private Transform player;
+    private Transform player;
 
     [SerializeField] protected float speed;
     
@@ -68,6 +68,10 @@ public class Fish : MonoBehaviour
             transform.position = path.GetWaypoint(currentWaypointIndex).position;
             SetNextWaypoint();
         }
+
+        // Aleksis >>
+        player = Submarine.Instance.transform;
+        // Aleksis <<
     }
 
     #region Movement

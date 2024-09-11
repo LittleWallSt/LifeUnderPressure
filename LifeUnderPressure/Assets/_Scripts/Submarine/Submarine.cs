@@ -21,8 +21,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private double stress = 0f;
     private float inDeepTime = 0f;
+
+    public static Submarine Instance { get; private set; } = null;
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else { Destroy(gameObject); return; }
+
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
