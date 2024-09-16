@@ -95,8 +95,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void EncyclopediaInput()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
-        encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf);
-        submarineBody.SetActive(!encyclopedia.gameObject.activeSelf);
+        encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody);
+        
 
     }
     //**
