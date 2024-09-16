@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Firefly squid
+  m_EditorClassIdentifier: 
+  fishName: Firefly squid
+  fishSmallDescription: 'Of all the bioluminescent life forms in the deep sea, there
+    is one tiny creature who''s light show puts all others to shame. '
+  fishFullDescription: 'This is the firefly squid, sometimes called the sparkling
+    enope squid. Known to science as Watasenia scintillans, it is referred to in
+    Japan as "hotaru-ika". It is a member of the cephalopod family and is related
+    to many other squid species throughout the world''s oceans. The firefly squid
+    gets its name from the flashing lights that resemble those of a firefly. This
+    squid is famous for the incredible light show that occurs each year off the coast
+    of Japan as millions of these tiny animals gather to spawn.
+
+    
+
+    The
+    squid is equipped with special light-producing organs called photophores. These
+    photophores are found on many parts of the squid''s body and emit a deep blue
+    light. Large photophores can be found on the tips of the tentacles as well as
+    around the eyes. Thousands of tiny photophores can be found throughout the squid''s
+    body, giving it the ability to emit light along its entire form. The lights can
+    be flashed in unison or alternated in an endless number of animated patterns.'
+  fishPrefab: {fileID: 2309932298192103756, guid: 40788d526ec1f7b4fb537f35440e76a7,
+    type: 3}
+  locked: 0
+  scale: 1
