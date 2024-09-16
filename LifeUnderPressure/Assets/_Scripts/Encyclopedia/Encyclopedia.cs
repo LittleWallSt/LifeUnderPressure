@@ -18,7 +18,10 @@ public class Encyclopedia : MonoBehaviour
     [SerializeField] Transform fishDisplayOffset;
     [SerializeField] Transform bubblesOffset;
     [SerializeField] ParticleSystem bubbles;
+
+
     GameObject currentDisplayedObj;
+    GameObject submarineBody;
     FishInfo currFish;
 
     
@@ -81,15 +84,16 @@ public class Encyclopedia : MonoBehaviour
 
     public void OnExitClick()
     {
-        EnableMenu(false);
+        EnableMenu(false, submarineBody); 
     }
 
-    public void EnableMenu(bool state)
+    public void EnableMenu(bool state, GameObject _submarineBody)
     {
         Destroy(currentDisplayedObj);
+        if (submarineBody == null) submarineBody = _submarineBody;
         currentDisplayedObj = null;
         gameObject.SetActive(state);
-        //Time.timeScale = state ? 0f : 1f;
+        submarineBody.SetActive(!state);
         InternalSettings.EnableCursor(gameObject.activeSelf);
     }
 
