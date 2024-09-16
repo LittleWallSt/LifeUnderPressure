@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Sunfish
+  m_EditorClassIdentifier: 
+  fishName: Sunfish
+  fishSmallDescription: As gigantic as the ocean sunfish can be, it still seems like
+    only half a fish.
+  fishFullDescription: "Sunfish, or mola, develop their truncated, bullet-like shape
+    because the back fin which they are born with simply never grows. Instead, it
+    folds into itself as the enormous creature matures, creating a rounded rudder
+    called a clavus. Mola in Latin means \"millstone\" and describes the ocean sunfish\u2019s
+    somewhat circular shape. They are a silvery color and have a rough skin texture.\r\n\r\nMola
+    are found in temperate and tropical oceans around the world. They are frequently
+    seen basking in the sun near the surface and are often mistaken for sharks when
+    their huge dorsal fins emerge above the water. Their teeth are fused into a beak-like
+    structure, and they are unable to fully close their relatively small mouths."
+  fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
+    type: 3}
+  locked: 0
+  scale: 5
