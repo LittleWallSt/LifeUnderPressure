@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
@@ -74,6 +75,15 @@ public class Fish : MonoBehaviour
         // Aleksis <<
     }
 
+    public void SetPath(Path newPath) {
+        path = newPath;
+    }
+
+    public void SetRandomWaypoint()
+    {
+        currentWaypointIndex = Random.Range(0, path.Length);
+    }
+
     #region Movement
 
     //TODO: add scared behaviour from player and curious behaviour
@@ -84,6 +94,8 @@ public class Fish : MonoBehaviour
     /// </summary>
     public void movement() {
         //If there are no waypoints
+        if (path == null)
+            return;
         if (path.Length == 0)
             return;
 

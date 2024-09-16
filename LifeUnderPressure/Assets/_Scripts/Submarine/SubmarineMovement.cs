@@ -132,6 +132,10 @@ public class SubmarineMovement : MonoBehaviour
 
     private void BumpCollision(Collision collision)
     {
+        if(collision.transform.gameObject.layer == 8) // just for now to block going higher than water surface, 8 is fish layer
+        {
+            return;
+        }
         // Bumping
         Vector3 impulse = collision.GetContact(0).impulse;
 

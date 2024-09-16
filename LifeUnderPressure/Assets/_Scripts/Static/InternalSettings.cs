@@ -5,6 +5,8 @@ public class InternalSettings : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Color selectedCellColor = Color.white;
     [SerializeField] private Color defaultCellColor = Color.white;
+    [Header("Layers")]
+    [SerializeField] private LayerMask fishLayer = new LayerMask();
     [Header("Debug")]
     [SerializeField] private GUIStyle debugStyle = null;
 
@@ -22,6 +24,7 @@ public class InternalSettings : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+    public static LayerMask FishLayer => Get.fishLayer;
     private void Start()
     {
         lastMousePosition = Input.mousePosition;
