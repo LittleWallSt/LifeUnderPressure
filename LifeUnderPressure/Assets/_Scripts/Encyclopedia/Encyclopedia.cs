@@ -14,37 +14,23 @@ public class Encyclopedia : MonoBehaviour
     
     
 
-    [Header("ASssets")]
-    [SerializeField] Transform fishDisplay;
+    [Header("Assets")]
+    [SerializeField] Transform fishDisplayOffset;
+    [SerializeField] Transform bubblesOffset;
     [SerializeField] ParticleSystem bubbles;
     GameObject currentDisplayedObj;
     FishInfo currFish;
 
-    private static Encyclopedia instance;
-    public static Encyclopedia Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                Debug.LogError("Encyclopedia is null");
-            }
-
-            return instance;
-        }
-    }
+    
 
     bool PanelOn = true;
 
-    void Awake()
-    {
-        instance= this;
-    }
+    
 
     private void Start()
     {
         ManagePanel(true);
-        
+        gameObject.SetActive(false);
     }
 
     
@@ -52,25 +38,30 @@ public class Encyclopedia : MonoBehaviour
 
     public void OnFishButtonClick(FishInfo fishInfo)
     {
+        Debug.Log("cli");
         currFish = fishInfo;
 
         if (currFish == null || currFish.locked) return;
         if(currentDisplayedObj!=null)
         {
             Destroy(currentDisplayedObj);
+            currentDisplayedObj = null;
         }
         if (currFish.fishPrefab!= null)
         {
-            currentDisplayedObj = Instantiate(currFish.fishPrefab, fishDisplay.position, Quaternion.identity);
+            currentDisplayedObj = Instantiate(currFish.fishPrefab, Vector3.zero, Quaternion.identity, fishDisplayOffset);
+            currentDisplayedObj.transform.localPosition = Vector3.zero;
             currentDisplayedObj.transform.localScale /= currFish.scale;
             currentDisplayedObj.AddComponent<ObjectRotation>();
             addBubbles();
         }
     }
 
+    
 
 
-                         
+
+
 
     public void OnShowFullDescriptionClick()
     {
@@ -90,7 +81,16 @@ public class Encyclopedia : MonoBehaviour
 
     public void OnExitClick()
     {
-        //do whatever
+        EnableMenu(false);
+    }
+
+    public void EnableMenu(bool state)
+    {
+        Destroy(currentDisplayedObj);
+        currentDisplayedObj = null;
+        gameObject.SetActive(state);
+        //Time.timeScale = state ? 0f : 1f;
+        InternalSettings.EnableCursor(gameObject.activeSelf);
     }
 
     private void ManagePanel(bool On)
@@ -109,6 +109,8 @@ public class Encyclopedia : MonoBehaviour
 
     private void addBubbles()
     {
+        
+        bubbles.gameObject.transform.position = bubblesOffset.position;
         bubbles.Play();
     }
 }
