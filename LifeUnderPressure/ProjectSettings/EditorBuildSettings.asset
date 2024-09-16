@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Javi00.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 7fc945fa4f53f054eb6d0d675a9f0bf7
+  - enabled: 1
+    path: Assets/Scenes/Proto00.unity
+    guid: a321a1258ba3c98459310673d057f07c
   m_configObjects: {}
