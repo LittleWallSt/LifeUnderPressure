@@ -237,25 +237,6 @@ public class Fish : MonoBehaviour
 
     #endregion Movement
    
-    #region FishInfo
-    /// <summary>
-    /// The name of the fish
-    /// </summary>
-    /// <returns>String containing fish name</returns>
-    public string getFishName()
-    {
-        return fishName;
-    }
-
-    /// <summary>
-    /// The info of the scanned fish
-    /// </summary>
-    /// <returns>String containing the information of the fish</returns>
-    public string scanInfo() {
-        return fishInfo;
-    }
-    #endregion
-
     // Update is called once per frame
     void Update()
     {
