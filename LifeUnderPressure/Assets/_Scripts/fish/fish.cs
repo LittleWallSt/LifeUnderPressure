@@ -8,14 +8,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
-    //FISH PROPERTIES
-    [Header("Fish properties")]
-    [SerializeField] protected string fishName;
-
-    [SerializeField] protected string fishInfo;
-
-    [SerializeField] protected float scanTime;
-
     [Header("Fish Behaviour")]
     [Range(0f, 1f)]
     [SerializeField] protected float scaredFactor;
@@ -154,6 +146,7 @@ public class Fish : MonoBehaviour
             if(timer > curiousTimer)
             {
                 isCurious = false;
+                timer = 0f;
                 curiousCooldown = true;
                 currentSpeed = speed;
             }
