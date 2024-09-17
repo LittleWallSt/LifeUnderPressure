@@ -38,8 +38,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
-        upgradeCanvas.gameObject.SetActive(false);
-        pauseMenu.EnableMenu(false);
+        if (upgradeCanvas!= null) upgradeCanvas.gameObject.SetActive(false);
+        if (pauseMenu!=null) pauseMenu.EnableMenu(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -95,6 +95,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void EncyclopediaInput()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
+        
         encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody);
         
 

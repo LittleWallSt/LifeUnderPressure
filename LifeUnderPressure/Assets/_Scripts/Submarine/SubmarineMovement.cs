@@ -22,6 +22,11 @@ public class SubmarineMovement : MonoBehaviour
     private Vector3 input;
     private Vector2 mouse;
     private Vector2 rotationVelocity;
+
+
+    #region
+    [SerializeField]TutorialManager tutorial;
+    #endregion
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,10 +44,43 @@ public class SubmarineMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (tutorial.tutorialOn)
+        {
+            TutorialUpdate();
+            return;
+        }
         // Get input
         float inputUp = Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+    }
+
+    private void TutorialUpdate()
+    {
+        //Shift and Space lock
+
+        float inputUp = 0, inputHorizontal = 0, inputVertical = 0, mouseX = 0, mouseY = 0;
+        if (!tutorial.UpDownLock) inputUp = Input.GetKey(KeyCode.Space) ? 1f :
+                Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
+
+        // W & S Locks
+
+        if (tutorial.SLock && !tutorial.WLock) inputHorizontal = Input.GetKey(KeyCode.W) ? 1f : 0f;
+        else if (!tutorial.SLock) inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        // A & D Lock
+
+        if (!tutorial.ADLock) inputVertical = Input.GetAxisRaw("Vertical");
+
+        input = new Vector3(inputHorizontal, inputUp, inputVertical);
+
+        //Rotation Lock
+        if (!tutorial.rotLock)
+        {
+            mouseX = Input.GetAxisRaw("Mouse X");
+            mouseY = Input.GetAxisRaw("Mouse Y");
+        }
+        mouse = new Vector2(mouseX, mouseY);
     }
 
     private void FixedUpdate()

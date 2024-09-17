@@ -17,6 +17,7 @@ public class QuestUI : MonoBehaviour
     private void UpdateUI()
     {
         List<Quest.FishAmount> questReqs = QuestSystem.GetQuestReqs();
+        if (questReqs == null) return;
         if (questReqTexts.Count != questReqs.Count)
         {
             RebuildQuestReqTexts(questReqs.Count);
