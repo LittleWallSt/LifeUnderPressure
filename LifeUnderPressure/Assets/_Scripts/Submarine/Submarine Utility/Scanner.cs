@@ -203,9 +203,11 @@ public class Scanner : MonoBehaviour
 
 #endregion
 
-    public void DisplayInfo(string name = "nemo", string fishInfo = "Blup blup")
+    public void DisplayInfo()
     {
-        scanFinished.Invoke(currentFish.name, fishInfo);
+        FishInfo fishInfo = currentFish.gameObject.GetComponent<ScannedFish>().fishInfo;
+        if (fishInfo == null) return;
+        scanFinished.Invoke(fishInfo.fishName, fishInfo.fishSmallDescription);
         currentFish = null;
     }
 
