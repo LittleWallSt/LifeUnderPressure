@@ -8,14 +8,6 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
-    //FISH PROPERTIES
-    [Header("Fish properties")]
-    [SerializeField] protected string fishName;
-
-    [SerializeField] protected string fishInfo;
-
-    [SerializeField] protected float scanTime;
-
     [Header("Fish Behaviour")]
     [Range(0f, 1f)]
     [SerializeField] protected float scaredFactor;
@@ -154,6 +146,7 @@ public class Fish : MonoBehaviour
             if(timer > curiousTimer)
             {
                 isCurious = false;
+                timer = 0f;
                 curiousCooldown = true;
                 currentSpeed = speed;
             }
@@ -237,25 +230,6 @@ public class Fish : MonoBehaviour
 
     #endregion Movement
    
-    #region FishInfo
-    /// <summary>
-    /// The name of the fish
-    /// </summary>
-    /// <returns>String containing fish name</returns>
-    public string getFishName()
-    {
-        return fishName;
-    }
-
-    /// <summary>
-    /// The info of the scanned fish
-    /// </summary>
-    /// <returns>String containing the information of the fish</returns>
-    public string scanInfo() {
-        return fishInfo;
-    }
-    #endregion
-
     // Update is called once per frame
     void Update()
     {

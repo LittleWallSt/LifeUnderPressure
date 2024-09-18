@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
+    [SerializeField] private Color colour = Color.magenta;
+
     [SerializeField]
     private float radius = 2f;
 
@@ -22,7 +24,7 @@ public class Path : MonoBehaviour
     private void OnDrawGizmos()
     {
         for (int i = 0; i < waypoints.Length; i++) {
-            Debug.DrawLine(waypoints[i].position, waypoints[(i+1)%waypoints.Length].position, Color.magenta);
+            Debug.DrawLine(waypoints[i].position, waypoints[(i+1)%waypoints.Length].position, colour);
         }
     }
 }

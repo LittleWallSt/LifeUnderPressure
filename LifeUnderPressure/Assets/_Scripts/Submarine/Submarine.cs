@@ -16,6 +16,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private TMP_Text warningText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
+    [SerializeField] private Encyclopedia encyclopedia = null;
+
+    [SerializeField] private GameObject submarineBody;
+
 
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
@@ -34,8 +38,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
-        upgradeCanvas.gameObject.SetActive(false);
-        pauseMenu.EnableMenu(false);
+        if (upgradeCanvas!= null) upgradeCanvas.gameObject.SetActive(false);
+        if (pauseMenu!=null) pauseMenu.EnableMenu(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -76,6 +80,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         PauseMenuInput();
         UpgradeCanvasInput();
+        EncyclopediaInput();
     }
 
     private void PauseMenuInput()
@@ -85,6 +90,17 @@ public class Submarine : MonoBehaviour, IDepthDependant
         pauseMenu.EnableMenu(!pauseMenu.gameObject.activeSelf);
     }
 
+    //Ulia chnanges**
+
+    private void EncyclopediaInput()
+    {
+        if (!Input.GetKeyDown(KeyCode.Q)) return;
+        
+        encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody);
+        
+
+    }
+    //**
     private void UpgradeCanvasInput()
     {
         if (!Input.GetKeyDown(KeyCode.Tab)) return;
