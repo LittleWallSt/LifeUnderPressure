@@ -51,7 +51,7 @@ MonoBehaviour:
       Data2: 1252493556
       Data3: 1816108700
       Data4: 1130225410
-    Path: event:/Song
+    Path: event:/Music/First Song
   Event: 
   PlayEvent: 1
   StopEvent: 0
