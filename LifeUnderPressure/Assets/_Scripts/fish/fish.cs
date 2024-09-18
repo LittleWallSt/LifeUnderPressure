@@ -8,32 +8,37 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
-    [Header("Fish Behaviour")]
-    [Range(0f, 1f)]
-    [SerializeField] protected float scaredFactor;
-    [SerializeField] protected float scaredDistance;
-    [SerializeField, Range(0, 300f)] protected float scaredSpeed;
-    [SerializeField] protected float scaredTimer;
+    //FISH PROPERTIES
+    [Header("Fish properties")]
+    [SerializeField] protected string fishName;
+
+    [SerializeField] protected string fishInfo;
+
+    [SerializeField] protected float scanTime;
+
+     protected float scaredFactor;
+    protected float scaredDistance;
+     protected float scaredSpeed;
+    protected float scaredTimer;
     
-    [Range(0f, 1f)]
-    [SerializeField] protected float curiousFactor;
-    [SerializeField] protected float curiousDistance;
-    [SerializeField, Range(0f, 300f)] protected float curiousSpeed;
-    [SerializeField] protected float curiousTimer;
-    [SerializeField] protected float curiousCooldownTime;
-    [SerializeField] protected float curiousRange;
+     protected float curiousFactor;
+    protected float curiousDistance;
+   protected float curiousSpeed;
+    protected float curiousTimer;
+   protected float curiousCooldownTime;
+   protected float curiousRange;
 
     protected bool curious;
     protected bool scared;
 
     //MOVEMENT WAYPOINT BASED
-    [Header("Movement properties")]
-    [SerializeField] private Path path;
-    private int currentWaypointIndex = 0;
+    //[Header("Movement properties")]
+    protected Path path;
+    protected int currentWaypointIndex;
 
     private Transform player;
 
-    [SerializeField] protected float speed;
+    protected float speed;
     
     [SerializeField] protected float rotationSpeed;
 
@@ -43,24 +48,65 @@ public class Fish : MonoBehaviour
 
     [SerializeField] protected Vector3 avoidanceDetection;
 
-    private float currentSpeed;
+    //private float currentSpeed;
+    protected float averageSpeed;
 
-    private bool isScared = false;
-    private bool isCurious = false;
-    private bool curiousCooldown = false;
+    protected bool isScared = false;
+    protected bool isCurious = false;
+    protected bool curiousCooldown = false;
+
+    protected bool canBeNeighbour = false;
 
     private float timer = 0f;
-    private float cooldownTimer = 0f;
+    protected float cooldownTimer = 0f;
+    protected Boid assignedBoid;
+    protected Vector3 directionToWaypoint = Vector3.zero;
+
+    public void SetCuriousBehaviour(CuriousInfo info)
+    {
+        curiousSpeed = info.speed;
+        curiousFactor = info.factor;
+        curiousDistance = info.distance;
+        curiousTimer = info.timer;
+        curiousCooldownTime = info.coolDown;
+        curiousRange = info.range;
+
+        isCurious = true;
+    }
+
+    public void SetScareBehaviour(ScareInfo info)
+    {
+        scaredFactor = info.factor;
+        scaredDistance = info.distance;
+        scaredSpeed = info.speed;
+        scaredTimer = info.timer;
+
+        isScared = true;
+        Debug.Log("Aaaah I'm scared");
+
+    }
+    public void AssignBoid(Boid boid)
+    {
+        assignedBoid = boid;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentSpeed = speed;
-        if (path.Length > 0)
+        //currentSpeed = speed;
+        averageSpeed = speed;
+
+        if(assignedBoid != null)
         {
-            transform.position = path.GetWaypoint(currentWaypointIndex).position;
-            SetNextWaypoint();
+            path = assignedBoid.path;
+            currentWaypointIndex = assignedBoid.currWayPointIndex;
         }
+
+        //if (path.Length > 0)
+        //{
+        //    transform.position = path.GetWaypoint(currentWaypointIndex).position;
+        //    SetNextWaypoint();
+        //}
 
         // Aleksis >>
         player = Submarine.Instance.transform;
@@ -73,7 +119,7 @@ public class Fish : MonoBehaviour
 
     public void SetRandomWaypoint()
     {
-        currentWaypointIndex = Random.Range(0, path.Length);
+      currentWaypointIndex = Random.Range(0, path.Length);
     }
 
     #region Movement
@@ -84,7 +130,7 @@ public class Fish : MonoBehaviour
     /// <summary>
     /// How the fish will move, basic movement is waypoint based
     /// </summary>
-    public void movement() {
+    virtual public void MoveFish() {
         //If there are no waypoints
         if (path == null)
             return;
@@ -92,67 +138,12 @@ public class Fish : MonoBehaviour
             return;
 
         Transform targetWaypoint = path.GetWaypoint(currentWaypointIndex);
-        Vector3 directionToWaypoint = Vector3.zero;
+        directionToWaypoint = Vector3.zero;
+
+        FishBehaviour(); // Can be better lol
         
-        // scared behaviour
-        if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance) 
-            || isScared)
-        {
-            directionToWaypoint = (transform.position - player.position).normalized;
-            if (!isScared)
-            {
-                isScared = true;
-                timer = 0f;
-            }
-
-            if(currentSpeed < scaredSpeed)
-                currentSpeed *= 1.1f;
-            else currentSpeed = scaredSpeed;
-            
-
-            timer += Time.deltaTime;
-            if(timer> scaredTimer)
-            {
-                isScared = false;
-                timer = 0f;
-                currentSpeed = speed;
-            }
-            
-        }
-        //Curious behaviour
-        else if(((curiousFactor > 0.75f && Vector3.Distance(transform.position, player.position)< curiousDistance)
-            || isCurious) && !curiousCooldown){
-            
-            directionToWaypoint = (player.position - transform.position).normalized;
-            if (!isCurious)
-            {
-                isCurious = true;
-            }
-
-            float dist = Vector3.Distance(transform.position, player.position);
-            if (dist > curiousRange)
-            {
-                if(curiousSpeed < 0.1f) curiousSpeed = 0.4f;
-                if (currentSpeed < curiousSpeed)
-                    currentSpeed *= 1.1f;
-                if(currentSpeed > curiousSpeed) currentSpeed = curiousSpeed;
-            }
-            else
-            {
-                currentSpeed *= 0.99f;
-            }
-
-            timer += Time.deltaTime;
-            if(timer > curiousTimer)
-            {
-                isCurious = false;
-                timer = 0f;
-                curiousCooldown = true;
-                currentSpeed = speed;
-            }
-        }
         // Path following behaviour
-        else
+        if(!curious && !scared)
         {
             directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
         }
@@ -172,18 +163,108 @@ public class Fish : MonoBehaviour
         HeadTowards(directionToWaypoint);
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
-            SetNextWaypoint();
+        {
+            if(assignedBoid != null) assignedBoid.SetNextWaypoint();
+
+        }
     }
 
     /// <summary>
     /// Sets the next waypoint in the chain
     /// </summary>
-    protected void SetNextWaypoint()
-    {
-        currentWaypointIndex = (currentWaypointIndex + 1) %path.Length;
-    }
+    //protected void SetNextWaypoint()
+    //{
+    //    currentWaypointIndex = (currentWaypointIndex + 1) %path.Length;
+    //}
 
-   
+    protected void FishBehaviour()
+    {
+        Debug.Log("Scared factor: " + scaredFactor + " |Distance from the player: "
+            + Vector3.Distance(transform.position, player.position) + " |Scared Distance: " + scaredDistance);
+        Debug.Log(scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance);
+        // scared behaviour
+        if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
+            || isScared)
+        {
+            directionToWaypoint = (transform.position - player.position).normalized;
+            if (!isScared)
+            {
+                Debug.Log("Aaaah I'm scared");
+                isScared = true;
+                timer = 0f;
+            }
+
+            if (speed < scaredSpeed)
+                speed *= 1.1f;
+            else speed = scaredSpeed;
+
+
+            timer += Time.deltaTime;
+            if (timer > scaredTimer)
+            {
+                isScared = false;
+                timer = 0f;
+                speed *= 0.99f;
+                Debug.Log("Not scared anymore >:D");
+            }
+            canBeNeighbour = false;
+        }
+        //Curious behaviour
+        else if (((curiousFactor > 0.75f && Vector3.Distance(transform.position, player.position) < curiousDistance)
+            || isCurious) && !curiousCooldown)
+        {
+
+            directionToWaypoint = (player.position - transform.position).normalized;
+            if (!isCurious)
+            {
+                isCurious = true;
+            }
+
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist > curiousRange * 2)
+            {
+                Debug.Log("Going to range. Dist: " + dist);
+                if (speed < 0.1f) { Debug.Log("Fixing Speed"); speed = 0.4f; }
+
+                if (speed < curiousSpeed) { Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration"); speed *= 1.1f; }
+
+                if (speed > curiousSpeed) { Debug.Log("Curious speed"); speed = curiousSpeed; }
+
+            }
+            else if (dist > curiousRange)
+            {
+                speed *= 0.99f;
+                Debug.Log("Stopping");
+
+            }
+            else speed = 0.1f;
+
+            timer += Time.deltaTime;
+            if (timer > curiousTimer)
+            {
+                Debug.Log("Not curious anymore");
+                isCurious = false;
+                curiousCooldown = true;
+                speed *= 1.1f;
+                timer = 0.0f;
+            }
+            canBeNeighbour = false;
+
+        }
+
+        else if( !isCurious && speed < averageSpeed )
+        {
+            speed *= 1.1f;
+        }
+        else if(!isScared && speed > averageSpeed)
+        {
+            speed *= 0.99f;
+        }
+        else
+        {
+            canBeNeighbour = true;
+        }
+    }
      /// <summary>
     /// Target heads towards waypoint in a straightline until it reaches a certain distance threshhold
     /// </summary>
@@ -191,7 +272,7 @@ public class Fish : MonoBehaviour
     /// <param name="target">Waypoints transform</param>
     protected void HeadTowards(Vector3 direction)
     {
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -233,7 +314,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement();
+        MoveFish();
     }
 
     private void OnDrawGizmos()

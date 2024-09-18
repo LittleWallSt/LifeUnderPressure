@@ -1,9 +1,10 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BoidUnit : MonoBehaviour
+public class BoidUnit : Fish
 {
     // Field of view. The units should not detect other units behind them
     [SerializeField] private float FOVAngle;
@@ -13,9 +14,7 @@ public class BoidUnit : MonoBehaviour
     private List<BoidUnit> cohesionNeighbours = new List<BoidUnit>();
     private List<BoidUnit> avoidanceNeighbours = new List<BoidUnit>();
     private List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
-    private Boid assignedBoid;
     private Vector3 currentVelocity;
-    private float speed;
 
     public Transform myTransform { get; set; }
 
@@ -24,26 +23,49 @@ public class BoidUnit : MonoBehaviour
         myTransform = transform;
     }
 
-    public void AssignBoid(Boid boid)
-    {
-        assignedBoid = boid;
-    }
 
     public void InitializeSpeed(float speed)
     {
         this.speed = speed;
     }
 
-    public void MoveUnit()
+    public override void MoveFish()
     {
+        //If there are no waypoints
+        if (path == null)
+            return;
+        if (path.Length == 0)
+            return;
+
+        Transform targetWaypoint = path.GetWaypoint(assignedBoid.currWayPointIndex);
+        directionToWaypoint = Vector3.zero;
+
         FindNeighbours();
-        CalculateSpeed();
+        CalculateAverageSpeed();
+
+        FishBehaviour();
+        // Path following behaviour
+        if (!isCurious && !isScared)
+        {
+            directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
+        }
+
+        // Cooldown for the fish to be curious
+        if (curiousCooldown)
+        {
+            cooldownTimer += Time.deltaTime;
+            if (cooldownTimer > curiousCooldownTime)
+            {
+                cooldownTimer = 0f;
+                curiousCooldown = false;
+            }
+        }
 
         var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
         var avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        var aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
+        var aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
 
-        var moveVector = cohesionVector + avoidanceVector + aligementVector;
+        var moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized * speed;
         if (moveVector == Vector3.zero)
@@ -51,9 +73,15 @@ public class BoidUnit : MonoBehaviour
 
         myTransform.forward = moveVector;
         myTransform.position += moveVector * Time.deltaTime;
+
+        if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
+        {
+            if (assignedBoid != null) assignedBoid.SetNextWaypoint();
+
+        }
     }
 
-
+    
 
     private void FindNeighbours()
     {
@@ -64,7 +92,7 @@ public class BoidUnit : MonoBehaviour
         for (int i = 0; i < allUnits.Length; i++)
         {
             var currentUnit = allUnits[i];
-            if (currentUnit != this)
+            if (currentUnit != this && !isCurious && !isScared && canBeNeighbour)
             {
                 float currentNeighbourDistanceSqr = Vector3.SqrMagnitude(currentUnit.myTransform.position - myTransform.position);
                 if (currentNeighbourDistanceSqr <= assignedBoid.cohesionDistance * assignedBoid.cohesionDistance)
@@ -84,7 +112,7 @@ public class BoidUnit : MonoBehaviour
     }
 
     // Calculate speed based on the neighbour 
-    private void CalculateSpeed()
+    private void CalculateAverageSpeed()
     {
         if (cohesionNeighbours.Count == 0)
             return;
@@ -97,6 +125,8 @@ public class BoidUnit : MonoBehaviour
         // Average speed
         speed /= cohesionNeighbours.Count;
         speed = Mathf.Clamp(speed, assignedBoid.minSpeed, assignedBoid.maxSpeed);
+
+        averageSpeed = speed;
     }
 
     // Average position of all units in a certain radius
