@@ -23,6 +23,8 @@ public class SubmarineMovement : MonoBehaviour
     private Vector2 mouse;
     private Vector2 rotationVelocity;
 
+    [SerializeField] private bool isTutorial = false;
+
 
     #region
     [SerializeField]TutorialManager tutorial;
@@ -44,7 +46,7 @@ public class SubmarineMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (tutorial.tutorialOn)
+        if (isTutorial)
         {
             TutorialUpdate();
             return;
@@ -81,6 +83,8 @@ public class SubmarineMovement : MonoBehaviour
             mouseY = Input.GetAxisRaw("Mouse Y");
         }
         mouse = new Vector2(mouseX, mouseY);
+
+        Debug.Log(input);
     }
 
     private void FixedUpdate()

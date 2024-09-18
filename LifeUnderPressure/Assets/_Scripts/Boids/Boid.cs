@@ -2,12 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct CuriousInfo
+{
+    public float speed;
+    public float distance;
+    public float factor;
+    public float timer;
+    public float coolDown;
+    public float range;
+}
+
+public struct ScareInfo
+{
+    public float speed;
+    public float distance;
+    public float factor;
+    public float timer;
+}
+
+
 public class Boid: MonoBehaviour
 {
     [Header("Spawn Setup")]
     [SerializeField] private BoidUnit boidUnitPrefab;
     [SerializeField] private int boidSize;
     [SerializeField] private Vector3 spawnBounds;
+
+    [Header("Path to follow")]
+    [SerializeField] private Path _path;
+    public Path path { get { return _path; } }
+
+    private int _currentWaypointIndex = 0;
+    public int currWayPointIndex { get { return _currentWaypointIndex;  } }
 
     [Header("Speed Setup")]
     [Range(0, 20)]
@@ -38,7 +64,6 @@ public class Boid: MonoBehaviour
     [Range(0, 10)]
     [SerializeField] private float _aligementDistance;
     public float aligementDistance { get { return _aligementDistance; } }
-
     
     // How much it will affect in the 3 steer behaviours
     [Header("Behaviour Weights")]
@@ -57,18 +82,62 @@ public class Boid: MonoBehaviour
 
     public BoidUnit[] allUnits { get; set; }
 
+
+    // Unit Behavoiur
+    [Header("Scare Behaviour")]
+    [Range(0, 100)]
+    [SerializeField] int chanceScare;
+    [Range(0,1)]
+    [SerializeField] private float _scareFactor;
+    [Range(0, 300)]
+    [SerializeField] private float _scareDistance;
+    [Range(0, 100)]
+    [SerializeField] private float _scareSpeed;
+    [Range(0, 100)]
+    [SerializeField] private float _scaredTimer;
+
+    [Header("Curious Behaviour")]
+    [Range(0, 100)]
+    [SerializeField] int chanceCurious;
+    [Range(0, 1)]
+    [SerializeField] private float _curiousFactor;
+    [Range(0, 300)]
+    [SerializeField] private float _curiousDistance;
+    [Range(0, 100)]
+    [SerializeField] private float _curiousSpeed;
+    [Range(0, 100)]
+    [SerializeField] private float _curiousTimer;
+    [Range(0, 100)]
+    [SerializeField] private float _curiousCoolDownTimer;
+    [Range(0, 100)]
+    [SerializeField] private float _curiousRange;
+
+   
+
     private void Start()
     {
+        if (_path.Length > 0)
+        {
+            transform.position = _path.GetWaypoint(_currentWaypointIndex).position;
+            SetNextWaypoint();
+        }
         // We generate the boid units at the beginning
         GenerateUnits();
     }
-
+    public void SetRandomWaypoint()
+    {
+        _currentWaypointIndex = Random.Range(0, _path.Length);
+    }
+    public void SetNextWaypoint()
+    {
+        _currentWaypointIndex = (_currentWaypointIndex + 1) % _path.Length;
+    }
     private void Update()
     {
         // Moves all the boid units
         for (int i = 0; i < allUnits.Length; i++)
         {
-            allUnits[i].MoveUnit();
+            allUnits[i].MoveFish();
         }
     }
 
@@ -87,6 +156,30 @@ public class Boid: MonoBehaviour
             allUnits[i] = Instantiate(boidUnitPrefab, spawnPosition, rotation);
             allUnits[i].AssignBoid(this);
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
+            
+            int rand = Random.Range(0, 100);
+            if(rand < chanceCurious)
+            {
+                CuriousInfo info = new CuriousInfo();
+                info.speed = _curiousSpeed;
+                info.distance = _curiousDistance;
+                info.factor = _curiousFactor;
+                info.timer = _curiousTimer;
+                info.coolDown = _curiousCoolDownTimer;
+                info.range = _curiousRange;
+
+                allUnits[i].SetCuriousBehaviour(info);
+            }
+            else if(rand < chanceScare)
+            {
+                ScareInfo info = new ScareInfo();
+                info.speed = _scareSpeed;
+                info.distance = _scareDistance;
+                info.factor = -_scareFactor;
+                info.timer = _scaredTimer;
+
+                allUnits[i].SetScareBehaviour(info);
+            }
         }
     }
 }
