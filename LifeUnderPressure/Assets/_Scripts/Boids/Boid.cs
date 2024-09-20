@@ -175,7 +175,7 @@ public class Boid: MonoBehaviour
                 ScareInfo info = new ScareInfo();
                 info.speed = _scareSpeed;
                 info.distance = _scareDistance;
-                info.factor = -_scareFactor;
+                info.factor = _scareFactor;
                 info.timer = _scaredTimer;
 
                 allUnits[i].SetScareBehaviour(info);
