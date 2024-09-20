@@ -20,7 +20,10 @@ public class RandomFishGenerator : MonoBehaviour
     
     void Start()
     {
-        player = Submarine.Instance.transform;
+        if (Submarine.Instance != null)
+            player = Submarine.Instance.transform;
+        else
+            player = this.transform;
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class RandomFishGenerator : MonoBehaviour
             {
                 for (int i = 0; i < nFish; i++)
                 {
-                    Vector3 newPosition = Random.insideUnitSphere * spawnDistance;
+                    Vector3 newPosition = transform.position + Random.insideUnitSphere * spawnDistance;
                     GameObject newFish = Instantiate(fish, newPosition, Random.rotation);
                     newFish.GetComponent<Fish>().SetPath(path);
                     newFish.GetComponent<Fish>().SetRandomWaypoint();

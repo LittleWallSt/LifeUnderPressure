@@ -41,7 +41,7 @@ public class Fish : MonoBehaviour
 
     private Transform player;
 
-    protected float speed;
+    [SerializeField] protected float speed;
     
     [SerializeField] protected float rotationSpeed;
 
