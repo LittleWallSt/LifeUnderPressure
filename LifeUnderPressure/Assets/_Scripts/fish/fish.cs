@@ -12,7 +12,10 @@ public class Fish : MonoBehaviour
     [Header("Fish properties")]
     [SerializeField] protected string fishName;
 
-    [SerializeField] protected string fishInfo;
+    // Aleksis >> changed from string to FishInfo
+    [SerializeField] protected FishInfo fishInfo;
+    public FishInfo FishInfo => fishInfo;
+    // Aleksis <<
 
     [SerializeField] protected float scanTime;
 

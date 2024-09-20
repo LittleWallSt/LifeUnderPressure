@@ -38,8 +38,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         warningText.gameObject.SetActive(false);
-        if (upgradeCanvas!= null) upgradeCanvas.gameObject.SetActive(false);
-        if (pauseMenu!=null) pauseMenu.EnableMenu(false);
+        if (upgradeCanvas != null) upgradeCanvas.gameObject.SetActive(false);
+        if (pauseMenu != null) pauseMenu.EnableMenu(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -61,21 +61,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void FixedUpdate()
     {
         float depth = -transform.position.y;
-        stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
-        
-        if(stress > 100)
-        {
-            float diff = stress - 100f;
-            health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier);
-            warningText.gameObject.SetActive(true);
-        }
-        else
-        {
-            warningText.gameObject.SetActive(false);
-        }
+        LCStressCalculation(depth);
 
         if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
     }
+
     private void Update()
     {
         PauseMenuInput();
@@ -118,6 +108,21 @@ public class Submarine : MonoBehaviour, IDepthDependant
         health.ResetHealth();
     }
 
+    private void LCStressCalculation(float depth)
+    {
+        stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
+
+        if (stress > 100)
+        {
+            float diff = stress - 100f;
+            health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier);
+            warningText.gameObject.SetActive(true);
+        }
+        else
+        {
+            warningText.gameObject.SetActive(false);
+        }
+    }
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {

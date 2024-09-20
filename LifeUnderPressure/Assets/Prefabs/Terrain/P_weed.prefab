@@ -58,10 +58,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6474417774176518107, guid: 8cabc040aeae0764ead67619bbf84ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6043931311624018259, guid: 8cabc040aeae0764ead67619bbf84ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 262502527702740893, guid: 8cabc040aeae0764ead67619bbf84ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8cabc040aeae0764ead67619bbf84ac9,
         type: 3}
       propertyPath: m_Name
       value: P_weed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cabc040aeae0764ead67619bbf84ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 8cabc040aeae0764ead67619bbf84ac9,
         type: 3}
@@ -82,6 +102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LODs.Array.data[3].screenRelativeHeight
       value: 0.16218796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674757554785784982, guid: 8cabc040aeae0764ead67619bbf84ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -91,10 +91,13 @@ public class Scanner : MonoBehaviour
             
             if (timeLeft <= 0.0f)
             {
+                // Aleksis >>
+                FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
+                QuestSystem.ScannedFish(fishInfo.fishName);
+                // Aleksis <<
                 lockActive.Invoke(false);
-                DisplayInfo();
+                DisplayInfo(fishInfo);
                 ResetScanner(false);
-                
 
             }
         }
@@ -203,9 +206,8 @@ public class Scanner : MonoBehaviour
 
 #endregion
 
-    public void DisplayInfo()
+    public void DisplayInfo(FishInfo fishInfo)
     {
-        FishInfo fishInfo = currentFish.gameObject.GetComponent<ScannedFish>().fishInfo;
         if (fishInfo == null) return;
         scanFinished.Invoke(fishInfo.fishName, fishInfo.fishSmallDescription);
         currentFish = null;
@@ -220,4 +222,18 @@ public class Scanner : MonoBehaviour
     }
 
     
+    // Setters
+    //Aleksis>>
+    public void SetScanTimer(float timer)
+    {
+        scanTimer = timer;
+    }
+    public void SetScanAnimationSpeed(float speed)
+    {
+        scanAnimationSpeed = speed;
+    }
+    public void SetDepletingSpeed(float speed)
+    {
+        depletingSpeed = speed;
+    }
 }
