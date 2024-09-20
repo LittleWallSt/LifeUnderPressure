@@ -179,7 +179,6 @@ public class Fish : MonoBehaviour
 
     protected void FishBehaviour()
     {
-        Debug.Log("Scared factor: " + scaredFactor);
         // scared behaviour
         if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
             || isScared)
