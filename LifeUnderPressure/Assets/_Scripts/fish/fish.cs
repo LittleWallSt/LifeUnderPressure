@@ -12,7 +12,10 @@ public class Fish : MonoBehaviour
     [Header("Fish properties")]
     [SerializeField] protected string fishName;
 
-    [SerializeField] protected string fishInfo;
+    // Aleksis >> changed from string to FishInfo
+    [SerializeField] protected FishInfo fishInfo;
+    public FishInfo FishInfo => fishInfo;
+    // Aleksis <<
 
     [SerializeField] protected float scanTime;
 
@@ -38,7 +41,7 @@ public class Fish : MonoBehaviour
 
     private Transform player;
 
-    protected float speed;
+    [SerializeField] protected float speed;
     
     [SerializeField] protected float rotationSpeed;
 
@@ -179,9 +182,6 @@ public class Fish : MonoBehaviour
 
     protected void FishBehaviour()
     {
-        Debug.Log("Scared factor: " + scaredFactor + " |Distance from the player: "
-            + Vector3.Distance(transform.position, player.position) + " |Scared Distance: " + scaredDistance);
-        Debug.Log(scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance);
         // scared behaviour
         if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
             || isScared)

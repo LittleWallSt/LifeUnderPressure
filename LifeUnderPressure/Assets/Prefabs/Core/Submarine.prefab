@@ -4207,7 +4207,7 @@ MonoBehaviour:
   scanRect: {fileID: 3746205185660000178}
   borders: {fileID: 6524086751029185398}
   pivotPoint: {fileID: 5297021472453822690}
-  bar: {fileID: 0}
+  bar: {fileID: 1647742961514387428}
   currentFish: {fileID: 0}
 --- !u!1 &5782905088420772597
 GameObject:
@@ -7337,6 +7337,8 @@ MonoBehaviour:
   bumpDurationModifier: 0.25
   bumpStrength: 0.8
   bumpDamageModifier: 10
+  isTutorial: 0
+  tutorial: {fileID: 0}
 --- !u!114 &6763968442118710192
 MonoBehaviour:
   m_ObjectHideFlags: 0

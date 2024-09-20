@@ -154,6 +154,8 @@ public class Boid: MonoBehaviour
             var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
             // We instantiate and initialaze the unit. Also assigned its respective boid to the unit
             allUnits[i] = Instantiate(boidUnitPrefab, spawnPosition, rotation);
+            allUnits[i].gameObject.layer = LayerMask.NameToLayer("Fish");
+            Debug.Log(allUnits[i].gameObject.layer.ToString());
             allUnits[i].AssignBoid(this);
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
             
@@ -175,7 +177,7 @@ public class Boid: MonoBehaviour
                 ScareInfo info = new ScareInfo();
                 info.speed = _scareSpeed;
                 info.distance = _scareDistance;
-                info.factor = -_scareFactor;
+                info.factor = _scareFactor;
                 info.timer = _scaredTimer;
 
                 allUnits[i].SetScareBehaviour(info);
