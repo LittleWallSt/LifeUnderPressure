@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class QuestSystem
 {
@@ -12,6 +10,13 @@ public static class QuestSystem
 
     public static void ScannedFish(string fishName)
     {
+        for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
+        {
+            if (CurrentQuest.Fishes[i].name == fishName)
+            {
+                CurrentValues[i]++;
+            }
+        }
         Call_OnQuestUpdated();
     }
     public static void AssignQuest(Quest quest)

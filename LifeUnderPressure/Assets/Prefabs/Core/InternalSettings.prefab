@@ -49,6 +49,9 @@ MonoBehaviour:
   fishLayer:
     serializedVersion: 2
     m_Bits: 256
+  environmentLayer:
+    serializedVersion: 2
+    m_Bits: 128
   debugStyle:
     m_Name: 
     m_Normal:

@@ -34,13 +34,6 @@ public class SubmarineMotor : SubmarineUpgrade
     {
         movement.SetMovementVector(upgrades[level]);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            UpgradeLevel();
-        }
-    }
     protected override void UpgradeLevel()
     {
         base.UpgradeLevel();

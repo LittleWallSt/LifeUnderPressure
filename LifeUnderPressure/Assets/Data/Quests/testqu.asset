@@ -16,7 +16,7 @@ MonoBehaviour:
   fishes:
   - name: Clownfish
     amount: 1
-  - name: Brownfish
+  - name: Nemo
     amount: 1
   - name: Dragonfish
     amount: 1
