@@ -13,11 +13,12 @@ public class Scanner : MonoBehaviour
     [SerializeField] float depletingSpeed;
     [SerializeField] int fishLayer = 8;
 
-    [Header("Borders")]
+    [Header("Assets")]
     [SerializeField] GameObject scanRect;
     [SerializeField] GameObject borders;
     [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
     [SerializeField] GameObject bar;
+    [SerializeField] GameObject scannerCanvas;
 
 
     LayerMask fishLayerMask;
@@ -44,6 +45,7 @@ public class Scanner : MonoBehaviour
         initialRotation = scanRect.transform.localRotation;
         timeLeft = scanTimer;
         scanRect.SetActive(false);
+        scannerCanvas.SetActive(false);
         scanning = false;
         locked = false;
 
@@ -58,6 +60,7 @@ public class Scanner : MonoBehaviour
             {
                 locked = true;
                 scanRect.SetActive(true);
+                scannerCanvas.SetActive(true);
             } else if(!getHitColliders())
             {
                 Debug.Log("worng one");
@@ -218,6 +221,7 @@ public class Scanner : MonoBehaviour
         scanning = scan;
         scanRect.SetActive(scan);
         bar.SetActive(scan);
+        scannerCanvas.SetActive(scan);
         timeLeft = scanTimer;
     }
 
