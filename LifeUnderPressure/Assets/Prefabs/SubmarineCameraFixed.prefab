@@ -4053,6 +4053,7 @@ MonoBehaviour:
   borders: {fileID: 6524086751029185398}
   pivotPoint: {fileID: 5297021472453822690}
   bar: {fileID: 1647742961514387428}
+  scannerCanvas: {fileID: 2463572104962939525}
   currentFish: {fileID: 0}
 --- !u!1 &5782905088420772597
 GameObject:
