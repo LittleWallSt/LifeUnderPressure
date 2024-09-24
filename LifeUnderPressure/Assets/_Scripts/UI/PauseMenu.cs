@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public void EnableMenu(bool state)
+    public bool EnableMenu(bool state)
     {
         gameObject.SetActive(state);
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
+        return state;
     }
     public void Button_Continue()
     {

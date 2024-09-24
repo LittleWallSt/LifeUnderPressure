@@ -13,11 +13,16 @@ public class QuestUI : MonoBehaviour
     {
         UpdateUI();
         QuestSystem.Assign_OnQuestUpdated(UpdateUI);
+        QuestSystem.Assign_OnQuestFinished(ClearUI);
     }
     private void UpdateUI()
     {
         List<Quest.FishAmount> questReqs = QuestSystem.GetQuestReqs();
-        if (questReqs == null) return;
+        if (questReqs == null)
+        {
+            RebuildQuestReqTexts(0);
+            return;
+        }
         if (questReqTexts.Count != questReqs.Count)
         {
             RebuildQuestReqTexts(questReqs.Count);
@@ -42,6 +47,10 @@ public class QuestUI : MonoBehaviour
         {
             questReqTexts.Add(Instantiate(questReqPrefab, gridTransform));
         }
+    }
+    private void ClearUI()
+    {
+        RebuildQuestReqTexts(0);
     }
     private void OnDestroy()
     {

@@ -21,4 +21,11 @@ public class UpgradeCanvas : MonoBehaviour
             box.SetUpgrade(upgrade);
         }
     }
+    public bool EnableMenu(bool state)
+    {
+        gameObject.SetActive(state);
+        Time.timeScale = state ? 0f : 1f;
+        InternalSettings.EnableCursor(gameObject.activeSelf);
+        return state;
+    }
 }

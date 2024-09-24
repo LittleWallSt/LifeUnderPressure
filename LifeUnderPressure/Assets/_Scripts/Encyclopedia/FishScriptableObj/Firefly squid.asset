@@ -23,16 +23,16 @@ MonoBehaviour:
     squid is famous for the incredible light show that occurs each year off the coast
     of Japan as millions of these tiny animals gather to spawn.
 
-    
 
-    The
-    squid is equipped with special light-producing organs called photophores. These
-    photophores are found on many parts of the squid''s body and emit a deep blue
-    light. Large photophores can be found on the tips of the tentacles as well as
-    around the eyes. Thousands of tiny photophores can be found throughout the squid''s
-    body, giving it the ability to emit light along its entire form. The lights can
-    be flashed in unison or alternated in an endless number of animated patterns.'
-  fishPrefab: {fileID: 2309932298192103756, guid: 40788d526ec1f7b4fb537f35440e76a7,
+
+    The squid
+    is equipped with special light-producing organs called photophores. These photophores
+    are found on many parts of the squid''s body and emit a deep blue light. Large
+    photophores can be found on the tips of the tentacles as well as around the eyes.
+    Thousands of tiny photophores can be found throughout the squid''s body, giving
+    it the ability to emit light along its entire form. The lights can be flashed
+    in unison or alternated in an endless number of animated patterns.'
+  fishPrefab: {fileID: 3976071570644377693, guid: 762238caf4563cf4f895549eb1fd481c,
     type: 3}
   locked: 0
-  scale: 1
+  scale: 0.04

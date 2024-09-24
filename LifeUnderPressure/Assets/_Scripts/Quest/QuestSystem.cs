@@ -7,6 +7,7 @@ public static class QuestSystem
     private static int[] CurrentValues = null;
 
     private static Action OnQuestUpdated;
+    private static Action OnQuestFinished;
 
     public static void ScannedFish(string fishName)
     {
@@ -15,9 +16,11 @@ public static class QuestSystem
             if (CurrentQuest.Fishes[i].name == fishName)
             {
                 CurrentValues[i]++;
+                if (CurrentValues[i] > CurrentQuest.Fishes[i].amount) CurrentValues[i] = CurrentQuest.Fishes[i].amount;
             }
         }
         Call_OnQuestUpdated();
+        CheckQuestFinish();
     }
     public static void AssignQuest(Quest quest)
     {
@@ -25,13 +28,30 @@ public static class QuestSystem
         CurrentValues = new int[quest.Fishes.Count];
         Call_OnQuestUpdated();
     }
+    private static void CheckQuestFinish()
+    {
+        for (int i = 0; i < CurrentValues.Length; i++)
+        {
+            if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
+        }
+        Call_OnQuestFinished();
+        CurrentQuest = null;
+    }
     private static void Call_OnQuestUpdated()
     {
         if(OnQuestUpdated != null) OnQuestUpdated();
     }
+    private static void Call_OnQuestFinished()
+    {
+        if(OnQuestFinished != null) OnQuestFinished();
+    }
     public static void Assign_OnQuestUpdated(Action action)
     {
         OnQuestUpdated += action;
+    }
+    public static void Assign_OnQuestFinished(Action action)
+    {
+        OnQuestFinished += action;
     }
     public static void Reset()
     {

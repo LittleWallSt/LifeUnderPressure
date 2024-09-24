@@ -30,8 +30,9 @@ public class SubmarineMotor : SubmarineUpgrade
             }
         }
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         movement.SetMovementVector(upgrades[level]);
     }
     protected override void UpgradeLevel()
