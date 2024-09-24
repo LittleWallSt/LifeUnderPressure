@@ -4019,7 +4019,8 @@ MonoBehaviour:
   scanRect: {fileID: 3746205185660000178}
   borders: {fileID: 6524086751029185398}
   pivotPoint: {fileID: 5297021472453822690}
-  bar: {fileID: 0}
+  bar: {fileID: 1647742961514387428}
+  scannerCanvas: {fileID: 2463572104962939525}
   currentFish: {fileID: 0}
 --- !u!1 &5782905088420772597
 GameObject:
@@ -7023,6 +7024,8 @@ MonoBehaviour:
   warningText: {fileID: 2843870540943983611}
   upgradeCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}
+  encyclopedia: {fileID: 0}
+  submarineBody: {fileID: 0}
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7047,6 +7050,8 @@ MonoBehaviour:
   bumpDurationModifier: 0.25
   bumpStrength: 0.8
   bumpDamageModifier: 10
+  isTutorial: 0
+  tutorial: {fileID: 0}
 --- !u!114 &6763968442118710192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7176,6 +7181,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  scanner: {fileID: 0}
+  upgrades: []
 --- !u!114 &4182694629026491733
 MonoBehaviour:
   m_ObjectHideFlags: 0
