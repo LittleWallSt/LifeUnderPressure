@@ -10,9 +10,4 @@ public class SubmarineSonar : SubmarineUpgrade
     {
         base.SU_EditorSetup();
     }
-
-    private void Start()
-    {
-        upgradeEvents[level].Invoke();
-    }
 }

@@ -42,6 +42,10 @@ public abstract class SubmarineUpgrade : MonoBehaviour
             upgradeEvents = new UnityEvent[maxLevel + 1];
         }
     }
+    protected virtual void Start()
+    {
+        upgradeEvents[level].Invoke();
+    }
     public virtual void Init(params object[] setList)
     {
         // initialize in subscripts

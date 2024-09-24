@@ -20,7 +20,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     [SerializeField] private GameObject submarineBody;
 
-
+    private GameObject currentMenu = null;
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
 
     private Health health;
@@ -77,7 +77,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         if (!Input.GetKeyDown(KeyCode.Escape)) return;
 
-        pauseMenu.EnableMenu(!pauseMenu.gameObject.activeSelf);
+        if(currentMenu == null || currentMenu == pauseMenu.gameObject || !currentMenu.activeSelf)
+        {
+            currentMenu = pauseMenu.EnableMenu(!pauseMenu.gameObject.activeSelf) ? pauseMenu.gameObject : null;
+        }
     }
 
     //Ulia chnanges**
@@ -85,18 +88,21 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void EncyclopediaInput()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
-        
-        encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody);
-        
 
+        if (currentMenu == null || currentMenu == encyclopedia.gameObject || !currentMenu.activeSelf)
+        {
+            currentMenu = encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody) ? encyclopedia.gameObject : null;
+        }
     }
     //**
     private void UpgradeCanvasInput()
     {
         if (!Input.GetKeyDown(KeyCode.Tab)) return;
 
-        upgradeCanvas.gameObject.SetActive(!upgradeCanvas.gameObject.activeSelf);
-        InternalSettings.EnableCursor(upgradeCanvas.gameObject.activeSelf);
+        if (currentMenu == null || currentMenu == upgradeCanvas.gameObject || !currentMenu.activeSelf)
+        {
+            currentMenu = upgradeCanvas.EnableMenu(!upgradeCanvas.gameObject.activeSelf) ? upgradeCanvas.gameObject : null;
+        }
     }
 
     private void Die()

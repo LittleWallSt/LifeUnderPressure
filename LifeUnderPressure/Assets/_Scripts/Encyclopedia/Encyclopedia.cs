@@ -87,7 +87,8 @@ public class Encyclopedia : MonoBehaviour
         EnableMenu(false, submarineBody); 
     }
 
-    public void EnableMenu(bool state, GameObject _submarineBody)
+    // Aleksis >> changed from void to bool, added return state;
+    public bool EnableMenu(bool state, GameObject _submarineBody)
     {
         Destroy(currentDisplayedObj);
         if (submarineBody == null) submarineBody = _submarineBody;
@@ -95,6 +96,7 @@ public class Encyclopedia : MonoBehaviour
         gameObject.SetActive(state);
         submarineBody.SetActive(!state);
         InternalSettings.EnableCursor(gameObject.activeSelf);
+        return state;
     }
 
     private void ManagePanel(bool On)

@@ -19,16 +19,10 @@ public class SubmarineHull : SubmarineUpgrade
             upgrades = new float[maxLevel + 1];
         }
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         submarine.SetThicknessOfHull(upgrades[level]);
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            UpgradeLevel();
-        }
     }
     public override void Init(params object[] setList)
     {

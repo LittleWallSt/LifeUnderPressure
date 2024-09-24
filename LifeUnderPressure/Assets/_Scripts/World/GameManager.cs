@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Submarine submarine = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private Terrain terrain = null;
-    [SerializeField] private Quest startingQuest = null;
+    [SerializeField] private Quest[] questLine = null;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
     public static GameManager Instance { get; private set; }
@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private List<IDistanceLoad> idls = new List<IDistanceLoad>();
 
     private float distanceLoadTimer = 0f;
+    private int questIndex = -1;
 
     private void Awake()
     {
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         QuestSystem.Reset();
-        QuestSystem.AssignQuest(startingQuest);
+        StartNextQuest();
+        QuestSystem.Assign_OnQuestFinished(StartNextQuest);
     }
     private void Start()
     {
@@ -35,7 +37,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        DistanceLoadProcess();
+    }
 
+    private void DistanceLoadProcess()
+    {
         distanceLoadTimer += Time.deltaTime;
         if (distanceLoadTimer > distanceLoadFrequency)
         {
@@ -43,6 +49,7 @@ public class GameManager : MonoBehaviour
             UpdateDistanceLoad();
         }
     }
+
     private void UpdateDistanceLoad()
     {
         foreach(IDistanceLoad idl in idls)
@@ -56,6 +63,18 @@ public class GameManager : MonoBehaviour
             {
                 idl.IDL_InDistance();
             }
+        }
+    }
+    private void StartNextQuest()
+    {
+        questIndex++;
+        if(questLine.Length > questIndex)
+        {
+            QuestSystem.AssignQuest(questLine[questIndex]);
+        }
+        else
+        {
+            throw new System.Exception("NO MORE QUESTS AVAILABLE. REMOVE THIS OR ADD IMPLEMENTATION");
         }
     }
     public float GetTerrainHeight(Vector3 position)

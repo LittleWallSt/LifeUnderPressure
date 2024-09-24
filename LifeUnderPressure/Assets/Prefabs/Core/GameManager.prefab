@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc670e75931c844419ec0a354e93098a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingQuest: {fileID: 11400000, guid: 7370b9bb9987f8e429ad8b1bf6168dbf, type: 2}
+  submarine: {fileID: 0}
+  upgradeCanvas: {fileID: 0}
+  terrain: {fileID: 0}
+  questLine:
+  - {fileID: 11400000, guid: 7370b9bb9987f8e429ad8b1bf6168dbf, type: 2}
+  distanceLoadFrequency: 0.5
+  distanceToLoad: 25
