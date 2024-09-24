@@ -10,26 +10,20 @@ public class Fish : MonoBehaviour
 {
     //FISH PROPERTIES
     [Header("Fish properties")]
-    [SerializeField] protected string fishName;
-
-    // Aleksis >> changed from string to FishInfo
     [SerializeField] protected FishInfo fishInfo;
     public FishInfo FishInfo => fishInfo;
-    // Aleksis <<
 
-    [SerializeField] protected float scanTime;
-
-     protected float scaredFactor;
+    protected float scaredFactor;
     protected float scaredDistance;
-     protected float scaredSpeed;
+    protected float scaredSpeed;
     protected float scaredTimer;
     
-     protected float curiousFactor;
+    protected float curiousFactor;
     protected float curiousDistance;
-   protected float curiousSpeed;
+    protected float curiousSpeed;
     protected float curiousTimer;
-   protected float curiousCooldownTime;
-   protected float curiousRange;
+    protected float curiousCooldownTime;
+    protected float curiousRange;
 
     protected bool curious;
     protected bool scared;

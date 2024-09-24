@@ -24,6 +24,7 @@ public struct ScareInfo
 public class Boid: MonoBehaviour
 {
     [Header("Spawn Setup")]
+    [SerializeField] private bool isSquid = false; // maybe not necesary
     [SerializeField] private BoidUnit boidUnitPrefab;
     [SerializeField] private int boidSize;
     [SerializeField] private Vector3 spawnBounds;
@@ -132,6 +133,11 @@ public class Boid: MonoBehaviour
     {
         _currentWaypointIndex = (_currentWaypointIndex + 1) % _path.Length;
     }
+    public void SetNextWaypoint(int index)
+    {
+        // Need control
+        _currentWaypointIndex = index;
+    }
     private void Update()
     {
         // Moves all the boid units
@@ -158,7 +164,8 @@ public class Boid: MonoBehaviour
             Debug.Log(allUnits[i].gameObject.layer.ToString());
             allUnits[i].AssignBoid(this);
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
-            
+            allUnits[i].setGeneralFish(isSquid);
+
             int rand = Random.Range(0, 100);
             if(rand < chanceCurious)
             {

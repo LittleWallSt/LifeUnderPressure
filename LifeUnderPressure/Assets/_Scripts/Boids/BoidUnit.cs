@@ -7,18 +7,25 @@ using UnityEngine;
 public class BoidUnit : Fish
 {
     // Field of view. The units should not detect other units behind them
-    [SerializeField] private float FOVAngle;
+    [SerializeField] protected float FOVAngle;
     // The lower this value is the closer we can get to the cohesion vector. Therefore it will rotate faster 
-    [SerializeField] private float smoothDamp;
+    [SerializeField] protected float smoothDamp;
 
-    private List<BoidUnit> cohesionNeighbours = new List<BoidUnit>();
-    private List<BoidUnit> avoidanceNeighbours = new List<BoidUnit>();
-    private List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
-    private Vector3 currentVelocity;
+    protected List<BoidUnit> cohesionNeighbours = new List<BoidUnit>();
+    protected List<BoidUnit> avoidanceNeighbours = new List<BoidUnit>();
+    protected List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
+    protected Vector3 currentVelocity;
 
     public Transform myTransform { get; set; }
 
-    private void Awake()
+    protected bool isSquid = false;
+
+    public void setGeneralFish(bool general)
+    {
+        isSquid = general;
+    }
+
+    protected void Awake()
     {
         myTransform = transform;
     }
@@ -83,7 +90,7 @@ public class BoidUnit : Fish
 
     
 
-    private void FindNeighbours()
+    protected void FindNeighbours()
     {
         cohesionNeighbours.Clear();
         avoidanceNeighbours.Clear();
@@ -112,7 +119,7 @@ public class BoidUnit : Fish
     }
 
     // Calculate speed based on the neighbour 
-    private void CalculateAverageSpeed()
+    protected void CalculateAverageSpeed()
     {
         if (cohesionNeighbours.Count == 0)
             return;
@@ -130,7 +137,7 @@ public class BoidUnit : Fish
     }
 
     // Average position of all units in a certain radius
-    private Vector3 CalculateCohesionVector()
+    protected Vector3 CalculateCohesionVector()
     {
         var cohesionVector = Vector3.zero;
         if (cohesionNeighbours.Count == 0)
@@ -154,7 +161,7 @@ public class BoidUnit : Fish
     }
 
     // Calculates the average heading
-    private Vector3 CalculateAligementVector()
+    protected Vector3 CalculateAligementVector()
     {
         var aligementVector = myTransform.forward;
         if (aligementNeighbours.Count == 0)
@@ -176,7 +183,7 @@ public class BoidUnit : Fish
     }
 
     // Calculates the direction in wich can avoid the crowding local flockmates
-    private Vector3 CalculateAvoidanceVector()
+    protected Vector3 CalculateAvoidanceVector()
     {
         var avoidanceVector = Vector3.zero;
         if (aligementNeighbours.Count == 0)
@@ -199,7 +206,7 @@ public class BoidUnit : Fish
 
     // This method will return true if an angle between our forward dir an the dir to the neighbour
     // pos is less than the FOV angle we declared in the inspector
-    private bool IsInFOV(Vector3 position)
+    protected bool IsInFOV(Vector3 position)
     {
         return Vector3.Angle(myTransform.forward, position - myTransform.position) <= FOVAngle;
     }
