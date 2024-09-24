@@ -4009,6 +4009,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8764412606512958791}
   - component: {fileID: 4634647225653249626}
+  - component: {fileID: 4980242335061023157}
   m_Layer: 6
   m_Name: Scanner Area
   m_TagString: Untagged
@@ -4055,6 +4056,21 @@ MonoBehaviour:
   bar: {fileID: 1647742961514387428}
   scannerCanvas: {fileID: 2463572104962939525}
   currentFish: {fileID: 0}
+--- !u!114 &4980242335061023157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560871444271444963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdb04d965ebcb74bbc0457748ad0415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanEffect: {fileID: -876546973899608171, guid: 400a6fc83a7725d44b677b9afb4cca59,
+    type: 3}
+  scanner: {fileID: 4634647225653249626}
 --- !u!1 &5782905088420772597
 GameObject:
   m_ObjectHideFlags: 0
