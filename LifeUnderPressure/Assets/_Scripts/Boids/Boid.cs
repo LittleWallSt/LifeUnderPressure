@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public struct CuriousInfo
@@ -21,7 +23,7 @@ public struct ScareInfo
 }
 
 
-public class Boid: MonoBehaviour
+public class Boid: MonoBehaviour, IDistanceLoad
 {
     [Header("Spawn Setup")]
     [SerializeField] private BoidUnit boidUnitPrefab;
@@ -112,7 +114,47 @@ public class Boid: MonoBehaviour
     [Range(0, 100)]
     [SerializeField] private float _curiousRange;
 
-   
+    private bool working;
+
+    // Javi from Alexis's code >>
+    #region IDL
+    public void IDL_AssignToGameManager()
+    {
+        GameManager.Instance.AssignIDL(this);
+    }
+
+    public void IDL_OffDistance()
+    {
+        if (working)
+        {
+            working = false;
+            Debug.Log("off dista");
+            foreach (BoidUnit fish in allUnits)
+            {
+                fish.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void IDL_InDistance()
+    {
+        if (!working)
+        {
+            working = true;
+            Debug.Log("in  dista");
+            foreach (BoidUnit fish in allUnits)
+            {
+                fish.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public Vector3 IDL_GetPosition()
+    {
+        return transform.position;
+    }
+    #endregion
+    // << Javi from Alexis's code
 
     private void Start()
     {

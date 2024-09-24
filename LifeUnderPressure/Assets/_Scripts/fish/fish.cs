@@ -127,9 +127,6 @@ public class Fish : MonoBehaviour
 
     #region Movement
 
-    //TODO: add scared behaviour from player and curious behaviour
-    //IDEAS: add waypoint to the front of the submarine that overrides all other waypoints when the fish is curious, 
-    //when the fish is scared add a waypoint in a place for it to hide and then return to it's original waypoint
     /// <summary>
     /// How the fish will move, basic movement is waypoint based
     /// </summary>
@@ -167,7 +164,8 @@ public class Fish : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
         {
-            if(assignedBoid != null) assignedBoid.SetNextWaypoint();
+            if (assignedBoid != null) assignedBoid.SetNextWaypoint();
+            else SetNextWaypoint();
 
         }
     }
@@ -175,10 +173,10 @@ public class Fish : MonoBehaviour
     /// <summary>
     /// Sets the next waypoint in the chain
     /// </summary>
-    //protected void SetNextWaypoint()
-    //{
-    //    currentWaypointIndex = (currentWaypointIndex + 1) %path.Length;
-    //}
+    protected void SetNextWaypoint()
+    {
+        currentWaypointIndex = (currentWaypointIndex + 1) % path.Length;
+    }
 
     protected void FishBehaviour()
     {

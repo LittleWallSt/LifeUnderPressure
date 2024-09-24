@@ -7,6 +7,10 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
     [SerializeField] private Fish fishPrefab = null;
     [SerializeField] private int maxAmount = 3;
     [SerializeField] private float zoneRadius = 10f;
+    
+    // Javi >>
+    [SerializeField] private Path path = null;
+    // << Javi
 
     private bool working = false;
 
@@ -32,6 +36,9 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
             }
 
             fishList.Add(Instantiate(fishPrefab, spawnPos, Quaternion.identity));
+            // Javi >>
+            fishList[i].GetComponent<Fish>().SetPath(path);
+            // << Javi
         }
     }
 
