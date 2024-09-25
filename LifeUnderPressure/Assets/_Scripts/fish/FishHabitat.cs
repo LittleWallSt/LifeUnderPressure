@@ -29,7 +29,6 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
 
             while(colls.Length > 0 && checks < 50)
             {
-                Debug.Log("cc");
                 spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
                 colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
                 checks++;
@@ -37,7 +36,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
 
             fishList.Add(Instantiate(fishPrefab, spawnPos, Quaternion.identity));
             // Javi >>
-            fishList[i].GetComponent<Fish>().SetPath(path);
+            fishList[i].SetPath(path);
             // << Javi
         }
     }

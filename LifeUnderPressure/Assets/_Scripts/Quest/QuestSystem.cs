@@ -9,6 +9,8 @@ public static class QuestSystem
     private static Action OnQuestUpdated;
     private static Action OnQuestFinished;
 
+    private static float _TimeLastQuestFinished;
+
     public static void ScannedFish(string fishName)
     {
         for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
@@ -34,8 +36,9 @@ public static class QuestSystem
         {
             if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
         }
-        Call_OnQuestFinished();
         CurrentQuest = null;
+        _TimeLastQuestFinished = Time.time;
+        Call_OnQuestFinished();
     }
     private static void Call_OnQuestUpdated()
     {
@@ -58,6 +61,7 @@ public static class QuestSystem
         CurrentQuest = null;
         CurrentValues = null;
         OnQuestUpdated = null;
+        _TimeLastQuestFinished = 0f;
     }
     // Getters
     public static List<Quest.FishAmount> GetQuestReqs()
@@ -72,4 +76,9 @@ public static class QuestSystem
     {
         return CurrentValues[index];
     }
+    public static bool HasQuest()
+    {
+        return CurrentQuest != null;
+    }
+    public static float TimeLastQuestFinished => _TimeLastQuestFinished;
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6adb6bc3a45bee44b85cea253f63bbf6, type: 3}
-  m_Name: testqu
+  m_Name: testqu0002
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Nemo
+  - name: Clownfish
     amount: 1
   rewards:
   - type: 0
