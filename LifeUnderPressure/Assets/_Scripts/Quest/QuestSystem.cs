@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class QuestSystem
 {
@@ -38,7 +37,7 @@ public static class QuestSystem
             if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
         }
         CurrentQuest = null;
-        _TimeLastQuestFinished = Time.time;
+        _TimeLastQuestFinished = UnityEngine.Time.time;
         Call_OnQuestFinished();
     }
     private static void Call_OnQuestUpdated()
