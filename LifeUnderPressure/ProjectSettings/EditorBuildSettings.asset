@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Javi00/Javi00.unity
     guid: 7fc945fa4f53f054eb6d0d675a9f0bf7
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: e8ca82cdd1d90324a9682ceda88c5e39
+  - enabled: 1
+    path: Assets/Scenes/Proto03.unity
+    guid: ee535590e332229498b877e743f9ec19
+  - enabled: 1
     path: Assets/Scenes/Proto00.unity
     guid: a321a1258ba3c98459310673d057f07c
   m_configObjects: {}
