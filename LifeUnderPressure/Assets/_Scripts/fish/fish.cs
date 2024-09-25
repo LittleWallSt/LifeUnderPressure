@@ -64,7 +64,6 @@ public class Fish : MonoBehaviour
 
         if (path.Length > 0)
         {
-            transform.position = path.GetWaypoint(currentWaypointIndex).position;
             SetNextWaypoint();
         }
 
