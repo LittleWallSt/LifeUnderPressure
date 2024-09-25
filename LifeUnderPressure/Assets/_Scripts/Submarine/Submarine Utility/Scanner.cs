@@ -29,12 +29,16 @@ public class Scanner : MonoBehaviour
     bool scanning;
     bool locked;
     bool fishLost;
-    
 
+#region Events
     public Action<string, string> scanFinished;
     public Action<float> updateScanner;
+
     public Action<bool> lockActive;
     public Action<Vector3> targetLock;
+
+    public Action<GameObject, bool> ScanEffect;
+#endregion
 
     public Collider currentFish;
 
@@ -69,8 +73,10 @@ public class Scanner : MonoBehaviour
             } else 
             {
                 ResetScanner(true);
-                locked = false; // change placeds
+                locked = false; // change placeds  
                 lockActive.Invoke(true);
+                if (currentFish != null) { ScanEffect.Invoke(currentFish.gameObject, true); Debug.Log("fish not null"); }
+                
             }
         }
 
@@ -98,9 +104,11 @@ public class Scanner : MonoBehaviour
                 FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
                 QuestSystem.ScannedFish(fishInfo.fishName);
                 // Aleksis <<
+                ScanEffect.Invoke(currentFish.gameObject, false);
                 lockActive.Invoke(false);
                 DisplayInfo(fishInfo);
                 ResetScanner(false);
+                currentFish = null;
 
             }
         }

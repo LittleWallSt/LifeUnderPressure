@@ -58,10 +58,75 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4122840026385842255, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122840026385842255, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122840026385842255, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122840026385842255, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122840026385842255, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260161658500689819, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260161658500689819, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260161658500689819, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260161658500689819, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260161658500689819, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213333001902097757, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8408860143801451377, guid: e9f4b7c0cc12292489570d2e50bc9e80,
         type: 3}
       propertyPath: m_Name
       value: Submarine_temp Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416239679269577692, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416239679269577692, guid: e9f4b7c0cc12292489570d2e50bc9e80,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -94,18 +159,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a96e8c16aef8d469a2e987476f0e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideSpeedLimit: 3
-  forwardSpeedLimit: 4
-  floatSpeedLimit: 2
+  debugMode: 0
+  movementVector:
+    forward: 0
+    side: 0
+    backward: 0
+    upward: 0
   rotationLimit: 60
   rotationSpeed: 55
   maxBumpDuration: 2
-  inputText: {fileID: 0}
-  inputMouseText: {fileID: 0}
-  velocityText: {fileID: 0}
-  rotationText: {fileID: 0}
-  speedText: {fileID: 0}
-  bumpText: {fileID: 0}
+  bumpDurationModifier: 0.25
+  bumpStrength: 0.8
+  bumpDamageModifier: 10
+  isTutorial: 0
+  tutorial: {fileID: 0}
 --- !u!54 &8594356565721826262
 Rigidbody:
   m_ObjectHideFlags: 0

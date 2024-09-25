@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Clownfish
-    amount: 1
   - name: Nemo
-    amount: 1
-  - name: Dragonfish
     amount: 1
   rewards:
   - type: 0
