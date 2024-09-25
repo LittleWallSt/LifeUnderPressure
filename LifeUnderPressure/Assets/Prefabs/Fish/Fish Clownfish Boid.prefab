@@ -67,12 +67,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b226f050c6b81ef42914d3505332ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: 
   fishInfo: {fileID: 11400000, guid: 5703fd5edb219bd41949468812241627, type: 2}
-  scanTime: 0
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  speed: 0
   rotationSpeed: 0
   alignmentThreshold: 0
   avoidanceDetection: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   FOVAngle: 180
   smoothDamp: 1
 --- !u!1001 &1582501961898567565

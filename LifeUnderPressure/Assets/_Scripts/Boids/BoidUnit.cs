@@ -40,7 +40,6 @@ public class BoidUnit : Fish
             currentWaypointIndex = assignedBoid.currWayPointIndex;
         }
         player = Submarine.Instance.transform;
-        layer = 1 >> mask;
     }
     // << Javi 
     protected void Awake()

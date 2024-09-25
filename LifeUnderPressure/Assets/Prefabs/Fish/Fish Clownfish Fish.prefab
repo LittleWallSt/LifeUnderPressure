@@ -46,9 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishName: Nemo
   fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
-  scanTime: 0
   scaredFactor: 1
   scaredDistance: 10
   scaredSpeed: 0.6
@@ -63,6 +61,9 @@ MonoBehaviour:
   rotationSpeed: 1
   alignmentThreshold: 10
   avoidanceDetection: {x: 1, y: 2, z: 1}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!136 &1279890184145906600
 CapsuleCollider:
   m_ObjectHideFlags: 0

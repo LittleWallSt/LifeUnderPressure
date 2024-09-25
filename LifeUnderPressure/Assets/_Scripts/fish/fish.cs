@@ -41,7 +41,6 @@ public class Fish : MonoBehaviour
 
     [SerializeField] protected Vector3 avoidanceDetection;
     [SerializeField] protected LayerMask mask;
-    protected int layer = 0;
     
     protected float averageSpeed;
 
@@ -71,7 +70,6 @@ public class Fish : MonoBehaviour
         player = Submarine.Instance.transform;
         // Aleksis <<
 
-        layer = 1 >> mask;
     }
 
     public void SetPath(Path newPath) {
@@ -250,20 +248,20 @@ public class Fish : MonoBehaviour
         RaycastHit hit;
 
         // Obstacle in front
-        if (Physics.Raycast(transform.position, transform.forward, out hit, avoidanceDetection.y, layer))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, avoidanceDetection.y, mask))
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
             directionToWaypoint += transform.up;
         }
 
         // Obstacle in right of fish
-        if (Physics.Raycast(transform.position, transform.right, out hit, avoidanceDetection.x,layer))
+        if (Physics.Raycast(transform.position, transform.right, out hit, avoidanceDetection.x,mask))
         {
             Debug.DrawRay(transform.position, transform.right * hit.distance, Color.red);
             directionToWaypoint -= transform.right;
         }
         // Obstacle in left of fish
-        if (Physics.Raycast(transform.position, -transform.right, out hit, avoidanceDetection.z, layer))
+        if (Physics.Raycast(transform.position, -transform.right, out hit, avoidanceDetection.z, mask))
         {
             Debug.DrawRay(transform.position, -transform.right * hit.distance, Color.red);
             directionToWaypoint += transform.right;
