@@ -19,28 +19,28 @@ public class Fish : MonoBehaviour
 
     [SerializeField] protected float scanTime;
 
-     protected float scaredFactor;
-    protected float scaredDistance;
-     protected float scaredSpeed;
-    protected float scaredTimer;
-    
-     protected float curiousFactor;
-    protected float curiousDistance;
-   protected float curiousSpeed;
-    protected float curiousTimer;
-   protected float curiousCooldownTime;
-   protected float curiousRange;
+    [Header("Fish Behaviour")]
+    [SerializeField, Range(0.0f, 1.0f)] protected float scaredFactor;
+    [SerializeField] protected float scaredDistance;
+    [SerializeField] protected float scaredSpeed;
+    [SerializeField] protected float scaredTimer;
+
+    [SerializeField, Range(0.0f, 1.0f)] protected float curiousFactor;
+    [SerializeField] protected float curiousDistance;
+    [SerializeField] protected float curiousSpeed;
+    [SerializeField] protected float curiousTimer;
+    [SerializeField] protected float curiousCooldownTime;
+    [SerializeField] protected float curiousRange;
 
     protected bool curious;
     protected bool scared;
 
     //MOVEMENT WAYPOINT BASED
-    //[Header("Movement properties")]
     protected Path path;
     protected int currentWaypointIndex;
 
     private Transform player;
-
+    [Header("Movement properties")]
     [SerializeField] protected float speed;
     
     [SerializeField] protected float rotationSpeed;
@@ -52,7 +52,7 @@ public class Fish : MonoBehaviour
     [SerializeField] protected Vector3 avoidanceDetection;
 
     //private float currentSpeed;
-    protected float averageSpeed;
+    [SerializeField]protected float averageSpeed;
 
     protected bool isScared = false;
     protected bool isCurious = false;
