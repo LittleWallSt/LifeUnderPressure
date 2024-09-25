@@ -49,9 +49,20 @@ MonoBehaviour:
   fishName: Nemo
   fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
   scanTime: 0
+  scaredFactor: 1
+  scaredDistance: 10
+  scaredSpeed: 0.6
+  scaredTimer: 10
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  speed: 0.4
   rotationSpeed: 1
   alignmentThreshold: 10
-  avoidanceDetection: {x: 10, y: 20, z: 10}
+  avoidanceDetection: {x: 1, y: 2, z: 1}
 --- !u!136 &1279890184145906600
 CapsuleCollider:
   m_ObjectHideFlags: 0
