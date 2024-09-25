@@ -63,7 +63,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         float depth = -transform.position.y;
         LCStressCalculation(depth);
 
-        if (heightText) heightText.text = string.Format("Depth: {0:F1}", depth);
+        if (heightText) heightText.text = string.Format("{0:F1}m", depth);
     }
 
     private void Update()

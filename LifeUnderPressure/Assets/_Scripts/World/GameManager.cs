@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
+    [SerializeField] private float delayToStartNewQuest = 2.5f;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
     public static GameManager Instance { get; private set; }
@@ -24,8 +25,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         QuestSystem.Reset();
-        StartNextQuest();
-        QuestSystem.Assign_OnQuestFinished(StartNextQuest);
     }
     private void Start()
     {
@@ -37,6 +36,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if(!QuestSystem.HasQuest() && Time.time - QuestSystem.TimeLastQuestFinished > delayToStartNewQuest)
+        {
+            StartNextQuest();
+        }
         DistanceLoadProcess();
     }
 

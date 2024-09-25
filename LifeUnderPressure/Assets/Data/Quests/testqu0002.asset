@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6adb6bc3a45bee44b85cea253f63bbf6, type: 3}
+  m_Name: testqu0002
+  m_EditorClassIdentifier: 
+  type: 0
+  fishes:
+  - name: Clownfish
+    amount: 1
+  rewards:
+  - type: 0
+    boolName: 
+    value: 1000
+  - type: 1
+    boolName: asdafs
+    value: 0

@@ -7,18 +7,43 @@ using UnityEngine;
 public class BoidUnit : Fish
 {
     // Field of view. The units should not detect other units behind them
-    [SerializeField] private float FOVAngle;
+    [SerializeField] protected float FOVAngle;
     // The lower this value is the closer we can get to the cohesion vector. Therefore it will rotate faster 
-    [SerializeField] private float smoothDamp;
+    [SerializeField] protected float smoothDamp;
 
-    private List<BoidUnit> cohesionNeighbours = new List<BoidUnit>();
-    private List<BoidUnit> avoidanceNeighbours = new List<BoidUnit>();
-    private List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
-    private Vector3 currentVelocity;
+    protected List<BoidUnit> cohesionNeighbours = new List<BoidUnit>();
+    protected List<BoidUnit> avoidanceNeighbours = new List<BoidUnit>();
+    protected List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
+    protected Vector3 currentVelocity;
+
+    private bool canBeNeighbour = false;
+
+    protected BoidManager assignedBoid;
 
     public Transform myTransform { get; set; }
 
-    private void Awake()
+    protected bool isSquid = false;
+
+    public void setGeneralFish(bool general)
+    {
+        isSquid = general;
+    }
+
+    // Javi >>
+    private void Start()
+    {
+        averageSpeed = speed;
+
+        if (assignedBoid != null)
+        {
+            path = assignedBoid.path;
+            currentWaypointIndex = assignedBoid.currWayPointIndex;
+        }
+        player = Submarine.Instance.transform;
+        layer = 1 >> mask;
+    }
+    // << Javi 
+    protected void Awake()
     {
         myTransform = transform;
     }
@@ -28,7 +53,34 @@ public class BoidUnit : Fish
     {
         this.speed = speed;
     }
+    public void SetCuriousBehaviour(CuriousInfo info)
+    {
+        curiousSpeed = info.speed;
+        curiousFactor = info.factor;
+        curiousDistance = info.distance;
+        curiousTimer = info.timer;
+        curiousCooldownTime = info.coolDown;
+        curiousRange = info.range;
 
+        isCurious = true;
+    }
+
+    public void SetScareBehaviour(ScareInfo info)
+    {
+        scaredFactor = info.factor;
+        scaredDistance = info.distance;
+        scaredSpeed = info.speed;
+        scaredTimer = info.timer;
+
+        isScared = true;
+        Debug.Log("Aaaah I'm scared");
+
+    }
+    public void AssignBoid(BoidManager boid)
+    {
+        assignedBoid = boid;
+    }
+    #region FishOverrides
     public override void MoveFish()
     {
         //If there are no waypoints
@@ -61,11 +113,11 @@ public class BoidUnit : Fish
             }
         }
 
-        var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        var avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        var aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
+        Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
+        Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
+        Vector3 aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
 
-        var moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
+        Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized * speed;
         if (moveVector == Vector3.zero)
@@ -81,9 +133,95 @@ public class BoidUnit : Fish
         }
     }
 
-    
+    // Javi from Paulas code in fish>>
+    protected override void FishBehaviour()
+    {
+        // scared behaviour
+        if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
+            || isScared)
+        {
+            directionToWaypoint = (transform.position - player.position).normalized;
+            if (!isScared)
+            {
+                Debug.Log("Aaaah I'm scared");
+                isScared = true;
+                timer = 0f;
+            }
 
-    private void FindNeighbours()
+            if (speed < scaredSpeed)
+                speed *= 1.1f;
+            else speed = scaredSpeed;
+
+
+            timer += Time.deltaTime;
+            if (timer > scaredTimer)
+            {
+                isScared = false;
+                timer = 0f;
+                speed *= 0.99f;
+                Debug.Log("Not scared anymore >:D");
+            }
+            canBeNeighbour = false;
+        }
+        //Curious behaviour
+        else if (((curiousFactor > 0.75f && Vector3.Distance(transform.position, player.position) < curiousDistance)
+            || isCurious) && !curiousCooldown)
+        {
+
+            directionToWaypoint = (player.position - transform.position).normalized;
+            if (!isCurious)
+            {
+                isCurious = true;
+            }
+
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist > curiousRange * 2)
+            {
+                Debug.Log("Going to range. Dist: " + dist);
+                if (speed < 0.1f) { Debug.Log("Fixing Speed"); speed = 0.4f; }
+
+                if (speed < curiousSpeed) { Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration"); speed *= 1.1f; }
+
+                if (speed > curiousSpeed) { Debug.Log("Curious speed"); speed = curiousSpeed; }
+
+            }
+            else if (dist > curiousRange)
+            {
+                speed *= 0.99f;
+                Debug.Log("Stopping");
+
+            }
+            else speed = 0.1f;
+
+            timer += Time.deltaTime;
+            if (timer > curiousTimer)
+            {
+                Debug.Log("Not curious anymore");
+                isCurious = false;
+                curiousCooldown = true;
+                speed *= 1.1f;
+                timer = 0.0f;
+            }
+            canBeNeighbour = false;
+
+        }
+
+        else if (!isCurious && speed < averageSpeed)
+        {
+            speed *= 1.1f;
+        }
+        else if (!isScared && speed > averageSpeed)
+        {
+            speed *= 0.99f;
+        }
+        else
+        {
+            canBeNeighbour = true;
+        }
+    }
+    #endregion
+    // << Javi from Paulas code in fish
+    protected void FindNeighbours()
     {
         cohesionNeighbours.Clear();
         avoidanceNeighbours.Clear();
@@ -112,7 +250,7 @@ public class BoidUnit : Fish
     }
 
     // Calculate speed based on the neighbour 
-    private void CalculateAverageSpeed()
+    protected void CalculateAverageSpeed()
     {
         if (cohesionNeighbours.Count == 0)
             return;
@@ -130,7 +268,7 @@ public class BoidUnit : Fish
     }
 
     // Average position of all units in a certain radius
-    private Vector3 CalculateCohesionVector()
+    protected Vector3 CalculateCohesionVector()
     {
         var cohesionVector = Vector3.zero;
         if (cohesionNeighbours.Count == 0)
@@ -154,7 +292,7 @@ public class BoidUnit : Fish
     }
 
     // Calculates the average heading
-    private Vector3 CalculateAligementVector()
+    protected Vector3 CalculateAligementVector()
     {
         var aligementVector = myTransform.forward;
         if (aligementNeighbours.Count == 0)
@@ -176,7 +314,7 @@ public class BoidUnit : Fish
     }
 
     // Calculates the direction in wich can avoid the crowding local flockmates
-    private Vector3 CalculateAvoidanceVector()
+    protected Vector3 CalculateAvoidanceVector()
     {
         var avoidanceVector = Vector3.zero;
         if (aligementNeighbours.Count == 0)
@@ -199,7 +337,7 @@ public class BoidUnit : Fish
 
     // This method will return true if an angle between our forward dir an the dir to the neighbour
     // pos is less than the FOV angle we declared in the inspector
-    private bool IsInFOV(Vector3 position)
+    protected bool IsInFOV(Vector3 position)
     {
         return Vector3.Angle(myTransform.forward, position - myTransform.position) <= FOVAngle;
     }
