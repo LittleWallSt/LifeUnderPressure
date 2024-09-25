@@ -37,10 +37,10 @@ public class Boid: MonoBehaviour
     public int currWayPointIndex { get { return _currentWaypointIndex;  } }
 
     [Header("Speed Setup")]
-    [Range(0, 20)]
+    [Range(0, 8)]
     [SerializeField] private float _minSpeed;
     public float minSpeed { get { return _minSpeed; } }
-    [Range(0, 20)]
+    [Range(0, 8)]
     [SerializeField] private float _maxSpeed;
     public float maxSpeed { get { return _maxSpeed; } }
 
@@ -161,7 +161,6 @@ public class Boid: MonoBehaviour
             // We instantiate and initialaze the unit. Also assigned its respective boid to the unit
             allUnits[i] = Instantiate(boidUnitPrefab, spawnPosition, rotation);
             allUnits[i].gameObject.layer = LayerMask.NameToLayer("Fish");
-            Debug.Log(allUnits[i].gameObject.layer.ToString());
             allUnits[i].AssignBoid(this);
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
             allUnits[i].setGeneralFish(isSquid);

@@ -18,6 +18,13 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
 
     private void Start()
     {
+        averageSpeed = speed;
+
+        if (assignedBoid != null)
+        {
+            path = assignedBoid.path;
+            currentWaypointIndex = assignedBoid.currWayPointIndex;
+        }
         if (path.GetWaypoint(0).position.y > path.GetWaypoint(1).position.y)
         {
             maxHeight = path.GetWaypoint(0).position.y;
@@ -38,6 +45,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         if (path.Length == 0)
             return;
 
+        //Only 2 waypoints  for the min and max height
         if (assignedBoid.currWayPointIndex > 2)
         {
             assignedBoid.SetNextWaypoint(0);
@@ -47,38 +55,41 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
 
         FindNeighbours();
         CalculateAverageSpeed();
-
-        Vector3 squidMovement = Vector3.zero;
-
+        
         // Going up
         if (goingUp)
         {
+            Debug.Log("Im going UP");
+
             squidTimer += Time.deltaTime;
-            if(!deceleration)
+            if (!deceleration)
             {
-                speed *= 1.1f; 
-                if(squidTimer > upTimer)
+                squidVel = 1.1f;
+                if (squidTimer > upTimer)
                 {
                     squidTimer = 0.0f;
                     deceleration = true;
+                    squidVel = 1.0f;
                 }
             }
             else
             {
-                speed *= 0.99f;
+                squidVel = -1.1f;
                 if (squidTimer > downTimer)
                 {
                     squidTimer = 0.0f;
+                    squidVel = 1.0f;
                     deceleration = false;
                 }
             }
 
-            if (transform.position.y > maxHeight) goingUp = false;
         }
         // Going down
         else
         {
-            squidVel *= 0.99f;
+            squidVel = -1.1f;
+            Debug.Log("Im going DOWN");
+
         }
 
         var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
@@ -86,21 +97,40 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         var aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
 
         var moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
-        moveVector = Vector3.SmoothDamp(myTransform.up, moveVector, ref currentVelocity, smoothDamp);
+        //moveVector = Vector3.SmoothDamp(myTransform.up, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized * speed;
+
+        // If negative, we want it to be positive going up
+        if(moveVector.y < 0 && goingUp ) moveVector.y = -moveVector.y * squidVel;
+        else if(moveVector.y < 0 && !goingUp) moveVector.y = -moveVector.y * squidVel;
+        else moveVector.y *= squidVel;
         if (moveVector == Vector3.zero)
             moveVector = transform.up;
 
+        Debug.Log("Move vector: " + moveVector);
         myTransform.up = moveVector;
         myTransform.position += moveVector * Time.deltaTime;
 
-        if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
+        //if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
+        //{
+        //    if (assignedBoid != null) assignedBoid.SetNextWaypoint();
+
+        //}
+
+
+        if (transform.position.y > maxHeight)
         {
+            goingUp = false;
+            Debug.Log(goingUp);
+            if (assignedBoid != null) assignedBoid.SetNextWaypoint();
+        }
+        else if (transform.position.y < minHeight)
+        {
+            goingUp = true;
+            Debug.Log(goingUp);
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
 
         }
 
-
-        if (transform.position.y > maxHeight) goingUp = false; else goingUp = true;
     }
 }
