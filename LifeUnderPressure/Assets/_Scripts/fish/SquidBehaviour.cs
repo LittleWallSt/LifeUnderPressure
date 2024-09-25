@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SquidBehaviour : BoidUnit // Boid Unit????
 {
-    [Range(0, 2)][SerializeField] private float upTimer;
-    [Range(0, 2)][SerializeField] private float downTimer;
+    [Range(1, 6)][SerializeField] private float minUpTimer;
+    [Range(1, 6)][SerializeField] private float maxUpTimer;
     [SerializeField] private float squidVel = 1.0f;
+
+    private float upTimer = 0.0f;
+    private float downTimer = 0.0f;
 
     private float squidTimer = 0.0f;
 
@@ -35,6 +38,10 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
             maxHeight = path.GetWaypoint(1).position.y;
             minHeight = path.GetWaypoint(0).position.y;
         }
+
+        upTimer = UnityEngine.Random.Range(minUpTimer, maxUpTimer);
+        if (upTimer <= 1.8f && upTimer >= 1.0f) downTimer = 0.8f;
+        else downTimer = upTimer - UnityEngine.Random.Range(0.5f, 1.3f);
     }
     // Update is called once per frame
     public override void MoveFish()
@@ -74,7 +81,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
             }
             else
             {
-                squidVel = -1.1f;
+                squidVel = -0.5f;
                 if (squidTimer > downTimer)
                 {
                     squidTimer = 0.0f;
@@ -87,10 +94,12 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         // Going down
         else
         {
-            squidVel = -0.5f;
+            squidVel = -0.7f;
             Debug.Log("Im going DOWN");
 
         }
+
+        directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
 
         var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
         var avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;

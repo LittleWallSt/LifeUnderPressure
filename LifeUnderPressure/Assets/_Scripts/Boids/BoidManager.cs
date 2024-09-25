@@ -26,7 +26,7 @@ public struct ScareInfo
 public class BoidManager: MonoBehaviour, IDistanceLoad
 {
     [Header("Spawn Setup")]
-    [SerializeField] private bool isSquid = false; // maybe not necesary
+    [SerializeField] private bool isSquid = false; // maybe not necesary, not in this script lol 
     [SerializeField] private BoidUnit boidUnitPrefab;
     [SerializeField] private int boidSize;
     [SerializeField] private Vector3 spawnBounds;
