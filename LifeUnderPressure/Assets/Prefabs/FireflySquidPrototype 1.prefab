@@ -238,12 +238,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInfo: {fileID: 0}
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
   speed: 0
   rotationSpeed: 0
   alignmentThreshold: 0
   avoidanceDetection: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   FOVAngle: 180
   smoothDamp: 1
-  upTimer: 1.63
+  upTimer: 2
   downTimer: 0.5
   squidVel: 1

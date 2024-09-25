@@ -18,7 +18,7 @@ public class BoidUnit : Fish
 
     private bool canBeNeighbour = false;
 
-    private BoidManager assignedBoid;
+    protected BoidManager assignedBoid;
 
     public Transform myTransform { get; set; }
 
@@ -29,7 +29,6 @@ public class BoidUnit : Fish
         isSquid = general;
     }
 
-    protected void Awake()
     // Javi >>
     private void Start()
     {
@@ -44,7 +43,7 @@ public class BoidUnit : Fish
         layer = 1 >> mask;
     }
     // << Javi 
-    private void Awake()
+    protected void Awake()
     {
         myTransform = transform;
     }
@@ -222,7 +221,7 @@ public class BoidUnit : Fish
     }
     #endregion
     // << Javi from Paulas code in fish
-    private void FindNeighbours()
+    protected void FindNeighbours()
     {
         cohesionNeighbours.Clear();
         avoidanceNeighbours.Clear();

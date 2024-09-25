@@ -87,7 +87,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         // Going down
         else
         {
-            squidVel = -1.1f;
+            squidVel = -0.5f;
             Debug.Log("Im going DOWN");
 
         }
