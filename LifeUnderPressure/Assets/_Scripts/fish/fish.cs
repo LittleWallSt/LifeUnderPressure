@@ -1,23 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public class Fish : MonoBehaviour
 {
     //FISH PROPERTIES
     [Header("Fish properties")]
-    [SerializeField] protected string fishName;
-
     // Aleksis >> changed from string to FishInfo
     [SerializeField] protected FishInfo fishInfo;
     public FishInfo FishInfo => fishInfo;
     // Aleksis <<
-
-    [SerializeField] protected float scanTime;
 
     [Header("Fish Behaviour")]
     [SerializeField, Range(0.0f, 1.0f)] protected float scaredFactor;
@@ -32,14 +25,12 @@ public class Fish : MonoBehaviour
     [SerializeField] protected float curiousCooldownTime;
     [SerializeField] protected float curiousRange;
 
-    protected bool curious;
-    protected bool scared;
 
     //MOVEMENT WAYPOINT BASED
     protected Path path;
     protected int currentWaypointIndex;
 
-    private Transform player;
+    protected Transform player;
     [Header("Movement properties")]
     [SerializeField] protected float speed;
     
@@ -50,70 +41,39 @@ public class Fish : MonoBehaviour
     private Vector3 currentDirection;
 
     [SerializeField] protected Vector3 avoidanceDetection;
-
-    //private float currentSpeed;
-    [SerializeField]protected float averageSpeed;
+    [SerializeField] protected LayerMask mask;
+    protected int layer = 0;
+    
+    protected float averageSpeed;
 
     protected bool isScared = false;
     protected bool isCurious = false;
     protected bool curiousCooldown = false;
 
-    protected bool canBeNeighbour = false;
 
-    private float timer = 0f;
+    protected float timer = 0f;
     protected float cooldownTimer = 0f;
-    protected Boid assignedBoid;
     protected Vector3 directionToWaypoint = Vector3.zero;
 
-    public void SetCuriousBehaviour(CuriousInfo info)
-    {
-        curiousSpeed = info.speed;
-        curiousFactor = info.factor;
-        curiousDistance = info.distance;
-        curiousTimer = info.timer;
-        curiousCooldownTime = info.coolDown;
-        curiousRange = info.range;
-
-        isCurious = true;
-    }
-
-    public void SetScareBehaviour(ScareInfo info)
-    {
-        scaredFactor = info.factor;
-        scaredDistance = info.distance;
-        scaredSpeed = info.speed;
-        scaredTimer = info.timer;
-
-        isScared = true;
-        Debug.Log("Aaaah I'm scared");
-
-    }
-    public void AssignBoid(Boid boid)
-    {
-        assignedBoid = boid;
-    }
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        //currentSpeed = speed;
+        //Initial speed for fish, in boid it is the average speed of all the fish group
         averageSpeed = speed;
 
-        if(assignedBoid != null)
+        if (path.Length > 0)
         {
-            path = assignedBoid.path;
-            currentWaypointIndex = assignedBoid.currWayPointIndex;
+            transform.position = path.GetWaypoint(currentWaypointIndex).position;
+            SetNextWaypoint();
         }
-
-        //if (path.Length > 0)
-        //{
-        //    transform.position = path.GetWaypoint(currentWaypointIndex).position;
-        //    SetNextWaypoint();
-        //}
 
         // Aleksis >>
         player = Submarine.Instance.transform;
         // Aleksis <<
+
+        layer = 1 >> mask;
     }
 
     public void SetPath(Path newPath) {
@@ -140,10 +100,10 @@ public class Fish : MonoBehaviour
         Transform targetWaypoint = path.GetWaypoint(currentWaypointIndex);
         directionToWaypoint = Vector3.zero;
 
-        FishBehaviour(); // Can be better lol
+        FishBehaviour();
         
         // Path following behaviour
-        if(!curious && !scared)
+        if(!isCurious && !isScared)
         {
             directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
         }
@@ -164,9 +124,7 @@ public class Fish : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
         {
-            if (assignedBoid != null) assignedBoid.SetNextWaypoint();
-            else SetNextWaypoint();
-
+            SetNextWaypoint();
         }
     }
 
@@ -178,77 +136,88 @@ public class Fish : MonoBehaviour
         currentWaypointIndex = (currentWaypointIndex + 1) % path.Length;
     }
 
-    protected void FishBehaviour()
+    #region FishScaredCurious
+    /// <summary>
+    /// Changes the direction vector to head in the opposite direction of the player
+    /// </summary>
+    private void Scared()
+    {
+        directionToWaypoint = (transform.position - player.position).normalized;
+        if (!isScared)
+        {
+            Debug.Log("Aaaah I'm scared");
+            isScared = true;
+            timer = 0f;
+        }
+
+        if (speed < scaredSpeed)
+            speed *= 1.1f;
+        else speed = scaredSpeed;
+
+
+        timer += Time.deltaTime;
+        if (timer > scaredTimer)
+        {
+            isScared = false;
+            timer = 0f;
+            speed *= 0.99f;
+            Debug.Log("Not scared anymore >:D");
+        }
+    }
+
+    /// <summary>
+    /// Changes the vector to head towards to face the player and head in that direction
+    /// </summary>
+    private void Curious()
+    {
+        directionToWaypoint = (player.position - transform.position).normalized;
+        if (!isCurious)
+        {
+            isCurious = true;
+        }
+
+        float dist = Vector3.Distance(transform.position, player.position);
+        if (dist > curiousRange * 2)
+        {
+            Debug.Log("Going to range. Dist: " + dist);
+            if (speed < 0.1f) 
+                speed = 0.4f;
+
+            if (speed < curiousSpeed) 
+                speed *= 1.1f; 
+
+            if (speed > curiousSpeed)  
+                speed = curiousSpeed; 
+
+        }
+        
+        else if (dist > curiousRange)
+            speed *= 0.99f;
+        
+        else 
+            speed = 0.1f;
+
+        timer += Time.deltaTime;
+        if (timer > curiousTimer)
+        {
+            Debug.Log("Not curious anymore");
+            isCurious = false;
+            curiousCooldown = true;
+            speed *= 1.1f;
+            timer = 0.0f;
+        }
+    }
+    virtual protected void FishBehaviour()
     {
         // scared behaviour
         if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
             || isScared)
-        {
-            directionToWaypoint = (transform.position - player.position).normalized;
-            if (!isScared)
-            {
-                Debug.Log("Aaaah I'm scared");
-                isScared = true;
-                timer = 0f;
-            }
-
-            if (speed < scaredSpeed)
-                speed *= 1.1f;
-            else speed = scaredSpeed;
-
-
-            timer += Time.deltaTime;
-            if (timer > scaredTimer)
-            {
-                isScared = false;
-                timer = 0f;
-                speed *= 0.99f;
-                Debug.Log("Not scared anymore >:D");
-            }
-            canBeNeighbour = false;
-        }
+            Scared();
+        
         //Curious behaviour
         else if (((curiousFactor > 0.75f && Vector3.Distance(transform.position, player.position) < curiousDistance)
             || isCurious) && !curiousCooldown)
-        {
-
-            directionToWaypoint = (player.position - transform.position).normalized;
-            if (!isCurious)
-            {
-                isCurious = true;
-            }
-
-            float dist = Vector3.Distance(transform.position, player.position);
-            if (dist > curiousRange * 2)
-            {
-                Debug.Log("Going to range. Dist: " + dist);
-                if (speed < 0.1f) { Debug.Log("Fixing Speed"); speed = 0.4f; }
-
-                if (speed < curiousSpeed) { Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration"); speed *= 1.1f; }
-
-                if (speed > curiousSpeed) { Debug.Log("Curious speed"); speed = curiousSpeed; }
-
-            }
-            else if (dist > curiousRange)
-            {
-                speed *= 0.99f;
-                Debug.Log("Stopping");
-
-            }
-            else speed = 0.1f;
-
-            timer += Time.deltaTime;
-            if (timer > curiousTimer)
-            {
-                Debug.Log("Not curious anymore");
-                isCurious = false;
-                curiousCooldown = true;
-                speed *= 1.1f;
-                timer = 0.0f;
-            }
-            canBeNeighbour = false;
-
-        }
+            Curious();
 
         else if( !isCurious && speed < averageSpeed )
         {
@@ -258,12 +227,9 @@ public class Fish : MonoBehaviour
         {
             speed *= 0.99f;
         }
-        else
-        {
-            canBeNeighbour = true;
-        }
     }
-     /// <summary>
+    #endregion
+    /// <summary>
     /// Target heads towards waypoint in a straightline until it reaches a certain distance threshhold
     /// </summary>
     /// <param name="direction">Direction where we are headed</param>
@@ -286,20 +252,20 @@ public class Fish : MonoBehaviour
         RaycastHit hit;
 
         // Obstacle in front
-        if (Physics.Raycast(transform.position, transform.forward, out hit, avoidanceDetection.y))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, avoidanceDetection.y, layer))
         {
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.red);
             directionToWaypoint += transform.up;
         }
 
         // Obstacle in right of fish
-        if (Physics.Raycast(transform.position, transform.right, out hit, avoidanceDetection.x))
+        if (Physics.Raycast(transform.position, transform.right, out hit, avoidanceDetection.x,layer))
         {
             Debug.DrawRay(transform.position, transform.right * hit.distance, Color.red);
             directionToWaypoint -= transform.right;
         }
         // Obstacle in left of fish
-        if (Physics.Raycast(transform.position, -transform.right, out hit, avoidanceDetection.z))
+        if (Physics.Raycast(transform.position, -transform.right, out hit, avoidanceDetection.z, layer))
         {
             Debug.DrawRay(transform.position, -transform.right * hit.distance, Color.red);
             directionToWaypoint += transform.right;

@@ -16,8 +16,26 @@ public class BoidUnit : Fish
     private List<BoidUnit> aligementNeighbours = new List<BoidUnit>();
     private Vector3 currentVelocity;
 
+    private bool canBeNeighbour = false;
+
+    private BoidManager assignedBoid;
+
     public Transform myTransform { get; set; }
 
+    // Javi >>
+    private void Start()
+    {
+        averageSpeed = speed;
+
+        if (assignedBoid != null)
+        {
+            path = assignedBoid.path;
+            currentWaypointIndex = assignedBoid.currWayPointIndex;
+        }
+        player = Submarine.Instance.transform;
+        layer = 1 >> mask;
+    }
+    // << Javi 
     private void Awake()
     {
         myTransform = transform;
@@ -28,7 +46,34 @@ public class BoidUnit : Fish
     {
         this.speed = speed;
     }
+    public void SetCuriousBehaviour(CuriousInfo info)
+    {
+        curiousSpeed = info.speed;
+        curiousFactor = info.factor;
+        curiousDistance = info.distance;
+        curiousTimer = info.timer;
+        curiousCooldownTime = info.coolDown;
+        curiousRange = info.range;
 
+        isCurious = true;
+    }
+
+    public void SetScareBehaviour(ScareInfo info)
+    {
+        scaredFactor = info.factor;
+        scaredDistance = info.distance;
+        scaredSpeed = info.speed;
+        scaredTimer = info.timer;
+
+        isScared = true;
+        Debug.Log("Aaaah I'm scared");
+
+    }
+    public void AssignBoid(BoidManager boid)
+    {
+        assignedBoid = boid;
+    }
+    #region FishOverrides
     public override void MoveFish()
     {
         //If there are no waypoints
@@ -61,11 +106,11 @@ public class BoidUnit : Fish
             }
         }
 
-        var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        var avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        var aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
+        Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
+        Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
+        Vector3 aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
 
-        var moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
+        Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized * speed;
         if (moveVector == Vector3.zero)
@@ -81,8 +126,94 @@ public class BoidUnit : Fish
         }
     }
 
-    
+    // Javi from Paulas code in fish>>
+    protected override void FishBehaviour()
+    {
+        // scared behaviour
+        if ((scaredFactor > 0.75f && Vector3.Distance(transform.position, player.position) < scaredDistance)
+            || isScared)
+        {
+            directionToWaypoint = (transform.position - player.position).normalized;
+            if (!isScared)
+            {
+                Debug.Log("Aaaah I'm scared");
+                isScared = true;
+                timer = 0f;
+            }
 
+            if (speed < scaredSpeed)
+                speed *= 1.1f;
+            else speed = scaredSpeed;
+
+
+            timer += Time.deltaTime;
+            if (timer > scaredTimer)
+            {
+                isScared = false;
+                timer = 0f;
+                speed *= 0.99f;
+                Debug.Log("Not scared anymore >:D");
+            }
+            canBeNeighbour = false;
+        }
+        //Curious behaviour
+        else if (((curiousFactor > 0.75f && Vector3.Distance(transform.position, player.position) < curiousDistance)
+            || isCurious) && !curiousCooldown)
+        {
+
+            directionToWaypoint = (player.position - transform.position).normalized;
+            if (!isCurious)
+            {
+                isCurious = true;
+            }
+
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist > curiousRange * 2)
+            {
+                Debug.Log("Going to range. Dist: " + dist);
+                if (speed < 0.1f) { Debug.Log("Fixing Speed"); speed = 0.4f; }
+
+                if (speed < curiousSpeed) { Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration"); speed *= 1.1f; }
+
+                if (speed > curiousSpeed) { Debug.Log("Curious speed"); speed = curiousSpeed; }
+
+            }
+            else if (dist > curiousRange)
+            {
+                speed *= 0.99f;
+                Debug.Log("Stopping");
+
+            }
+            else speed = 0.1f;
+
+            timer += Time.deltaTime;
+            if (timer > curiousTimer)
+            {
+                Debug.Log("Not curious anymore");
+                isCurious = false;
+                curiousCooldown = true;
+                speed *= 1.1f;
+                timer = 0.0f;
+            }
+            canBeNeighbour = false;
+
+        }
+
+        else if (!isCurious && speed < averageSpeed)
+        {
+            speed *= 1.1f;
+        }
+        else if (!isScared && speed > averageSpeed)
+        {
+            speed *= 0.99f;
+        }
+        else
+        {
+            canBeNeighbour = true;
+        }
+    }
+    #endregion
+    // << Javi from Paulas code in fish
     private void FindNeighbours()
     {
         cohesionNeighbours.Clear();

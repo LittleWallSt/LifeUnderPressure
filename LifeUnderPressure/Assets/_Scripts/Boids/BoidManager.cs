@@ -23,7 +23,7 @@ public struct ScareInfo
 }
 
 
-public class Boid: MonoBehaviour, IDistanceLoad
+public class BoidManager: MonoBehaviour, IDistanceLoad
 {
     [Header("Spawn Setup")]
     [SerializeField] private BoidUnit boidUnitPrefab;
