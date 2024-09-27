@@ -2270,7 +2270,6 @@ MonoBehaviour:
   fishName: {fileID: 3173506923197188482}
   fishDescription: {fileID: 5863229707882442546}
   scanPanel: {fileID: 5029328780566818862}
-  canvasGroup: {fileID: 0}
   scanner: {fileID: 4634647225653249626}
 --- !u!1 &3118660267383921498
 GameObject:
@@ -2958,7 +2957,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.27
-  m_Range: 12
+  m_Range: 44
   m_SpotAngle: 108.800125
   m_InnerSpotAngle: 38.056335
   m_CookieSize: 10
@@ -4426,7 +4425,6 @@ MonoBehaviour:
   fishName: {fileID: 3173506923197188482}
   fishDescription: {fileID: 5863229707882442546}
   scanPanel: {fileID: 5029328780566818862}
-  canvasGroup: {fileID: 1042967943942985183}
   scanner: {fileID: 4634647225653249626}
 --- !u!1 &5782905088420772597
 GameObject:
@@ -7967,7 +7965,7 @@ MonoBehaviour:
   lightIntensity:
   - 2
   - 2.3
-  - 2.7
+  - 4.95
   submarineLights:
   - {fileID: 4524600474292338062}
 --- !u!54 &1078021638836957442
