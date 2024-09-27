@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
 
     // Used for sounds that will need to loop and will be played and stopped somewhere.
     // Need using FMOD.Studio in the scripts that will use these sounds and
-    // EventInstance type variable for the sound itself, playerFootsteps for example.
+    // EventInstance (private) type variable for the sound itself, playerFootsteps for example.
     // Need to initialize them (variables) in Start() of those scripts as well.
     public EventInstance CreateInstance(EventReference eventReference)
     {

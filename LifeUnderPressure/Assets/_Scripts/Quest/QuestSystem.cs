@@ -9,14 +9,19 @@ public static class QuestSystem
     private static Action OnQuestUpdated;
     private static Action OnQuestFinished;
 
+    private static float _TimeLastQuestFinished;
+
     public static void ScannedFish(string fishName)
     {
         for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
         {
-            if (CurrentQuest.Fishes[i].name == fishName)
+            if (CurrentQuest.Fishes[i].name == fishName && CurrentValues[i] < CurrentQuest.Fishes[i].amount)
             {
                 CurrentValues[i]++;
-                if (CurrentValues[i] > CurrentQuest.Fishes[i].amount) CurrentValues[i] = CurrentQuest.Fishes[i].amount;
+                if (CurrentValues[i] == CurrentQuest.Fishes[i].amount)
+                {
+                    if(!CurrentQuest.AudioOnProgress[i].IsNull) AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
+                }
             }
         }
         Call_OnQuestUpdated();
@@ -25,6 +30,7 @@ public static class QuestSystem
     public static void AssignQuest(Quest quest)
     {
         CurrentQuest = quest;
+        AudioManager.instance?.PlayOneShot(quest.AudioOnAssign, Submarine.Instance.transform.position);
         CurrentValues = new int[quest.Fishes.Count];
         Call_OnQuestUpdated();
     }
@@ -34,8 +40,10 @@ public static class QuestSystem
         {
             if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
         }
-        Call_OnQuestFinished();
+        AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
         CurrentQuest = null;
+        _TimeLastQuestFinished = UnityEngine.Time.time;
+        Call_OnQuestFinished();
     }
     private static void Call_OnQuestUpdated()
     {
@@ -58,6 +66,7 @@ public static class QuestSystem
         CurrentQuest = null;
         CurrentValues = null;
         OnQuestUpdated = null;
+        _TimeLastQuestFinished = 0f;
     }
     // Getters
     public static List<Quest.FishAmount> GetQuestReqs()
@@ -72,4 +81,9 @@ public static class QuestSystem
     {
         return CurrentValues[index];
     }
+    public static bool HasQuest()
+    {
+        return CurrentQuest != null;
+    }
+    public static float TimeLastQuestFinished => _TimeLastQuestFinished;
 }

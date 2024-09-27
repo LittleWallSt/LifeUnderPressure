@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Clownfish
-    amount: 1
   - name: Nemo
-    amount: 1
-  - name: Dragonfish
     amount: 1
   rewards:
   - type: 0
@@ -27,3 +23,24 @@ MonoBehaviour:
   - type: 1
     boolName: asdafs
     value: 0
+  audioOnAssign:
+    Guid:
+      Data1: 1560388430
+      Data2: 1289135335
+      Data3: -1738312316
+      Data4: 1712062816
+    Path: event:/SFX/VO/VO_01
+  audioOnProgress:
+  - Guid:
+      Data1: -1469315812
+      Data2: 1257239368
+      Data3: 166450858
+      Data4: -1412972000
+    Path: event:/SFX/VO/VO_03
+  audioOnEnd:
+    Guid:
+      Data1: 1560388430
+      Data2: 1289135335
+      Data3: -1738312316
+      Data4: 1712062816
+    Path: event:/SFX/VO/VO_01

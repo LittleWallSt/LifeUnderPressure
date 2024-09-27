@@ -11,6 +11,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] 
     public EventReference voiceLine_Tutorial_01 { get; private set; }*/
 
+    [field: Header("Submarine SFX")]
+    [field: SerializeField]
+    public EventReference propellerSFX { get; private set; }
+
     [field: Header("Music Tracks")]
     [field: SerializeField]
     public EventReference musicToPlay { get; private set; }
