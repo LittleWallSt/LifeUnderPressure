@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class QuestSystem
 {
@@ -20,7 +21,7 @@ public static class QuestSystem
                 CurrentValues[i]++;
                 if (CurrentValues[i] == CurrentQuest.Fishes[i].amount)
                 {
-                    if(!CurrentQuest.AudioOnProgress[i].IsNull) AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
+                    if (CurrentQuest.AudioOnProgress.Length > i && !CurrentQuest.AudioOnProgress[i].IsNull) AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
                 }
             }
         }
@@ -40,10 +41,18 @@ public static class QuestSystem
         {
             if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
         }
+        QuestFinish();
+    }
+    private static void QuestFinish()
+    {
         AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
         CurrentQuest = null;
-        _TimeLastQuestFinished = UnityEngine.Time.time;
+        _TimeLastQuestFinished = Time.time;
         Call_OnQuestFinished();
+    }
+    public static void InQuestLocation()
+    {
+        QuestFinish();
     }
     private static void Call_OnQuestUpdated()
     {
@@ -80,6 +89,10 @@ public static class QuestSystem
     public static int GetCurrentValue(int index)
     {
         return CurrentValues[index];
+    }
+    public static Quest.Location GetQuestLocation()
+    {
+        return CurrentQuest._Location;
     }
     public static bool HasQuest()
     {

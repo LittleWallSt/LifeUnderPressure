@@ -9,6 +9,7 @@ public class QuestEditor : Editor
     private SerializedProperty questType;
     private SerializedProperty fishes;
     private SerializedProperty rewards;
+    private SerializedProperty location;
 
     private SerializedProperty audioOnAssign;
     private SerializedProperty audioOnProgress;
@@ -18,6 +19,7 @@ public class QuestEditor : Editor
         questType = serializedObject.FindProperty("type");
         fishes = serializedObject.FindProperty("fishes");
         rewards = serializedObject.FindProperty("rewards");
+        location = serializedObject.FindProperty("location");
 
         audioOnAssign = serializedObject.FindProperty("audioOnAssign");
         audioOnProgress = serializedObject.FindProperty("audioOnProgress");
@@ -37,9 +39,13 @@ public class QuestEditor : Editor
         {
             EditorGUILayout.PropertyField(fishes, new GUIContent("Fishes to Scan"));
         }
-        else if(questType.enumValueFlag == ((uint)Quest.QuestType.Capture))
+        else if (questType.enumValueFlag == ((uint)Quest.QuestType.Capture))
         {
             EditorGUILayout.PropertyField(fishes, new GUIContent("Fishes to Capture"));
+        }
+        else if (questType.enumValueFlag == ((uint)Quest.QuestType.Location))
+        {
+            EditorGUILayout.PropertyField(location, new GUIContent("Quest Location"));
         }
         EditorGUILayout.LabelField("Rewards", EditorStyles.boldLabel);
         if (rewards.arraySize < 5 && GUILayout.Button("Add Reward"))

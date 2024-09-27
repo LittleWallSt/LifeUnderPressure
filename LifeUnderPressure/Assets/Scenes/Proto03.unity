@@ -2825,6 +2825,18 @@ PrefabInstance:
       propertyPath: submarineTransform
       value: 
       objectReference: {fileID: 1602457774}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: questLine.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7449ed507fe7f4b4f97a39f51412be0d,
+        type: 2}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: questLine.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e36d4f235974194f9e4f99ffcecb211,
+        type: 2}
     - target: {fileID: 5027743935536782442, guid: 3495d5d74049b124ebfe36d87c315a95,
         type: 3}
       propertyPath: m_LocalPosition.x
