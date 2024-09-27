@@ -7238,7 +7238,7 @@ MonoBehaviour:
   inDeepMaxTime: 10
   deepOffset: -0.64
   radiusOfHull: 3.2
-  thicknessOfHull: 0.035
+  thicknessOfHull: 0.032
   maxStressTreshold: 24
   stressDamageModifier: 0.125
   heightText: {fileID: 4048657896102895975}
