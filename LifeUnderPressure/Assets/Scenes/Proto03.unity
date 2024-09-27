@@ -1458,6 +1458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed1ff2dc0516c14895c145586c4943d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSquid: 0
   boidUnitPrefab: {fileID: -1003233480381497181, guid: baab3ce64be52f748823c7447135667e,
     type: 3}
   boidSize: 40
@@ -2091,6 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed1ff2dc0516c14895c145586c4943d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSquid: 0
   boidUnitPrefab: {fileID: -1003233480381497181, guid: baab3ce64be52f748823c7447135667e,
     type: 3}
   boidSize: 40
@@ -2597,6 +2599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed1ff2dc0516c14895c145586c4943d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSquid: 0
   boidUnitPrefab: {fileID: -1003233480381497181, guid: baab3ce64be52f748823c7447135667e,
     type: 3}
   boidSize: 40
@@ -3327,6 +3330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed1ff2dc0516c14895c145586c4943d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSquid: 0
   boidUnitPrefab: {fileID: -1003233480381497181, guid: baab3ce64be52f748823c7447135667e,
     type: 3}
   boidSize: 40
