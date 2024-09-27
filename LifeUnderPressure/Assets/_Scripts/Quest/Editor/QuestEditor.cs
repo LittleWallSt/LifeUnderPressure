@@ -9,11 +9,19 @@ public class QuestEditor : Editor
     private SerializedProperty questType;
     private SerializedProperty fishes;
     private SerializedProperty rewards;
+
+    private SerializedProperty audioOnAssign;
+    private SerializedProperty audioOnProgress;
+    private SerializedProperty audioOnEnd;
     private void OnEnable()
     {
         questType = serializedObject.FindProperty("type");
         fishes = serializedObject.FindProperty("fishes");
         rewards = serializedObject.FindProperty("rewards");
+
+        audioOnAssign = serializedObject.FindProperty("audioOnAssign");
+        audioOnProgress = serializedObject.FindProperty("audioOnProgress");
+        audioOnEnd = serializedObject.FindProperty("audioOnEnd");
     }
     public override void OnInspectorGUI()
     {
@@ -21,7 +29,11 @@ public class QuestEditor : Editor
 
         EditorGUILayout.PropertyField(questType, new GUIContent("Quest Type"));
 
-        if (questType.enumValueFlag == ((uint)Quest.QuestType.Scan))
+        if(questType.enumValueFlag == (uint)Quest.QuestType.None)
+        {
+            return;
+        }
+        else if (questType.enumValueFlag == ((uint)Quest.QuestType.Scan))
         {
             EditorGUILayout.PropertyField(fishes, new GUIContent("Fishes to Scan"));
         }
@@ -64,6 +76,12 @@ public class QuestEditor : Editor
                 rewards.DeleteArrayElementAtIndex(i);
             }
         }
+
+        EditorGUILayout.LabelField("Audio", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(audioOnAssign, new GUIContent("On Quest Assign"));
+        EditorGUILayout.PropertyField(audioOnProgress, new GUIContent("On Quest Progress"));
+        EditorGUILayout.PropertyField(audioOnEnd, new GUIContent("On Quest End"));
+
         serializedObject.ApplyModifiedProperties();
     }
 }
