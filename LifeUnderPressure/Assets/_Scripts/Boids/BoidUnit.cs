@@ -99,6 +99,7 @@ public class BoidUnit : Fish
         if (!isCurious && !isScared)
         {
             directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
+            ObstacleAvoidance(ref directionToWaypoint);
         }
 
         // Cooldown for the fish to be curious
@@ -118,7 +119,10 @@ public class BoidUnit : Fish
 
         Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
-        moveVector = moveVector.normalized * speed;
+        moveVector = moveVector.normalized;
+        moveVector *= speed;
+
+
         if (moveVector == Vector3.zero)
             moveVector = transform.forward;
 

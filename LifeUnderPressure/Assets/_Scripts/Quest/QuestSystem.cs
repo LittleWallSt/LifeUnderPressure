@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class QuestSystem
 {
@@ -15,10 +16,13 @@ public static class QuestSystem
     {
         for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
         {
-            if (CurrentQuest.Fishes[i].name == fishName)
+            if (CurrentQuest.Fishes[i].name == fishName && CurrentValues[i] < CurrentQuest.Fishes[i].amount)
             {
                 CurrentValues[i]++;
-                if (CurrentValues[i] > CurrentQuest.Fishes[i].amount) CurrentValues[i] = CurrentQuest.Fishes[i].amount;
+                if (CurrentValues[i] == CurrentQuest.Fishes[i].amount)
+                {
+                    if (CurrentQuest.AudioOnProgress.Length > i && !CurrentQuest.AudioOnProgress[i].IsNull) AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
+                }
             }
         }
         Call_OnQuestUpdated();
@@ -27,6 +31,7 @@ public static class QuestSystem
     public static void AssignQuest(Quest quest)
     {
         CurrentQuest = quest;
+        AudioManager.instance?.PlayOneShot(quest.AudioOnAssign, Submarine.Instance.transform.position);
         CurrentValues = new int[quest.Fishes.Count];
         Call_OnQuestUpdated();
     }
@@ -36,9 +41,18 @@ public static class QuestSystem
         {
             if (CurrentValues[i] < CurrentQuest.Fishes[i].amount) return;
         }
+        QuestFinish();
+    }
+    private static void QuestFinish()
+    {
+        AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
         CurrentQuest = null;
-        _TimeLastQuestFinished = UnityEngine.Time.time;
+        _TimeLastQuestFinished = Time.time;
         Call_OnQuestFinished();
+    }
+    public static void InQuestLocation()
+    {
+        QuestFinish();
     }
     private static void Call_OnQuestUpdated()
     {
@@ -55,6 +69,14 @@ public static class QuestSystem
     public static void Assign_OnQuestFinished(Action action)
     {
         OnQuestFinished += action;
+    }
+    public static void Remove_OnQuestUpdated(Action action)
+    {
+        OnQuestUpdated -= action;
+    }
+    public static void Remove_OnQuestFinished(Action action)
+    {
+        OnQuestFinished -= action;
     }
     public static void Reset()
     {
@@ -75,6 +97,10 @@ public static class QuestSystem
     public static int GetCurrentValue(int index)
     {
         return CurrentValues[index];
+    }
+    public static Quest.Location GetQuestLocation()
+    {
+        return CurrentQuest._Location;
     }
     public static bool HasQuest()
     {

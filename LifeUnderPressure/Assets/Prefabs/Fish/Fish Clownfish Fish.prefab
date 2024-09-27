@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7078515065875570282}
   - component: {fileID: 757402598248073394}
   - component: {fileID: 1279890184145906600}
+  - component: {fileID: 5023737430215678129}
   m_Layer: 8
   m_Name: Fish Clownfish Fish
   m_TagString: Untagged
@@ -47,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
-  scaredFactor: 1
+  scaredFactor: 0
   scaredDistance: 10
   scaredSpeed: 0.6
-  scaredTimer: 10
+  scaredTimer: 1
   curiousFactor: 0
   curiousDistance: 0
   curiousSpeed: 0
@@ -63,7 +64,7 @@ MonoBehaviour:
   avoidanceDetection: {x: 1, y: 2, z: 1}
   mask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!136 &1279890184145906600
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -87,6 +88,33 @@ CapsuleCollider:
   m_Height: 0.07
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5023737430215678129
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  serializedVersion: 4
+  m_Mass: 0.1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1582501961898567565
 PrefabInstance:
   m_ObjectHideFlags: 0

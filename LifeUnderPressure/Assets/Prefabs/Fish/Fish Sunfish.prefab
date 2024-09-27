@@ -168,7 +168,7 @@ MonoBehaviour:
   avoidanceDetection: {x: 2, y: 2, z: 2}
   mask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!4 &4223152151557009669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,

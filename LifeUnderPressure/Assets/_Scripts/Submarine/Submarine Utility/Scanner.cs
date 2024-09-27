@@ -18,7 +18,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] GameObject borders;
     [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
     [SerializeField] GameObject bar;
-    [SerializeField] GameObject scannerCanvas;
+
 
 
     LayerMask fishLayerMask;
@@ -26,21 +26,40 @@ public class Scanner : MonoBehaviour
 
     float timeLeft;
     float range;
-    bool scanning;
-    bool locked;
-    bool fishLost;
 
 #region Events
     public Action<string, string> scanFinished;
     public Action<float> updateScanner;
+    public Action resetScannerLock;
 
-    public Action<bool> lockActive;
+    public Action<ScannerState> lockActive;
     public Action<Vector3> targetLock;
 
     public Action<GameObject, bool> ScanEffect;
 #endregion
 
     public Collider currentFish;
+
+    bool mouseDown;
+
+    
+
+    private ScannerState _currentState = ScannerState.None;
+
+    // Property to monitor changes to currstate
+    public ScannerState currentState
+    {
+        get { return _currentState; }
+        set
+        {
+            if (_currentState != value)
+            {
+                _currentState = value;
+                if (lockActive!=null) lockActive.Invoke(_currentState);
+                Debug.Log("Value changes");// Call the method when the current state changes
+            }
+        }
+    }
 
     private void Start()
     {
@@ -49,80 +68,113 @@ public class Scanner : MonoBehaviour
         initialRotation = scanRect.transform.localRotation;
         timeLeft = scanTimer;
         scanRect.SetActive(false);
-        scannerCanvas.SetActive(false);
-        scanning = false;
-        locked = false;
+        bar.SetActive(false);
+        mouseDown = false;
+
+        currentState = ScannerState.Inactive;
 
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F) && !scanning)
+        if (Input.GetMouseButtonUp(0))
         {
-            if (!locked)
+            mouseDown = false;
+            if (currentState == ScannerState.Scanning)
             {
-                locked = true;
-                scanRect.SetActive(true);
-                scannerCanvas.SetActive(true);
-            } else if(!getHitColliders())
-            {
-                Debug.Log("worng one");
+                currentState = ScannerState.Inactive;
                 ResetScanner(false);
-                locked = false;
-            } else 
+            }
+        }
+            
+
+        if (getHitColliders())
+        {
+            if (currentState == ScannerState.InRange && Input.GetMouseButton(0) && !mouseDown)
             {
+                currentState = ScannerState.Scanning;
+                mouseDown = true;
                 ResetScanner(true);
-                locked = false; // change placeds  
-                lockActive.Invoke(true);
-                if (currentFish != null) { ScanEffect.Invoke(currentFish.gameObject, true); Debug.Log("fish not null"); }
-                
             }
-        }
 
-        if (locked)
-        {
-            ChooseTarget();
-            ScannerAnimation();
-        }
-        if (currentFish!= null) { targetLock.Invoke(currentFish.transform.position); }
-
-
-
-        if (!scanning) return;
-
-        if (Scanning())
-        {
-            if(fishLost) lockActive.Invoke(true);
-            fishLost = false;
-            timeLeft -= Time.deltaTime;
-            ScannerAnimation();
-            
-            if (timeLeft <= 0.0f)
+            if (currentState == ScannerState.Inactive)
             {
-                // Aleksis >>
-                FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
-                QuestSystem.ScannedFish(fishInfo.fishName);
-                // Aleksis <<
-                ScanEffect.Invoke(currentFish.gameObject, false);
-                lockActive.Invoke(false);
-                DisplayInfo(fishInfo);
-                ResetScanner(false);
-                currentFish = null;
-
+                currentState = ScannerState.InRange;
             }
-        }
-        else if (timeLeft <= scanTimer)
+        } else
         {
-            timeLeft += Time.deltaTime/2;
-            if (!fishLost) lockActive.Invoke(false);
-            fishLost = true;
-            
-
+            currentState = ScannerState.Inactive;
+            ResetScanner(false);
+            currentFish = null;
         }
 
-        updateScanner.Invoke(BarValue(scanTimer, timeLeft));
+
+
+
+        switch (currentState)
+        {
+            case ScannerState.Inactive:
+                InactiveUpdate();
+                break;
+            case ScannerState.InRange:
+                InRangeUpdate();
+                break;
+            case ScannerState.Scanning:
+                ScanningUpdate();
+                break;
+        }
+
     }
+
+    private void ScanningUpdate() // update for when scanner is active
+    {
+        timeLeft -= Time.deltaTime;
+        ScannerAnimation();
+
+        
+
+        targetLock.Invoke(currentFish.transform.position);
+        updateScanner.Invoke(BarValue(scanTimer, timeLeft));
+
+        if (timeLeft <= 0.0f)
+        {
+            FinishedScanner();
+        }
+    }
+
+    private void InRangeUpdate() // update for when fish is in range but not scanned
+    {
+        ChooseTarget();
+        if (currentFish != null) { targetLock.Invoke(currentFish.transform.position); }
+    }
+
+    private void InactiveUpdate() // update for scanner being inactive
+    {
+        if (timeLeft < scanTimer)
+        {
+            timeLeft += Time.deltaTime / 2;
+            updateScanner.Invoke(BarValue(scanTimer, timeLeft));
+
+        }
+    }
+
+    private void FinishedScanner()
+    {
+        // Aleksis >>
+        FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
+        QuestSystem.ScannedFish(fishInfo.fishName);
+        // Aleksis <<
+        ScanEffect.Invoke(currentFish.gameObject, false);
+        
+
+        DisplayInfo(fishInfo);
+        ResetScanner(false);
+        currentFish = null;
+        currentState = ScannerState.Inactive;
+        lockActive.Invoke(currentState);
+    }
+
 
     private void ChooseTarget()
     {
@@ -220,17 +272,17 @@ public class Scanner : MonoBehaviour
     public void DisplayInfo(FishInfo fishInfo)
     {
         if (fishInfo == null) return;
-        scanFinished.Invoke(fishInfo.fishName, fishInfo.fishSmallDescription);
+        if (scanFinished!=null) scanFinished.Invoke(fishInfo.fishName, fishInfo.fishSmallDescription);
         currentFish = null;
     }
 
     private void ResetScanner(bool scan)
     {
-        scanning = scan;
         scanRect.SetActive(scan);
-        bar.SetActive(scan);
-        scannerCanvas.SetActive(scan);
         timeLeft = scanTimer;
+        resetScannerLock.Invoke();
+        if (currentFish!=null) ScanEffect.Invoke(currentFish.gameObject, scan);
+        
     }
 
     
@@ -249,3 +301,13 @@ public class Scanner : MonoBehaviour
         depletingSpeed = speed;
     }
 }
+
+public enum ScannerState
+{
+    None, 
+    Inactive,
+    InRange, 
+    Scanning
+}
+
+
