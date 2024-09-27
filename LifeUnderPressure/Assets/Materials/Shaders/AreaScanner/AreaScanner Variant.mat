@@ -33,7 +33,7 @@ Material:
     - _Range: 3
     - _SrcBlend: 5
     m_Colors:
-    - _Color: {r: 0.81298834, g: 0.9169811, b: 0.060555227, a: 0}
+    - _Color: {r: 0.235294, g: 2.5258386, b: 3.6705883, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5756311164667847307
 MonoBehaviour:
