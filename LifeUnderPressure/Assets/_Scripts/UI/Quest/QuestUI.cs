@@ -17,23 +17,33 @@ public class QuestUI : MonoBehaviour
     }
     private void UpdateUI()
     {
-        List<Quest.FishAmount> questReqs = QuestSystem.GetQuestReqs();
-        if (questReqs == null)
+        if (QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
             RebuildQuestReqTexts(0);
-            return;
+            TMP_Text text = Instantiate(questReqPrefab, gridTransform);
+            text.text = string.Format("Go to {0}", QuestSystem.GetQuestLocation().name);
+            questReqTexts.Add(text);
         }
-        if (questReqTexts.Count != questReqs.Count)
+        else
         {
-            RebuildQuestReqTexts(questReqs.Count);
-        }
-        for (int i = 0; i < questReqs.Count; i++)
-        {
-            questReqTexts[i].text = string.Format("{0} {1} - {2}/{3}",
-                QuestSystem.GetQuestType().ToString(),
-                questReqs[i].name,
-                QuestSystem.GetCurrentValue(i),
-                questReqs[i].amount);
+            List<Quest.FishAmount> questReqs = QuestSystem.GetQuestReqs();
+            if (questReqs == null)
+            {
+                RebuildQuestReqTexts(0);
+                return;
+            }
+            if (questReqTexts.Count != questReqs.Count)
+            {
+                RebuildQuestReqTexts(questReqs.Count);
+            }
+            for (int i = 0; i < questReqs.Count; i++)
+            {
+                questReqTexts[i].text = string.Format("{0} {1} - {2}/{3}",
+                    QuestSystem.GetQuestType().ToString(),
+                    questReqs[i].name,
+                    QuestSystem.GetCurrentValue(i),
+                    questReqs[i].amount);
+            }
         }
     }
     private void RebuildQuestReqTexts(int amount)

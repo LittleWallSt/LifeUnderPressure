@@ -11,6 +11,8 @@ public class Quest : ScriptableObject
     [SerializeField] private List<FishAmount> fishes = null;
     [SerializeField] private List<Reward> rewards = null;
 
+    [SerializeField] private Location location;
+
     [SerializeField] private EventReference audioOnAssign;
     [SerializeField] private EventReference[] audioOnProgress;
     [SerializeField] private EventReference audioOnEnd;
@@ -18,6 +20,7 @@ public class Quest : ScriptableObject
     public QuestType Type => type;
     public List<FishAmount> Fishes => new List<FishAmount>(fishes);
     public List<Reward> Rewards => new List<Reward>(rewards);
+    public Location _Location => location;
 
     public EventReference AudioOnAssign => audioOnAssign;
     public EventReference[] AudioOnProgress => audioOnProgress;
@@ -26,6 +29,7 @@ public class Quest : ScriptableObject
     {
         Scan,
         Capture,
+        Location,
         None
     }
     [Serializable]
@@ -45,5 +49,12 @@ public class Quest : ScriptableObject
         public RewardType type;
         public string boolName;
         public int value;
+    }
+    [Serializable]
+    public struct Location
+    {
+        public Vector3 position;
+        public float closeDistance;
+        public string name;
     }
 }
