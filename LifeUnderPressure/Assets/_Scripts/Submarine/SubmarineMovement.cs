@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using FMOD.Studio;
 
 public class SubmarineMovement : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class SubmarineMovement : MonoBehaviour
 
     [SerializeField] private bool isTutorial = false;
 
+    // Janko and Aleksis
+    private EventInstance propellerSFX;
 
     #region
     [SerializeField]TutorialManager tutorial;
@@ -38,6 +41,15 @@ public class SubmarineMovement : MonoBehaviour
     {
         ResetMovement();
     }
+
+    private void Start()
+    {
+        // Janko and Aleksis
+        propellerSFX = AudioManager.instance.CreateInstance(FMODEvents.instance.propellerSFX);
+        propellerSFX.setParameterByName("Input", 0f);
+        propellerSFX.start();
+    }
+
     public void ResetMovement()
     {
         rotationVelocity = Vector3.zero;
@@ -58,6 +70,10 @@ public class SubmarineMovement : MonoBehaviour
         float inputUp = Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        // Janko and Aleksis 
+        propellerSFX.setParameterByName("Input", input.magnitude);
+        //propellerSFX.getTimelinePosition(out int posi);
+        //Debug.Log(posi);
     }
 
     private void TutorialUpdate()
@@ -213,5 +229,11 @@ public class SubmarineMovement : MonoBehaviour
         GUI.Label(new Rect(10, 360, 500, 80), string.Format("Bumped: {0}", bumped), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 430, 500, 80), string.Format("R. Velocity: {0}", rotationVelocity), InternalSettings.Get.DebugStyle);
         GUI.Label(new Rect(10, 500, 500, 80), string.Format("Time: {0}", Time.time), InternalSettings.Get.DebugStyle);
+    }
+
+    private void OnDestroy()
+    {
+        // Janko and Aleksis
+        propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
     }
 }
