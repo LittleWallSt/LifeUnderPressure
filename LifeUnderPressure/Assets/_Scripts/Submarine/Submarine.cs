@@ -14,6 +14,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private float stressDamageModifier = 0.25f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
+    [SerializeField] private TMP_Text dockText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
@@ -28,7 +29,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private float stress = 0f;
     private float inDeepTime = 0f;
-
+    private bool docked = false;
     public static Submarine Instance { get; private set; } = null;
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         warningText.gameObject.SetActive(false);
         if (upgradeCanvas != null) upgradeCanvas.gameObject.SetActive(false);
         if (pauseMenu != null) pauseMenu.EnableMenu(false);
+        EnableDockText(false);
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -68,8 +70,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private void Update()
     {
+        if (docked) return;
+
         PauseMenuInput();
-        UpgradeCanvasInput();
+        //UpgradeCanvasInput();
         EncyclopediaInput();
     }
 
@@ -97,6 +101,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     //**
     private void UpgradeCanvasInput()
     {
+        if (!docked) return;
         if (!Input.GetKeyDown(KeyCode.Tab)) return;
 
         if (currentMenu == null || currentMenu == upgradeCanvas.gameObject || !currentMenu.activeSelf)
@@ -104,7 +109,31 @@ public class Submarine : MonoBehaviour, IDepthDependant
             currentMenu = upgradeCanvas.EnableMenu(!upgradeCanvas.gameObject.activeSelf) ? upgradeCanvas.gameObject : null;
         }
     }
-
+    public void ForceEnableUpgradeCanvas()
+    {
+        ForceCloseCurrentMenu();
+        currentMenu = upgradeCanvas.EnableMenu(true) ? upgradeCanvas.gameObject : null;
+    }
+    public void ForceCloseCurrentMenu()
+    {
+        if (currentMenu == encyclopedia.gameObject)
+        {
+            encyclopedia.EnableMenu(false, null);
+        }
+        else if (currentMenu == pauseMenu.gameObject)
+        {
+            pauseMenu.EnableMenu(false);
+        }
+        else if (currentMenu == upgradeCanvas.gameObject)
+        {
+            upgradeCanvas.EnableMenu(false);
+        }
+    }
+    public void ForceCloseUpgradeCanvas()
+    {
+        upgradeCanvas.EnableMenu(false);
+        if (currentMenu == upgradeCanvas) currentMenu = null;
+    }
     private void Die()
     {
         Debug.Log("Submarine died");
@@ -128,6 +157,19 @@ public class Submarine : MonoBehaviour, IDepthDependant
         {
             warningText.gameObject.SetActive(false);
         }
+    }
+    // Setters
+    public void SetDocked(bool state)
+    {
+        docked = state;
+    }
+    public void EnableDockText(bool state)
+    {
+        dockText?.gameObject.SetActive(state);
+    }
+    public void EnableMovement(bool state)
+    {
+        movement.enabled = state;
     }
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
