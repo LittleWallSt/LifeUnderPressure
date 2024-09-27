@@ -70,6 +70,14 @@ public static class QuestSystem
     {
         OnQuestFinished += action;
     }
+    public static void Remove_OnQuestUpdated(Action action)
+    {
+        OnQuestUpdated -= action;
+    }
+    public static void Remove_OnQuestFinished(Action action)
+    {
+        OnQuestFinished -= action;
+    }
     public static void Reset()
     {
         CurrentQuest = null;
