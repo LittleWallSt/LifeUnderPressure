@@ -33,6 +33,9 @@ public class SubmarineMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         input = new Vector3();
+    }
+    private void OnEnable()
+    {
         ResetMovement();
     }
     public void ResetMovement()
