@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5009737675055162929}
   - component: {fileID: 5250809311222628252}
   - component: {fileID: 8579426480908792588}
+  - component: {fileID: -7062556545130222422}
   m_Layer: 0
   m_Name: GreenSeaTurtle
   m_TagString: Untagged
@@ -122,6 +123,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.16, z: 0.36}
   m_Center: {x: 0, y: 0.02, z: 0.37}
+--- !u!114 &-7062556545130222422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049914236845900121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishInfo: {fileID: 0}
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  speed: 0
+  rotationSpeed: 0
+  alignmentThreshold: 0
+  avoidanceDetection: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &5268318182166497131
 PrefabInstance:
   m_ObjectHideFlags: 0
