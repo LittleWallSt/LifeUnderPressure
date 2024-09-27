@@ -84,7 +84,7 @@ MonoBehaviour:
   avoidanceDetection: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4294967295
   FOVAngle: 180
   smoothDamp: 1
 --- !u!1001 &1582501961898567565
