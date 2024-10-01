@@ -163,6 +163,7 @@ public class Scanner : MonoBehaviour
     {
         // Aleksis >>
         FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
+        fishInfo.locked = false;
         QuestSystem.ScannedFish(fishInfo.fishName);
         // Aleksis <<
         ScanEffect.Invoke(currentFish.gameObject, false);
@@ -281,7 +282,7 @@ public class Scanner : MonoBehaviour
         scanRect.SetActive(scan);
         timeLeft = scanTimer;
         resetScannerLock.Invoke();
-        if (currentFish!=null) ScanEffect.Invoke(currentFish.gameObject, scan);
+        if (currentFish!=null && ScanEffect!=null) ScanEffect.Invoke(currentFish.gameObject, scan);
         
     }
 
