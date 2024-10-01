@@ -119,7 +119,7 @@ public class TutorialManager : MonoBehaviour
         if (nextPromt.action)
         {
             actionLock = true;
-            currentControl = nextPromt.tutorControls;
+            //currentControl = nextPromt.tutorControls;
         }
 
         //StartTyping(nextPromt.textPromt, promt);
@@ -157,15 +157,7 @@ public class TutorialManager : MonoBehaviour
 }
 
 
-[Serializable]
-public struct Promt
-{
-    public bool action;
-    [TextArea(5, 15)]
-    public string textPromt;
-    public AudioClip voicelinePromt;
-    public TutorControls tutorControls;
-}
+
 
 public enum TutorControls
 {

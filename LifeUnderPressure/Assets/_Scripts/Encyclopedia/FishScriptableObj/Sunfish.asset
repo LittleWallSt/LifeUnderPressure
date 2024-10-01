@@ -15,6 +15,7 @@ MonoBehaviour:
   fishName: Sunfish
   fishSmallDescription: As gigantic as the ocean sunfish can be, it still seems like
     only half a fish.
+  infoWhere: somewhere sunfiah
   fishFullDescription: "Sunfish, or mola, develop their truncated, bullet-like shape
     because the back fin which they are born with simply never grows. Instead, it
     folds into itself as the enormous creature matures, creating a rounded rudder
@@ -26,5 +27,5 @@ MonoBehaviour:
     structure, and they are unable to fully close their relatively small mouths."
   fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
     type: 3}
-  locked: 0
+  locked: 1
   scale: 5

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            throw new System.Exception("NO MORE QUESTS AVAILABLE. REMOVE THIS OR ADD IMPLEMENTATION");
+            //throw new System.Exception("NO MORE QUESTS AVAILABLE. REMOVE THIS OR ADD IMPLEMENTATION");
         }
     }
     public float GetTerrainHeight(Vector3 position)
