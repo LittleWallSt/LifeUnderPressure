@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.TextCore.Text;
+using System;
 
 public class BeaconZone : MonoBehaviour
 {
@@ -66,20 +67,37 @@ public class BeaconZone : MonoBehaviour
                     out worldSpacePos);
                 pingTransformRect.position = worldSpacePos;
                 Debug.Log("Area IN camera vision: ");
+                AdjustPingSize(dist);
             }
             else
             {
-                // Area outside the camera vision, then the ping is on the camera borders
-                DrawPingInBorders(areaScreenPos);
+                if(!IsBehind())
+                {
+                    // Area outside the camera vision, then the ping is on the camera borders
+                    DrawPingInBorders(areaScreenPos);
+                    AdjustPingSize(dist);
+                }
+                else
+                {
+                    EnablePing(false);
+                }
 
             }
-            AdjustPingSize(dist);
         }
         // Area outside range
         else
         {
             EnablePing(false);
         }
+    }
+
+    private bool IsBehind()
+    {
+        Vector3 dir = (pingArea.position - camera.transform.position).normalized;
+        Vector3 camForward = camera.transform.forward;
+        camForward.y = 0;
+
+        return Math.Abs(Vector3.SignedAngle(camForward, dir, Vector3.up)) > 90; 
     }
 
     private void DrawPingInBorders(Vector3 areaPos)
