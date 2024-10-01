@@ -39,6 +39,10 @@ public class UpgradeBox : MonoBehaviour
         bool upgraded = upgrade.TryUpgradeLevel(submarine.Money);
         if (!upgraded) return;
 
+        // Janko >> 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.upgradeFX, Camera.main.transform.position);
+        // Janko <<
+
         levelCircles[upgrade.Level - 1].color = boughtColor;
         submarine.Money -= upgrade.GetLevelUpgradeCost();
         UpdateUI();
