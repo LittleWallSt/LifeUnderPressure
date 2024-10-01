@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: ProtoFish
   m_EditorClassIdentifier: 
   fishName: Nemo
-  fishSmallDescription: 404 not found
-  fishFullDescription: 
-  fishPrefab: {fileID: 0}
+  fishSmallDescription: The clownfish is a small, brightly colored marine fish known
+    for its vibrant orange and white stripes. It forms a symbiotic relationship with
+    sea anemones, using them for protection while providing the anemones with food.
+  infoWhere: You can find this blupie boop in corals. They have bright orange colour,
+    so it is easy (no) to spot them when they are not hinding in bright corals of
+    the same bright colour idk
+  fishFullDescription: "\u029A\u0298\u035C\u0361))(\nThe clownfish is a small, tropical
+    fish renowned for its vibrant orange body with distinctive white stripes edged
+    in black. The fish are protected by the anemones' stinging tentacles, which deter
+    predators, while the clownfish help keep the anemone clean and free of parasites.
+    Clownfish are also known for their unique reproductive behavior, as they are
+    born male but can change to female when needed. Their bright coloration and fascinating
+    behavior have made them popular in both aquariums and marine studies."
+  fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
+    type: 3}
   locked: 1
-  scale: 0
+  scale: 5

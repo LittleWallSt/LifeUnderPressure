@@ -8,6 +8,9 @@ public class FishInfo : ScriptableObject
     [Tooltip("Description for the preview.")]
     [TextArea(5, 15)]
     public string fishSmallDescription;
+    [Tooltip("Description for the fish habitat.")]
+    [TextArea(5, 15)]
+    public string infoWhere;
     [Tooltip("Full description for the encyclopedia.")]
     [TextArea(15, 15)]
     public string fishFullDescription;

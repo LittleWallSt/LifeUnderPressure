@@ -15,6 +15,7 @@ MonoBehaviour:
   fishName: Firefly squid
   fishSmallDescription: 'Of all the bioluminescent life forms in the deep sea, there
     is one tiny creature who''s light show puts all others to shame. '
+  infoWhere: firefly squid could anywhere beware
   fishFullDescription: 'This is the firefly squid, sometimes called the sparkling
     enope squid. Known to science as Watasenia scintillans, it is referred to in
     Japan as "hotaru-ika". It is a member of the cephalopod family and is related
@@ -34,5 +35,5 @@ MonoBehaviour:
     in unison or alternated in an endless number of animated patterns.'
   fishPrefab: {fileID: 3976071570644377693, guid: 762238caf4563cf4f895549eb1fd481c,
     type: 3}
-  locked: 0
+  locked: 1
   scale: 0.04
