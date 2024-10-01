@@ -2,6 +2,7 @@ using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -50,6 +51,8 @@ public class TutorialUtility : MonoBehaviour
 
         if (timer >= cdTime)
         {
+
+            
             if (Input.anyKey && !actionLock)
             {
                 PlayNextStep();
@@ -84,8 +87,27 @@ public class TutorialUtility : MonoBehaviour
         }
 
         //StartTyping(nextPromt.textPromt, promt);
-        promt.text = nextPromt.textPromt;
+        //promt.text = nextPromt.textPromt;
        
+    }
+
+    public void StartTyping(string fullText, TextMeshProUGUI uiText)
+    {
+        StartCoroutine(TypeText(fullText, uiText));
+    }
+
+
+    public IEnumerator TypeText(string fullText, TextMeshProUGUI uiText)
+    {
+        uiText.text = "";  // Clear the text first
+        StringBuilder stringBuilder = new StringBuilder();  // Use StringBuilder
+
+        foreach (char letter in fullText)
+        {
+            stringBuilder.Append(letter);  // Append each letter
+            uiText.text = stringBuilder.ToString();  // Set the text each time
+            yield return new WaitForSeconds(0.05f);  // Wait between each letter
+        }
     }
 }
 
