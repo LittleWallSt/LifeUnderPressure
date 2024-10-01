@@ -18,17 +18,29 @@ public class GameManager : MonoBehaviour
     private float distanceLoadTimer = 0f;
     private int questIndex = -1;
 
+    private bool inTutorial = false;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
         DontDestroyOnLoad(gameObject);
+        DataManager.Init();
         QuestSystem.Reset();
+        StartCoroutine(LoadDataCoroutine());
+    }
+    private IEnumerator LoadDataCoroutine()
+    {
+        yield return StartCoroutine(DataManager.LoadData());
+
+        yield return null;
+        submarine.Init();
+        upgradeCanvas.SetupCanvas(submarine);
     }
     private void Start()
     {
-        upgradeCanvas.SetupCanvas(submarine);
+        InternalSettings.EnableCursor(false);
     }
     public void AssignIDL(IDistanceLoad idl)
     {
@@ -45,6 +57,11 @@ public class GameManager : MonoBehaviour
             }
         }
         DistanceLoadProcess();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            DataManager.Clear();
+        }
+        if (inTutorial) return;
 
         if(!QuestSystem.HasQuest() && Time.time - QuestSystem.TimeLastQuestFinished > delayToStartNewQuest)
         {
@@ -96,5 +113,6 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         QuestSystem.Reset();
+        DataManager.Reset();
     }
 }

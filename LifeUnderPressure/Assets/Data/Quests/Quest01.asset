@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   fishes: []
-  rewards: []
+  rewards:
+  - type: 0
+    boolName: 
+    value: 1000
   location:
     position: {x: 90.19, y: -13.58, z: -35.21}
     closeDistance: 5

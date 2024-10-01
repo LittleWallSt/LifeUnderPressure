@@ -7776,6 +7776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 3
+  upgradeCost: 0000000064000000c80000002c010000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -7815,6 +7816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
+  upgradeCost: 000000002c01000090010000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -7839,6 +7841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 1
+  upgradeCost: 00000000e8030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -7889,6 +7892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 1
+  upgradeCost: 00000000e8030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -7955,6 +7959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
+  upgradeCost: 00000000f401000084030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
