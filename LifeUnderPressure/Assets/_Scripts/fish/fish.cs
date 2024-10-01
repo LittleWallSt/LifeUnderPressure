@@ -83,12 +83,13 @@ public class Fish : MonoBehaviour
 
     public void SetRandomWaypoint()
     {
-      currentWaypointIndex = Random.Range(0, path.Length);
+        int aux = Random.Range(0, path.Length);
+        currentWaypointIndex = aux;
     }
 
     public void SetRandomPath()
     {
-        random = !random;
+        random = true;
     }
     #region Movement
 
