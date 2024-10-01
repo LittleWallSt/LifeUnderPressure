@@ -36,11 +36,20 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
+        {
+            float distance = Vector3.Distance(Submarine.Instance.transform.position, QuestSystem.GetQuestLocation().position);
+            if (distance < QuestSystem.GetQuestLocation().closeDistance)
+            {
+                QuestSystem.InQuestLocation();
+            }
+        }
+        DistanceLoadProcess();
+
         if(!QuestSystem.HasQuest() && Time.time - QuestSystem.TimeLastQuestFinished > delayToStartNewQuest)
         {
             StartNextQuest();
         }
-        DistanceLoadProcess();
     }
 
     private void DistanceLoadProcess()
