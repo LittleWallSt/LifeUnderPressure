@@ -50,6 +50,7 @@ public class TutorialUtility : MonoBehaviour
 
         if (timer >= cdTime)
         {
+
             if (Input.anyKey && !actionLock)
             {
                 PlayNextStep();
@@ -84,9 +85,14 @@ public class TutorialUtility : MonoBehaviour
         }
 
         //StartTyping(nextPromt.textPromt, promt);
+
         promt.text = nextPromt.textPromt;
        
     }
+
+   
+
+
 }
 
 [Serializable]
