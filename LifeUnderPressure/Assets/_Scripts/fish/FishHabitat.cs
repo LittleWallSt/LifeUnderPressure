@@ -7,6 +7,8 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
     [SerializeField] private Fish fishPrefab = null;
     [SerializeField] private int maxAmount = 3;
     [SerializeField] private float zoneRadius = 10f;
+    [SerializeField, Range(0.1f, 1.0f)] private float minScale;
+    [SerializeField, Range(1.0f, 2.0f)] private float maxScale;
     
     // Javi >>
     [SerializeField] private Path path = null;
@@ -37,6 +39,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
             fishList.Add(Instantiate(fishPrefab, spawnPos, Quaternion.identity));
             // Javi >>
             fishList[i].SetPath(path);
+            fishList[i].gameObject.transform.localScale *= Random.Range(minScale, maxScale);
             // << Javi
         }
     }
