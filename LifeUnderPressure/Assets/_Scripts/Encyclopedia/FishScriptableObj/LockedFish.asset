@@ -12,9 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: LockedFish
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  fishFullDescription: 
+  fishName: Locked fish
+  fishSmallDescription: The fish description is not here because programmers are
+    lazy so it is just a place holder.
+  infoWhere: somewhere
+  fishFullDescription: 'Baby Shark, doo-doo, doo-doo, doo-doo
+
+    Baby Shark, doo-doo,
+    doo-doo, doo-doo
+
+    Baby Shark, doo-doo, doo-doo, doo-doo
+
+    Baby Shark
+
+    Mommy
+    Shark, doo-doo, doo-doo, doo-doo
+
+    Mommy Shark, doo-doo, doo-doo, doo-doo
+
+    Mommy
+    Shark, doo-doo, doo-doo, doo-doo
+
+    Mommy Shark
+
+    Daddy Shark, doo-doo,
+    doo-doo, doo-doo
+
+    Daddy Shark, doo-doo, doo-doo, doo-doo
+
+    Daddy Shark,
+    doo-doo, doo-doo, doo-doo
+
+    Daddy Shark
+
+    Grandma Shark, doo-doo, doo-doo,
+    doo-doo
+
+    Grandma Shark, doo-doo, doo-doo, doo-doo
+
+    Grandma Shark, doo-doo,
+    doo-doo, doo-doo
+
+    Grandma Shark
+
+    Grandpa Shark, doo-doo, doo-doo, doo-doo
+
+    Grandpa
+    Shark, doo-doo, doo-doo, doo-doo
+
+    Grandpa Shark, doo-doo, doo-doo, doo-doo
+
+    Grandpa
+    Shark'
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

@@ -19,6 +19,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference musicToPlay { get; private set; }
 
+    [field: Header("VO Tracks")]
+    [field: SerializeField]
+    public EventReference voice01 { get; private set; }
+
 
     private void Awake()
     {
