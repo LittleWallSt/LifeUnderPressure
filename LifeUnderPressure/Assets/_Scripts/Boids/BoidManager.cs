@@ -30,6 +30,8 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
     [SerializeField] private BoidUnit boidUnitPrefab;
     [SerializeField] private int boidSize;
     [SerializeField] private Vector3 spawnBounds;
+    [SerializeField, Range(0.1f, 1.0f)] private float minScale;
+    [SerializeField, Range(1.0f, 2.0f)] private float maxScale;
 
     [Header("Path to follow")]
     [SerializeField] private Path _path;
@@ -203,6 +205,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
             // We instantiate and initialaze the unit. Also assigned its respective boid to the unit
             allUnits[i] = Instantiate(boidUnitPrefab, spawnPosition, rotation);
             allUnits[i].gameObject.layer = LayerMask.NameToLayer("Fish");
+            allUnits[i].gameObject.transform.localScale *= Random.Range(minScale, maxScale);
             allUnits[i].AssignBoid(this);
             allUnits[i].InitializeSpeed(UnityEngine.Random.Range(minSpeed, maxSpeed));
             allUnits[i].setGeneralFish(isSquid);
