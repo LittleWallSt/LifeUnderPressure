@@ -31,7 +31,7 @@ public class ImageAnimation : MonoBehaviour
         index++;
         if (index >= sprites.Length)
         {
-            if (loop)
+            if (loop) 
                 index = 0;
             if (destroyOnEnd)
                 Destroy(gameObject);
