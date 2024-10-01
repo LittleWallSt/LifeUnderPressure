@@ -31,6 +31,8 @@ public class Fish : MonoBehaviour
 
     protected Transform player;
     [Header("Movement properties")]
+    [SerializeField] private bool random = false;
+
     [SerializeField] protected float speed;
     
     [SerializeField] protected float rotationSpeed;
@@ -63,7 +65,10 @@ public class Fish : MonoBehaviour
 
         if (path.Length > 0)
         {
-            SetNextWaypoint();
+            if (!random)
+                SetNextWaypoint();
+            else
+                SetRandomPath();
         }
 
         // Aleksis >>
@@ -81,6 +86,10 @@ public class Fish : MonoBehaviour
       currentWaypointIndex = Random.Range(0, path.Length);
     }
 
+    public void SetRandomPath()
+    {
+        random = !random;
+    }
     #region Movement
 
     /// <summary>
@@ -120,7 +129,10 @@ public class Fish : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
         {
-            SetNextWaypoint();
+            if(!random)
+                SetNextWaypoint();
+            else
+                SetRandomWaypoint();
         }
     }
 
