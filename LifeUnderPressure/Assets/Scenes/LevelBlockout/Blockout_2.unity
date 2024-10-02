@@ -5089,6 +5089,11 @@ PrefabInstance:
       propertyPath: upgrades.Array.data[2]
       value: 300000
       objectReference: {fileID: 0}
+    - target: {fileID: 8133002748453752486, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: pingArea
+      value: 
+      objectReference: {fileID: 1860010542}
     - target: {fileID: 8408860143801451377, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_Name
