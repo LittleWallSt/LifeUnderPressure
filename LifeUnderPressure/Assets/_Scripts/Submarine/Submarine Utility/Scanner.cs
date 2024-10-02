@@ -49,7 +49,7 @@ public class Scanner : MonoBehaviour
 
     // Property to monitor changes to currstate
     public ScannerState currentState
-    {
+    { 
         get { return _currentState; }
         set
         {
@@ -182,10 +182,11 @@ public class Scanner : MonoBehaviour
         // Aleksis >>
         FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
         fishInfo.locked = false;
+        if (fishInfo.OnLockedChange!=null) fishInfo.OnLockedChange.Invoke();
         QuestSystem.ScannedFish(fishInfo.fishName);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
         // Aleksis <<
-        ScanEffect.Invoke(currentFish.gameObject, false);
+        if (ScanEffect!=null )ScanEffect.Invoke(currentFish.gameObject, false);
         
 
         DisplayInfo(fishInfo);

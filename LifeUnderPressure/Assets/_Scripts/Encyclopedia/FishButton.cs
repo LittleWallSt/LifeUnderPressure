@@ -11,6 +11,7 @@ public class FishButton : MonoBehaviour
     private Encyclopedia encyclopedia;
     private void Start()
     {
+        fishInfo.OnLockedChange += ChangeImage;
         encyclopedia = FindAnyObjectByType<Encyclopedia>();
 
         if (TryGetComponent<Image>(out Image image))
@@ -19,11 +20,19 @@ public class FishButton : MonoBehaviour
         }
 
         gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
-
+        
         // Aleksis >>
         GameManager.Instance.Assign_OnDataLoaded(LoadFishInfo);
         // Aleksis <<
     }
+    void ChangeImage()
+    {
+        if (TryGetComponent<Image>(out Image image))
+        {
+            image.sprite = fishImage; 
+        }
+    }
+
     // Aleksis >>
     private void LoadFishInfo()
     {
