@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("al tutorial " + state);
         inTutorial = state;
+        DataManager.Write("InTutorial", state ? 1 : 0);
         if (state) QuestSystem.Reset();
     }
     // Action

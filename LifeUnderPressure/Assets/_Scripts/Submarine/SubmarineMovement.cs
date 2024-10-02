@@ -59,19 +59,13 @@ public class SubmarineMovement : MonoBehaviour
     }
     private void Update()
     {
-        
         // Get input
         float inputUp = Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         // Janko and Aleksis 
         propellerSFX.setParameterByName("Input", input.magnitude);
-        //propellerSFX.getTimelinePosition(out int posi);
-        //Debug.Log(posi);
     }
-
-    
-
     private void FixedUpdate()
     {
         float deltaTime = Time.fixedDeltaTime;
@@ -159,7 +153,7 @@ public class SubmarineMovement : MonoBehaviour
 
     private void BumpCollision(Collision collision)
     {
-        if(collision.transform.gameObject.layer == 8) // just for now to block going higher than water surface, 8 is fish layer
+        if(collision.transform.gameObject.layer == 8 || collision.transform.gameObject.layer == 4) // just for now to block going higher than water surface, 8 is fish layer
         {
             return;
         }
