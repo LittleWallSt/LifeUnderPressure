@@ -179,5 +179,10 @@ public class BeaconZone : MonoBehaviour
         minDist = _minDist;
     }
 
+    public void setAreaName(string AreaText)
+    {
+        areaText.text = AreaText;
+    }
+
 }
 

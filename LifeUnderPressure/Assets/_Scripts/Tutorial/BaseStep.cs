@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseStep : TutorialStep
 {
     [SerializeField] Quest quest;
+    [SerializeField] string Areaname;
 
     public override void CheckForCompleting()
     {
@@ -15,7 +16,10 @@ public class BaseStep : TutorialStep
     {
         QuestSystem.AssignQuest(quest);
         QuestSystem.Assign_OnQuestFinished(QuestFinished);
-        TutorialUtility.Instance.beaconZone.TurnOnPing(true);
+        if (QuestSystem.GetQuestType() == Quest.QuestType.Location) { 
+            TutorialUtility.Instance.beaconZone.TurnOnPing(true);
+            TutorialUtility.Instance.beaconZone.setAreaName(Areaname);
+        }
         GameObject newGo = new GameObject();
         newGo.transform.position = QuestSystem.GetQuestLocation().position;
         if (TutorialUtility.Instance.beaconZone!=null) TutorialUtility.Instance.beaconZone.setPingTransform(newGo.transform);
