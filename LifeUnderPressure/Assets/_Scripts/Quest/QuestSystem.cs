@@ -101,7 +101,7 @@ public static class QuestSystem
         CurrentQuest = null;
         CurrentValues = null;
         OnQuestUpdated = null;
-        _TimeLastQuestFinished = 0f;
+        _TimeLastQuestFinished = Time.time;
     }
     // Getters
     public static List<Quest.FishAmount> GetQuestReqs()
