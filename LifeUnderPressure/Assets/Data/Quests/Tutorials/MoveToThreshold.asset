@@ -18,7 +18,7 @@ MonoBehaviour:
   location:
     position: {x: 12, y: -29.16, z: 64.3}
     closeDistance: 30
-    name: 
+    name: Clownfish Habitat
   audioOnAssign:
     Guid:
       Data1: 0

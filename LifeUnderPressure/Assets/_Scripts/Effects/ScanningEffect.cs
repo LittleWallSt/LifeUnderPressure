@@ -31,7 +31,7 @@ public class ScanningEffect : MonoBehaviour
 
     private void RevertMaterial(GameObject fish)
     {
-        if (cash.Length > 0)
+        if (cash != null && cash.Length > 0)
         {
             cashedObject.materials = cash;
         }

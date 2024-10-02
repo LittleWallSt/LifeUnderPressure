@@ -23,24 +23,28 @@ MonoBehaviour:
   - type: 1
     boolName: asdafs
     value: 0
+  location:
+    position: {x: 0, y: 0, z: 0}
+    closeDistance: 0
+    name: 
   audioOnAssign:
     Guid:
-      Data1: 1560388430
-      Data2: 1289135335
-      Data3: -1738312316
-      Data4: 1712062816
-    Path: event:/SFX/VO/VO_01
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   audioOnProgress:
   - Guid:
-      Data1: -1469315812
-      Data2: 1257239368
-      Data3: 166450858
-      Data4: -1412972000
-    Path: event:/SFX/VO/VO_03
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   audioOnEnd:
     Guid:
-      Data1: 1560388430
-      Data2: 1289135335
-      Data3: -1738312316
-      Data4: 1712062816
-    Path: event:/SFX/VO/VO_01
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

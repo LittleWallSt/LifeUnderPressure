@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Clownfish
+  - name: Clownfish0000
     amount: 1
   rewards: []
   location:
@@ -23,16 +23,16 @@ MonoBehaviour:
     name: 
   audioOnAssign:
     Guid:
-      Data1: -1469315812
-      Data2: 1257239368
-      Data3: 166450858
-      Data4: -1412972000
-    Path: event:/SFX/VO/VO_03
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   audioOnProgress: []
   audioOnEnd:
     Guid:
-      Data1: 1580730622
-      Data2: 1229958353
-      Data3: 1237094073
-      Data4: 411018863
-    Path: event:/SFX/VO/VO_04
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

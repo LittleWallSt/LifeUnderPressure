@@ -24,16 +24,16 @@ MonoBehaviour:
     name: Docking Station
   audioOnAssign:
     Guid:
-      Data1: 1560388430
-      Data2: 1289135335
-      Data3: -1738312316
-      Data4: 1712062816
-    Path: event:/SFX/VO/VO_01
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   audioOnProgress: []
   audioOnEnd:
     Guid:
-      Data1: -1736614377
-      Data2: 1130829589
-      Data3: -2096514657
-      Data4: 1939585123
-    Path: event:/SFX/VO/VO_02
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 

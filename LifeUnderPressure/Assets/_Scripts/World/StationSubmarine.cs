@@ -89,7 +89,8 @@ public class StationSubmarine : MonoBehaviour, IDistanceLoad
     // IDistanceLoad
     public void IDL_AssignToGameManager()
     {
-        GameManager.Instance.AssignIDL(this);
+        // Dont assign for now
+        //GameManager.Instance.AssignIDL(this);
     }
 
     public Vector3 IDL_GetPosition()
