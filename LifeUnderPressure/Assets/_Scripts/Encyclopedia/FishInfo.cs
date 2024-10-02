@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FishInfo", menuName = "ScriptableObjects/Fish info", order = 1)]
@@ -22,5 +23,7 @@ public class FishInfo : ScriptableObject
 
     [Tooltip("Fishing scales in meters for the preview.")]
     public float scale;
+
+    [HideInInspector]public Action OnLockedChange;
 
 }

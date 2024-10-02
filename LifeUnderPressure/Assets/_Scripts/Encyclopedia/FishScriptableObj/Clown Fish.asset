@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishName: Clown Fish
   fishSmallDescription: I'm a clown :D
+  infoWhere: You can find this blupie boop in corals. They have bright orange colour,
+    so it is easy (no) to spot them when they are not hinding in bright corals of
+    the same bright colour idk
   fishFullDescription: 'Clown clown clown clown clown clown clown clown clown clown
     clown clown clown clown clown clown clown clown '
-  fishPrefab: {fileID: 0}
+  fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
+    type: 3}
   locked: 1
-  scale: 0
+  scale: 5

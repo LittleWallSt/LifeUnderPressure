@@ -16,8 +16,8 @@ MonoBehaviour:
   fishes: []
   rewards: []
   location:
-    position: {x: 93.13, y: -14.68, z: -49.49}
-    closeDistance: 3
+    position: {x: 12, y: -29.16, z: 64.3}
+    closeDistance: 30
     name: 
   audioOnAssign:
     Guid:

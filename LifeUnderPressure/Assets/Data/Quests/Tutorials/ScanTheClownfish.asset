@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Nemo
+  - name: Clown Fish
     amount: 1
   rewards: []
   location:

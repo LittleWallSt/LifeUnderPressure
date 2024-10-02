@@ -16,8 +16,8 @@ MonoBehaviour:
   fishes: []
   rewards: []
   location:
-    position: {x: 90.19, y: -13.58, z: -35.21}
-    closeDistance: 5
+    position: {x: -46.799995, y: 6.2, z: -27.7}
+    closeDistance: 20
     name: Docking station
   audioOnAssign:
     Guid:
