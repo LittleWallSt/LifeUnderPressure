@@ -36,13 +36,17 @@ public class BeaconZone : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (pingArea == null) return; //made change
+
         float dist = Vector3.Distance(transform.position, pingArea.position);
         dist -= minDist;
 
-        if (metersText != null) metersText.text = string.Format("{0:0}m", (int)dist);
+        if (metersText != null) metersText.text = string.Format("{0:0}m", (int)dist); 
     }
     void Update()
     {
+        if (pingArea == null) return; //made change
+
         // Distance betweeen the player and the desire area
         float dist = Vector3.Distance(transform.position, pingArea.position);
 
@@ -149,6 +153,30 @@ public class BeaconZone : MonoBehaviour
         UIPing.enabled = enabled;
         areaText.enabled = enabled;
         metersText.enabled = enabled;
+    }
+
+
+
+    //Added setter
+    public void setPingTransform(Transform loc)
+    {
+        pingArea = loc;
+    }
+
+    public void setPingTransform(Vector3 loc)
+    {
+        pingArea.position = loc;
+    }
+
+    public void TurnOnPing(bool enabled)
+    {
+        if(enabled) UIPing.gameObject.SetActive(true);
+        else UIPing.gameObject.SetActive(false);
+    }
+
+    public void setMinDist(float _minDist)
+    {
+        minDist = _minDist;
     }
 
 }

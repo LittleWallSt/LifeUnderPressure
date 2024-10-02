@@ -15,6 +15,10 @@ public class BaseStep : TutorialStep
     {
         QuestSystem.AssignQuest(quest);
         QuestSystem.Assign_OnQuestFinished(QuestFinished);
+        TutorialUtility.Instance.beaconZone.TurnOnPing(true);
+        GameObject newGo = new GameObject();
+        newGo.transform.position = QuestSystem.GetQuestLocation().position;
+        if (TutorialUtility.Instance.beaconZone!=null) TutorialUtility.Instance.beaconZone.setPingTransform(newGo.transform);
     }
     private void QuestFinished()
     {
