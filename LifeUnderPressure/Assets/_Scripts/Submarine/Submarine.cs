@@ -27,10 +27,29 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private Health health;
     private SubmarineMovement movement;
 
+    private int money = 0;
     private float stress = 0f;
     private float inDeepTime = 0f;
     private bool docked = false;
     public static Submarine Instance { get; private set; } = null;
+    public int Money 
+    {
+        get 
+        { 
+            return money; 
+        } 
+        set
+        {
+            if (value < 0)
+            {
+                money = 0;
+                Debug.LogError("Money went below zero. Check if that is intended");
+            }
+            else money = value;
+
+            DataManager.Write("Money", money);
+        } 
+    }
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -38,6 +57,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
+    }
+    public void Init()
+    {
         warningText.gameObject.SetActive(false);
         if (upgradeCanvas != null) upgradeCanvas.gameObject.SetActive(false);
         if (pauseMenu != null) pauseMenu.EnableMenu(false);
@@ -51,14 +73,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
             upgrades.Add(upgrade);
             upgrade.Init(this, movement);
         }
-    }
-    private void Start()
-    {
-        InternalSettings.EnableCursor(false);
-    }
-    public void SetThicknessOfHull(float newThickness)
-    {
-        thicknessOfHull = newThickness;
+
+        Money = DataManager.Get("Money", 0);
     }
     private void FixedUpdate()
     {
@@ -170,6 +186,14 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public void EnableMovement(bool state)
     {
         movement.enabled = state;
+    }
+    public void SetThicknessOfHull(float newThickness)
+    {
+        thicknessOfHull = newThickness;
+    }
+    public void AddMoney(int amount)
+    {
+        Money += amount;
     }
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)

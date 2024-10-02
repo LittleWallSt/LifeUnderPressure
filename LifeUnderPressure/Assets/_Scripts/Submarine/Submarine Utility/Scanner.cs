@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
     [SerializeField] GameObject bar;
 
-
+    private EventInstance scanningInstance;
 
     LayerMask fishLayerMask;
     Quaternion initialRotation;
@@ -73,6 +74,11 @@ public class Scanner : MonoBehaviour
 
         currentState = ScannerState.Inactive;
 
+        // Janko >> 
+        scanningInstance = AudioManager.instance.CreateInstance(FMODEvents.instance.scanningSFX);
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        scanningInstance.start();
+        // Janko << 
     }
 
     private void Update()
@@ -127,12 +133,21 @@ public class Scanner : MonoBehaviour
 
     }
 
+    // Janko >>
+    private void OnDestroy()
+    {
+        scanningInstance.stop(STOP_MODE.ALLOWFADEOUT);
+    }
+    // Janko <<
+
     private void ScanningUpdate() // update for when scanner is active
     {
         timeLeft -= Time.deltaTime;
         ScannerAnimation();
 
-        
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 1);
+        // Janko <<
 
         targetLock.Invoke(currentFish.transform.position);
         updateScanner.Invoke(BarValue(scanTimer, timeLeft));
@@ -147,6 +162,10 @@ public class Scanner : MonoBehaviour
     {
         ChooseTarget();
         if (currentFish != null) { targetLock.Invoke(currentFish.transform.position); }
+
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        // Janko <<
     }
 
     private void InactiveUpdate() // update for scanner being inactive
@@ -155,7 +174,6 @@ public class Scanner : MonoBehaviour
         {
             timeLeft += Time.deltaTime / 2;
             updateScanner.Invoke(BarValue(scanTimer, timeLeft));
-
         }
     }
 
@@ -174,6 +192,10 @@ public class Scanner : MonoBehaviour
         currentFish = null;
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
+        // Janko <<
     }
 
 

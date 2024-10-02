@@ -2151,7 +2151,6 @@ GameObject:
   - component: {fileID: 1964684460245425596}
   - component: {fileID: 5204907106236833623}
   - component: {fileID: 3481516596267444781}
-  - component: {fileID: 160209022568874146}
   m_Layer: 6
   m_Name: Zoom
   m_TagString: Untagged
@@ -2254,23 +2253,6 @@ MonoBehaviour:
   - {fileID: 5628666709714275398}
   - {fileID: 6598614699612473089}
   - {fileID: 7770402993515253672}
---- !u!114 &160209022568874146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000430737605387443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde4169dba05790498d76e8894dd9bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scannerSlider: {fileID: 2228472351259075525}
-  fishName: {fileID: 3173506923197188482}
-  fishDescription: {fileID: 5863229707882442546}
-  scanPanel: {fileID: 5029328780566818862}
-  scanner: {fileID: 4634647225653249626}
 --- !u!1 &3118660267383921498
 GameObject:
   m_ObjectHideFlags: 0
@@ -7776,6 +7758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 3
+  upgradeCost: 0000000064000000c80000002c010000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -7815,6 +7798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
+  upgradeCost: 000000002c01000090010000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -7839,6 +7823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 1
+  upgradeCost: 00000000e8030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -7889,6 +7874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 1
+  upgradeCost: 00000000e8030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -7955,6 +7941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
+  upgradeCost: 00000000f401000084030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []

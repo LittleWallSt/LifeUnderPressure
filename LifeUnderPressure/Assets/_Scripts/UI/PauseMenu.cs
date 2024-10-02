@@ -21,6 +21,10 @@ public class PauseMenu : MonoBehaviour
     {
 
     }
+    public void Button_Save()
+    {
+        DataManager.SaveData();
+    }
     public void Button_Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

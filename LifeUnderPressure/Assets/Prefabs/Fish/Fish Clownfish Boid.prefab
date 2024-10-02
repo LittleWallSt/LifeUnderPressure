@@ -79,10 +79,11 @@ MonoBehaviour:
   curiousTimer: 0
   curiousCooldownTime: 0
   curiousRange: 0
+  random: 0
   speed: 0
   rotationSpeed: 1
   alignmentThreshold: 10
-  avoidanceDetection: {x: 3, y: 3, z: 3}
+  avoidanceDetection: {x: 0.5, y: 0.5, z: 0.5}
   mask:
     serializedVersion: 2
     m_Bits: 384

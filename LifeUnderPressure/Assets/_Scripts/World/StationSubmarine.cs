@@ -39,6 +39,9 @@ public class StationSubmarine : MonoBehaviour, IDistanceLoad
             docking = true;
             time = 0f;
             startPos = submarineInZone.transform.position;
+            // Janko >>
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.dockingSFX, startPos);
+            // Janko <<
         }
 
         submarineInZone.EnableMovement(!docked);
