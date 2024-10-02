@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
 
     private List<IDistanceLoad> idls = new List<IDistanceLoad>();
+
+    private Action onDataLoaded;
 
     private float distanceLoadTimer = 0f;
     private int questIndex = -1;
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
 
         yield return null;
         DataManager.Assign_OnSaveData(StoreQuestData);
+        Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
         submarine.Init();
         upgradeCanvas.SetupCanvas(submarine);
@@ -119,6 +123,19 @@ public class GameManager : MonoBehaviour
     public float GetTerrainHeight(Vector3 position)
     {
         return terrain.SampleHeight(position) + terrain.transform.position.y;
+    }
+    // Action
+    public void Assign_OnDataLoaded(Action action)
+    {
+        onDataLoaded += action;
+    }
+    public void Remove_OnDataLoaded(Action action)
+    {
+        onDataLoaded -= action;
+    }
+    private void Call_OnDataLoaded()
+    {
+        if (onDataLoaded != null) onDataLoaded();
     }
     private void OnDestroy()
     {

@@ -19,7 +19,16 @@ public class FishButton : MonoBehaviour
         }
 
         gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
-    }
 
-    
+        // Aleksis >>
+        GameManager.Instance.Assign_OnDataLoaded(LoadFishInfo);
+        // Aleksis <<
+    }
+    // Aleksis >>
+    private void LoadFishInfo()
+    {
+        fishInfo.locked = DataManager.Get("FishScanned_" + fishInfo.name, 0) == 1 ? false : true;
+        GameManager.Instance.Remove_OnDataLoaded(LoadFishInfo);
+    }
+    // Aleksis <<
 }
