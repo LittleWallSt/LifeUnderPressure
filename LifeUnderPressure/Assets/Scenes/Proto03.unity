@@ -353,6 +353,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8133002748453752486, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: pingArea
+      value: 
+      objectReference: {fileID: 387378324}
     - target: {fileID: 8408860143801451377, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_Name
@@ -611,6 +616,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 249027742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &387378324 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6669168521609649885, guid: f156dddbc8e4118469d77b777a2711f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6885023686196633109}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398162240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1546,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 5, y: 5, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 2037491800}
   _minSpeed: 1.4
   _maxSpeed: 5.8
@@ -2169,6 +2182,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 5, y: 5, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 704911479}
   _minSpeed: 1.5
   _maxSpeed: 3.6
@@ -2676,6 +2691,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 10, y: 3, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 800741657}
   _minSpeed: 1.1
   _maxSpeed: 3.1
@@ -2813,6 +2830,21 @@ PrefabInstance:
       propertyPath: submarineTransform
       value: 
       objectReference: {fileID: 1602457774}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: initialSpawnPoint.x
+      value: 92.50149
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: initialSpawnPoint.y
+      value: -3.0209506
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: initialSpawnPoint.z
+      value: -53.553864
+      objectReference: {fileID: 0}
     - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
         type: 3}
       propertyPath: questLine.Array.data[0]
@@ -3450,6 +3482,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 10, y: 5, z: 8}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 1016428052}
   _minSpeed: 2.5
   _maxSpeed: 4.6
@@ -3585,6 +3619,9 @@ MonoBehaviour:
     type: 3}
   maxAmount: 3
   zoneRadius: 3.81
+  minScale: 0
+  maxScale: 0
+  randomPath: 0
   path: {fileID: 1093764557}
 --- !u!4 &1604752399
 Transform:
@@ -4988,6 +5025,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Encyclopedia
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691483907135279688, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -381.87912
       objectReference: {fileID: 0}
     - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}

@@ -8,15 +8,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
+    [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
     [SerializeField] private float delayToStartNewQuest = 2.5f;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
     public static GameManager Instance { get; private set; }
+    public Vector3 InitialSpawnPoint => initialSpawnPoint;
 
     private List<IDistanceLoad> idls = new List<IDistanceLoad>();
 
     private float distanceLoadTimer = 0f;
     private int questIndex = -1;
+    private bool questsFinished = false;
 
     private bool inTutorial = false;
 
@@ -26,15 +29,17 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); return; }
 
         DontDestroyOnLoad(gameObject);
-        DataManager.Init();
         QuestSystem.Reset();
-        StartCoroutine(LoadDataCoroutine());
+        StartCoroutine(LoadDataProcess());
     }
-    private IEnumerator LoadDataCoroutine()
+    private IEnumerator LoadDataProcess()
     {
+        DataManager.Init();
         yield return StartCoroutine(DataManager.LoadData());
 
         yield return null;
+        DataManager.Assign_OnSaveData(StoreQuestData);
+        questIndex = DataManager.Get("QuestIndex", 0) - 1;
         submarine.Init();
         upgradeCanvas.SetupCanvas(submarine);
     }
@@ -42,12 +47,12 @@ public class GameManager : MonoBehaviour
     {
         InternalSettings.EnableCursor(false);
     }
-    public void AssignIDL(IDistanceLoad idl)
-    {
-        idls.Add(idl);
-    }
     private void Update()
     {
+        DistanceLoadProcess();
+
+        if (questsFinished) return;
+
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
             float distance = Vector3.Distance(Submarine.Instance.transform.position, QuestSystem.GetQuestLocation().position);
@@ -56,11 +61,7 @@ public class GameManager : MonoBehaviour
                 QuestSystem.InQuestLocation();
             }
         }
-        DistanceLoadProcess();
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            DataManager.Clear();
-        }
+
         if (inTutorial) return;
 
         if(!QuestSystem.HasQuest() && Time.time - QuestSystem.TimeLastQuestFinished > delayToStartNewQuest)
@@ -68,7 +69,18 @@ public class GameManager : MonoBehaviour
             StartNextQuest();
         }
     }
-
+    private void StartNextQuest()
+    {
+        questIndex++;
+        if (questLine.Length > questIndex)
+        {
+            QuestSystem.AssignQuest(questLine[questIndex]);
+        }
+        else
+        {
+            questsFinished = true;
+        }
+    }
     private void DistanceLoadProcess()
     {
         distanceLoadTimer += Time.deltaTime;
@@ -94,18 +106,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    private void StartNextQuest()
+    
+    private void StoreQuestData()
     {
-        questIndex++;
-        if(questLine.Length > questIndex)
-        {
-            QuestSystem.AssignQuest(questLine[questIndex]);
-        }
-        else
-        {
-            //throw new System.Exception("NO MORE QUESTS AVAILABLE. REMOVE THIS OR ADD IMPLEMENTATION");
-        }
+        DataManager.Write("QuestIndex", questIndex);
     }
+    public void AssignIDL(IDistanceLoad idl)
+    {
+        idls.Add(idl);
+    }
+    // Getters
     public float GetTerrainHeight(Vector3 position)
     {
         return terrain.SampleHeight(position) + terrain.transform.position.y;
@@ -113,6 +123,7 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         QuestSystem.Reset();
+        DataManager.Remove_OnSaveData(StoreQuestData);
         DataManager.Reset();
     }
 }

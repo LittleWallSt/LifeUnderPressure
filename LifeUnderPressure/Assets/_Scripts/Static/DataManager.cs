@@ -9,6 +9,7 @@ public static class DataManager
 {
     private static List<DataStruct> Data;
 
+    private static Action OnSaveData;
     private static string FilePath;
 
     public static void Init()
@@ -19,6 +20,7 @@ public static class DataManager
 
     public static void SaveData()
     {
+        Call_OnSaveData();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FilePath);
         bf.Serialize(file, Data);
@@ -63,17 +65,10 @@ public static class DataManager
     {
         if (Exist(name))
         {
-            Debug.Log("exist");
             Update(name, value);
             return;
         }
         Add(name, value);
-    }
-    public static void Remove(string name)
-    {
-        if (!Exist(name)) return;
-
-        //Data.Remove(Get(name));
     }
     public static int Get(string name, int defaultValue)
     {
@@ -99,7 +94,22 @@ public static class DataManager
     public static void Reset()
     {
         Data = null;
+        OnSaveData = null;
     }
+    // Action
+    public static void Assign_OnSaveData(Action action)
+    {
+        OnSaveData += action;
+    }
+    public static void Remove_OnSaveData(Action action)
+    {
+        OnSaveData -= action;
+    }
+    private static void Call_OnSaveData()
+    {
+        if (OnSaveData != null) OnSaveData();
+    }
+    // Data Struct
     [Serializable]
     public struct DataStruct
     {

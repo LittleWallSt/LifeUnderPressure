@@ -74,7 +74,14 @@ public class Submarine : MonoBehaviour, IDepthDependant
             upgrade.Init(this, movement);
         }
 
+        DataManager.Assign_OnSaveData(StorePositionData);
         Money = DataManager.Get("Money", 0);
+
+        Vector3 spawnPosition = GameManager.Instance ? GameManager.Instance.InitialSpawnPoint : Vector3.zero;
+        spawnPosition.x = DataManager.Get("SpawnPositionX", Mathf.RoundToInt(spawnPosition.x));
+        spawnPosition.y = DataManager.Get("SpawnPositionY", Mathf.RoundToInt(spawnPosition.y));
+        spawnPosition.z = DataManager.Get("SpawnPositionZ", Mathf.RoundToInt(spawnPosition.z));
+        transform.position = spawnPosition;
     }
     private void FixedUpdate()
     {
@@ -174,6 +181,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
             warningText.gameObject.SetActive(false);
         }
     }
+    private void StorePositionData()
+    {
+        DataManager.Write("SpawnPositionX", Mathf.RoundToInt(transform.position.x));
+        DataManager.Write("SpawnPositionY", Mathf.RoundToInt(transform.position.y));
+        DataManager.Write("SpawnPositionZ", Mathf.RoundToInt(transform.position.z));
+    }
+    private void OnDestroy()
+    {
+        DataManager.Remove_OnSaveData(StorePositionData);
+    }
     // Setters
     public void SetDocked(bool state)
     {
@@ -238,6 +255,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void OnGUI()
     {
-        GUI.Label(new Rect(1000, 10, 500, 100), string.Format("LC Stress: {0}", stress), InternalSettings.Get.DebugStyle);
+        // Shows the stress on screen
+        //GUI.Label(new Rect(1000, 10, 500, 100), string.Format("LC Stress: {0}", stress), InternalSettings.Get.DebugStyle);
     }
 }
