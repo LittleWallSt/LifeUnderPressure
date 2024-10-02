@@ -353,6 +353,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8133002748453752486, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: minDist
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133002748453752486, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: pingArea
+      value: 
+      objectReference: {fileID: 1642252480}
     - target: {fileID: 8408860143801451377, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_Name
@@ -1658,6 +1668,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 5, y: 5, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 2037491800}
   _minSpeed: 1.4
   _maxSpeed: 5.8
@@ -2292,6 +2304,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 5, y: 5, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 704911479}
   _minSpeed: 1.5
   _maxSpeed: 3.6
@@ -2811,6 +2825,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 10, y: 3, z: 5}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 800741657}
   _minSpeed: 1.1
   _maxSpeed: 3.1
@@ -3691,6 +3707,8 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   spawnBounds: {x: 10, y: 5, z: 8}
+  minScale: 0
+  maxScale: 0
   _path: {fileID: 1016428052}
   _minSpeed: 2.5
   _maxSpeed: 4.6
@@ -3793,6 +3811,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a301332cbd87645970bc9c569eae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1602457785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8133002748453752486, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 81804851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232019952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ddd04e77f3abb4c9ae87c2d368aa98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1604752397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3856,9 @@ MonoBehaviour:
     type: 3}
   maxAmount: 3
   zoneRadius: 3.81
+  minScale: 0
+  maxScale: 0
+  randomPath: 0
   path: {fileID: 1093764557}
 --- !u!4 &1604752399
 Transform:
@@ -4826,6 +4859,11 @@ PrefabInstance:
       propertyPath: submarine
       value: 
       objectReference: {fileID: 232019952}
+    - target: {fileID: 796695227610711341, guid: 657f6a12f95db1b478246cda08ed9f1b,
+        type: 3}
+      propertyPath: beaconZone
+      value: 
+      objectReference: {fileID: 1602457785}
     - target: {fileID: 1091475562414243718, guid: 657f6a12f95db1b478246cda08ed9f1b,
         type: 3}
       propertyPath: m_LocalPosition.x

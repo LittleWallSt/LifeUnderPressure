@@ -7,7 +7,8 @@ public class TutorialUtility : MonoBehaviour
 {
 
     public static TutorialUtility Instance { get; private set; }
-    public GameObject submarine; 
+    public GameObject submarine;
+    public BeaconZone beaconZone;
     [SerializeField] TextMeshProUGUI promt;
     [SerializeField] Promt[] promts;
 
@@ -37,6 +38,7 @@ public class TutorialUtility : MonoBehaviour
     {
         currentStep = 0;
         PlayNextStep();
+        if (beaconZone!=null) beaconZone.TurnOnPing(false);
     }
 
 
@@ -78,6 +80,7 @@ public class TutorialUtility : MonoBehaviour
         if (nextPromt.action)
         {
             actionLock = true;
+            if (beaconZone != null) beaconZone.TurnOnPing(false);
             nextPromt.tutorialStep.StartStep();
         }
 
