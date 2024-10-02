@@ -22,17 +22,14 @@ public class SubmarineMotor : SubmarineUpgrade
     }
     public override void Init(params object[] setList)
     {
-        foreach(object setObj in setList)
+        base.Init(setList);
+        foreach (object setObj in setList)
         {
             if (setObj as SubmarineMovement)
             {
                 this.movement = (SubmarineMovement)setObj;
             }
         }
-    }
-    protected override void Start()
-    {
-        base.Start();
         movement.SetMovementVector(upgrades[level]);
     }
     protected override void UpgradeLevel()

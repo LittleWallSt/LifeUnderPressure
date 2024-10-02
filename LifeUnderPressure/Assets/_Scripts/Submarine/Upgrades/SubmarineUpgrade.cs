@@ -7,6 +7,7 @@ public abstract class SubmarineUpgrade : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] protected int maxLevel = 1;
+    [SerializeField] private int[] upgradeCost;
     [SerializeField] protected UnityEvent[] upgradeEvents = null;
 
     protected int level = 0;
@@ -35,30 +36,45 @@ public abstract class SubmarineUpgrade : MonoBehaviour
         }
     }
     public int MaxLevel => maxLevel;
+    public int[] UpgradeCost => upgradeCost;
     protected virtual void SU_EditorSetup()
     {
         if (upgradeEvents == null || upgradeEvents.Length != maxLevel + 1)
         {
             upgradeEvents = new UnityEvent[maxLevel + 1];
         }
-    }
-    protected virtual void Start()
-    {
-        upgradeEvents[level].Invoke();
+        if (upgradeCost == null || upgradeCost.Length != maxLevel + 1)
+        {
+            upgradeCost = new int[maxLevel + 1];
+        }
     }
     public virtual void Init(params object[] setList)
     {
-        // initialize in subscripts
+        level = DataManager.Get("Upgrade_" + GetType().ToString(), 0);
+        Debug.Log("loaded " + level);
+        upgradeEvents[level].Invoke();
     }
 
     protected virtual void UpgradeLevel()
     {
         Level++;
+        DataManager.Write("Upgrade_" + GetType().ToString(), level);
     }
-
-    // Debug
-    public void Debug_UpgradeLevel()
+    public bool TryUpgradeLevel(int money)
     {
-        UpgradeLevel();
+        if (level >= maxLevel) return false;
+
+        int cost = upgradeCost[level + 1];
+        if(money >= cost)
+        {
+            UpgradeLevel();
+            return true;
+        }
+        return false;
+    }
+    // Getters
+    public int GetLevelUpgradeCost()
+    {
+        return upgradeCost[level];
     }
 }

@@ -44,6 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd613d62e62bf54597db61693e281c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <upgradeFX>k__BackingField:
+    Guid:
+      Data1: -1863119098
+      Data2: 1311396660
+      Data3: -1798229885
+      Data4: 1430127028
+    Path: event:/SFX/Upgrade
+  <dockingSFX>k__BackingField:
+    Guid:
+      Data1: 1051103120
+      Data2: 1168002948
+      Data3: -904186464
+      Data4: 1241672513
+    Path: event:/SFX/Docking
+  <scannedNotificationSFX>k__BackingField:
+    Guid:
+      Data1: 1294110000
+      Data2: 1140480636
+      Data3: -154457964
+      Data4: -1783423257
+    Path: event:/SFX/Scanned_Notification
+  <scanningSFX>k__BackingField:
+    Guid:
+      Data1: 1922983919
+      Data2: 1083115501
+      Data3: -1242757990
+      Data4: 1197207963
+    Path: event:/SFX/Scanning
   <propellerSFX>k__BackingField:
     Guid:
       Data1: -1563967468
@@ -51,6 +79,13 @@ MonoBehaviour:
       Data3: -926196583
       Data4: -1663392333
     Path: event:/SFX/Propeller_SFX
+  <sonarSFX>k__BackingField:
+    Guid:
+      Data1: 1807009361
+      Data2: 1084779741
+      Data3: 2050906792
+      Data4: 17103956
+    Path: event:/SFX/Sonar_SFX
   <musicToPlay>k__BackingField:
     Guid:
       Data1: -806563434

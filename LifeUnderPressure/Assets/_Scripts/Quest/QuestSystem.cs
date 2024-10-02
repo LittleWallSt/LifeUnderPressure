@@ -46,10 +46,28 @@ public static class QuestSystem
     private static void QuestFinish()
     {
         AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
+        AcquireRewards();
         CurrentQuest = null;
         _TimeLastQuestFinished = Time.time;
         Call_OnQuestFinished();
     }
+
+    private static void AcquireRewards()
+    {
+        foreach (var reward in CurrentQuest.Rewards)
+        {
+            switch (reward.type)
+            {
+                case Quest.RewardType.Money:
+                    Submarine.Instance.AddMoney(reward.value);
+                    break;
+                case Quest.RewardType.Bool:
+                    DataManager.Write(reward.boolName, reward.value);
+                    break;
+            }
+        }
+    }
+
     public static void InQuestLocation()
     {
         QuestFinish();

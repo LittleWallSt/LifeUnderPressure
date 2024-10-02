@@ -33,6 +33,11 @@ public class ImageAnimation : MonoBehaviour
         {
             if (loop) 
                 index = 0;
+                // Janko >>
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.sonarSFX, Camera.main.transform.position);
+                // Janko <<
+            }
+                
             if (destroyOnEnd)
                 Destroy(gameObject);
         }
