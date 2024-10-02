@@ -1789,7 +1789,7 @@ RectTransform:
   - {fileID: 1070226962348659811}
   - {fileID: 7803034771946365004}
   - {fileID: 4418101541715209538}
-  m_Father: {fileID: 5943630653335966257}
+  m_Father: {fileID: 409380971382807985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2420,6 +2420,7 @@ GameObject:
   - component: {fileID: 1964684460245425596}
   - component: {fileID: 5204907106236833623}
   - component: {fileID: 3481516596267444781}
+  - component: {fileID: 2565735216768861547}
   m_Layer: 6
   m_Name: Zoom
   m_TagString: Untagged
@@ -2522,6 +2523,23 @@ MonoBehaviour:
   - {fileID: 5628666709714275398}
   - {fileID: 6598614699612473089}
   - {fileID: 7770402993515253672}
+--- !u!114 &2565735216768861547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000430737605387443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde4169dba05790498d76e8894dd9bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scannerSlider: {fileID: 2228472351259075525}
+  fishName: {fileID: 3173506923197188482}
+  fishDescription: {fileID: 5863229707882442546}
+  scanPanel: {fileID: 1042967943942985183}
+  scanner: {fileID: 4634647225653249626}
 --- !u!1 &3118660267383921498
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4512,6 @@ GameObject:
   - component: {fileID: 8764412606512958791}
   - component: {fileID: 4634647225653249626}
   - component: {fileID: 4980242335061023157}
-  - component: {fileID: 1704117251604829503}
   m_Layer: 6
   m_Name: Scanner Area
   m_TagString: Untagged
@@ -4512,7 +4529,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0.0000000074505797, w: 0.70710677}
   m_LocalPosition: {x: 0, y: -0, z: 0.5840006}
-  m_LocalScale: {x: 1, y: 2, z: 2}
+  m_LocalScale: {x: 1.2, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3668426951829464049}
@@ -4554,23 +4571,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanEffect: {fileID: -876546973899608171, guid: 400a6fc83a7725d44b677b9afb4cca59,
     type: 3}
-  scanner: {fileID: 4634647225653249626}
---- !u!114 &1704117251604829503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560871444271444963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde4169dba05790498d76e8894dd9bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scannerSlider: {fileID: 2228472351259075525}
-  fishName: {fileID: 3173506923197188482}
-  fishDescription: {fileID: 5863229707882442546}
-  scanPanel: {fileID: 5029328780566818862}
   scanner: {fileID: 4634647225653249626}
 --- !u!1 &5782905088420772597
 GameObject:
@@ -6768,7 +6768,6 @@ Transform:
   - {fileID: 1044811115673216750}
   - {fileID: 3461944326188785582}
   - {fileID: 1264368265683139281}
-  - {fileID: 2279569249499078400}
   - {fileID: 8837568856811180736}
   - {fileID: 2255980166999485149}
   - {fileID: 8764412606512958791}
@@ -7898,6 +7897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2279569249499078400}
   - {fileID: 6808714783887903048}
   - {fileID: 5943630653335966257}
   m_Father: {fileID: 0}

@@ -48,8 +48,7 @@ MonoBehaviour:
   upgradeCanvas: {fileID: 0}
   terrain: {fileID: 0}
   questLine:
-  - {fileID: 11400000, guid: 7e36d4f235974194f9e4f99ffcecb211, type: 2}
-  - {fileID: 11400000, guid: 1471e60da6705b54383367de6bf8b2fd, type: 2}
+  - {fileID: 11400000, guid: 7449ed507fe7f4b4f97a39f51412be0d, type: 2}
   initialSpawnPoint: {x: 90.35, y: -1.273, z: 0.005}
   delayToStartNewQuest: 2.5
   distanceLoadFrequency: 0.5

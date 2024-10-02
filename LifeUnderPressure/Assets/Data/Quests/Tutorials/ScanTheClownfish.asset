@@ -16,7 +16,10 @@ MonoBehaviour:
   fishes:
   - name: Clown Fish
     amount: 1
-  rewards: []
+  rewards:
+  - type: 0
+    boolName: 
+    value: 1000
   location:
     position: {x: 0, y: 0, z: 0}
     closeDistance: 0

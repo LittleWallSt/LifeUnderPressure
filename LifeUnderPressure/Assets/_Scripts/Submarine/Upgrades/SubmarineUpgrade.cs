@@ -51,7 +51,6 @@ public abstract class SubmarineUpgrade : MonoBehaviour
     public virtual void Init(params object[] setList)
     {
         level = DataManager.Get("Upgrade_" + GetType().ToString(), 0);
-        Debug.Log("loaded " + level);
         upgradeEvents[level].Invoke();
     }
 

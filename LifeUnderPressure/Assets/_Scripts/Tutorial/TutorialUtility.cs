@@ -36,7 +36,7 @@ public class TutorialUtility : MonoBehaviour
 
     private void Start()
     {
-        currentStep = 0;
+        currentStep = -1;
         PlayNextStep();
         if (beaconZone!=null) beaconZone.TurnOnPing(false);
     }
@@ -44,8 +44,12 @@ public class TutorialUtility : MonoBehaviour
 
     private void Update()
     {
-        if (currentStep >= promts.Length - 1) 
+        /*if (currentStep >= promts.Length - 1)
+        {
+            promt.gameObject.SetActive(false);
             GameManager.Instance.SetInTutorial(false);
+        }*/
+            
             
 
         timer += Time.deltaTime; 
@@ -65,7 +69,7 @@ public class TutorialUtility : MonoBehaviour
             if (promts[currentStep].tutorialStep.isCompleted)
             {
                 actionLock= false;
-                if (currentStep < promts.Length - 1) currentStep++;
+                //if (currentStep < promts.Length - 1) currentStep++;
                 PlayNextStep();
             } else
             {
@@ -79,12 +83,18 @@ public class TutorialUtility : MonoBehaviour
 
     void PlayNextStep()
     {
+        if (currentStep < promts.Length - 1) currentStep++;
+        else
+        {
+            promt.gameObject.SetActive(false);
+            GameManager.Instance.SetInTutorial(false);
+        }
         Promt nextPromt = promts[currentStep];
         if (nextPromt.action)
         {
             actionLock = true;
             if (beaconZone != null) beaconZone.TurnOnPing(false);
-            nextPromt.tutorialStep.StartStep();
+            if (nextPromt.tutorialStep!=null) nextPromt.tutorialStep.StartStep();
         }
 
         //StartTyping(nextPromt.textPromt, promt);
