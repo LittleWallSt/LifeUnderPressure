@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         DataManager.Assign_OnSaveData(StoreQuestData);
         Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
+        inTutorial = DataManager.Get("InTutorial", 1) == 1 ? true : false;
         submarine.Init();
         upgradeCanvas.SetupCanvas(submarine);
     }
@@ -123,6 +124,13 @@ public class GameManager : MonoBehaviour
     public float GetTerrainHeight(Vector3 position)
     {
         return terrain.SampleHeight(position) + terrain.transform.position.y;
+    }
+    // Setters
+    public void SetInTutorial(bool state)
+    {
+        Debug.Log("al tutorial " + state);
+        inTutorial = state;
+        if (state) QuestSystem.Reset();
     }
     // Action
     public void Assign_OnDataLoaded(Action action)
