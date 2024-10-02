@@ -44,8 +44,12 @@ public class TutorialUtility : MonoBehaviour
 
     private void Update()
     {
-        if (currentStep >= promts.Length - 1) 
+        if (currentStep >= promts.Length - 1)
+        {
             GameManager.Instance.SetInTutorial(false);
+            gameObject.SetActive(false);
+        }
+            
             
 
         timer += Time.deltaTime; 
