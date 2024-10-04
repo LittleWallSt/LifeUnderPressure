@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: ClownFish
+  m_EditorClassIdentifier: 
+  fishName: ClownFish
+  fishSmallDescription: 'The Clownfish (Amphiprioninae) is a striking orange-and-white
+    fish known for its vibrant colouration and unique patterns. And is also the fish
+    that Nemo was based on.
+
+'
+  infoWhere: Clownfish are usually found in shallow coastal seaward reefs at depths
+    of 1 to 12 meters. They prefer warm waters and are often seen living among the
+    tentacles of sea anemones, which provide them with protection and a unique habitat.
+  fishFullDescription: "Great! The Clown Fish is scanned. \n\nThe clown fish also
+    called Amphiprioninae loves finding shelter among the anemone\u2019s stinging
+    tentacles, gaining protection from predators while providing nutrients to the
+    anemone. \n\nClownfish are protandrous hermaphrodites, meaning that they all
+    mature as males but can change their sex to female. Should something happen to
+    the female, the male of the breeding pair changes to a female, rapidly increasing
+    in size. The next largest male usually becomes the breeding male.\n\nThere is
+    also a rare black variation that can be found around Darwin, Australia."
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
