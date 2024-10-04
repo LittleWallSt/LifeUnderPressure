@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: FireFlySquid
+  m_EditorClassIdentifier: 
+  fishName: FireFly Squid
+  fishSmallDescription: Firefly Squid (Watasenia scintillans) is a small bioluminescent
+    squid, reaching only about 7 cm in length. They are known for their striking
+    blue and green glow.
+  infoWhere: Firefly Squid usually lives at depths between 100 and 300 meters but
+    comes closer to the surface at night to hunt and show off their glowing lights.
+  fishFullDescription: 'The good old FireFly squid... Delicious.
+
+    
+
+    They
+    are a delicacy in Japan and are known for their beautiful glowing bioluminescence.
+
+    
+
+    Firefly
+    Squid are mostly found in the deep waters of the western Pacific Ocean, especially
+    near Japan. They usually live at depths between 100 and 300 meters but come closer
+    to the surface at night to hunt and show off their glowing lights. They also
+    communicate with one another and attract prey with their light.
+
+    
+
+    The
+    diet of a firefly squid changes throughout its life stages. During its paralarval
+    stage, its diet is primarily composed of calanoid copepods (zooplankton). Subadult
+    and adult stages see an increase in dietary diversity to include planktonic crustaceans,
+    fishes, and squid.
+
+'
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
