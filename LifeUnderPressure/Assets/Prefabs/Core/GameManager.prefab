@@ -49,6 +49,10 @@ MonoBehaviour:
   terrain: {fileID: 0}
   questLine:
   - {fileID: 11400000, guid: 7449ed507fe7f4b4f97a39f51412be0d, type: 2}
+  zoneNames:
+  - Sunlight Zone
+  - Twilight Zone
+  - Midnight Zone
   initialSpawnPoint: {x: 61.69, y: -4.38, z: -0.24}
   initialEulerAngles: {x: 0, y: 90, z: 0}
   delayToStartNewQuest: 2.5
