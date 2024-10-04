@@ -14,6 +14,8 @@ public static class QuestSystem
 
     public static void ScannedFish(string fishName)
     {
+        if (CurrentQuest == null) return;
+
         for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
         {
             if (CurrentQuest.Fishes[i].name == fishName && CurrentValues[i] < CurrentQuest.Fishes[i].amount)
