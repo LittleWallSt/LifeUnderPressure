@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,118 +6,105 @@ public class Encyclopedia : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] TextMeshProUGUI fishName;
+    [SerializeField] TextMeshProUGUI smallDescription;
+
     [SerializeField] TextMeshProUGUI fishDescription;
-    [SerializeField] TextMeshProUGUI whereToFind;
-    [SerializeField] GameObject scrollingPanel;
-    [SerializeField] GameObject scrollingText;
-    
+    [SerializeField] GameObject lockImage;
+
     
 
-    [Header("Assets")]
-    [SerializeField] Transform fishDisplayOffset;
-    [SerializeField] Transform bubblesOffset;
-    [SerializeField] ParticleSystem bubbles;
+    [Header("Images")]
+    [Tooltip("Fish's states (None, Marked, Scanned)")]
+    public Sprite[] FishStates;
+    [Header("Colour")]
+    public Color inQuestColor;
 
+    [Header("Ping")]
+    public BeaconZone ping;
+    
 
-    GameObject currentDisplayedObj;
+    FishButton[] fishes;
+
     GameObject submarineBody;
     FishInfo currFish;
 
-    
-
-    bool PanelOn = true;
-
-    
 
     private void Start()
     {
-        ManagePanel(true);
+        ClearText();
+        lockImage.SetActive(true);
         gameObject.SetActive(false);
-        whereToFind.text = "";
-    }
-
-    
-
-
-    public void OnFishButtonClick(FishInfo fishInfo)
-    {
-        whereToFind.text = "";
-        Debug.Log("cli");
-        currFish = fishInfo;
-
-        if (currFish == null) return;
-        if(currentDisplayedObj!=null)
-        {
-            Destroy(currentDisplayedObj);
-            currentDisplayedObj = null;
-        }
-        if (currFish.locked)
-        {
-            ShowWhereInfo();
-            return;
-        } 
-        if (currFish.fishPrefab!= null)
-        {
-            currentDisplayedObj = Instantiate(currFish.fishPrefab, Vector3.zero, Quaternion.identity, fishDisplayOffset);
-            currentDisplayedObj.transform.localPosition = Vector3.zero;
-            currentDisplayedObj.transform.localScale /= currFish.scale;
-            currentDisplayedObj.AddComponent<ObjectRotation>();
-            addBubbles();
-        }
-
         
     }
 
-    
-
-
-    public void ShowWhereInfo()
+    private void Update()
     {
-        whereToFind.text = currFish.infoWhere;
+        if (Input.GetKeyUp(KeyCode.Escape))
+            EnableMenu(false, submarineBody);
+    }
+
+    void ClearText()
+    {
+        fishName.text = "";
+        smallDescription.text = "";
+        fishDescription.text = "";
     }
 
 
-    public void OnShowFullDescriptionClick()
+    public void OnFishButtonClick(FishButton fishButton)
     {
-        fishName.text = ""; 
-        fishDescription.text = "";
-        if (PanelOn)
+        FishInfo fishInfo = fishButton.fishInfo;
+        fishName.text = fishInfo.name;
+        smallDescription.text = fishInfo.infoWhere;
+
+        currFish = fishInfo;
+        ShowFullDescription(fishButton.GetFishState() == FishState.Scanned, fishInfo);
+        ShowTheBeacon(fishInfo);
+    }
+
+
+
+    private void ShowTheBeacon(FishInfo fish)
+    {
+        //need beacon
+    }
+
+    private void ShowFullDescription(bool on, FishInfo fishInfo)
+    {
+        lockImage.SetActive(!on);
+        fishDescription.gameObject.SetActive(on);
+        if (on)
         {
-            ManagePanel(false);
-            PanelOn = false;
-            whereToFind.text = "";
-            if (currFish == null || currFish.locked) return; 
-            fishName.text = currFish.fishName;
-            fishDescription.text = currFish.fishFullDescription;
-        } else
-        {
-            ManagePanel(true);
-            PanelOn = true;
+            fishDescription.text = fishInfo.fishFullDescription;
         }
     }
 
-    public void OnExitClick()
-    {
-        EnableMenu(false, submarineBody); 
-    }
+
+
 
     // Aleksis >> changed from void to bool, added return state;
     public bool EnableMenu(bool state, GameObject _submarineBody)
     {
-        Destroy(currentDisplayedObj);
         if (submarineBody == null) submarineBody = _submarineBody;
-        currentDisplayedObj = null;
         gameObject.SetActive(state);
         submarineBody.SetActive(!state);
         InternalSettings.EnableCursor(gameObject.activeSelf);
+        if (state) UpdateIcons();
         return state;
     }
 
-    private void ManagePanel(bool On)
+    void UpdateIcons()
     {
-        scrollingPanel.SetActive(On);
-        scrollingText.SetActive(!On);
+        if (fishes==null || fishes.Length <=0) fishes = FindObjectsOfType<FishButton>();
+        if (fishes.Length > 0)
+        {
+            foreach(var fish in fishes)
+            {
+                fish.SetIcon(fish.fishInfo);
+            }
+        }
     }
+
 
 
     public void SetCurrentFish(FishInfo fish)
@@ -129,10 +113,5 @@ public class Encyclopedia : MonoBehaviour
     }
 
 
-    private void addBubbles()
-    {
-        
-        bubbles.gameObject.transform.position = bubblesOffset.position;
-        bubbles.Play();
-    }
+
 }

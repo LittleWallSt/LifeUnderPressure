@@ -5,10 +5,20 @@ using UnityEngine.UI;
 
 public class FishButton : MonoBehaviour
 {
+
+    [Header("UI")]
     [SerializeField] Sprite fishImage;
     [SerializeField] Sprite lockedFishImage;
+    [SerializeField] Image stateIcon;
+    [SerializeField] Image fishIcon;
+
+    
     public FishInfo fishInfo;
     private Encyclopedia encyclopedia;
+
+    private FishState fishState;
+    private bool inQuest;
+
     private void Start()
     {
         fishInfo.OnLockedChange += ChangeImage;
@@ -33,6 +43,30 @@ public class FishButton : MonoBehaviour
         }
     }
 
+    public void SetIcon(FishInfo info)
+    {
+        if (fishState != FishState.Scanned) ChangeStateToScanned(info);
+        if (inQuest) fishIcon.color = encyclopedia.inQuestColor;
+        else fishIcon.color = Color.white;
+        switch(fishState)
+        {
+            case FishState.None:
+                stateIcon.sprite = encyclopedia.FishStates[0];
+                break;
+            case FishState.Marked:
+                stateIcon.sprite = encyclopedia.FishStates[1];
+                break;
+            case FishState.Scanned:
+                stateIcon.sprite = encyclopedia.FishStates[2];
+                break;
+        }
+    }
+
+    private void ChangeStateToScanned(FishInfo info)
+    {
+        if(info.locked == false) fishState= FishState.Scanned;
+    }
+
     // Aleksis >>
     private void LoadFishInfo()
     {
@@ -40,4 +74,34 @@ public class FishButton : MonoBehaviour
         GameManager.Instance.Remove_OnDataLoaded(LoadFishInfo);
     }
     // Aleksis <<
+
+    public void SetInQuest(bool _inQuest)
+    {
+        inQuest= _inQuest;
+    }
+
+    public bool GetInQuest() 
+    { 
+        return inQuest; 
+    }
+
+    public void SetFishState(FishState _fishState)
+    {
+        fishState = _fishState;
+    }
+
+    public FishState GetFishState()
+    {
+        return fishState;
+    }
+}
+
+
+
+
+public enum FishState
+{
+    None,
+    Marked,
+    Scanned,
 }
