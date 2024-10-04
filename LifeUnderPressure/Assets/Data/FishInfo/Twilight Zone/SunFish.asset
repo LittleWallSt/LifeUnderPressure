@@ -13,9 +13,27 @@ MonoBehaviour:
   m_Name: SunFish
   m_EditorClassIdentifier: 
   fishName: SunFish
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishSmallDescription: One of the Largest bony fish in the world, the Sun Fish.
+    Adults typically weigh between 247 and 1,000 kg.
+  infoWhere: Sunfish are typically associated with oceanic waters rather than coastal
+    areas. They often inhabit regions where jellyfish are plentiful, as this is their
+    primary food source. Usually stay at depths around 0-200 meters but stay at the
+    top most of the time. However can be found as deep down as 600 meters.
+  fishFullDescription: "Congratulations! You\u2019ve scanned the incredible Sunfish!\n\r\nThe
+    Sunfish (Mola mola) is known for its unique shape and size. Adults can weigh
+    between 247 and 1,000 kg and can grow over 3 meters long. Their flat, disc-like
+    body makes them easily recognizable, and they have a large dorsal fin that can
+    be seen poking out of the water when they bask in the sun. Which at times has
+    confused people to think its a shark.\r\nSunfish are primarily found in warm,
+    open ocean waters. They enjoy sunny spots and are often spotted drifting or swimming
+    slowly. These fascinating fish are known for their diet of jellyfish, but they
+    also eat other soft-bodied marine animals, like salps and squid.\n\r\nOne interesting
+    fact about Sunfish is their unique method of feeding. They can often be seen
+    coming to the surface and gulping down their food. Despite their size, they are
+    gentle giants and pose no threat to humans.\r\nSunfish play an important role
+    in marine ecosystems by helping control jellyfish populations. Their presence
+    also indicates healthy ocean habitats, making them an essential part of ocean
+    health.\r\n"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
