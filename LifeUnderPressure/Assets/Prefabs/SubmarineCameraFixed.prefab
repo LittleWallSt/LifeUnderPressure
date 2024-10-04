@@ -9625,8 +9625,8 @@ MonoBehaviour:
       m_Calls: []
   upgrades:
   - 0.08
-  - 0.1
-  - 0.12
+  - 0.15
+  - 0.2
 --- !u!114 &1302524302371959227
 MonoBehaviour:
   m_ObjectHideFlags: 0

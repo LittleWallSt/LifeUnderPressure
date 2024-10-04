@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6adb6bc3a45bee44b85cea253f63bbf6, type: 3}
-  m_Name: Quest01
+  m_Name: Quest_Twilight
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - fish: {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
+  - fish: {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
     amount: 1
-  - fish: {fileID: 11400000, guid: 0f33f8f79205f8f49a223942ea70f2f1, type: 2}
-    amount: 1
-  - fish: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
+  - fish: {fileID: 11400000, guid: 8431d1208f1121b41989d83d7940be31, type: 2}
     amount: 1
   rewards:
   - type: 1
