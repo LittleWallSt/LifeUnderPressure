@@ -5179,6 +5179,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2565735216768861547, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: outOfRangeText
+      value: 
+      objectReference: {fileID: 1351312162}
     - target: {fileID: 3364992363855063013, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5797,6 +5802,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa362d1df899de246b41836dc5c93cd3, type: 3}
+--- !u!114 &1351312162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4019968707069728397, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230279339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1351857696
 GameObject:
   m_ObjectHideFlags: 0
@@ -9456,6 +9473,21 @@ PrefabInstance:
       propertyPath: bubblesOffset
       value: 
       objectReference: {fileID: 959316940}
+    - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: inQuestColor.b
+      value: 0.2924527
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: inQuestColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: inQuestColor.r
+      value: 0.60782754
+      objectReference: {fileID: 0}
     - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}
       propertyPath: fishDisplayOffset

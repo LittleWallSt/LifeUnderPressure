@@ -8,7 +8,8 @@ public class ScannerUI : MonoBehaviour
     [SerializeField] Slider scannerSlider;
     [SerializeField] TextMeshProUGUI fishName;
     [SerializeField] TextMeshProUGUI fishDescription;
-    public CanvasGroup scanPanel; 
+    [SerializeField] TextMeshProUGUI outOfRangeText;
+    public CanvasGroup scanPanel;
 
     [SerializeField] Scanner scanner;
 
@@ -18,8 +19,10 @@ public class ScannerUI : MonoBehaviour
 
     private void Start()
     {
+        scanner.ShowWarning += ShowWarning;
         scanner.scanFinished += DisplayInfo;
         scanPanel.gameObject.SetActive(false);
+        outOfRangeText.gameObject.SetActive(false);
     }
 
     public void DisplayInfo(string _fishName, string _fishDescription)
@@ -33,7 +36,13 @@ public class ScannerUI : MonoBehaviour
 
     public void SetScanBarValue(float value)
     {
-        scannerSlider.value = value; 
+        scannerSlider.value = value;
+    }
+
+    private void ShowWarning(bool on) { 
+
+        outOfRangeText.gameObject.SetActive(on);
+        StartCoroutine(WaitForFewSeconds(outOfRangeText.gameObject));
     }
 
     
@@ -58,5 +67,14 @@ public class ScannerUI : MonoBehaviour
 
         scanPanel.alpha = 0f;
         scanPanel.gameObject.SetActive(false);
+    }
+
+    IEnumerator WaitForFewSeconds(GameObject go)
+    {
+        // Wait for the cooldown period before starting the fade
+        yield return new WaitForSeconds(cooldown);
+
+        go.SetActive(false);
+
     }
 }
