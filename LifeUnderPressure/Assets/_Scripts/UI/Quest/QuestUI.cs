@@ -40,7 +40,7 @@ public class QuestUI : MonoBehaviour
             {
                 questReqTexts[i].text = string.Format("{0} {1} - {2}/{3}",
                     QuestSystem.GetQuestType().ToString(),
-                    questReqs[i].name,
+                    questReqs[i].fish.fishName,
                     QuestSystem.GetCurrentValue(i),
                     questReqs[i].amount);
             }
