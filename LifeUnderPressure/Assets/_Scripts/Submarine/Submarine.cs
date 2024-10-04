@@ -15,6 +15,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
     [SerializeField] private TMP_Text dockText = null;
+    [SerializeField] private TMP_Text zoneText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
@@ -228,18 +229,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        bool allowed = true;
-        if (allowed)
-        {
-            inDeepTime = 0f;
-            warningText.gameObject.SetActive(false);
-        }
-        else
-        {
-            warningText.gameObject.SetActive(true);
-        }
-        Debug.Log("entered level " + level);
-        return allowed;
+        zoneText.text = GameManager.Instance.GetZoneByLevel(level);
+        return true;
     }
     public void IDD_NotAllowedUpdate(int level, float deltaTime)
     {
