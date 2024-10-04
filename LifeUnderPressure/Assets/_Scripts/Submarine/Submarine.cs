@@ -82,6 +82,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         spawnPosition.y = DataManager.Get("SpawnPositionY", Mathf.RoundToInt(spawnPosition.y));
         spawnPosition.z = DataManager.Get("SpawnPositionZ", Mathf.RoundToInt(spawnPosition.z));
         transform.position = spawnPosition;
+
+        Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
+        transform.eulerAngles = eulerAngles;
     }
     private void FixedUpdate()
     {

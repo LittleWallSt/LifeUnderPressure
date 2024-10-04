@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
     [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
+    [SerializeField] private Vector3 initialEulerAngles = Vector3.zero;
     [SerializeField] private float delayToStartNewQuest = 2.5f;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
     public static GameManager Instance { get; private set; }
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
+    public Vector3 InitialEulerAngles => initialEulerAngles;
 
     private List<IDistanceLoad> idls = new List<IDistanceLoad>();
 
