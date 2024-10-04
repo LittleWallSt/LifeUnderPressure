@@ -74,6 +74,10 @@ public static class QuestSystem
     {
         QuestFinish();
     }
+    public static void ForceCompleteQuest()
+    {
+        QuestFinish();
+    }
     // Actions
     private static void Call_OnQuestUpdated()
     {
