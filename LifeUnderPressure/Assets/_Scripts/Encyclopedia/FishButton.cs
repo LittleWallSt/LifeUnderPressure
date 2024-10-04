@@ -30,8 +30,11 @@ public class FishButton : MonoBehaviour
             image.sprite = fishInfo.locked ? lockedFishImage : fishImage;
         }
 
-        gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
-        gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.ping.setPingTransform(habitat); });
+        //gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
+        gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.ping.setPingTransform(habitat);
+            fishState = FishState.Marked;
+            SetIcon();
+        });
 
         // Aleksis >>
         GameManager.Instance.Assign_OnDataLoaded(LoadFishInfo);
@@ -41,13 +44,13 @@ public class FishButton : MonoBehaviour
     {
         if (TryGetComponent<Image>(out Image image))
         {
-            image.sprite = fishImage; 
+            image.sprite = fishImage;  
         }
     }
 
-    public void SetIcon(FishInfo info)
+    public void SetIcon()
     {
-        if (fishState != FishState.Scanned) ChangeStateToScanned(info);
+        if (fishState != FishState.Scanned) ChangeStateToScanned(fishInfo);
         if (inQuest) fishIcon.color = encyclopedia.inQuestColor;
         else fishIcon.color = Color.white;
         switch(fishState)
