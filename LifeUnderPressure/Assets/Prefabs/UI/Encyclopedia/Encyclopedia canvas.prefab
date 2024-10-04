@@ -1375,6 +1375,7 @@ MonoBehaviour:
   stateIcon: {fileID: 3282326698740662158}
   fishIcon: {fileID: 20346761169075141}
   fishInfo: {fileID: 11400000, guid: fd8000336958eda4487171b2168bcb4d, type: 2}
+  habitat: {fileID: 0}
 --- !u!1 &3673934986493620240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2312,7 @@ MonoBehaviour:
   stateIcon: {fileID: 3104981121901552413}
   fishIcon: {fileID: 6418476966785298815}
   fishInfo: {fileID: 11400000, guid: 5dbf7a7e3bb190646a0a84201015b266, type: 2}
+  habitat: {fileID: 0}
 --- !u!1 &5144615828184473021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,6 +2647,7 @@ MonoBehaviour:
   stateIcon: {fileID: 7946894353897577017}
   fishIcon: {fileID: 5850459518511216712}
   fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  habitat: {fileID: 0}
 --- !u!1 &5360709716011036051
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,6 +3919,7 @@ MonoBehaviour:
   stateIcon: {fileID: 8289052585113747153}
   fishIcon: {fileID: 1154142643347849494}
   fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  habitat: {fileID: 0}
 --- !u!1 &8775917552035568867
 GameObject:
   m_ObjectHideFlags: 0

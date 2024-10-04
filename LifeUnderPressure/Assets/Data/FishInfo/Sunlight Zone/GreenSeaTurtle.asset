@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: GreenSeaTurtle
+  m_EditorClassIdentifier: 
+  fishName: GreenSeaTurtle
+  fishSmallDescription: Green Sea Turtles (Chelonia mydas) are big graceful marine
+    reptiles. They are known for their distinctive olive-green shell and strong flippers.
+  infoWhere: They usually inhabit shallow coastal waters, ranging from 1 to 30 meters.
+    They are often found in areas like coral reefs, seagrass beds, and near shorelines.
+  fishFullDescription: "Ooo the Green Sea Turtle. Nice one! \r\n\r\nThe green sea
+    turtles are primarily herbivorous, feeding on seagrasses and algae, and are often
+    found in shallow coastal waters, making them a vital part of marine ecosystems.\r\n\r\nThey
+    are found near coral reefs, seagrass beds, and near shorelines because they can
+    feed on various types of vegetation, especially seagrasses and algae. In some
+    cases, they may dive deeper to escape predators or search for food, but they
+    usually prefer shallower waters.\r\n\r\nAlso, they are able to hold their breath
+    for up to five hours, the longest a human has been able to do is less than 25
+    minutes.\r\n"
+  fishPrefab: {fileID: 3049914236845900121, guid: 99c99d6135652a445b5c26859288aaf3,
+    type: 3}
+  locked: 1
+  scale: 0

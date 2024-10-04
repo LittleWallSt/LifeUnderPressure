@@ -14,6 +14,7 @@ public class FishButton : MonoBehaviour
 
     
     public FishInfo fishInfo;
+    public Transform habitat;
     private Encyclopedia encyclopedia;
 
     private FishState fishState;
@@ -30,7 +31,8 @@ public class FishButton : MonoBehaviour
         }
 
         gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
-        
+        gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.ping.setPingTransform(habitat); });
+
         // Aleksis >>
         GameManager.Instance.Assign_OnDataLoaded(LoadFishInfo);
         // Aleksis <<

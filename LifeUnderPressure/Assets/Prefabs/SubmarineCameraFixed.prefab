@@ -8313,7 +8313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pingArea: {fileID: 0}
-  minDist: 50
+  minDist: 10
   maxDistForSize: 200
   UIPing: {fileID: 1729587722564086816}
   areaText: {fileID: 2198107803842467963}
