@@ -144,6 +144,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -594.2576
       objectReference: {fileID: 0}
+    - target: {fileID: 4090458972518068350, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: habitat
+      value: 
+      objectReference: {fileID: 2716633947638973960}
+    - target: {fileID: 4090458972518068350, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: fishInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e,
+        type: 2}
     - target: {fileID: 4092137454769473360, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -364,6 +375,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: FishButton, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8043328239696704674, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: fishInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: cce9bc5aba663d7449f08645d094007c,
+        type: 2}
     - target: {fileID: 8306258604379098107, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -414,6 +431,12 @@ MonoBehaviour:
 --- !u!224 &2612382040616310359 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5808924657219055400, guid: c0b30356e60553e4d96804cb86c28c61,
+    type: 3}
+  m_PrefabInstance: {fileID: 8420739187682523519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2716633947638973960 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5867932494116880247, guid: c0b30356e60553e4d96804cb86c28c61,
     type: 3}
   m_PrefabInstance: {fileID: 8420739187682523519}
   m_PrefabAsset: {fileID: 0}

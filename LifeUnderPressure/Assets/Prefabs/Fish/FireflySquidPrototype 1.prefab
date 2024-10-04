@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1485611718921319544
 Transform:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2920253720514523573}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
@@ -149,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.20000002, z: 0.20000002}
+  m_LocalScale: {x: 0.11, y: 0.11, z: 0.11}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1485611718921319544}
@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c435582bb8473724d8237d13277fd18c, type: 2}
+  - {fileID: 2100000, guid: 0b052b4c47fd41648bc5cfd55b86201a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba2ec3eb79170645952dba243c10f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 8431d1208f1121b41989d83d7940be31, type: 2}
+  fishInfo: {fileID: 11400000, guid: cce9bc5aba663d7449f08645d094007c, type: 2}
   scaredFactor: 0
   scaredDistance: 0
   scaredSpeed: 0

@@ -3054,7 +3054,7 @@ MonoBehaviour:
   lockedFishImage: {fileID: 21300000, guid: f0f7729a4ee0ff342a9a6bc02085d0cb, type: 3}
   stateIcon: {fileID: 7946894353897577017}
   fishIcon: {fileID: 5850459518511216712}
-  fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  fishInfo: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
   habitat: {fileID: 0}
 --- !u!1 &5360709716011036051
 GameObject:
@@ -4327,7 +4327,7 @@ MonoBehaviour:
   lockedFishImage: {fileID: 21300000, guid: f0f7729a4ee0ff342a9a6bc02085d0cb, type: 3}
   stateIcon: {fileID: 8289052585113747153}
   fishIcon: {fileID: 1154142643347849494}
-  fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  fishInfo: {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
   habitat: {fileID: 0}
 --- !u!1 &8775917552035568867
 GameObject:

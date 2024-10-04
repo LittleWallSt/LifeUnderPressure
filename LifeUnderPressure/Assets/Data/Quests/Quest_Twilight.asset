@@ -16,7 +16,7 @@ MonoBehaviour:
   fishes:
   - fish: {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
     amount: 1
-  - fish: {fileID: 11400000, guid: 8431d1208f1121b41989d83d7940be31, type: 2}
+  - fish: {fileID: 11400000, guid: cce9bc5aba663d7449f08645d094007c, type: 2}
     amount: 1
   rewards:
   - type: 1
