@@ -19,6 +19,7 @@ public class Scanner : MonoBehaviour
     [SerializeField] GameObject borders;
     [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
     [SerializeField] GameObject bar;
+    
 
     private EventInstance scanningInstance;
 
@@ -37,6 +38,7 @@ public class Scanner : MonoBehaviour
     public Action<Vector3> targetLock;
 
     public Action<GameObject, bool> ScanEffect;
+    public Action<bool> ShowWarning;
 #endregion
 
     public Collider currentFish;
@@ -84,6 +86,7 @@ public class Scanner : MonoBehaviour
     private void Update()
     {
 
+
         if (Input.GetMouseButtonUp(0))
         {
             mouseDown = false;
@@ -116,6 +119,11 @@ public class Scanner : MonoBehaviour
         }
 
 
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && currentState == ScannerState.Inactive)
+        {
+            if (ShowWarning != null) ShowWarning.Invoke(true);
+        }
+            
 
 
         switch (currentState)
