@@ -62,7 +62,7 @@ public static class QuestSystem
                     Submarine.Instance.AddMoney(reward.value);
                     break;
                 case Quest.RewardType.Bool:
-                    DataManager.Write(reward.boolName, reward.value);
+                    GameManager.Instance.ProcessWriteBool(reward.boolName, reward.value);
                     break;
             }
         }
@@ -72,6 +72,7 @@ public static class QuestSystem
     {
         QuestFinish();
     }
+    // Actions
     private static void Call_OnQuestUpdated()
     {
         if(OnQuestUpdated != null) OnQuestUpdated();

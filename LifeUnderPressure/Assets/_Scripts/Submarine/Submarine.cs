@@ -184,6 +184,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
             warningText.gameObject.SetActive(false);
         }
     }
+    public void UpgradeSubmarine(System.Type upgradeType)
+    {
+        foreach(SubmarineUpgrade upgrade in upgrades)
+        {
+            if(upgrade.GetType() == upgradeType)
+            {
+                upgrade.UpgradeLevel();
+            }
+        }
+    }
     private void StorePositionData()
     {
         DataManager.Write("SpawnPositionX", Mathf.RoundToInt(transform.position.x));
