@@ -26,5 +26,5 @@ MonoBehaviour:
     males. they can also change sex if it is required.'
   fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
     type: 3}
-  locked: 1
-  scale: 5
+  locked: 0
+  scale: 3.3333333
