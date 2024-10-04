@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: GulperEel
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishName: Gulper Eel
+  fishSmallDescription: The Gulper Eel is a deep-sea predator known for its enormous,
+    pouch-like mouth and snake-like body. Reaching up to 1 meter in length, only
+    been spotted 7 times in the last 30 years. Good luck finding it
+  infoWhere: Stay between 300-2000 Meters as they swim around and hunt in the open.
+  fishFullDescription: "WOW, 8th time in 30 years this eel has been spotted and you
+    did it. Good job!\n\nWhiptail Gulper Eel (Saccopharynx lavenbergi) does not have
+    too much information out there about it due to how rare it is to spot however
+    what we do know is that. It likes to stay at the deep since its source of food
+    is there, which consists of small fishes.\r\n\r\nThey have an organ at the end
+    of the very long tail, which may be used to attract prey or to attract mates
+    but this is simply speculation. \r\n"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

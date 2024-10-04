@@ -3151,6 +3151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  zoneName: Sunlight Zone
+  maxFakeDepth: 200
   volumeCollider: {fileID: 805722964}
   depthRange: {x: 0, y: 56}
   gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.68235296}
@@ -3717,6 +3719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  zoneName: Twilight Zone
+  maxFakeDepth: 1000
   volumeCollider: {fileID: 952293362}
   depthRange: {x: 55, y: 114}
   gizmoColor: {r: 0.16981131, g: 0, b: 0.015376567, a: 0.50980395}
@@ -3805,6 +3809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 2
+  zoneName: Midnight Zone
+  maxFakeDepth: 2000
   volumeCollider: {fileID: 955168604}
   depthRange: {x: 105, y: 193}
   gizmoColor: {r: 0.16981131, g: 0, b: 0.015376567, a: 0.50980395}

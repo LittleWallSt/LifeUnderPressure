@@ -229,7 +229,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        zoneText.text = GameManager.Instance.GetZoneByLevel(level);
+        zoneText.text = LevelVolume.Current ? LevelVolume.Current.ZoneName : string.Empty;
         return true;
     }
     public void IDD_NotAllowedUpdate(int level, float deltaTime)
