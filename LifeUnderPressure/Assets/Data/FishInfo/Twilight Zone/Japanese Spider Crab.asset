@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
-  m_Name: FireFlySquid
+  m_Name: Japanese Spider Crab
   m_EditorClassIdentifier: 
-  fishName: 'FireFlySquid '
+  fishName: 
   fishSmallDescription: 
   infoWhere: 
   fishFullDescription: 

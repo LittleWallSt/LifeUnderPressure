@@ -35,7 +35,7 @@ public class Quest : ScriptableObject
     [Serializable]
     public struct FishAmount
     {
-        public string name;
+        public FishInfo fish;
         public int amount;
     }
     public enum RewardType

@@ -9,8 +9,8 @@ using System;
 public class BeaconZone : MonoBehaviour
 {
     [SerializeField] public Transform pingArea;
-    [SerializeField] public float minDist = 50f;
-    [SerializeField] public float maxDistForSize = 200;
+    [SerializeField] public float minDist;
+    [SerializeField] public float maxDistForSize;
     [SerializeField] public Image UIPing;
     [SerializeField] public TMP_Text areaText; 
     [SerializeField] public TMP_Text metersText; 
@@ -94,7 +94,6 @@ public class BeaconZone : MonoBehaviour
             EnablePing(false);
         }
     }
-
     private bool IsBehind()
     {
         Vector3 dir = (pingArea.position - camera.transform.position).normalized;
@@ -160,12 +159,14 @@ public class BeaconZone : MonoBehaviour
     //Added setter
     public void setPingTransform(Transform loc)
     {
-        pingArea = loc;
+        if (loc != null) pingArea = loc;
+        else Debug.Log("No reference to the area");
     }
 
     public void setPingTransform(Vector3 loc)
     {
-        pingArea.position = loc;
+        if (loc != null) pingArea.position = loc;
+        else Debug.Log("No reference to the area");
     }
 
     public void TurnOnPing(bool enabled)

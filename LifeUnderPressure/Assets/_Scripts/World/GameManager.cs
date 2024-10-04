@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
+    [SerializeField] private string[] zoneNames = null;
     [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
     [SerializeField] private Vector3 initialEulerAngles = Vector3.zero;
     [SerializeField] private float delayToStartNewQuest = 2.5f;
@@ -60,6 +61,10 @@ public class GameManager : MonoBehaviour
 
         if (questsFinished) return;
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            QuestSystem.ForceCompleteQuest();
+        }
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
             float distance = Vector3.Distance(Submarine.Instance.transform.position, QuestSystem.GetQuestLocation().position);
@@ -144,6 +149,11 @@ public class GameManager : MonoBehaviour
     public float GetTerrainHeight(Vector3 position)
     {
         return terrain.SampleHeight(position) + terrain.transform.position.y;
+    }
+    public string GetZoneByLevel(int level)
+    {
+        level = Mathf.Clamp(level, 0, zoneNames.Length - 1);
+        return zoneNames[level];
     }
     // Setters
     public void SetInTutorial(bool state)

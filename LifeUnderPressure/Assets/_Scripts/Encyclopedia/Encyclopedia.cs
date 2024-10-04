@@ -26,7 +26,7 @@ public class Encyclopedia : MonoBehaviour
     FishButton[] fishes;
 
     GameObject submarineBody;
-    FishInfo currFish;
+    public FishButton currFish;
 
 
     private void Start()
@@ -56,8 +56,16 @@ public class Encyclopedia : MonoBehaviour
         FishInfo fishInfo = fishButton.fishInfo;
         fishName.text = fishInfo.name;
         smallDescription.text = fishInfo.infoWhere;
-
-        currFish = fishInfo;
+        if (currFish!=null)
+        {
+            if (currFish.GetFishState() != FishState.Scanned)
+            {
+                currFish.SetFishState(FishState.None);
+                currFish.SetIcon();
+            }
+                
+        }
+        currFish = fishButton;
         ShowFullDescription(fishButton.GetFishState() == FishState.Scanned, fishInfo);
         ShowTheBeacon(fishInfo);
     }
@@ -100,17 +108,13 @@ public class Encyclopedia : MonoBehaviour
         {
             foreach(var fish in fishes)
             {
-                fish.SetIcon(fish.fishInfo);
+                fish.SetIcon();
             }
         }
     }
 
 
 
-    public void SetCurrentFish(FishInfo fish)
-    {
-        currFish = fish;
-    }
 
 
 

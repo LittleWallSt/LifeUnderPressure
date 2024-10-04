@@ -12,13 +12,13 @@ public static class QuestSystem
 
     private static float _TimeLastQuestFinished;
 
-    public static void ScannedFish(string fishName)
+    public static void ScannedFish(FishInfo fish)
     {
         if (CurrentQuest == null) return;
 
         for(int i = 0; i < CurrentQuest.Fishes.Count; i++)
         {
-            if (CurrentQuest.Fishes[i].name == fishName && CurrentValues[i] < CurrentQuest.Fishes[i].amount)
+            if (CurrentQuest.Fishes[i].fish == fish && CurrentValues[i] < CurrentQuest.Fishes[i].amount)
             {
                 CurrentValues[i]++;
                 if (CurrentValues[i] == CurrentQuest.Fishes[i].amount)
@@ -71,6 +71,10 @@ public static class QuestSystem
     }
 
     public static void InQuestLocation()
+    {
+        QuestFinish();
+    }
+    public static void ForceCompleteQuest()
     {
         QuestFinish();
     }
