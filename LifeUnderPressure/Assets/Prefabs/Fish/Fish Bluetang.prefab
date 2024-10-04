@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  fishInfo: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
   scaredFactor: 0
   scaredDistance: 10
   scaredSpeed: 0.6

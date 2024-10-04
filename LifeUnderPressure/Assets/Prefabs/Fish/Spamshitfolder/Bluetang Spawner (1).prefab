@@ -47,4 +47,7 @@ MonoBehaviour:
   fishPrefab: {fileID: 0}
   maxAmount: 3
   zoneRadius: 10
+  minScale: 0.1
+  maxScale: 1
+  randomPath: 0
   path: {fileID: 0}

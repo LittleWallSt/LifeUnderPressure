@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Fish01
+  - fish: {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
     amount: 1
-  - name: Fish02
+  - fish: {fileID: 11400000, guid: 0f33f8f79205f8f49a223942ea70f2f1, type: 2}
     amount: 1
-  - name: Fish03
+  - fish: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
     amount: 1
   rewards:
-  - type: 0
-    boolName: 
-    value: 1000
+  - type: 1
+    boolName: Upgrade_Hull
+    value: 1
   location:
     position: {x: 90.19, y: -13.58, z: -35.21}
     closeDistance: 5

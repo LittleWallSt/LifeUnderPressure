@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         DataManager.Assign_OnSaveData(StoreQuestData);
         Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
-        inTutorial = DataManager.Get("InTutorial", 1) == 1 ? true : false;
+        inTutorial = DataManager.Get("InTutorial", 0) == 1 ? true : false;
         submarine.Init();
         upgradeCanvas?.SetupCanvas(submarine);
     }
