@@ -19,6 +19,8 @@ public class UpgradeCanvas : MonoBehaviour
         }
         foreach (SubmarineUpgrade upgrade in submarine.GetComponents<SubmarineUpgrade>())
         {
+            if (upgrade.MaxLevel == 1) continue;
+
             UpgradeBox box = Instantiate(upgradeBoxPrefab, gridTransform);
             box.SetUpgrade(upgrade);
         }
