@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: BlueTang
+  m_EditorClassIdentifier: 
+  fishName: BlueTang
+  fishSmallDescription: "The Blue Tang (Paracanthurus hepatus) is a small, brightly
+    colored fish known for its vibrant blue body and yellow tail. It\u2019s instantly
+    recognizable and often found darting through coral reefs."
+  infoWhere: Blue Tangs are commonly found inhabiting coral reefs, inshore waters,
+    and rocky areas. They typically swim at depths ranging from 2 to 40 meters, but
+    they are most frequently seen between 5 and 20 meters.
+  fishFullDescription: 'Congratulations! You scanned the stunning Blue Tang
+
+    
+
+    Blue
+    Tangs are not commercially fished due to their small size and limited value.
+    However, they are highly sought after for home and public aquariums due to their
+    beautiful coloration and active swimming behavior.
+
+    
+
+    Despite their
+    beauty, eating Blue Tangs is not recommended. They can sometimes carry ciguatera
+    toxin, a harmful substance produced by certain marine algae, which can cause
+    ciguatera poisoning when consumed. This toxin is often present in tropical reef
+    fish and can lead to serious health issues.
+
+'
+  fishPrefab: {fileID: 5117038511062740693, guid: eab66724e74d8104cb5d79a5002b7acf,
+    type: 3}
+  locked: 1
+  scale: 0
