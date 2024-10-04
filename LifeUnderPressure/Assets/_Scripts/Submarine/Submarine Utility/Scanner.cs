@@ -27,10 +27,9 @@ public class Scanner : MonoBehaviour
     Quaternion initialRotation;
 
     float timeLeft;
-    float range;
 
 #region Events
-    public Action<string, string> scanFinished;
+    public Action scanFinished;
     public Action<float> updateScanner;
     public Action resetScannerLock;
 
@@ -67,7 +66,6 @@ public class Scanner : MonoBehaviour
     private void Start()
     {
         fishLayerMask = (1 << fishLayer);
-        range = borders.transform.localScale.z / 2;
         initialRotation = scanRect.transform.localRotation;
         timeLeft = scanTimer;
         scanRect.SetActive(false);
@@ -119,9 +117,12 @@ public class Scanner : MonoBehaviour
         }
 
 
-        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && currentState == ScannerState.Inactive)
+        if ( Input.GetMouseButton(0) && currentState == ScannerState.Inactive)
         {
             if (ShowWarning != null) ShowWarning.Invoke(true);
+        } else if (Input.GetMouseButtonUp(0) && currentState == ScannerState.Inactive)
+        {
+            if (ShowWarning != null) ShowWarning.Invoke(false);
         }
             
 
@@ -211,7 +212,7 @@ public class Scanner : MonoBehaviour
 
     private void ChooseTarget()
     {
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
+        Collider[] hitColliders = Physics.OverlapBox(borders.transform.position, transform.localScale / 2,
             Quaternion.identity, fishLayerMask);
 
         if (hitColliders.Length == 0) return;
@@ -221,7 +222,7 @@ public class Scanner : MonoBehaviour
 
     private bool getHitColliders()
     {
-        return (Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
+        return (Physics.OverlapBox(borders.transform.position, transform.localScale / 2, 
             Quaternion.identity, fishLayerMask).Length > 0);
     }
 
@@ -238,7 +239,7 @@ public class Scanner : MonoBehaviour
     
     public bool Scanning() //returns True if fish is still within Radar collider
     {
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2,
+        Collider[] hitColliders = Physics.OverlapBox(borders.transform.position, transform.localScale / 2,
             Quaternion.identity, fishLayerMask);
 
         if (hitColliders.Length == 0) return false; ;
@@ -305,7 +306,7 @@ public class Scanner : MonoBehaviour
     public void DisplayInfo(FishInfo fishInfo)
     {
         if (fishInfo == null) return;
-        if (scanFinished!=null) scanFinished.Invoke(fishInfo.fishName, fishInfo.fishSmallDescription);
+        if (scanFinished!=null) scanFinished.Invoke();
         currentFish = null;
     }
 
