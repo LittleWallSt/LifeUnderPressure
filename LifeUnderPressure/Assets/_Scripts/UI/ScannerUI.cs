@@ -25,12 +25,13 @@ public class ScannerUI : MonoBehaviour
         outOfRangeText.gameObject.SetActive(false);
     }
 
-    public void DisplayInfo(string _fishName, string _fishDescription)
+    public void DisplayInfo()
     {
         scanPanel.gameObject.SetActive(true);
         scanPanel.alpha = 1.0f;
-        fishName.text = _fishName;
-        fishDescription.text = _fishDescription;
+        fishName.text = "Sealog updated!!";
+        //fishName.text = _fishName;
+        //fishDescription.text = _fishDescription;
         StartCoroutine(FadeOutAfterCooldown());
     }
 
@@ -42,7 +43,7 @@ public class ScannerUI : MonoBehaviour
     private void ShowWarning(bool on) { 
 
         outOfRangeText.gameObject.SetActive(on);
-        StartCoroutine(WaitForFewSeconds(outOfRangeText.gameObject));
+        //StartCoroutine(WaitForFewSeconds(outOfRangeText.gameObject));
     }
 
     
