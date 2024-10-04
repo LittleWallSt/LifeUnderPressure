@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
     [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
+    [SerializeField] private Vector3 initialEulerAngles = Vector3.zero;
     [SerializeField] private float delayToStartNewQuest = 2.5f;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
     public static GameManager Instance { get; private set; }
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
+    public Vector3 InitialEulerAngles => initialEulerAngles;
 
     private List<IDistanceLoad> idls = new List<IDistanceLoad>();
 
@@ -86,6 +88,30 @@ public class GameManager : MonoBehaviour
             questsFinished = true;
         }
     }
+    private void StoreQuestData()
+    {
+        DataManager.Write("QuestIndex", questIndex);
+    }
+    public void ProcessWriteBool(string boolName, int value)
+    {
+        switch (boolName)
+        {
+            case "Upgrade_Hull":
+                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineHull));
+                break;
+            case "Upgrade_Motor":
+                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineMotor));
+                break;
+            case "Upgrade_Scanner":
+                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineScanner));
+                break;
+            case "Upgrade_Lights":
+                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineLights));
+                break;
+        }
+        DataManager.Write(boolName, value);
+    }
+    // Distance Load
     private void DistanceLoadProcess()
     {
         distanceLoadTimer += Time.deltaTime;
@@ -95,13 +121,12 @@ public class GameManager : MonoBehaviour
             UpdateDistanceLoad();
         }
     }
-
     private void UpdateDistanceLoad()
     {
-        foreach(IDistanceLoad idl in idls)
+        foreach (IDistanceLoad idl in idls)
         {
             float distance = Vector3.Distance(idl.IDL_GetPosition(), submarine.transform.position);
-            if(distance > distanceToLoad)
+            if (distance > distanceToLoad)
             {
                 idl.IDL_OffDistance();
             }
@@ -110,11 +135,6 @@ public class GameManager : MonoBehaviour
                 idl.IDL_InDistance();
             }
         }
-    }
-    
-    private void StoreQuestData()
-    {
-        DataManager.Write("QuestIndex", questIndex);
     }
     public void AssignIDL(IDistanceLoad idl)
     {

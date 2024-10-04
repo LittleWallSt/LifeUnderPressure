@@ -54,7 +54,7 @@ public abstract class SubmarineUpgrade : MonoBehaviour
         upgradeEvents[level].Invoke();
     }
 
-    protected virtual void UpgradeLevel()
+    public virtual void UpgradeLevel()
     {
         Level++;
         DataManager.Write("Upgrade_" + GetType().ToString(), level);
