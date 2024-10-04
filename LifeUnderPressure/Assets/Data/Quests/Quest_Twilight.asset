@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6adb6bc3a45bee44b85cea253f63bbf6, type: 3}
-  m_Name: Quest01
+  m_Name: Quest_Twilight
   m_EditorClassIdentifier: 
   type: 0
   fishes:
-  - name: Fish01
+  - fish: {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
     amount: 1
-  - name: Fish02
-    amount: 1
-  - name: Fish03
+  - fish: {fileID: 11400000, guid: cce9bc5aba663d7449f08645d094007c, type: 2}
     amount: 1
   rewards:
-  - type: 0
-    boolName: 
-    value: 1000
+  - type: 1
+    boolName: Upgrade_Hull
+    value: 1
   location:
     position: {x: 90.19, y: -13.58, z: -35.21}
     closeDistance: 5

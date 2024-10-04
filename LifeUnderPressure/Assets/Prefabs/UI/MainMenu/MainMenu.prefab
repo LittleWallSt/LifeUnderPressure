@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df13bff25154e6849b41d7595ab787c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: proto03
+  sceneToLoad: Blockout_2
   delayToStart: 1.5
   menuAnimator: {fileID: 3025858951786204243}
   buttonsGrid: {fileID: 5322692322315304444}

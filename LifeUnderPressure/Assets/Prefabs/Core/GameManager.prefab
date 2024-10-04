@@ -57,4 +57,4 @@ MonoBehaviour:
   initialEulerAngles: {x: 0, y: 90, z: 0}
   delayToStartNewQuest: 2.5
   distanceLoadFrequency: 0.5
-  distanceToLoad: 40
+  distanceToLoad: 70

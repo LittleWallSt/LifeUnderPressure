@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b226f050c6b81ef42914d3505332ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 5703fd5edb219bd41949468812241627, type: 2}
+  fishInfo: {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
   scaredFactor: 0
   scaredDistance: 0
   scaredSpeed: 0
@@ -178,7 +178,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6d734c3ea28acd24bb3b67f17363916e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2b71323a8eda4c34ebe3e5910978b24e, type: 2}
     - target: {fileID: 919132149155446097, guid: c6ad6d181449a4a44b01c6d35e76eaff,
         type: 3}
       propertyPath: m_Name

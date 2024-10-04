@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 52bcf23b580c6874ba3400618433988b, type: 2}
+  fishInfo: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
   scaredFactor: 0
   scaredDistance: 10
   scaredSpeed: 0.6
@@ -198,7 +198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 06268937a964f454583df15fff296ac2, type: 2}
+      objectReference: {fileID: 2100000, guid: dceced900c50e1a4abb863432fd9f981, type: 2}
     - target: {fileID: -5754084199372789682, guid: c6ad6d181449a4a44b01c6d35e76eaff,
         type: 3}
       propertyPath: m_Mesh

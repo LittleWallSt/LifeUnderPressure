@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: Clown Fish
   m_EditorClassIdentifier: 
-  fishName: Clown Fish
-  fishSmallDescription: I'm a clown :D
-  infoWhere: You can find this blupie boop in corals. They have bright orange colour,
-    so it is easy (no) to spot them when they are not hinding in bright corals of
-    the same bright colour idk
-  fishFullDescription: 'Clown clown clown clown clown clown clown clown clown clown
-    clown clown clown clown clown clown clown clown '
+  fishName: ClownFish
+  fishSmallDescription: "Made famous from the movie Finding Nemo. \nOpen encyclopedia
+    (Q) to read the rest."
+  infoWhere: They are, small and bright orange, and  live in sea anemone, so you
+    can expect to find them hidding or swimming around them.
+  fishFullDescription: 'Clownfish goes to the max depth of 36 meters.
+
+    they live
+    in sea anemone and have 1 dominant female, 1 breeding male and a group of smaller
+    subordinate
+
+    males. they can also change sex if it is required.'
   fishPrefab: {fileID: 919132149155446097, guid: 3824d75bb32de1c4aaa6fa69a427fe7b,
     type: 3}
-  locked: 1
-  scale: 5
+  locked: 0
+  scale: 3.3333333
