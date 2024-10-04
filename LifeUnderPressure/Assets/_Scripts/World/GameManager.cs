@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviour
 
         if (questsFinished) return;
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            QuestSystem.ForceCompleteQuest();
+        }
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
             float distance = Vector3.Distance(Submarine.Instance.transform.position, QuestSystem.GetQuestLocation().position);
