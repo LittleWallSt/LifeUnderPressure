@@ -25,7 +25,7 @@ MonoBehaviour:
     cases, they may dive deeper to escape predators or search for food, but they
     usually prefer shallower waters.\r\n\r\nAlso, they are able to hold their breath
     for up to five hours, the longest a human has been able to do is less than 25
-    minutes.\r\n"
+    minutes.\r"
   fishPrefab: {fileID: 3049914236845900121, guid: 99c99d6135652a445b5c26859288aaf3,
     type: 3}
   locked: 1

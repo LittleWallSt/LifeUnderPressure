@@ -33,7 +33,7 @@ MonoBehaviour:
     gentle giants and pose no threat to humans.\r\nSunfish play an important role
     in marine ecosystems by helping control jellyfish populations. Their presence
     also indicates healthy ocean habitats, making them an essential part of ocean
-    health.\r\n"
+    health.\n\nAlso when giving birth they release 300 million eggs at a time.\r\n"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

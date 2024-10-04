@@ -12,10 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: Japanese Spider Crab
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishName: Japanese Spider Crab
+  fishSmallDescription: One of the largest crabs in the world, with a leg span that
+    can reach up to 4 meters and a weight of over 40 kg
+  infoWhere: Spider crabs are found around sandy and rocky continental shelf and
+    slopes. On the sea floor. Around 200 meters - 550 meters down.
+  fishFullDescription: "The Spider Crab (Macrocheira kaempferi), these crabs are
+    amazing. Their long, spindly legs and hard shell make them easily recognizable.
+    \r\n\r\nThey prefer to stay hidden among rocks and other structures, where they
+    can easily find food.\r\nJapanese spider crabs are scavengers and have a varied
+    diet that mainly consists of crabs, shrimps, lobsters, and other decapods. They
+    play an important role in their ecosystem by helping to keep the ocean floor
+    clean.\r\n\r\nDespite their large size, these crabs are known to be gentle and
+    are not a threat to humans. They are often seen in Japanese cuisine, although
+    their size and unique appearance have also made them popular in aquariums, where
+    they attract visitors with their fascinating looks.\r\n"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
