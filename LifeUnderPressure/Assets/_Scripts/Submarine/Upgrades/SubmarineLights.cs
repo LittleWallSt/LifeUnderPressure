@@ -18,7 +18,7 @@ public class SubmarineLights : SubmarineUpgrade
             lightIntensity = new float[maxLevel + 1];
         }
     }
-    protected override void UpgradeLevel()
+    public override void UpgradeLevel()
     {
         base.UpgradeLevel();
 

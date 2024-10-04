@@ -33,7 +33,7 @@ public class SubmarineHull : SubmarineUpgrade
 
         submarine.SetThicknessOfHull(upgrades[level]);
     }
-    protected override void UpgradeLevel()
+    public override void UpgradeLevel()
     {
         base.UpgradeLevel();
 

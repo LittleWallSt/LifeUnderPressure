@@ -17,7 +17,7 @@ public class SubmarineScanner : SubmarineUpgrade
             upgrades = new ScannerStruct[maxLevel + 1];
         }
     }
-    protected override void UpgradeLevel()
+    public override void UpgradeLevel()
     {
         base.UpgradeLevel();
 
