@@ -159,12 +159,14 @@ public class BeaconZone : MonoBehaviour
     //Added setter
     public void setPingTransform(Transform loc)
     {
-        pingArea = loc;
+        if (loc != null) pingArea = loc;
+        else Debug.Log("No reference to the area");
     }
 
     public void setPingTransform(Vector3 loc)
     {
-        pingArea.position = loc;
+        if (loc != null) pingArea.position = loc;
+        else Debug.Log("No reference to the area");
     }
 
     public void TurnOnPing(bool enabled)
