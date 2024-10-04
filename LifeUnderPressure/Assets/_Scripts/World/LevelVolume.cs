@@ -6,12 +6,18 @@ public class LevelVolume : MonoBehaviour
 {
     [Header("Do NOT Change Transform. Only through this script!")]
     [SerializeField] private int level = -1;
+    [SerializeField] private string zoneName = "ZONENAME";
+    [SerializeField] private float maxFakeDepth = 100f;
     [SerializeField] private BoxCollider volumeCollider = null;
 
     [SerializeField] private Vector2Int depthRange;
     [SerializeField] private Color gizmoColor;
 
     private List<IDepthDependant> itemsNotAllowed = new List<IDepthDependant>();
+
+    public string ZoneName => zoneName;
+    public float MaxFakeDepth => maxFakeDepth;
+    public static LevelVolume Current { get; private set; } = null;
     private void OnValidate()
     {
         transform.position = Vector3.zero;
@@ -24,6 +30,11 @@ public class LevelVolume : MonoBehaviour
     {
         IDepthDependant depthDependant = other.GetComponent<IDepthDependant>();
         if (depthDependant == null) return;
+
+        if(depthDependant.IDD_GetGOInstanceID() == Submarine.Instance.gameObject.GetInstanceID())
+        {
+            Current = this;
+        }
 
         bool allowed = depthDependant.IDD_OnDepthLevelEnter(level);
         if (!allowed) itemsNotAllowed.Add(depthDependant);

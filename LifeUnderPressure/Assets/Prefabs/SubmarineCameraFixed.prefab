@@ -9827,10 +9827,10 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
   upgrades:
-  - forward: 4
-    side: 3
-    backward: 2
-    upward: 2
+  - forward: 5
+    side: 3.9
+    backward: 2.5
+    upward: 2.8
   - forward: 4.5
     side: 3.33
     backward: 2.33
