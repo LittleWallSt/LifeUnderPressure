@@ -16,19 +16,19 @@ public class SonarUI : MonoBehaviour
     [SerializeField] Color fishUp;
     [SerializeField] Color fishDown;
     [SerializeField] float fadeDuration = 2f;
+    [SerializeField] float screenOffset = 5f;
 
     
 
     
 
     float screenWidth;
-    float screenHeight;
 
 
     void Start()
     {
         sonar.sonarBeep += DrawFish;
-        screenWidth = canvas.GetComponent<RectTransform>().sizeDelta.x;
+        screenWidth = canvas.GetComponent<RectTransform>().sizeDelta.x - screenOffset;
 
     }
 

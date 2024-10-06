@@ -5252,6 +5252,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7747274319120695696, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: maxDistanceRadius.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8095224013186788544, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgrades.Array.data[0]

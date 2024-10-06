@@ -17,7 +17,6 @@ public class Scanner : MonoBehaviour
     [Header("Assets")]
     [SerializeField] GameObject scanRect;
     [SerializeField] GameObject borders;
-    [SerializeField] Transform pivotPoint; // pivot point for distance between fishes measurment
     [SerializeField] GameObject bar;
     
 
@@ -96,28 +95,8 @@ public class Scanner : MonoBehaviour
         }
             
 
-        if (getHitColliders())
-        {
-            if (currentState == ScannerState.InRange && Input.GetMouseButton(0) && !mouseDown)
-            {
-                currentState = ScannerState.Scanning;
-                mouseDown = true;
-                ResetScanner(true);
-            }
 
-            if (currentState == ScannerState.Inactive)
-            {
-                currentState = ScannerState.InRange;
-            }
-        } else
-        {
-            currentState = ScannerState.Inactive;
-            ResetScanner(false);
-            currentFish = null;
-        }
-
-
-        if ( Input.GetMouseButton(0) && currentState == ScannerState.Inactive)
+        if (Input.GetMouseButton(0) && currentState == ScannerState.Inactive)
         {
             if (ShowWarning != null) ShowWarning.Invoke(true);
         } else if (Input.GetMouseButtonUp(0) && currentState == ScannerState.Inactive)
@@ -140,6 +119,32 @@ public class Scanner : MonoBehaviour
                 break;
         }
 
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (getHitColliders())
+        {
+            if (ShowWarning != null) ShowWarning.Invoke(false);
+            if (currentState == ScannerState.InRange && Input.GetMouseButton(0) && !mouseDown)
+            {
+                currentState = ScannerState.Scanning;
+                mouseDown = true;
+                ResetScanner(true);
+            }
+
+            if (currentState == ScannerState.Inactive)
+            {
+                currentState = ScannerState.InRange;
+            }
+        }
+        else
+        {
+            currentState = ScannerState.Inactive;
+            ResetScanner(false);
+            currentFish = null;
+        }
     }
 
     // Janko >>
@@ -195,6 +200,7 @@ public class Scanner : MonoBehaviour
         QuestSystem.ScannedFish(fishInfo);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
         // Aleksis <<
+
         if (ScanEffect!=null )ScanEffect.Invoke(currentFish.gameObject, false);
         
 
@@ -212,7 +218,7 @@ public class Scanner : MonoBehaviour
 
     private void ChooseTarget()
     {
-        Collider[] hitColliders = Physics.OverlapBox(borders.transform.position, transform.localScale / 2,
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, borders.transform.localScale / 2,
             Quaternion.identity, fishLayerMask);
 
         if (hitColliders.Length == 0) return;
@@ -222,7 +228,7 @@ public class Scanner : MonoBehaviour
 
     private bool getHitColliders()
     {
-        return (Physics.OverlapBox(borders.transform.position, transform.localScale / 2, 
+        return (Physics.OverlapBox(transform.position, borders.transform.localScale / 2, 
             Quaternion.identity, fishLayerMask).Length > 0);
     }
 
@@ -237,46 +243,10 @@ public class Scanner : MonoBehaviour
         return (fishTimer - timeLeft) / fishTimer;
     }
     
-    public bool Scanning() //returns True if fish is still within Radar collider
-    {
-        Collider[] hitColliders = Physics.OverlapBox(borders.transform.position, transform.localScale / 2,
-            Quaternion.identity, fishLayerMask);
 
-        if (hitColliders.Length == 0) return false; ;
-
-        if (currentFish == null)
-        {
-            //currentFish = ClosestToCameraFish(hitColliders);
-            return false;
-        }
-        else
-        {
-            return hitColliders.Contains(currentFish);
-        }
-    }
 
 #region ClosestFishDetection
 
-    private Collider ClosestFish(Collider[] hitColliders)
-    {
-        Collider closestFish = hitColliders[0];
-
-        float minDist = (pivotPoint.position - closestFish.gameObject.transform.position).sqrMagnitude;
-
-        foreach(var collider in hitColliders)
-        {
-            float tempDist = (pivotPoint.position - collider.gameObject.transform.position).sqrMagnitude;
-            if (tempDist < minDist)
-            {
-                minDist = tempDist;
-                closestFish = collider;
-            }
-        }
-
-        Debug.Log(closestFish.name);
-
-        return closestFish;
-    }
 
     private Collider ClosestToCameraFish(Collider[] hitColliders) // return Fish collider that is closest to the center
     {

@@ -52,6 +52,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         if (path.Length == 0)
             return;
 
+
         //Only 2 waypoints  for the min and max height
         if (assignedBoid.currWayPointIndex > 2)
         {

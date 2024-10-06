@@ -118,7 +118,9 @@ public class SonarRadar : MonoBehaviour
             new Vector3(fish.transform.position.x, 0, fish.transform.position.z)); 
 
         if (maxDistanceRadius.Length == 0) return 1;
-        return dist / maxDistanceRadius[maxDistanceRadius.Length - 1];
+        float distPerc = dist / maxDistanceRadius[maxDistanceRadius.Length - 1];
+        if (distPerc < 1) return distPerc;
+        return 1; 
 
     }
 

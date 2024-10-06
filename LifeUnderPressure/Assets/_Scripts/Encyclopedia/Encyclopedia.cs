@@ -87,6 +87,15 @@ public class Encyclopedia : MonoBehaviour
         }
     }
 
+    private void MenuUpdate()
+    {
+        if (currFish != null)
+        {
+            ShowFullDescription(currFish.GetFishState() == FishState.Scanned, currFish.fishInfo);
+        }
+
+    } 
+
 
 
 
@@ -97,7 +106,11 @@ public class Encyclopedia : MonoBehaviour
         gameObject.SetActive(state);
         submarineBody.SetActive(!state);
         InternalSettings.EnableCursor(gameObject.activeSelf);
-        if (state) UpdateIcons();
+        if (state)
+        {
+            UpdateIcons();
+            MenuUpdate(); 
+        }
         return state;
     }
 
