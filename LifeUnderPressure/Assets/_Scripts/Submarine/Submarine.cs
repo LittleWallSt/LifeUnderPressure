@@ -90,9 +90,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void FixedUpdate()
     {
         LevelVolume current = LevelVolume.Current;
-        float depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
-        if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
-        
+        float depth = -transform.position.y;
+        if (current)
+        {
+            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
+            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+        }
+
         LCStressCalculation(-transform.position.y);
 
         if (heightText)

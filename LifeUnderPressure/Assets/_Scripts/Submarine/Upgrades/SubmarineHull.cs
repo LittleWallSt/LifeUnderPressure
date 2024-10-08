@@ -33,6 +33,16 @@ public class SubmarineHull : SubmarineUpgrade
 
         submarine.SetThicknessOfHull(upgrades[level]);
     }
+    private void Update()
+    {
+        // Debug
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            submarine.SetThicknessOfHull(1f);
+        }
+#endif
+    }
     public override void UpgradeLevel()
     {
         base.UpgradeLevel();
