@@ -36,9 +36,7 @@ MonoBehaviour:
     of a firefly squid changes throughout its life stages. During its paralarval
     stage, its diet is primarily composed of calanoid copepods (zooplankton). Subadult
     and adult stages see an increase in dietary diversity to include planktonic crustaceans,
-    fishes, and squid.
-
-'
+    fishes, and squid.'
   fishPrefab: {fileID: 3976071570644377693, guid: 1241447d823373641bc9e7429a2b6469,
     type: 3}
   locked: 1
