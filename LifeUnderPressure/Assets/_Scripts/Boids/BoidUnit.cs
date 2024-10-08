@@ -72,7 +72,7 @@ public class BoidUnit : Fish
         scaredTimer = info.timer;
 
         isScared = true;
-        Debug.Log("Aaaah I'm scared");
+        //Debug.Log("Aaaah I'm scared");
 
     }
     public void AssignBoid(BoidManager boid)
@@ -146,7 +146,7 @@ public class BoidUnit : Fish
             directionToWaypoint = (transform.position - player.position).normalized;
             if (!isScared)
             {
-                Debug.Log("Aaaah I'm scared");
+                //Debug.Log("Aaaah I'm scared");
                 isScared = true;
                 timer = 0f;
             }
@@ -162,7 +162,7 @@ public class BoidUnit : Fish
                 isScared = false;
                 timer = 0f;
                 speed *= 0.99f;
-                Debug.Log("Not scared anymore >:D");
+                //Debug.Log("Not scared anymore >:D");
             }
             canBeNeighbour = false;
         }
@@ -180,18 +180,21 @@ public class BoidUnit : Fish
             float dist = Vector3.Distance(transform.position, player.position);
             if (dist > curiousRange * 2)
             {
-                Debug.Log("Going to range. Dist: " + dist);
-                if (speed < 0.1f) { Debug.Log("Fixing Speed"); speed = 0.4f; }
+                //Debug.Log("Going to range. Dist: " + dist);
+                if (speed < 0.1f) { //Debug.Log("Fixing Speed");
+                                    speed = 0.4f; }
 
-                if (speed < curiousSpeed) { Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration"); speed *= 1.1f; }
+                if (speed < curiousSpeed) { //Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration");
+                                            speed *= 1.1f; }
 
-                if (speed > curiousSpeed) { Debug.Log("Curious speed"); speed = curiousSpeed; }
+                if (speed > curiousSpeed) { //Debug.Log("Curious speed");
+                                            speed = curiousSpeed; }
 
             }
             else if (dist > curiousRange)
             {
                 speed *= 0.99f;
-                Debug.Log("Stopping");
+                //Debug.Log("Stopping");
 
             }
             else speed = 0.1f;
@@ -199,7 +202,7 @@ public class BoidUnit : Fish
             timer += Time.deltaTime;
             if (timer > curiousTimer)
             {
-                Debug.Log("Not curious anymore");
+                //Debug.Log("Not curious anymore");
                 isCurious = false;
                 curiousCooldown = true;
                 speed *= 1.1f;

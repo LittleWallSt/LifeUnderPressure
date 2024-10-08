@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +27,27 @@ public class Encyclopedia : MonoBehaviour
     FishButton[] fishes;
 
     GameObject submarineBody;
-    public FishButton currFish;
+
+    // Aleksis >>
+    private static Action OnCurrentFishChanged;
+
+    public static FishButton CurrFish 
+    {
+        get
+        {
+            return currFish;
+        } 
+        private set
+        {
+            if (currFish != value)
+            {
+                currFish = value;
+                Call_OnCurrentFishChanged();
+            }
+        }
+    }
+    // Aleksis <<
+    private static FishButton currFish;
 
 
     private void Start()
@@ -34,7 +55,7 @@ public class Encyclopedia : MonoBehaviour
         ClearText();
         lockImage.SetActive(true);
         gameObject.SetActive(false);
-        
+        currFish = null;
     }
 
     private void Update()
@@ -65,7 +86,7 @@ public class Encyclopedia : MonoBehaviour
             }
                 
         }
-        currFish = fishButton;
+        CurrFish = fishButton;
         ShowFullDescription(fishButton.GetFishState() == FishState.Scanned, fishInfo);
         ShowTheBeacon(fishInfo);
     }
@@ -126,7 +147,21 @@ public class Encyclopedia : MonoBehaviour
         }
     }
 
-
+    // Actions
+    // Aleksis >>
+    public static void Assign_OnCurrentFishChanged(Action action)
+    {
+        OnCurrentFishChanged += action;
+    }
+    public static void Remove_OnCurrentFishChanged(Action action)
+    {
+        OnCurrentFishChanged -= action;
+    }
+    private static void Call_OnCurrentFishChanged()
+    {
+        if(OnCurrentFishChanged != null) OnCurrentFishChanged();
+    }
+    // Aleksis <<
 
 
 

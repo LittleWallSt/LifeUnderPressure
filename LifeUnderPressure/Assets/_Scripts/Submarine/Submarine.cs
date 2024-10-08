@@ -89,10 +89,20 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void FixedUpdate()
     {
+        LevelVolume current = LevelVolume.Current;
         float depth = -transform.position.y;
-        LCStressCalculation(depth);
+        if (current)
+        {
+            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
+            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+        }
 
-        if (heightText) heightText.text = string.Format("{0:F1}m", depth);
+        LCStressCalculation(-transform.position.y);
+
+        if (heightText)
+        {
+            heightText.text = string.Format("{0:F1}m", depth);
+        }
     }
 
     private void Update()
