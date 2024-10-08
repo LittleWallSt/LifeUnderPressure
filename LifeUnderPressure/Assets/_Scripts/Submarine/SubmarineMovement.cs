@@ -1,10 +1,14 @@
 using TMPro;
 using UnityEngine;
 using FMOD.Studio;
+using System.Collections;
 
 public class SubmarineMovement : MonoBehaviour
 {
     [SerializeField] private bool debugMode = false;
+    [SerializeField] private Camera submarineCamera = null;
+    [SerializeField] private float screenShakeTimer = 0.5f;
+    [SerializeField] private float screenShakeFrequency = 0.1f;
     [Header("Movement")]
     [SerializeField] private MovementVector movementVector;
     [Header("Rotation")]
@@ -19,12 +23,13 @@ public class SubmarineMovement : MonoBehaviour
     private bool bumped = false;
     private float bumpDuration = 0f;
 
+    private bool shaking = false;
+    private float shakeDuration = 0f;
+
     private Rigidbody rb;
     private Vector3 input;
     private Vector2 mouse;
     private Vector2 rotationVelocity;
-
-    
 
     // Janko and Aleksis
     private EventInstance propellerSFX;
@@ -167,11 +172,34 @@ public class SubmarineMovement : MonoBehaviour
         float damage = impulse.magnitude * bumpDamageModifier;
         GetComponent<Health>().DealDamage(damage);
 
+        if (shaking)
+        {
+            shakeDuration = 0f;
+        }
+        else
+        {
+            StartCoroutine(ScreenShake());
+        }
+
         // Janko >>
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Collision, collision.transform.position);
         // Janko <<
     }
+    private IEnumerator ScreenShake()
+    {
+        shaking = true;
+        shakeDuration = 0f;
+        Vector3 startPosition = submarineCamera.transform.localPosition;
+        while(shakeDuration < screenShakeTimer)
+        {
+            submarineCamera.transform.localPosition = startPosition + new Vector3(Random.Range(0.001f, 0.005f), Random.Range(0.001f, 0.005f), 0f);
+            yield return new WaitForSeconds(screenShakeFrequency);
+            shakeDuration += screenShakeFrequency;
+        }
 
+        submarineCamera.transform.localPosition = startPosition;
+        shaking = false;
+    }
     public static Vector3 PositionFlat(Vector3 position)
     {
         return new Vector3(position.x, 0f, position.z);
