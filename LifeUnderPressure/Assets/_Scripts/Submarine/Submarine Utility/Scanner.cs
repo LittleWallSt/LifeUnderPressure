@@ -286,7 +286,9 @@ public class Scanner : MonoBehaviour
         timeLeft = scanTimer;
         resetScannerLock.Invoke();
         if (currentFish!=null && ScanEffect!=null) ScanEffect.Invoke(currentFish.gameObject, scan);
-        
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        // Janko <<
     }
 
     
