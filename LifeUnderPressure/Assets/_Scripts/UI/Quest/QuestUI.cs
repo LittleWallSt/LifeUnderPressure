@@ -14,6 +14,7 @@ public class QuestUI : MonoBehaviour
         UpdateUI();
         QuestSystem.Assign_OnQuestUpdated(UpdateUI);
         QuestSystem.Assign_OnQuestFinished(ClearUI);
+        Encyclopedia.Assign_OnCurrentFishChanged(UpdateUI);
     }
     private void UpdateUI()
     {
@@ -32,17 +33,42 @@ public class QuestUI : MonoBehaviour
                 RebuildQuestReqTexts(0);
                 return;
             }
-            if (questReqTexts.Count != questReqs.Count)
-            {
-                RebuildQuestReqTexts(questReqs.Count);
-            }
+
+            int reqIndex = -1;
+
             for (int i = 0; i < questReqs.Count; i++)
             {
-                questReqTexts[i].text = string.Format("{0} {1} - {2}/{3}",
-                    QuestSystem.GetQuestType().ToString(),
-                    questReqs[i].fish.fishName,
-                    QuestSystem.GetCurrentValue(i),
-                    questReqs[i].amount);
+                if (questReqs[i].fish == Encyclopedia.CurrFish?.fishInfo)
+                {
+                    reqIndex = i;
+                    break;
+                }
+            }
+            if (reqIndex > -1
+                && questReqs[reqIndex].amount > QuestSystem.GetCurrentValue(reqIndex))
+            {
+                RebuildQuestReqTexts(1);
+
+                questReqTexts[0].text = string.Format("{0} {1} - {2}/{3}",
+                            QuestSystem.GetQuestType().ToString(),
+                            questReqs[reqIndex].fish.fishName,
+                            QuestSystem.GetCurrentValue(reqIndex),
+                            questReqs[reqIndex].amount);
+            }
+            else
+            {
+                if (questReqTexts.Count != questReqs.Count)
+                {
+                    RebuildQuestReqTexts(questReqs.Count);
+                }
+                for (int i = 0; i < questReqs.Count; i++)
+                {
+                    questReqTexts[i].text = string.Format("{0} {1} - {2}/{3}",
+                        QuestSystem.GetQuestType().ToString(),
+                        questReqs[i].fish.fishName,
+                        QuestSystem.GetCurrentValue(i),
+                        questReqs[i].amount);
+                }
             }
         }
     }
