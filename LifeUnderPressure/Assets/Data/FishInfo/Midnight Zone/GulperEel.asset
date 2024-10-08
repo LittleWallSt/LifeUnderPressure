@@ -20,12 +20,12 @@ MonoBehaviour:
   infoWhere: Stay between 300-2000m as they swim around and hunt in the open. Mainly
     around 1500m.
   fishFullDescription: "WOW, 8th time in 30 years this eel has been spotted and you
-    did it. Good job!\n\nWhiptail Gulper Eel (Saccopharynx lavenbergi) does not have
-    too much information out there about it due to how rare it is to spot however
-    what we do know is that. It likes to stay at the deep since its source of food
-    is there, which consists of small fishes.\r\n\r\nThey have an organ at the end
-    of the very long tail, which may be used to attract prey or to attract mates
-    but this is simply speculation. \r"
+    did it AND you scanned it. Nice\n\nWhiptail Gulper Eel (Saccopharynx lavenbergi)
+    does not have too much information out there about it due to how rare it is to
+    spot however what we do know is that. It likes to stay at the deep since its
+    source of food is there, which consists of small fishes.\r\n\r\nThey have an
+    organ at the end of the very long tail, which may be used to attract prey or
+    to attract mates but this is simply speculation. \r"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
