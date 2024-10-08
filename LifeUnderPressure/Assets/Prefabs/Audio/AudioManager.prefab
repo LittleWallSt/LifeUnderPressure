@@ -44,6 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd613d62e62bf54597db61693e281c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SFX_Whale>k__BackingField:
+    Guid:
+      Data1: -2041377521
+      Data2: 1312014554
+      Data3: -364148815
+      Data4: 961672543
+    Path: event:/SFX/SFX_Whale
   <upgradeFX>k__BackingField:
     Guid:
       Data1: -1863119098

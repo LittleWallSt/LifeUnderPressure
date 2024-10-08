@@ -34,11 +34,9 @@ public class AudioManager : MonoBehaviour
         // Start ambience here or somewhere else?
         // InitializeAmbience(FMODEvents.instance.ambience);
         InitializeMusic(FMODEvents.instance.musicToPlay);
-
-        // Play random sound effects to add to the atmosphere
-        PlayOneShot(FMODEvents.instance.SFX_Whale, GetRandomDistantPosition());
+        //shouldPlaySoundTimer = timeBetweenSounds;
     }
-     
+
     // Use triggers and stuff for this. Will need a new Class for this,
     // for example AreaChangeTrigger from shallow to deeper parts, use for ambiance as well, make new trigger for that, refer to the video on yt.
     // Use seek speed on parameters in FMOD for smoother transitions
@@ -117,11 +115,6 @@ public class AudioManager : MonoBehaviour
         {
             emitter.Stop();
         }
-    }
-
-    private Vector3 GetRandomDistantPosition()
-    {
-        return transform.position;
     }
 
     private void OnDestroy()
