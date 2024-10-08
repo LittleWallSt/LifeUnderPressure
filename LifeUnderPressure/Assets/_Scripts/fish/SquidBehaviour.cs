@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SquidBehaviour : BoidUnit // Boid Unit????
+public class SquidBehaviour : BoidUnit
 {
     [Range(1, 6)][SerializeField] private float minUpTimer;
     [Range(1, 6)][SerializeField] private float maxUpTimer;
@@ -19,15 +19,22 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
     private float maxHeight;
     private float minHeight;
 
+    private Vector3 initialPosition; // Para almacenar la posición inicial
+
     private void Start()
     {
         averageSpeed = speed;
+
+        // Guardamos la posición inicial del calamar
+        initialPosition = transform.position;
 
         if (assignedBoid != null)
         {
             path = assignedBoid.path;
             currentWaypointIndex = assignedBoid.currWayPointIndex;
         }
+
+        // Establecemos las alturas máximas y mínimas en función de los waypoints
         if (path.GetWaypoint(0).position.y > path.GetWaypoint(1).position.y)
         {
             maxHeight = path.GetWaypoint(0).position.y;
@@ -39,21 +46,18 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
             minHeight = path.GetWaypoint(0).position.y;
         }
 
+        Debug.Log("Max height: " + maxHeight + " Min height: " + minHeight);
+
         upTimer = UnityEngine.Random.Range(minUpTimer, maxUpTimer);
-        if (upTimer <= 1.8f && upTimer >= 1.0f) downTimer = 0.8f;
-        else downTimer = upTimer - UnityEngine.Random.Range(0.5f, 1.3f);
+        downTimer = upTimer - UnityEngine.Random.Range(0.5f, 1.3f);
     }
-    // Update is called once per frame
+
     public override void MoveFish()
     {
-        //If there are no waypoints
-        if (path == null)
-            return;
-        if (path.Length == 0)
-            return;
+        // Si no hay waypoints
+        if (path == null || path.Length == 0) return;
 
-        //Debug.Log(assignedBoid.currWayPointIndex);
-        //Only 2 waypoints  for the min and max height
+        // Control de waypoint actual
         if (assignedBoid.currWayPointIndex > 2)
         {
             assignedBoid.SetNextWaypoint(0);
@@ -63,13 +67,15 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
 
         FindNeighbours();
         CalculateAverageSpeed();
-        
-        // Going up
+
+        // Lógica de movimiento vertical
+        squidTimer += Time.deltaTime;
+
         if (goingUp)
         {
-            //Debug.Log("Im going UP");
+            Debug.Log("Im going UP");
 
-            squidTimer += Time.deltaTime;
+            // Velocidad de subida
             if (!deceleration)
             {
                 squidVel = 1.1f;
@@ -82,7 +88,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
             }
             else
             {
-                squidVel = -0.5f;
+                squidVel = -0.5f; // Fase de desaceleración mientras sube
                 if (squidTimer > downTimer)
                 {
                     squidTimer = 0.0f;
@@ -90,57 +96,39 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
                     deceleration = false;
                 }
             }
-
         }
-        // Going down
         else
         {
-            squidVel = -0.7f;
-            //Debug.Log("Im going DOWN");
-
+            // Movimiento hacia abajo
+            squidVel = -0.7f; // Velocidad constante para bajar
+            Debug.Log("Im going DOWN");
         }
 
+        // Movimiento vertical hacia el waypoint (pero solo en el eje Y)
         directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
 
-        var cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        var avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        var aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
+        // El movimiento será únicamente en el eje Y
+        Vector3 moveVector = new Vector3(0, squidVel, 0);
 
-        var moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
-        //moveVector = Vector3.SmoothDamp(myTransform.up, moveVector, ref currentVelocity, smoothDamp);
-        moveVector = moveVector.normalized * speed;
+        // Mantenemos la posición original en X y Z
+        Vector3 newPosition = new Vector3(initialPosition.x, transform.position.y, initialPosition.z);
 
-        // If negative, we want it to be positive going up
-        if(moveVector.y < 0 && goingUp ) moveVector.y = -moveVector.y * squidVel;
-        else if(moveVector.y < 0 && !goingUp) moveVector.y = -moveVector.y * squidVel;
-        else moveVector.y *= squidVel;
-        if (moveVector == Vector3.zero)
-            moveVector = transform.up;
+        // Aplicamos el movimiento vertical
+        newPosition += moveVector * Time.deltaTime;
 
-        //Debug.Log("Move vector: " + moveVector);
-        myTransform.up = moveVector;
-        myTransform.position += moveVector * Time.deltaTime;
+        // Establecer la nueva posición manteniendo los valores X y Z originales
+        transform.position = newPosition;
 
-        //if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
-        //{
-        //    if (assignedBoid != null) assignedBoid.SetNextWaypoint();
-
-        //}
-
-
+        // Control de altura para cambiar de dirección
         if (transform.position.y > maxHeight)
         {
-            goingUp = false;
-            //Debug.Log(goingUp);
+            goingUp = false; // Cambiamos la dirección
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
         }
         else if (transform.position.y < minHeight)
         {
-            goingUp = true;
-            //Debug.Log(goingUp);
+            goingUp = true; // Cambiamos la dirección
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
-
         }
-
     }
 }

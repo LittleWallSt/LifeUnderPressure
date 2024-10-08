@@ -202,23 +202,32 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         allUnits = new BoidUnit[boidSize];
         for (int i = 0; i < boidSize; i++)
         {
-            int checks = 0;
-            Vector3 spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
-            Collider[] colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
-
-            float terrainHeight = GameManager.Instance.GetTerrainHeight(spawnPos);
-            if (spawnPos.y < terrainHeight) spawnPos.y = terrainHeight + 0.2f;
-
-            while (colls.Length > 0 && checks < 50)
+            Vector3 spawnPos = Vector3.zero;
+            if(!isSquid)
             {
+                int checks = 0;
                 spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
-                colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
-                checks++;
+                Collider[] colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
+
+                float terrainHeight = GameManager.Instance.GetTerrainHeight(spawnPos);
+                if (spawnPos.y < terrainHeight) spawnPos.y = terrainHeight + 0.2f;
+
+                while (colls.Length > 0 && checks < 50)
+                {
+                    spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
+                    colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
+                    checks++;
+                }
+
             }
-            //// Random position generated inside the spawn bounds
-            //var randomVector = UnityEngine.Random.insideUnitSphere;
-            //randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z);
-            //var spawnPosition = transform.position + randomVector;
+            else 
+            {
+                //// Random position generated inside the spawn bounds
+                var randomVector = UnityEngine.Random.insideUnitSphere;
+                randomVector = new Vector3(randomVector.x * zoneRadius, randomVector.y * zoneRadius, randomVector.z * zoneRadius);
+                spawnPos = transform.position + randomVector;
+            
+            }
             // Boid unit rotated randomly
             var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
             // We instantiate and initialaze the unit. Also assigned its respective boid to the unit

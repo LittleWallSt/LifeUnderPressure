@@ -250,7 +250,7 @@ MonoBehaviour:
   curiousCooldownTime: 0
   curiousRange: 0
   random: 0
-  speed: 100
+  speed: 10
   rotationSpeed: 0
   alignmentThreshold: 0
   avoidanceDetection: {x: 0, y: 0, z: 0}
