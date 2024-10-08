@@ -12,10 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: DumboOctopus
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishName: Dumbo Octopus
+  fishSmallDescription: Dumbo Octopus (Grimpoteuthis) is a tiny octopus that has
+    big ears and moves around using one of them.
+  infoWhere: Usually moves around the bottom of the sea at around 4000m. They will
+    at times hide inside their tentacles.
+  fishFullDescription: "Nicely done. The Dumbo octopus has been scanned.\n\nKnown
+    for their big ears as they were named after Disney\u2019s Dumbo the elephant
+    character. These little squids pounce on prey and eat it whole. Their diet includes
+    copepods, isopods, bristle worms and amphipods.\n\nThey can survive the intense
+    pressure and cold temperatures of the deep ocean by having adapted. The females
+    apparently always carry eggs in different stages of development, they are able
+    to store sperm for long periods of time after mating with a male. Using these
+    advantages female dumbo octopuses can transfer sperm to their most developed
+    eggs at any time the environmental conditions are right. They can lay up to 200
+    thousand eggs at a time.\n\nThey are also the deepest known genus of all ocopuses."
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
