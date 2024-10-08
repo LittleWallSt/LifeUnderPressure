@@ -11,6 +11,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] 
     public EventReference voiceLine_Tutorial_01 { get; private set; }*/
 
+    [field: Header("Atmosphere SFX")]
+    [field: SerializeField]
+    public EventReference SFX_Whale { get; set; }
+
     [field: Header("Upgrades")]
     [field: SerializeField]
     public EventReference upgradeFX { get; private set; }
@@ -32,6 +36,12 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField]
     public EventReference sonarSFX { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_Warning { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_Collision {  get; private set; }
 
     [field: Header("Music Tracks")]
     [field: SerializeField]
