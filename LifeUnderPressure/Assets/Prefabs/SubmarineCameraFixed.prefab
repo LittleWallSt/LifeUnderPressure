@@ -531,6 +531,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3554050316684240136}
   slider: {fileID: 3633427280751250884}
+  highlightTimer: 0.5
+  highlightFrequency: 0.05
+  sliderBackground: {fileID: 4097015653884296922}
+  highlightColor: {r: 0.9622642, g: 0.21605544, b: 0.21605544, a: 1}
+  defaultColor: {r: 0.7372549, g: 0.3372549, b: 0.3372549, a: 1}
 --- !u!1 &749604992475922815
 GameObject:
   m_ObjectHideFlags: 0
