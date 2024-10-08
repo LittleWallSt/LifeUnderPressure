@@ -31,7 +31,7 @@ public class BeaconZone : MonoBehaviour
         pingTransformRect = UIPing.GetComponent<RectTransform>();
 
         // We hide it
-        UIPing.enabled = false;
+        EnablePing(false);
     }
 
     private void FixedUpdate()
