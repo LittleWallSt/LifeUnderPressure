@@ -9590,6 +9590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 0
+  submarineCamera: {fileID: 5897422571100704064}
+  screenShakeTimer: 0.5
+  screenShakeFrequency: 0.1
   movementVector:
     forward: 4
     side: 3
