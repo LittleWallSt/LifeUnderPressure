@@ -18,7 +18,6 @@ public class Path : MonoBehaviour
 
     public float Radius { get { return radius; } }
 
-    
 
     // Draws path in gizmos
     private void OnDrawGizmos()

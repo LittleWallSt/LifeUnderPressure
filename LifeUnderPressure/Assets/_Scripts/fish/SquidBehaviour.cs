@@ -52,7 +52,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         if (path.Length == 0)
             return;
 
-
+        //Debug.Log(assignedBoid.currWayPointIndex);
         //Only 2 waypoints  for the min and max height
         if (assignedBoid.currWayPointIndex > 2)
         {
@@ -67,7 +67,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         // Going up
         if (goingUp)
         {
-            Debug.Log("Im going UP");
+            //Debug.Log("Im going UP");
 
             squidTimer += Time.deltaTime;
             if (!deceleration)
@@ -96,7 +96,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         else
         {
             squidVel = -0.7f;
-            Debug.Log("Im going DOWN");
+            //Debug.Log("Im going DOWN");
 
         }
 
@@ -117,7 +117,7 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         if (moveVector == Vector3.zero)
             moveVector = transform.up;
 
-        Debug.Log("Move vector: " + moveVector);
+        //Debug.Log("Move vector: " + moveVector);
         myTransform.up = moveVector;
         myTransform.position += moveVector * Time.deltaTime;
 
@@ -131,13 +131,13 @@ public class SquidBehaviour : BoidUnit // Boid Unit????
         if (transform.position.y > maxHeight)
         {
             goingUp = false;
-            Debug.Log(goingUp);
+            //Debug.Log(goingUp);
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
         }
         else if (transform.position.y < minHeight)
         {
             goingUp = true;
-            Debug.Log(goingUp);
+            //Debug.Log(goingUp);
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
 
         }
