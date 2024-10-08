@@ -209,17 +209,22 @@ public class Scanner : MonoBehaviour
         currentFish = null;
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
+
         // Janko >>
         scanningInstance.setParameterByName("ScanningInput", 0);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
         // Janko <<
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, borders.transform.localScale);
 
+    }
     private void ChooseTarget()
     {
         Collider[] hitColliders = Physics.OverlapBox(transform.position, borders.transform.localScale / 2,
-            Quaternion.identity, fishLayerMask);
+            transform.rotation, fishLayerMask);
 
         if (hitColliders.Length == 0) return;
 
