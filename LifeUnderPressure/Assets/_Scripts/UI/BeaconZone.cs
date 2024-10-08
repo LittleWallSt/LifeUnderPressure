@@ -157,15 +157,51 @@ public class BeaconZone : MonoBehaviour
 
 
     //Added setter
-    public void setPingTransform(Transform loc)
+
+    public void setPingTransform(Transform[] loc, string name = " ")
     {
-        if (loc != null) pingArea = loc;
+        if (loc.Length == 1) setPingTransform(loc[0], name);
+        else
+        {
+            Transform closestLoc = loc[0];
+            float minDist = Vector3.Distance(transform.position, loc[0].position);
+
+            // Itera sobre todas las ubicaciones para encontrar la más cercana
+            for (int i = 1; i < loc.Length; i++)
+            {
+                float dist = Vector3.Distance(transform.position, loc[i].position);
+                if (dist < minDist)
+                {
+                    minDist= dist;
+                    closestLoc = loc[i];
+                }
+            }
+            if (loc != null)
+            {
+                pingArea = closestLoc;
+                areaText.text = name;
+            }
+            else Debug.Log("No reference to the area");
+        }
+    }
+
+    public void setPingTransform(Transform loc, string name = " ")
+    {
+        if (loc != null)
+        {
+            pingArea = loc;
+            areaText.text = name;
+        }
         else Debug.Log("No reference to the area");
     }
 
-    public void setPingTransform(Vector3 loc)
+    public void setPingTransform(Vector3 loc, string name = " ")
     {
-        if (loc != null) pingArea.position = loc;
+        if (loc != null)
+        {
+            pingArea.position = loc;
+            areaText.text = name;
+        }
         else Debug.Log("No reference to the area");
     }
 
