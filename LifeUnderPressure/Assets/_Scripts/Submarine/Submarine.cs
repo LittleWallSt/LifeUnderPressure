@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Submarine : MonoBehaviour, IDepthDependant
 {
+    // Janko >>
+    private EventInstance warningInstance;
+    // Janko <<
+
     [SerializeField] private float inDeepMaxTime = 10f;
     [SerializeField] private float deepOffset = 0f;
     [SerializeField] private float radiusOfHull = 10f;
@@ -59,6 +64,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
     }
+
+    private void Start()
+    {
+        // Janko >>
+        warningInstance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Warning);
+        warningInstance.setParameterByName("shouldPlay", 0);
+        warningInstance.start();
+        // Janko <<
+    }
+
     public void Init()
     {
         warningText.gameObject.SetActive(false);
@@ -89,10 +104,20 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void FixedUpdate()
     {
+        LevelVolume current = LevelVolume.Current;
         float depth = -transform.position.y;
-        LCStressCalculation(depth);
+        if (current)
+        {
+            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
+            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+        }
 
-        if (heightText) heightText.text = string.Format("{0:F1}m", depth);
+        LCStressCalculation(-transform.position.y);
+
+        if (heightText)
+        {
+            heightText.text = string.Format("{0:F1}m", depth);
+        }
     }
 
     private void Update()
@@ -179,10 +204,12 @@ public class Submarine : MonoBehaviour, IDepthDependant
             float diff = stress - 100f;
             health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier);
             warningText.gameObject.SetActive(true);
+            warningInstance.setParameterByName("shouldPlay", 1);
         }
         else
         {
             warningText.gameObject.SetActive(false);
+            warningInstance.setParameterByName("shouldPlay", 0);
         }
     }
     public void UpgradeSubmarine(System.Type upgradeType)
@@ -204,6 +231,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void OnDestroy()
     {
         DataManager.Remove_OnSaveData(StorePositionData);
+        // Janko >>
+        warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        // Janko <<
     }
     // Setters
     public void SetDocked(bool state)

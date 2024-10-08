@@ -29,7 +29,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
     [SerializeField] private bool isSquid = false; // maybe not necesary, not in this script lol 
     [SerializeField] private BoidUnit boidUnitPrefab;
     [SerializeField] private int boidSize;
-    [SerializeField] private Vector3 spawnBounds;
+    [SerializeField] private float zoneRadius;
     [SerializeField, Range(0.1f, 1.0f)] private float minScale;
     [SerializeField, Range(1.0f, 2.0f)] private float maxScale;
 
@@ -182,6 +182,12 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         // Need control
         _currentWaypointIndex = index;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.3f);
+        Gizmos.DrawSphere(transform.position, zoneRadius);
+    }
     private void Update()
     {
         // Moves all the boid units
@@ -196,14 +202,27 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         allUnits = new BoidUnit[boidSize];
         for (int i = 0; i < boidSize; i++)
         {
-            // Random position generated inside the spawn bounds
-            var randomVector = UnityEngine.Random.insideUnitSphere;
-            randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z);
-            var spawnPosition = transform.position + randomVector;
+            int checks = 0;
+            Vector3 spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
+            Collider[] colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
+
+            float terrainHeight = GameManager.Instance.GetTerrainHeight(spawnPos);
+            if (spawnPos.y < terrainHeight) spawnPos.y = terrainHeight + 0.2f;
+
+            while (colls.Length > 0 && checks < 50)
+            {
+                spawnPos = transform.position + Random.insideUnitSphere * zoneRadius;
+                colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
+                checks++;
+            }
+            //// Random position generated inside the spawn bounds
+            //var randomVector = UnityEngine.Random.insideUnitSphere;
+            //randomVector = new Vector3(randomVector.x * spawnBounds.x, randomVector.y * spawnBounds.y, randomVector.z * spawnBounds.z);
+            //var spawnPosition = transform.position + randomVector;
             // Boid unit rotated randomly
             var rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
             // We instantiate and initialaze the unit. Also assigned its respective boid to the unit
-            allUnits[i] = Instantiate(boidUnitPrefab, spawnPosition, rotation);
+            allUnits[i] = Instantiate(boidUnitPrefab, spawnPos, rotation);
             allUnits[i].gameObject.layer = LayerMask.NameToLayer("Fish");
             allUnits[i].gameObject.transform.localScale *= Random.Range(minScale, maxScale);
             allUnits[i].AssignBoid(this);

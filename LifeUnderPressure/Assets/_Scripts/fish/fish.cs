@@ -154,7 +154,7 @@ public class Fish : MonoBehaviour
         directionToWaypoint = (transform.position - player.position).normalized;
         if (!isScared)
         {
-            Debug.Log("Aaaah I'm scared");
+            //Debug.Log("Aaaah I'm scared");
             isScared = true;
             timer = 0f;
         }
@@ -170,7 +170,7 @@ public class Fish : MonoBehaviour
             isScared = false;
             timer = 0f;
             speed *= 0.99f;
-            Debug.Log("Not scared anymore >:D");
+            //Debug.Log("Not scared anymore >:D");
         }
     }
 
@@ -188,7 +188,7 @@ public class Fish : MonoBehaviour
         float dist = Vector3.Distance(transform.position, player.position);
         if (dist > curiousRange * 2)
         {
-            Debug.Log("Going to range. Dist: " + dist);
+            //Debug.Log("Going to range. Dist: " + dist);
             if (speed < 0.1f) 
                 speed = 0.4f;
 
@@ -209,7 +209,7 @@ public class Fish : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > curiousTimer)
         {
-            Debug.Log("Not curious anymore");
+            //Debug.Log("Not curious anymore");
             isCurious = false;
             curiousCooldown = true;
             speed *= 1.1f;

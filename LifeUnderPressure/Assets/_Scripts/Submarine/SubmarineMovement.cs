@@ -166,6 +166,10 @@ public class SubmarineMovement : MonoBehaviour
 
         float damage = impulse.magnitude * bumpDamageModifier;
         GetComponent<Health>().DealDamage(damage);
+
+        // Janko >>
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Collision, collision.transform.position);
+        // Janko <<
     }
 
     public static Vector3 PositionFlat(Vector3 position)

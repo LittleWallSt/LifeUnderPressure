@@ -86,6 +86,20 @@ MonoBehaviour:
       Data3: 2050906792
       Data4: 17103956
     Path: event:/SFX/Sonar_SFX
+  <SFX_Warning>k__BackingField:
+    Guid:
+      Data1: -317195974
+      Data2: 1191006839
+      Data3: 1866188728
+      Data4: -960293681
+    Path: event:/SFX/SFX_Warning
+  <SFX_Collision>k__BackingField:
+    Guid:
+      Data1: -571929796
+      Data2: 1257093454
+      Data3: 831644073
+      Data4: 1545195173
+    Path: event:/SFX/SFX_Collision
   <musicToPlay>k__BackingField:
     Guid:
       Data1: -806563434
@@ -93,6 +107,13 @@ MonoBehaviour:
       Data3: -1761005149
       Data4: -1787139460
     Path: event:/Music/Menu Song
+  <voice01>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &5198397898280333016
 GameObject:
   m_ObjectHideFlags: 0

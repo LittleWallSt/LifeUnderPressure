@@ -34,6 +34,9 @@ public class AudioManager : MonoBehaviour
         // Start ambience here or somewhere else?
         // InitializeAmbience(FMODEvents.instance.ambience);
         InitializeMusic(FMODEvents.instance.musicToPlay);
+
+        // Play random sound effects to add to the atmosphere
+        PlayOneShot(FMODEvents.instance.SFX_Whale, GetRandomDistantPosition());
     }
      
     // Use triggers and stuff for this. Will need a new Class for this,
@@ -114,6 +117,11 @@ public class AudioManager : MonoBehaviour
         {
             emitter.Stop();
         }
+    }
+
+    private Vector3 GetRandomDistantPosition()
+    {
+        return transform.position;
     }
 
     private void OnDestroy()

@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: AnglerFish
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishName: Humpback Anglerfish
+  fishSmallDescription: Humpback Anglerfish  (Melanocetus Johnsonii) these guys look
+    terrifying however are very small at only around 2.9cm for males and 18 cm for
+    females.
+  infoWhere: 'Depth range 100 - 4500 m Drifting around 200-1500m usually. The Angler
+    is looking for prey attracting it with its bioluminescence. '
+  fishFullDescription: "The freaky-looking Humpback angler fish scanned!\r\n\r\nThis
+    tiny scary fish is only 2.9cm long for males and 18cm for females. The male has
+    the quality of attaching itself to the female and never detaching from her. It
+    will fuse with the female and after a whale becomes a part of her.\r\n\r\nThe
+    male and female have very different life cycles. The females have large mouths
+    filled with sharp teeth and huge stomachs. This makes them able to eat nearly
+    everything they encounter. The males are tiny and lack these predatory adaptations.
+    The primary role of the male is to find a female and attach to her for reproduction.\r\n\r\nThey
+    are an ambush predator which stay in one position waiting for tiny fish to come
+    close due to the bioluminescence that lures the fish close. \r"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

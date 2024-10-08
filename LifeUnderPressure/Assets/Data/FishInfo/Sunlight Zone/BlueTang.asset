@@ -17,8 +17,8 @@ MonoBehaviour:
     colored fish known for its vibrant blue body and yellow tail. It\u2019s instantly
     recognizable and often found darting through coral reefs."
   infoWhere: Blue Tangs are commonly found inhabiting coral reefs, inshore waters,
-    and rocky areas. They typically swim at depths ranging from 2 to 40 meters, but
-    they are most frequently seen between 5 and 20 meters.
+    and rocky areas. They typically swim at depths ranging from 2 to 40m, but they
+    are most frequently seen between 5 and 20m.
   fishFullDescription: 'Congratulations! You scanned the stunning Blue Tang
 
 
@@ -29,10 +29,10 @@ MonoBehaviour:
 
 
     Despite their beauty,
-    eating Blue Tangs is not recommended. They can sometimes carry ciguatera toxin,
-    a harmful substance produced by certain marine algae, which can cause ciguatera
-    poisoning when consumed. This toxin is often present in tropical reef fish and
-    can lead to serious health issues.'
+    eating Blue Tangs is not recommended. They can carry ciguatera toxin, a harmful
+    substance produced by certain marine algae, which can cause ciguatera poisoning
+    when consumed. This toxin is often present in tropical reef fish and can lead
+    to serious health issues.'
   fishPrefab: {fileID: 5117038511062740693, guid: eab66724e74d8104cb5d79a5002b7acf,
     type: 3}
   locked: 1

@@ -531,6 +531,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3554050316684240136}
   slider: {fileID: 3633427280751250884}
+  highlightTimer: 0.5
+  highlightFrequency: 0.05
+  sliderBackground: {fileID: 4097015653884296922}
+  highlightColor: {r: 0.9622642, g: 0.21605544, b: 0.21605544, a: 1}
+  defaultColor: {r: 0.7372549, g: 0.3372549, b: 0.3372549, a: 1}
 --- !u!1 &749604992475922815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Left Button to Scan
+  m_text: Hold Left Mouse Button to Scan
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3462,7 +3467,7 @@ Transform:
   m_GameObject: {fileID: 3746205185660000178}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071069, y: 0.000000029802322, z: -0.000000023283064, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: -1.755996}
+  m_LocalPosition: {x: -0, y: -0.29, z: -1.918}
   m_LocalScale: {x: 1.5, y: 6, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4814,10 +4819,10 @@ RectTransform:
   - {fileID: 6235766545729398069}
   m_Father: {fileID: 2279569249499078400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 230.52002, y: 186.33002}
-  m_SizeDelta: {x: -1697.24, y: -972.65}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0, y: 137.1}
+  m_SizeDelta: {x: 329.59, y: 107.349976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7248900612694641678
 CanvasRenderer:
@@ -4840,7 +4845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6029,7 +6034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sealog updated!!
+  m_text: -Sealog Updated-
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6063,7 +6068,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -6092,7 +6097,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -104.355385, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

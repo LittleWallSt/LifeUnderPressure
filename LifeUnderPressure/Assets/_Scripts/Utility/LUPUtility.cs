@@ -14,6 +14,15 @@ public struct MovementVector
     public float side;
     public float backward;
     public float upward;
+
+    public MovementVector (float forward, float side, float backward, float upward)
+    {
+        this.forward = forward;
+        this.side = side;
+        this.backward = backward;
+        this.upward = upward;
+    }
+
 }
 [Serializable]
 public struct ScannerStruct
