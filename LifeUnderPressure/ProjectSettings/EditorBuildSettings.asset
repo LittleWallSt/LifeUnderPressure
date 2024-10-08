@@ -17,7 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Proto00.unity
     guid: a321a1258ba3c98459310673d057f07c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelBlockout/Blockout_2.unity
     guid: 7ac6c3145b2c95c4fbe762055890b7ca
+  - enabled: 1
+    path: Assets/Scenes/LevelBlockout/FixingStuffScene.unity
+    guid: db7aabc127ea6e048a97b8828e3de015
   m_configObjects: {}

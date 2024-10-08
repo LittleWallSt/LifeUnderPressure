@@ -485,6 +485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  zoneName: ZONENAME
+  maxFakeDepth: 100
   volumeCollider: {fileID: 770806320}
   depthRange: {x: 0, y: 20}
   gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.68235296}
