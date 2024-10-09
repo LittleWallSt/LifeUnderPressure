@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: ClownFish
   m_EditorClassIdentifier: 
-  fishName: ClownFish
+  fishName: Clownfish
   fishSmallDescription: 'The Clownfish (Amphiprioninae) is a striking orange-and-white
     fish known for its vibrant colouration and unique patterns. And is also the fish
     that Nemo was based on.
@@ -30,5 +30,5 @@ MonoBehaviour:
     in size. The next largest male usually becomes the breeding male.\n\nThere is
     also a rare black variation that can be found around Darwin, Australia."
   fishPrefab: {fileID: 0}
-  locked: 1
+  locked: 0
   scale: 0
