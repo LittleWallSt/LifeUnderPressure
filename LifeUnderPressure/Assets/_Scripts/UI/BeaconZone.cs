@@ -147,11 +147,16 @@ public class BeaconZone : MonoBehaviour
         metersText.transform.localScale = new Vector3(newScale, newScale, 1);
     }
     
-    private void EnablePing(bool enabled)
+    public void EnablePing(bool enabled)
     {
         UIPing.enabled = enabled;
         areaText.enabled = enabled;
         metersText.enabled = enabled;
+    }
+
+    private bool IsEnable()
+    {
+        return UIPing.enabled;
     }
 
 
@@ -160,6 +165,7 @@ public class BeaconZone : MonoBehaviour
 
     public void setPingTransform(Transform[] loc, string name = " ")
     {
+        if (!IsEnable()) EnablePing(true);
         if (loc.Length == 1) setPingTransform(loc[0], name);
         else
         {
