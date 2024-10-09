@@ -51,17 +51,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.759
+    - _Alpha: 1
     - _DecalAngleFadeSupported: 1
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
-    - _Density: 3
+    - _Density: 1.94
     - _DrawOrder: 0
-    - _FadeEdn: -0.492
-    - _FadeStrength: 1.523
-    - _Offset: 2
-    - _Power: 6
+    - _FadeEdn: -0.554
+    - _FadeStrength: 1.7
+    - _Offset: 2.65
+    - _Power: 5.26
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.9198113, g: 0.95675707, b: 1, a: 0}
   m_BuildTextureStacks: []
