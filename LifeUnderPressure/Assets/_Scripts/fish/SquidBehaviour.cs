@@ -114,7 +114,7 @@ public class SquidBehaviour : BoidUnit
         Vector3 newPosition = new Vector3(initialPosition.x, transform.position.y, initialPosition.z);
 
         // Aplicamos el movimiento vertical
-        newPosition += moveVector * Time.deltaTime;
+        newPosition += moveVector * speed * Time.deltaTime;
 
         // Establecer la nueva posición manteniendo los valores X y Z originales
         transform.position = newPosition;
