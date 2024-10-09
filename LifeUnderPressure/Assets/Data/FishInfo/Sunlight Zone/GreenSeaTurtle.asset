@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: GreenSeaTurtle
   m_EditorClassIdentifier: 
-  fishName: GreenSeaTurtle
+  fishName: Green Sea Turtle
   fishSmallDescription: Green Sea Turtles (Chelonia mydas) are big graceful marine
     reptiles. They are known for their distinctive olive-green shell and strong flippers.
   infoWhere: They usually inhabit shallow coastal waters, ranging from 1 to 30m.

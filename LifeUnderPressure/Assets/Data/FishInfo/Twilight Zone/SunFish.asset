@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: SunFish
   m_EditorClassIdentifier: 
-  fishName: SunFish
+  fishName: Sunfish
   fishSmallDescription: One of the Largest bony fish in the world, the Sun Fish.
     Adults typically weigh between 247 and 1,000 kg.
   infoWhere: Sunfish are typically associated with oceanic waters rather than coastal
