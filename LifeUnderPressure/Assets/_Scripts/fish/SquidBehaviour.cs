@@ -46,7 +46,7 @@ public class SquidBehaviour : BoidUnit
             minHeight = path.GetWaypoint(0).position.y;
         }
 
-        Debug.Log("Max height: " + maxHeight + " Min height: " + minHeight);
+        //Debug.Log("Max height: " + maxHeight + " Min height: " + minHeight);
 
         upTimer = UnityEngine.Random.Range(minUpTimer, maxUpTimer);
         downTimer = upTimer - UnityEngine.Random.Range(0.5f, 1.3f);
@@ -73,7 +73,7 @@ public class SquidBehaviour : BoidUnit
 
         if (goingUp)
         {
-            Debug.Log("Im going UP");
+            //Debug.Log("Im going UP");
 
             // Velocidad de subida
             if (!deceleration)
@@ -101,7 +101,7 @@ public class SquidBehaviour : BoidUnit
         {
             // Movimiento hacia abajo
             squidVel = -0.7f; // Velocidad constante para bajar
-            Debug.Log("Im going DOWN");
+            //Debug.Log("Im going DOWN");
         }
 
         // Movimiento vertical hacia el waypoint (pero solo en el eje Y)

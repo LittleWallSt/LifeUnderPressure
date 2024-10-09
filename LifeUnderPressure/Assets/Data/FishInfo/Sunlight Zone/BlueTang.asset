@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: BlueTang
   m_EditorClassIdentifier: 
-  fishName: BlueTang
+  fishName: Blue Tang
   fishSmallDescription: "The Blue Tang (Paracanthurus hepatus) is a small, brightly
     colored fish known for its vibrant blue body and yellow tail. It\u2019s instantly
     recognizable and often found darting through coral reefs."
@@ -35,5 +35,5 @@ MonoBehaviour:
     to serious health issues.'
   fishPrefab: {fileID: 5117038511062740693, guid: eab66724e74d8104cb5d79a5002b7acf,
     type: 3}
-  locked: 1
+  locked: 0
   scale: 0
