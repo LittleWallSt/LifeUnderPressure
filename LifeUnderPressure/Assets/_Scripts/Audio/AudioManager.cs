@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour
     {
         // Start ambience here or somewhere else?
         // InitializeAmbience(FMODEvents.instance.ambience);
+        LevelVolume.Assign_OnCurrentVolumeChanged(SetMusicArea);
         InitializeMusic(FMODEvents.instance.musicToPlay);
         //shouldPlaySoundTimer = timeBetweenSounds;
     }
@@ -47,10 +48,10 @@ public class AudioManager : MonoBehaviour
 
     // Might have to add separate method to play main menu music.
 
-    /*public void SetMusicArea(MusicArea musicArea)
+    public void SetMusicArea()
     {
-        musicEventInstance.setParameterByName("Area", (float)musicArea);
-    }*/
+        musicEventInstance.setParameterByName("Area", LevelVolume.Current.Level);
+    }
 
     private void InitializeAmbience(EventReference ambienceEventReference)
     {
@@ -120,5 +121,6 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+        LevelVolume.Remove_OnCurrentVolumeChanged(SetMusicArea);
     }
 }

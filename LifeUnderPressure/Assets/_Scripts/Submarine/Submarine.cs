@@ -24,6 +24,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
+    [SerializeField] private Light sun = null;
 
     [SerializeField] private GameObject submarineBody;
 
@@ -106,11 +107,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         LevelVolume current = LevelVolume.Current;
         float depth = -transform.position.y;
-        if (current)
-        {
-            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
-            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
-        }
+
+        LerpSunIntensity(current, depth);
+
+        depth = FakeDepth(current, depth);
 
         LCStressCalculation(-transform.position.y);
 
@@ -119,7 +119,24 @@ public class Submarine : MonoBehaviour, IDepthDependant
             heightText.text = string.Format("{0:F1}m", depth);
         }
     }
+    private void LerpSunIntensity(LevelVolume current, float depth)
+    {
+        if (sun && current)
+        {
+            sun.intensity = Mathf.Lerp(current.SunLightIntensityRange.x, current.SunLightIntensityRange.y, (depth - current.DepthRange.x) / (current.DepthRange.y - current.DepthRange.x));
+        }
+    }
 
+    private float FakeDepth(LevelVolume current, float depth)
+    {
+        if (current)
+        {
+            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
+            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+        }
+
+        return depth;
+    }
     private void Update()
     {
         if (docked) return;
