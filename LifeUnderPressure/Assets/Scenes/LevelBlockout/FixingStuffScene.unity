@@ -11349,6 +11349,11 @@ PrefabInstance:
       objectReference: {fileID: 1250828003}
     - target: {fileID: 201767885911418638, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 1701192788}
+    - target: {fileID: 201767885911418638, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 2020388610}

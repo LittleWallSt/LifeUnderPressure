@@ -89,4 +89,5 @@ MonoBehaviour:
   maxFakeDepth: 200
   volumeCollider: {fileID: 6274857312724993857}
   depthRange: {x: 0, y: 56}
+  sunLightIntensityRange: {x: 1, y: 0}
   gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.68235296}

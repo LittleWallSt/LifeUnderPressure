@@ -11,6 +11,7 @@ public class LevelVolume : MonoBehaviour
     [SerializeField] private BoxCollider volumeCollider = null;
 
     [SerializeField] private Vector2Int depthRange;
+    [SerializeField] private Vector2 sunLightIntensityRange;
     [SerializeField] private Color gizmoColor;
 
     private List<IDepthDependant> itemsNotAllowed = new List<IDepthDependant>();
@@ -18,6 +19,7 @@ public class LevelVolume : MonoBehaviour
     public string ZoneName => zoneName;
     public float MaxFakeDepth => maxFakeDepth;
     public Vector2Int DepthRange => depthRange;
+    public Vector2 SunLightIntensityRange => sunLightIntensityRange;
     public int Level => level;
     public static LevelVolume Current { get; private set; } = null;
     public static List<LevelVolume> List { get; private set; } = new List<LevelVolume>();
@@ -28,6 +30,7 @@ public class LevelVolume : MonoBehaviour
         transform.localScale = Vector3.one;
         volumeCollider.center = new Vector3(0f, -(depthRange.x + depthRange.y) / 2f, 0f);
         volumeCollider.size = new Vector3(1000f, Mathf.Abs(depthRange.x - depthRange.y), 1000f);
+        depthRange = new Vector2Int(Mathf.Max(0, depthRange.x), Mathf.Max(1, depthRange.y));
     }
     private void Awake()
     {
