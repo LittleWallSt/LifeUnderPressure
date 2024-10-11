@@ -8153,6 +8153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8f1a4e728e9724fb45274192cd5690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenSounds: 75
+  minPositiveX: 35
+  maxPositiveX: 40
+  minNegativeX: -35
+  maxNegativeX: -40
+  minPositiveZ: 35
+  maxPositiveZ: 40
+  minNegativeZ: -35
+  maxNegativeZ: -40
 --- !u!1 &7330333335105457552
 GameObject:
   m_ObjectHideFlags: 0
@@ -9849,6 +9858,7 @@ MonoBehaviour:
   - 0.08
   - 0.15
   - 0.2
+  _upgradeText: {fileID: 0}
 --- !u!114 &1302524302371959227
 MonoBehaviour:
   m_ObjectHideFlags: 0
