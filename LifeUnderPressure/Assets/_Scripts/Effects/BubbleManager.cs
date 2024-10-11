@@ -30,7 +30,6 @@ public class BubbleManager : MonoBehaviour
             foreach (ParticleSystem bubble in bubbles)
             {
                 float distance = Vector3.Distance(bubble.transform.position, submarinePosition);
-                Debug.Log(distance);
                 if (distance > bubbleRenderDistance)
                 {
                     Vector3 newBubblePosition = submarinePosition;
