@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,25 @@ public class LevelVolume : MonoBehaviour
     public Vector2Int DepthRange => depthRange;
     public Vector2 SunLightIntensityRange => sunLightIntensityRange;
     public int Level => level;
-    public static LevelVolume Current { get; private set; } = null;
+
+    private static LevelVolume current;
+    public static LevelVolume Current 
+    {
+        get
+        {
+            return current;
+        }
+        private set
+        {
+            if(Current != value)
+            {
+                current = value;
+                Call_OnCurrentVolumeChanged();
+            }
+        }
+    }
+
+    private static Action onCurrentVolumeChanged;
     public static List<LevelVolume> List { get; private set; } = new List<LevelVolume>();
     private void OnValidate()
     {
@@ -66,6 +85,19 @@ public class LevelVolume : MonoBehaviour
 
         depthDependant.IDD_OnDepthLevelExit(level);
         if (itemsNotAllowed.Contains(depthDependant)) itemsNotAllowed.Remove(depthDependant);
+    }
+    // Action
+    public static void Assign_OnCurrentVolumeChanged(Action action)
+    {
+        onCurrentVolumeChanged += action;
+    }
+    public static void Remove_OnCurrentVolumeChanged(Action action)
+    {
+        onCurrentVolumeChanged -= action;
+    }
+    private static void Call_OnCurrentVolumeChanged()
+    {
+        if (onCurrentVolumeChanged != null) onCurrentVolumeChanged();
     }
     private void OnDestroy()
     {
