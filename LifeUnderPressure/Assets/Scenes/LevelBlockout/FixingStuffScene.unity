@@ -5813,11 +5813,11 @@ MonoBehaviour:
     type: 3}
   boidSize: 38
   zoneRadius: 3.8
-  minScale: 0.1
+  minScale: 0.944
   maxScale: 1
   _path: {fileID: 1901658153}
-  _minSpeed: 0.2
-  _maxSpeed: 1
+  _minSpeed: 0.03
+  _maxSpeed: 0.13
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
@@ -6423,11 +6423,11 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   zoneRadius: 3.8
-  minScale: 0.1
+  minScale: 0.944
   maxScale: 1
   _path: {fileID: 1670516877}
-  _minSpeed: 0.2
-  _maxSpeed: 1
+  _minSpeed: 0.03
+  _maxSpeed: 0.13
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
@@ -7323,11 +7323,11 @@ MonoBehaviour:
     type: 3}
   boidSize: 38
   zoneRadius: 10
-  minScale: 0.1
+  minScale: 0.944
   maxScale: 1
   _path: {fileID: 603591165}
-  _minSpeed: 0.5
-  _maxSpeed: 1
+  _minSpeed: 0.03
+  _maxSpeed: 0.13
   _cohesionDistance: 4.4
   _avoidanceDistance: 4.5
   _aligementDistance: 0
@@ -11484,18 +11484,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5297021472453822690, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 78.618
       objectReference: {fileID: 0}
     - target: {fileID: 5297021472453822690, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0097
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 13.906
       objectReference: {fileID: 0}
     - target: {fileID: 5297021472453822690, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.1544
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 15.491
       objectReference: {fileID: 0}
     - target: {fileID: 7311892231753551879, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -15543,11 +15543,11 @@ MonoBehaviour:
     type: 3}
   boidSize: 40
   zoneRadius: 4
-  minScale: 0.1
+  minScale: 0.944
   maxScale: 1
   _path: {fileID: 274004698}
-  _minSpeed: 0.2
-  _maxSpeed: 1
+  _minSpeed: 0.03
+  _maxSpeed: 0.13
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
