@@ -39,6 +39,7 @@ public class LevelVolume : MonoBehaviour
             }
         }
     }
+    private static List<LevelVolume> triggering = new List<LevelVolume>();
 
     private static Action onCurrentVolumeChanged;
     public static List<LevelVolume> List { get; private set; } = new List<LevelVolume>();
@@ -62,7 +63,8 @@ public class LevelVolume : MonoBehaviour
 
         if (depthDependant.IDD_GetGOInstanceID() == Submarine.Instance.gameObject.GetInstanceID())
         {
-            Current = this;
+            triggering.Add(this);
+            Current = triggering[triggering.Count - 1];
         }
 
         bool allowed = depthDependant.IDD_OnDepthLevelEnter(level);
@@ -83,6 +85,11 @@ public class LevelVolume : MonoBehaviour
         IDepthDependant depthDependant = other.GetComponent<IDepthDependant>();
         if (depthDependant == null) return;
 
+        if (other.gameObject.GetInstanceID() == Submarine.Instance.gameObject.GetInstanceID())
+        {
+            triggering.Remove(this);
+            Current = triggering[triggering.Count - 1];
+        }
         depthDependant.IDD_OnDepthLevelExit(level);
         if (itemsNotAllowed.Contains(depthDependant)) itemsNotAllowed.Remove(depthDependant);
     }

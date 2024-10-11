@@ -72,8 +72,8 @@ public class DistantSounds : MonoBehaviour
         possibleChoices[2] = randomNegativeX;
         possibleChoices[3] = randomNegativeZ;
 
-        Vector3 chosenPosition = new Vector3(possibleChoices[Random.Range(0, possibleChoices.Length + 1)], 0f, 
-                                            possibleChoices[Random.Range(0, possibleChoices.Length + 1)]);
+        Vector3 chosenPosition = new Vector3(possibleChoices[Random.Range(0, possibleChoices.Length)], 0f, 
+                                            possibleChoices[Random.Range(0, possibleChoices.Length)]);
         
         //Debug.Log(chosenPosition);
         return chosenPosition;

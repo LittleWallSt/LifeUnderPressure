@@ -73,6 +73,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         warningInstance.setParameterByName("shouldPlay", 0);
         warningInstance.start();
         // Janko <<
+
+        LevelVolume.Assign_OnCurrentVolumeChanged(OnLevelVolumeChanged);
     }
 
     public void Init()
@@ -248,6 +250,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void OnDestroy()
     {
         DataManager.Remove_OnSaveData(StorePositionData);
+        LevelVolume.Remove_OnCurrentVolumeChanged(OnLevelVolumeChanged);
         // Janko >>
         warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
@@ -273,10 +276,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         Money += amount;
     }
+    private void OnLevelVolumeChanged()
+    {
+        zoneText.text = LevelVolume.Current ? LevelVolume.Current.ZoneName : string.Empty;
+    }
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        zoneText.text = LevelVolume.Current ? LevelVolume.Current.ZoneName : string.Empty;
         return true;
     }
     public void IDD_NotAllowedUpdate(int level, float deltaTime)
@@ -291,7 +297,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     public void IDD_OnDepthLevelExit(int level)
     {
-        Debug.Log("exit level " + level);
+
     }
     public int IDD_GetGOInstanceID()
     {
