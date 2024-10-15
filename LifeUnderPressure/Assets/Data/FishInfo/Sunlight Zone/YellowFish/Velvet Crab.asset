@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Velvet Crab
+  m_EditorClassIdentifier: 
+  fishName: Velvet Crab
+  fishSmallDescription: "Velvet Crab, also known as (Necora puber) is a tiny crab
+    that is described as a \u201Cdevil\u201D due to its reddish eyes."
+  infoWhere: These devil-looking crabs live between the depths of 0 to 80 m. They
+    live inshore and rockpool crevices amongst weeds and rocks.
+  fishFullDescription: "Uh.. the Velvet Crab i suppose this is an ok scan \r\n\r\nThese
+    tiny crabs (Shell width up to 10cm) are not the friendliest. If you disturb these
+    guys, they will want to get you with their claws. Some scuba-diving websites
+    have described their behaviour as \u201Cunlikely to do harm, but will have a
+    go nonetheless\u201D. Most crabs can be controlled by handling a side of the
+    carapace, which ensures the crab can't reach you with its claws. But the velvet
+    crab is able to contort itself and deliver an eyewatering pinch.\r\n"
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
