@@ -9998,7 +9998,7 @@ MonoBehaviour:
   rotationSpeed: 250
   maxBumpDuration: 2
   bumpDurationModifier: 0.25
-  bumpStrength: 0.8
+  bumpStrength: 0.6
   bumpDamageModifier: 10
 --- !u!114 &6763968442118710192
 MonoBehaviour:
@@ -10155,6 +10155,7 @@ MonoBehaviour:
       m_Calls: []
   - m_PersistentCalls:
       m_Calls: []
+  turnLightsKey: 102
   lightIntensity:
   - 2
   - 2.3
