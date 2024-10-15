@@ -14933,6 +14933,7 @@ MonoBehaviour:
   dockText: {fileID: 3103798612887251836}
   zoneText: {fileID: 5402134795807801460}
   upgradeCanvas: {fileID: 0}
+  upgradeTreeCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
@@ -14987,6 +14988,7 @@ MonoBehaviour:
       m_Calls: []
   - m_PersistentCalls:
       m_Calls: []
+  type: 4
   upgrades:
   - forward: 5
     side: 3.9
@@ -15025,6 +15027,7 @@ MonoBehaviour:
       m_Calls: []
   - m_PersistentCalls:
       m_Calls: []
+  type: 1
   upgrades:
   - 0.08
   - 0.15
@@ -15073,6 +15076,7 @@ MonoBehaviour:
         m_CallState: 2
   - m_PersistentCalls:
       m_Calls: []
+  type: 0
   scanner: {fileID: 0}
   upgrades:
   - scanTimer: 6
@@ -15098,6 +15102,7 @@ MonoBehaviour:
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
+  type: 5
 --- !u!114 &6871879323347866732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15119,6 +15124,7 @@ MonoBehaviour:
       m_Calls: []
   - m_PersistentCalls:
       m_Calls: []
+  type: 2
   turnLightsKey: 102
   lightIntensity:
   - 2
