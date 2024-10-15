@@ -154,7 +154,6 @@ public class GameManager : MonoBehaviour
     // Setters
     public void SetInTutorial(bool state)
     {
-        Debug.Log("al tutorial " + state);
         inTutorial = state;
         DataManager.Write("InTutorial", state ? 1 : 0);
         if (state) QuestSystem.Reset();
@@ -177,5 +176,10 @@ public class GameManager : MonoBehaviour
         QuestSystem.Reset();
         DataManager.Remove_OnSaveData(StoreQuestData);
         DataManager.Reset();
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(initialSpawnPoint, 0.35f);
     }
 }
