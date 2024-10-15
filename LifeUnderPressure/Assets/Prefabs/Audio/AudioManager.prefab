@@ -44,6 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd613d62e62bf54597db61693e281c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ambienceToPlay>k__BackingField:
+    Guid:
+      Data1: 364308993
+      Data2: 1172473928
+      Data3: -469148001
+      Data4: -1189912816
+    Path: event:/Ambience/Ambience
   <SFX_Whale>k__BackingField:
     Guid:
       Data1: -2041377521
