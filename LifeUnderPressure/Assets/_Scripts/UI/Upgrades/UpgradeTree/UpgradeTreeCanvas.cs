@@ -76,14 +76,6 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     
 
-    public void UnlockUpgrades()
-    {
-        foreach(var upgrade in upgradeNodes)
-        {
-            upgrade.UnlockUpgrade();
-        }
-    }
-
     public void UnlockQuestNode(UpgradeType type)
     {
         

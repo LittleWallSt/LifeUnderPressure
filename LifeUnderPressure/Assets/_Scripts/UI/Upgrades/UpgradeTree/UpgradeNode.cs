@@ -49,8 +49,8 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         else if (!skillNode.isUnlocked && skillNode.prerequisites!=null)
         {
-            if (skillNode.LockedBehindQuest)
-                reqText += "Locked behind quest" + '\n';
+            if (skillNode.LockedBehindQuest && !skillNode.isUnlocked)
+                reqText += "Upgrade locked. " + '\n';
             foreach (var req in skillNode.prerequisites)
             {
                 reqText += req.skillNode.upgradeType.ToString() + " Lv:" + req.skillNode.requiredLevelForUnlock + ", " + '\n';
@@ -97,17 +97,22 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         Debug.Log("Click");
         Submarine submarine = Submarine.Instance;
+        if (!skillNode.LockedBehindQuest) UnlockUpgrade(true);
         if (!skillNode.isUnlocked) return;
         bool upgraded = skillNode.GetUpgrade().TryUpgradeLevel(submarine.Money);
         if (!upgraded) return;
 
         UpdateNode();
+        UnlockUpgrade(false);
+
         UpgradeTreeCanvas.Instance.SetHoverMenu(true, description,
                 getRequirementText(skillNode), gameObject.GetComponent<RectTransform>());
 
         // Janko >> 
         AudioManager.instance.PlayOneShot(FMODEvents.instance.upgradeFX, Camera.main.transform.position);
         // Janko <<
+
+
     }
 
 
@@ -126,22 +131,22 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
 
-    public void UnlockUpgrade()
+    private void UnlockUpgrade(bool state)
     {
-        if (CanUnlock(skillNode) && !skillNode.LockedBehindQuest)
+        if (CanUnlock(skillNode))
         {
-            skillNode.isUnlocked = true;
+            skillNode.isUnlocked = state;
         }
     }
 
     public void UnlockQuestNode()
     {
         Debug.Log("unlockee");
-        skillNode.LockedBehindQuest = false;
-        UnlockUpgrade();
-        //getRequirementText(skillNode);
+        UnlockUpgrade(true);
         
     }
+
+   
 
     
 }
