@@ -3036,6 +3036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c2e140679dcb74193430bc304104a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockLerpSpeed: 10
   canvas: {fileID: 4410571060335345299}
   scanner: {fileID: 5837270843069969581}
   lockImages:
@@ -10184,7 +10185,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!135 &8350296131925559835
