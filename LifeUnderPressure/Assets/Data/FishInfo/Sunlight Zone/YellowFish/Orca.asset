@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Orca
+  m_EditorClassIdentifier: 
+  fishName: Orca
+  fishSmallDescription: Orca aka Killer Whale (Orcinus orca) The Larges dolphin that
+    is black and white. These guys should be easy to spot at 8-7 meters long and
+    an average weight of 3000-5400kg.
+  infoWhere: 'Orcas enjoy the cold open waters. They stay in shallow water, around
+    10-20 meters, but sometimes dive several hundred meters down to get prey. '
+  fishFullDescription: "You found the famous Killer Whale, not a bad scan..\r\n\r\nThe
+    Killer Whale, an Apex predator at the top of the food chain. It has a diverse
+    diet, feasting on fish, penguins, and marine mammals such as seals, sea lions,
+    and whales. They also eat fish, squid, and seabirds. \r\n\r\nWhen they hunt,
+    they are known to play with their food, throwing it into the air. This might
+    be a playful manner or a strategic hunting tactic.\r\n\r\nOrcas' life spans are
+    quite similar to human ones, with females averaging 80 years and males averaging
+    70 years. \r\nThey also stay pregnant for around 17 months. Females usually give
+    birth around every 3-5 years, but at times it can take a decade to have a successful
+    birth. \r\n"
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
