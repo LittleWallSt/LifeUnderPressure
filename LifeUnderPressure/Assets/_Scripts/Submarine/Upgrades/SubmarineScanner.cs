@@ -20,7 +20,9 @@ public class SubmarineScanner : SubmarineUpgrade
     public override void UpgradeLevel()
     {
         base.UpgradeLevel();
-
+        //change this one 
+        return;
+        
         scanner.SetScanTimer(upgrades[level].scanTimer);
         scanner.SetScanAnimationSpeed(upgrades[level].scanAnimationSpeed);
         scanner.SetDepletingSpeed(upgrades[level].depletingSpeed);

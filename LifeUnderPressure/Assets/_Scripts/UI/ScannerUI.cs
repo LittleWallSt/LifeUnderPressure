@@ -30,8 +30,6 @@ public class ScannerUI : MonoBehaviour
         scanPanel.gameObject.SetActive(true);
         scanPanel.alpha = 1.0f;
         fishName.text = "Sealog updated!!";
-        //fishName.text = _fishName;
-        //fishDescription.text = _fishDescription;
         StartCoroutine(FadeOutAfterCooldown());
     }
 
@@ -43,7 +41,6 @@ public class ScannerUI : MonoBehaviour
     private void ShowWarning(bool on) { 
 
         outOfRangeText.gameObject.SetActive(on);
-        //StartCoroutine(WaitForFewSeconds(outOfRangeText.gameObject));
     }
 
     
@@ -70,12 +67,5 @@ public class ScannerUI : MonoBehaviour
         scanPanel.gameObject.SetActive(false);
     }
 
-    IEnumerator WaitForFewSeconds(GameObject go)
-    {
-        // Wait for the cooldown period before starting the fade
-        yield return new WaitForSeconds(cooldown);
-
-        go.SetActive(false);
-
-    }
+  
 }

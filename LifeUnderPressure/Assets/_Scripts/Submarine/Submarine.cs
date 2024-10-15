@@ -22,6 +22,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private TMP_Text dockText = null;
     [SerializeField] private TMP_Text zoneText = null;
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
+    [SerializeField] private UpgradeTreeCanvas upgradeTreeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
@@ -146,6 +147,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         PauseMenuInput();
         //UpgradeCanvasInput();
         EncyclopediaInput();
+        UpgradeTreeInput();
     }
 
     private void PauseMenuInput()
@@ -169,6 +171,18 @@ public class Submarine : MonoBehaviour, IDepthDependant
             currentMenu = encyclopedia.EnableMenu(!encyclopedia.gameObject.activeSelf, submarineBody) ? encyclopedia.gameObject : null;
         }
     }
+
+    private void UpgradeTreeInput()
+    {
+        if (!Input.GetKeyDown(KeyCode.Tab)) return;
+
+        if (currentMenu == null || currentMenu == upgradeTreeCanvas.gameObject || !currentMenu.activeSelf)
+        {
+            currentMenu = upgradeTreeCanvas.EnableMenu(!upgradeTreeCanvas.gameObject.activeSelf, submarineBody) ? upgradeTreeCanvas.gameObject : null;
+        }
+    }
+
+
     //**
     private void UpgradeCanvasInput()
     {
