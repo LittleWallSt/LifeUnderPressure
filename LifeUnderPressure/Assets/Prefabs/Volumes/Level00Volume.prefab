@@ -71,7 +71,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0.24
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 8b3c8ff03d64bd143bdf1c8e43ae55cc, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 53d38d26137bf0e4d8847bd995c51674, type: 2}
 --- !u!114 &4933902856591372032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,4 +89,5 @@ MonoBehaviour:
   maxFakeDepth: 200
   volumeCollider: {fileID: 6274857312724993857}
   depthRange: {x: 0, y: 56}
+  sunLightIntensityRange: {x: 1, y: 0}
   gizmoColor: {r: 1, g: 0.7150943, b: 0.7408928, a: 0.68235296}

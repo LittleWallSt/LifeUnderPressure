@@ -53,7 +53,6 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
         if (working)
         {
             working = false;
-            Debug.Log("off dista");
             foreach(Fish fish in fishList)
             {
                 fish.gameObject.SetActive(false);
@@ -66,7 +65,6 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
         if (!working)
         {
             working = true;
-            Debug.Log("in  dista");
             foreach (Fish fish in fishList)
             {
                 fish.gameObject.SetActive(true);

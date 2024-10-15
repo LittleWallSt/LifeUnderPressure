@@ -60,10 +60,12 @@ public class GameManager : MonoBehaviour
 
         if (questsFinished) return;
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
             QuestSystem.ForceCompleteQuest();
         }
+#endif
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
             float distance = Vector3.Distance(Submarine.Instance.transform.position, QuestSystem.GetQuestLocation().position);
@@ -152,7 +154,6 @@ public class GameManager : MonoBehaviour
     // Setters
     public void SetInTutorial(bool state)
     {
-        Debug.Log("al tutorial " + state);
         inTutorial = state;
         DataManager.Write("InTutorial", state ? 1 : 0);
         if (state) QuestSystem.Reset();
@@ -175,5 +176,10 @@ public class GameManager : MonoBehaviour
         QuestSystem.Reset();
         DataManager.Remove_OnSaveData(StoreQuestData);
         DataManager.Reset();
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(initialSpawnPoint, 0.35f);
     }
 }

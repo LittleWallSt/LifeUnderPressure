@@ -18,6 +18,14 @@ public class AudioManager : MonoBehaviour
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
 
+    private EventInstance currentInstance;
+    private float timeLastSetInstance;
+
+    [SerializeField]
+    private float musicChangeCooldown = 5f;
+    [SerializeField]
+    private float playMusicOrAmbienceDelay = 10f;
+
     private void Awake()
     {
         if (instance != null)
@@ -32,9 +40,51 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         // Start ambience here or somewhere else?
-        // InitializeAmbience(FMODEvents.instance.ambience);
+        LevelVolume.Assign_OnCurrentVolumeChanged(SetArea);
         InitializeMusic(FMODEvents.instance.musicToPlay);
+        InitializeAmbience(FMODEvents.instance.ambienceToPlay);
         //shouldPlaySoundTimer = timeBetweenSounds;
+
+        currentInstance = musicEventInstance;
+        currentInstance.start();
+    }
+
+    private void Update()
+    {
+        SetMusicOrAmbience();
+
+        /*if (!IsPlaying(musicEventInstance))
+        {
+            InitializeAmbience(FMODEvents.instance.ambienceToPlay);
+        }
+        else if (!IsPlaying(ambienceEventInstance))
+        {
+            InitializeMusic(FMODEvents.instance.musicToPlay);
+        }*/
+    }
+
+    private void SetMusicOrAmbience()
+    {
+        if (!IsPlaying(currentInstance) && Time.time - timeLastSetInstance > musicChangeCooldown)
+        {
+            currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            currentInstance = currentInstance.Equals(musicEventInstance) ? ambienceEventInstance : musicEventInstance;
+            StartCoroutine(StartInstanceDelay(2f));
+            timeLastSetInstance = Time.time;
+        }
+    }
+
+    private IEnumerator StartInstanceDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentInstance.start();
+    }
+
+    private bool IsPlaying(EventInstance instance)
+    {
+        PLAYBACK_STATE state;
+        instance.getPlaybackState(out state);
+        return state != PLAYBACK_STATE.STOPPED;
     }
 
     // Use triggers and stuff for this. Will need a new Class for this,
@@ -47,21 +97,22 @@ public class AudioManager : MonoBehaviour
 
     // Might have to add separate method to play main menu music.
 
-    /*public void SetMusicArea(MusicArea musicArea)
+    public void SetArea()
     {
-        musicEventInstance.setParameterByName("Area", (float)musicArea);
-    }*/
+        musicEventInstance.setParameterByName("Area", LevelVolume.Current.Level);
+        ambienceEventInstance.setParameterByName("Area", LevelVolume.Current.Level);
+    }
 
     private void InitializeAmbience(EventReference ambienceEventReference)
     {
         ambienceEventInstance = CreateInstance(ambienceEventReference);
-        ambienceEventInstance.start();
+        //ambienceEventInstance.start();
     }
 
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
-        musicEventInstance.start();
+        //musicEventInstance.start();
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
@@ -120,5 +171,6 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+        LevelVolume.Remove_OnCurrentVolumeChanged(SetArea);
     }
 }

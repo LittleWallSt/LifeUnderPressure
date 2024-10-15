@@ -24,6 +24,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private UpgradeCanvas upgradeCanvas = null;
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
+    [SerializeField] private Light sun = null;
 
     [SerializeField] private GameObject submarineBody;
 
@@ -72,6 +73,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         warningInstance.setParameterByName("shouldPlay", 0);
         warningInstance.start();
         // Janko <<
+
+        LevelVolume.Assign_OnCurrentVolumeChanged(OnLevelVolumeChanged);
     }
 
     public void Init()
@@ -106,11 +109,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         LevelVolume current = LevelVolume.Current;
         float depth = -transform.position.y;
-        if (current)
-        {
-            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
-            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
-        }
+
+        LerpSunIntensity(current, depth);
+
+        depth = FakeDepth(current, depth);
 
         LCStressCalculation(-transform.position.y);
 
@@ -119,7 +121,24 @@ public class Submarine : MonoBehaviour, IDepthDependant
             heightText.text = string.Format("{0:F1}m", depth);
         }
     }
+    private void LerpSunIntensity(LevelVolume current, float depth)
+    {
+        if (sun && current)
+        {
+            sun.intensity = Mathf.Lerp(current.SunLightIntensityRange.x, current.SunLightIntensityRange.y, (depth - current.DepthRange.x) / (current.DepthRange.y - current.DepthRange.x));
+        }
+    }
 
+    private float FakeDepth(LevelVolume current, float depth)
+    {
+        if (current)
+        {
+            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
+            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+        }
+
+        return depth;
+    }
     private void Update()
     {
         if (docked) return;
@@ -231,6 +250,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void OnDestroy()
     {
         DataManager.Remove_OnSaveData(StorePositionData);
+        LevelVolume.Remove_OnCurrentVolumeChanged(OnLevelVolumeChanged);
         // Janko >>
         warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
@@ -256,10 +276,13 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         Money += amount;
     }
+    private void OnLevelVolumeChanged()
+    {
+        zoneText.text = LevelVolume.Current ? LevelVolume.Current.ZoneName : string.Empty;
+    }
     // IDepthDependant
     public bool IDD_OnDepthLevelEnter(int level)
     {
-        zoneText.text = LevelVolume.Current ? LevelVolume.Current.ZoneName : string.Empty;
         return true;
     }
     public void IDD_NotAllowedUpdate(int level, float deltaTime)
@@ -274,7 +297,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     public void IDD_OnDepthLevelExit(int level)
     {
-        Debug.Log("exit level " + level);
+
     }
     public int IDD_GetGOInstanceID()
     {
