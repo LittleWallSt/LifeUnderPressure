@@ -21,7 +21,7 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private float bumpDamageModifier = 10f;
 
     private bool bumped = false;
-    private float bumpDuration = 0f;
+    private float bumpDuration = 0f;    
 
     private bool shaking = false;
     private float shakeDuration = 0f;
