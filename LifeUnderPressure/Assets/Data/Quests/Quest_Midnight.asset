@@ -16,6 +16,8 @@ MonoBehaviour:
   fishes:
   - fish: {fileID: 11400000, guid: 70444fe5743685744820164e4d244b83, type: 2}
     amount: 1
+  - fish: {fileID: 11400000, guid: 5823d77003ff409478595af3d52db9f6, type: 2}
+    amount: 1
   rewards: []
   location:
     position: {x: 90.19, y: -13.58, z: -35.21}

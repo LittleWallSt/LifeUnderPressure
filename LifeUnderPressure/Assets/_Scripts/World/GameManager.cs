@@ -103,7 +103,8 @@ public class GameManager : MonoBehaviour
         switch (boolName)
         {
             case "Upgrade_Hull":
-                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineHull));
+                // what neeed forr skill tree
+                //Submarine.Instance.UpgradeSubmarine(typeof(SubmarineHull));
                 break;
             case "Upgrade_Motor":
                 Submarine.Instance.UpgradeSubmarine(typeof(SubmarineMotor));
