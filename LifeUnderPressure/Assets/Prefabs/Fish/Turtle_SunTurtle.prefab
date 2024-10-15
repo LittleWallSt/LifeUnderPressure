@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7078515065875570282}
-  - component: {fileID: 757402598248073394}
   - component: {fileID: 1279890184145906600}
   - component: {fileID: 5023737430215678129}
+  - component: {fileID: 6897842571661562207}
   m_Layer: 8
   m_Name: Turtle_SunTurtle
   m_TagString: Untagged
@@ -35,37 +35,6 @@ Transform:
   - {fileID: 6892828294762619169}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &757402598248073394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5117038511062740693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fishInfo: {fileID: 11400000, guid: 0f33f8f79205f8f49a223942ea70f2f1, type: 2}
-  scaredFactor: 0
-  scaredDistance: 10
-  scaredSpeed: 0.6
-  scaredTimer: 1
-  curiousFactor: 0
-  curiousDistance: 0
-  curiousSpeed: 0
-  curiousTimer: 0
-  curiousCooldownTime: 0
-  curiousRange: 0
-  random: 0
-  speed: 1.4
-  rotationSpeed: 1
-  alignmentThreshold: 10
-  avoidanceDetection: {x: 1, y: 2, z: 1}
-  mask:
-    serializedVersion: 2
-    m_Bits: 384
 --- !u!136 &1279890184145906600
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -116,6 +85,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6897842571661562207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b226f050c6b81ef42914d3505332ab36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishInfo: {fileID: 11400000, guid: 5823d77003ff409478595af3d52db9f6, type: 2}
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  random: 0
+  speed: 0
+  rotationSpeed: 0
+  alignmentThreshold: 0
+  avoidanceDetection: {x: 0, y: 0, z: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  FOVAngle: 0
+  smoothDamp: 0
 --- !u!1001 &6350787601807115978
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -122,22 +122,6 @@ public class CrabBehaviour : MonoBehaviour
         dir.y = 0;
         dir.Normalize();
 
-        //float dotProduct = Vector3.Dot(transform.right, dir);
-        //Vector3 lateralMove;
-        //if (dotProduct > 0)
-        //{
-        //    lateralMove = transform.right * lateralSpeed * Time.deltaTime;
-        //}
-        //else
-        //{
-        //    lateralMove = -transform.right * lateralSpeed * Time.deltaTime;
-        //}
-
-        //transform.position += lateralMove;
-
-        //Vector3 fordward = Vector3.forward;
-        //transform.rotation = Quaternion.LookRotation(fordward, dir);
-
         if(dir != Vector3.zero)
         {
             Vector3 latDir = Vector3.Cross(Vector3.up, dir);

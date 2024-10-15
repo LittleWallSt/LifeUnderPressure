@@ -14684,6 +14684,10 @@ MonoBehaviour:
   changeWaypointDistance: 1
   walkRadius: 10
   lateralSpeed: 3
+  stopTimer: 2
+  stuckCheckTimer: 2
+  minMoveDist: 0.2
+  minDistToEdge: 2
 --- !u!195 &1777735203
 NavMeshAgent:
   m_ObjectHideFlags: 0
