@@ -1070,7 +1070,7 @@ MonoBehaviour:
   maxScale: 1
   _path: {fileID: 1901658153}
   _minSpeed: 0.2
-  _maxSpeed: 1
+  _maxSpeed: 0.5
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
@@ -1694,7 +1694,7 @@ MonoBehaviour:
   maxScale: 1
   _path: {fileID: 1670516877}
   _minSpeed: 0.2
-  _maxSpeed: 1
+  _maxSpeed: 0.5
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
@@ -2814,8 +2814,8 @@ MonoBehaviour:
   minScale: 0.1
   maxScale: 1
   _path: {fileID: 603591165}
-  _minSpeed: 0.5
-  _maxSpeed: 1
+  _minSpeed: 0.2
+  _maxSpeed: 0.5
   _cohesionDistance: 4.4
   _avoidanceDistance: 4.5
   _aligementDistance: 0
@@ -7811,21 +7811,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
-        type: 3}
-      propertyPath: maxLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
-        type: 3}
-      propertyPath: upgradeCost.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
-        type: 3}
-      propertyPath: upgradeEvents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6763968442118710192, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
@@ -12519,7 +12504,7 @@ MonoBehaviour:
   maxScale: 1
   _path: {fileID: 274004698}
   _minSpeed: 0.2
-  _maxSpeed: 1
+  _maxSpeed: 0.5
   _cohesionDistance: 0
   _avoidanceDistance: 0
   _aligementDistance: 0
