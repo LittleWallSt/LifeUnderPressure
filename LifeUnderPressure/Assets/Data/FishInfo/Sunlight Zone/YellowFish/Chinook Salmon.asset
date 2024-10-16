@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Chinook Salmon
+  m_EditorClassIdentifier: 
+  fishName: Chinook Salmon
+  fishSmallDescription: Chinook Salmon (Oncorhynchus tshawytscha) is The biggest
+    Pacific salmon species. They have irregular black spots on the tail, back, and
+    upper fin.
+  infoWhere: Chinooks are found in open waters. Usually swimming at depths of 20
+    to 150 meters.
+  fishFullDescription: "So you found the interesting Chinook Salmon. These guys live
+    in both Rivers and the ocean during their life cycle. They start in rivers, where
+    they are bred in freshwater rivers and streams. This is usually for the first
+    few months to a year. After this time, they start migrating into the ocean. They
+    spend several years feeding and growing. They can be found in the North Pacific
+    Ocean, from California to Alaska and across to Japan. \r\n\r\nFreshwater (Rivers/Streams):
+    Chinook salmon are born in freshwater rivers and streams. They spend the first
+    part of their lives (usually a few months to a year) in freshwater before migrating
+    to the ocean. When they reach maturity, they return to the same freshwater river
+    where they were born to spawn, traveling long distances upstream.\r\n\r\n\r\nA
+    female lays 3,000 to 14,000 eggs at once.\r\n"
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0

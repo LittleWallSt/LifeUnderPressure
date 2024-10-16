@@ -12,6 +12,8 @@ public abstract class SubmarineUpgrade : MonoBehaviour
 
     protected int level = 0;
 
+    public UpgradeType type;
+
     public int Level
     {
         get

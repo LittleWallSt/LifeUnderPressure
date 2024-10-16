@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class TargetLock : MonoBehaviour
 {
+    [SerializeField] private float lockLerpSpeed = 10f;
+
     private Vector3 initPos;
 
     [SerializeField] Canvas canvas;
@@ -104,7 +106,6 @@ public class TargetLock : MonoBehaviour
 
         Vector2 pos = adjustedPosition - mCanvas.sizeDelta / 2f;
 
-        LockPosition.anchoredPosition = pos; 
-
+        LockPosition.anchoredPosition = Vector2.Lerp(LockPosition.anchoredPosition, pos, lockLerpSpeed * Time.deltaTime); 
     }
 }

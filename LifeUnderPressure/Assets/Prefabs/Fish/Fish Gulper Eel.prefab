@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7078515065875570282}
   - component: {fileID: 5672818725198563735}
   - component: {fileID: -6419237639152304305}
-  - component: {fileID: 2941687554159408148}
+  - component: {fileID: 721425290330081227}
   m_Layer: 8
   m_Name: Fish Gulper Eel
   m_TagString: Untagged
@@ -83,7 +83,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2941687554159408148
+--- !u!114 &721425290330081227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5117038511062740693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
+  m_Script: {fileID: 11500000, guid: b226f050c6b81ef42914d3505332ab36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fishInfo: {fileID: 11400000, guid: 70444fe5743685744820164e4d244b83, type: 2}
@@ -107,13 +107,15 @@ MonoBehaviour:
   curiousCooldownTime: 0
   curiousRange: 0
   random: 0
-  speed: 1
-  rotationSpeed: 1
+  speed: 0
+  rotationSpeed: 0
   alignmentThreshold: 0
   avoidanceDetection: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
     m_Bits: 0
+  FOVAngle: 0
+  smoothDamp: 0
 --- !u!1001 &3787438066720519090
 PrefabInstance:
   m_ObjectHideFlags: 0
