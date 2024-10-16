@@ -114,7 +114,8 @@ public class GameManager : MonoBehaviour
                 Submarine.Instance.UpgradeSubmarine(typeof(SubmarineScanner));
                 break;
             case "Upgrade_Lights":
-                Submarine.Instance.UpgradeSubmarine(typeof(SubmarineLights));
+                //Submarine.Instance.UpgradeSubmarine(typeof(SubmarineLights));
+                UpgradeTreeCanvas.Instance.UnlockQuestNode(UpgradeType.Lights);
                 break;
         }
         DataManager.Write(boolName, value);

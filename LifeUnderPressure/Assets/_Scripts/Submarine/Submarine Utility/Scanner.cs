@@ -163,7 +163,7 @@ public class Scanner : MonoBehaviour
         scanningInstance.setParameterByName("ScanningInput", 1);
         // Janko <<
 
-        targetLock.Invoke(currentFish.transform.position);
+        if(currentFish!=null)targetLock?.Invoke(currentFish.transform.position);
         updateScanner.Invoke(BarValue(scanTimer, timeLeft));
 
         if (timeLeft <= 0.0f)
