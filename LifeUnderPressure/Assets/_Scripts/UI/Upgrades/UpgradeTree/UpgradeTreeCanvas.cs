@@ -78,7 +78,6 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     public void UnlockQuestNode(UpgradeType type)
     {
-        
         Debug.Log(upgradeNodes.Length);
         foreach (var upgrade in upgradeNodes)
         {

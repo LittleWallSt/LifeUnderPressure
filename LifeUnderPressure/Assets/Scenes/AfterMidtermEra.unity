@@ -7811,6 +7811,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: maxLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: upgradeCost.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706834710004021130, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: upgradeEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6763968442118710192, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]

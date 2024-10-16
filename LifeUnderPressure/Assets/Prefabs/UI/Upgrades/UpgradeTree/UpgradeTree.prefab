@@ -93,7 +93,7 @@ PrefabInstance:
     - target: {fileID: 1766885795381053240, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2059276482835291454, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 2059276482835291454, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: skillNode.LockedBehindQuest
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2811064907622694028, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
@@ -264,6 +264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095340901649713845, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Lv: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}

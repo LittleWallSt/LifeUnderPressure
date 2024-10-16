@@ -14845,6 +14845,7 @@ GameObject:
   - component: {fileID: 1078021638836957442}
   - component: {fileID: 8350296131925559835}
   - component: {fileID: 8133002748453752486}
+  - component: {fileID: 6706834710004021130}
   m_Layer: 6
   m_Name: SubmarineCameraFixed
   m_TagString: Player
@@ -15201,6 +15202,22 @@ MonoBehaviour:
   metersText: {fileID: 22425363598182934}
   canvas: {fileID: 1120884073437512071}
   camera: {fileID: 5897422571100704064}
+--- !u!114 &6706834710004021130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408860143801451377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9c7f3887eee9143921b9c9ffb920bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLevel: 0
+  upgradeCost: 00000000
+  upgradeEvents: []
+  type: 3
 --- !u!1 &8419524572803582262
 GameObject:
   m_ObjectHideFlags: 0
