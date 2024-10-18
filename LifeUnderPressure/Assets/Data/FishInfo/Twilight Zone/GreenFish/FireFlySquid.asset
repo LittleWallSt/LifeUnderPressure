@@ -15,7 +15,8 @@ MonoBehaviour:
   fishName: Firefly Squid
   fishSmallDescription: Firefly Squid (Watasenia scintillans) is a small bioluminescent
     squid, reaching only about 7 cm in length. They are known for their striking
-    blue and green glow.
+    blue and green glow. This glow might be the reason they get intrested seeing
+    light.
   infoWhere: Firefly Squid usually lives at depths between 100 and 300 meters but
     comes closer to the surface at night to hunt and show off their glowing lights.
   fishFullDescription: 'The good old FireFly squid... Delicious and a good scan.
