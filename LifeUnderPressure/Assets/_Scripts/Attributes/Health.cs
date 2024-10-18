@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
     public float MaxHealth => maxHealth;
     public void ResetHealth()
     {
-        hp = maxHealth;
+        Value = maxHealth;
     }
     private void Awake()
     {

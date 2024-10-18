@@ -814,7 +814,8 @@ MonoBehaviour:
     type: 3}
   sealogOffset: {x: 0, y: 2, z: 1}
   blackScreen: {fileID: 362640139307040607}
-  submarineMovement: {fileID: 6457192390758754892}
+  submarine: {fileID: 0}
+  encyclopedia: {fileID: 0}
 --- !u!1 &1215115517485823052
 GameObject:
   m_ObjectHideFlags: 0
@@ -15083,6 +15084,7 @@ MonoBehaviour:
   submarineCamera: {fileID: 5897422571100704064}
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
+  shakePositionOffset: {x: -0.01, y: 0.01}
   movementVector:
     forward: 4
     side: 3
