@@ -27,6 +27,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
     [SerializeField] private Material cracksMaterial = null;
+    [SerializeField] private DyingEvent dyingEvent = null;
 
     [SerializeField] private GameObject submarineBody;
     [SerializeField] private MeshRenderer submarineMeshRenderer = null;
@@ -243,11 +244,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private void Die()
     {
-        transform.position = GameManager.Instance.InitialSpawnPoint;
-        transform.rotation = Quaternion.identity;
-        movement.ResetMovement();
-        health.ResetHealth();
+        Debug.Log("Submarine died");
+        dyingEvent.OnDie(transform.position);
     }
+
+    
 
 
 
@@ -349,6 +350,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position + new Vector3(0f, deepOffset, 0f), 0.1f);
+    }
+
+    public SubmarineMovement getSubmarineMovement()
+    {
+        return movement;
+    }
+
+    public Health getSubmarineHealth()
+    {
+        return health;
     }
     private void OnGUI()
     {
