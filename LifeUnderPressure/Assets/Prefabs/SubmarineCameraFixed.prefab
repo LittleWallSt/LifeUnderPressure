@@ -15084,7 +15084,7 @@ MonoBehaviour:
     side: 3
     backward: 2
     upward: 2
-  rotationLimit: 60
+  rotationLimit: 75
   rotationSpeed: 250
   maxBumpDuration: 2
   bumpDurationModifier: 0.25
@@ -15340,7 +15340,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLevel: 0
   upgradeCost: 00000000
-  upgradeEvents: []
+  upgradeEvents:
+  - m_PersistentCalls:
+      m_Calls: []
   type: 3
 --- !u!1 &8419524572803582262
 GameObject:
