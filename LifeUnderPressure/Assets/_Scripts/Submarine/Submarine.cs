@@ -39,6 +39,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private Health health;
     private SubmarineMovement movement;
+    private Rigidbody rb;
 
     private int money = 0;
     private float stress = 0f;
@@ -72,6 +73,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
+        rb = GetComponent<Rigidbody>();
     }
     private void CracksMaterialSetup()
     {
@@ -248,9 +250,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
         dyingEvent.OnDie(transform.position);
     }
 
-    
-
-
+    public void ForceSetPosition(Vector3 pos)
+    {
+        rb.position = pos;
+    }
 
 
     private void LCStressCalculation(float depth)
