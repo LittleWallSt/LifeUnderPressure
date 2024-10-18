@@ -808,12 +808,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d538cad1dcc7a143a63840a2621d03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  submarineBroken: {fileID: 0}
+  submarineBroken: {fileID: 5004963502321850694, guid: e806232de3541654fbb7b749686bb30f,
+    type: 3}
   sealogPickable: {fileID: 7110523469978249278, guid: 72ab16a8b403bc243a5355c55b1eb5d7,
     type: 3}
   sealogOffset: {x: 0, y: 2, z: 1}
   blackScreen: {fileID: 362640139307040607}
-  submarineMovement: {fileID: 0}
+  submarineMovement: {fileID: 6457192390758754892}
 --- !u!1 &1215115517485823052
 GameObject:
   m_ObjectHideFlags: 0
@@ -15063,6 +15064,7 @@ MonoBehaviour:
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
   cracksMaterial: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
+  dyingEvent: {fileID: 3135518312450490496}
   submarineBody: {fileID: 7225724622715461617}
   submarineMeshRenderer: {fileID: 4375975015138722327}
 --- !u!114 &6457192390758754892

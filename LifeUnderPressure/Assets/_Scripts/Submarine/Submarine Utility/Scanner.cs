@@ -193,7 +193,7 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
-        if (currentFish.GetComponent<SealogPickup>())
+        if (currentFish.gameObject.tag == "Sealog")
         {
             Debug.Log("scanned sealog");
             FindObjectOfType<DyingEvent>().ResetSealog();

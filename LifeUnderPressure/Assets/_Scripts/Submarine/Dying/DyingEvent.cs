@@ -1,6 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DyingEvent : MonoBehaviour
@@ -12,33 +11,43 @@ public class DyingEvent : MonoBehaviour
 
     [SerializeField] CanvasGroup blackScreen;
 
-    [SerializeField] SubmarineMovement submarineMovement;
+    [SerializeField] Submarine submarine;
+    [SerializeField] Encyclopedia encyclopedia;
     float cooldown = 1f;
     float fadeDuration = 3f;
+    float blackScreenDuration = 3f;
 
-    Encyclopedia encyclopedia;
+    
     GameObject tempSealog;
-    public void OnDie(Vector3 placeOfDeath)
+
+    void Awake()
     {
+        if (encyclopedia==null) encyclopedia = FindObjectOfType<Encyclopedia>();
+    }
+
+    public void OnDie(Vector3 placeOfDeath)
+    {        
+        if (encyclopedia!=null)encyclopedia.ClearSealog();
+
+        if (submarine== null) submarine= FindObjectOfType<Submarine>();
+        submarine.getSubmarineMovement().enabled= false;
+        StartCoroutine(FadeOutAfterCooldown());
         Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
+        
 
-        if(encyclopedia==null) 
-            encyclopedia = FindObjectOfType<Encyclopedia>();
-        encyclopedia.ClearSealog();
-
-        if (submarineMovement== null) 
-            submarineMovement= FindObjectOfType<SubmarineMovement>();
-        submarineMovement.enabled= false;
-
-        StartCoroutine(SetBackScreen());
     }
 
     public void OnRespawn()
     {
-        StartCoroutine(FadeOutAfterCooldown());
-        submarineMovement.enabled = true;
-        
+        submarine.getSubmarineMovement().enabled = true;
+
+        submarine.transform.position = new Vector3(0f, -2f, 0f);
+        submarine.transform.rotation = Quaternion.identity;
+
+        submarine.getSubmarineMovement().ResetMovement();
+        submarine.getSubmarineHealth().ResetHealth();
+
     }
 
     public void ResetSealog()
@@ -49,8 +58,12 @@ public class DyingEvent : MonoBehaviour
 
     IEnumerator FadeOutAfterCooldown()
     {
+        yield return new WaitForSecondsRealtime(cooldown);
+        blackScreen.alpha = 1f;
+        yield return new WaitForSecondsRealtime(blackScreenDuration);
         float elapsedTime = 0f;
-        while (elapsedTime < fadeDuration)
+        OnRespawn();
+        while (elapsedTime < fadeDuration) 
         {
             elapsedTime += Time.deltaTime;
 
@@ -60,11 +73,12 @@ public class DyingEvent : MonoBehaviour
         }
 
         blackScreen.alpha = 0f;
+
+        
     }
 
-    IEnumerator SetBackScreen()
-    {
-        yield return new WaitForSeconds(cooldown);
-        blackScreen.alpha = 1f;
-    }
+
+    
+
+    
 }
