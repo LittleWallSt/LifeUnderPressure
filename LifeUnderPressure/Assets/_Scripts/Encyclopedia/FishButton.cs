@@ -69,8 +69,9 @@ public class FishButton : MonoBehaviour
 
     private void ChangeStateToScanned(FishInfo info)
     {
-        if(info.locked == false) fishState= FishState.Scanned;
+        if(info.locked == false) fishState = FishState.Scanned;
     }
+    
 
     // Aleksis >>
     private void LoadFishInfo()

@@ -144,6 +144,7 @@ public class Encyclopedia : MonoBehaviour
             foreach(var fish in fishes)
             {
                 fish.SetIcon();
+                fish.fishInfo.locked = true;
             }
         }
     }

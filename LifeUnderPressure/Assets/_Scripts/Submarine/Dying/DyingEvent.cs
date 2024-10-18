@@ -31,38 +31,41 @@ public class DyingEvent : MonoBehaviour
 
         if (submarine== null) submarine= FindObjectOfType<Submarine>();
         submarine.getSubmarineMovement().enabled= false;
-        StartCoroutine(FadeOutAfterCooldown());
-        Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
-        tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
+        StartCoroutine(FadeOutAfterCooldown(placeOfDeath));
         
 
     }
 
-    public void OnRespawn()
+    public void OnRespawn(Vector3 placeOfDeath)
     {
         submarine.getSubmarineMovement().enabled = true;
 
-        submarine.transform.position = new Vector3(0f, -2f, 0f);
+        submarine.ForceSetPosition(new Vector3(0f, -2f, 0f));
         submarine.transform.rotation = Quaternion.identity;
 
         submarine.getSubmarineMovement().ResetMovement();
         submarine.getSubmarineHealth().ResetHealth();
+
+        Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
+        tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
+
+        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog"); 
 
     }
 
     public void ResetSealog()
     {
         encyclopedia.ResetSealogCache();
-        Destroy(tempSealog);    
+        tempSealog.SetActive(false); 
     }
 
-    IEnumerator FadeOutAfterCooldown()
+    IEnumerator FadeOutAfterCooldown(Vector3 placeOfDeath)
     {
         yield return new WaitForSecondsRealtime(cooldown);
         blackScreen.alpha = 1f;
         yield return new WaitForSecondsRealtime(blackScreenDuration);
         float elapsedTime = 0f;
-        OnRespawn();
+        OnRespawn(placeOfDeath);
         while (elapsedTime < fadeDuration) 
         {
             elapsedTime += Time.deltaTime;

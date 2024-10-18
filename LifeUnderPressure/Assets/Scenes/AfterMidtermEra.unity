@@ -7748,6 +7748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
+      propertyPath: scanner
+      value: 
+      objectReference: {fileID: 1675702701}
+    - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
       propertyPath: upgradeCost.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
@@ -10819,6 +10824,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1151170335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675702701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5837270843069969581, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230279339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25175efc69bef674586b1f7f72189b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1690958277
 GameObject:
   m_ObjectHideFlags: 0

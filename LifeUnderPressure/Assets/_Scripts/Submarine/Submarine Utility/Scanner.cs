@@ -168,6 +168,8 @@ public class Scanner : MonoBehaviour
 
         if (timeLeft <= 0.0f)
         {
+            if (currentFish != null && currentFish.gameObject.tag == "Sealog") FinishScanningSealog();
+            else
             FinishedScanner();
         }
     }
@@ -193,25 +195,18 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
-        if (currentFish.gameObject.tag == "Sealog")
-        {
-            Debug.Log("scanned sealog");
-            FindObjectOfType<DyingEvent>().ResetSealog();
-        } else {
-            // Aleksis >>
-            FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
-            fishInfo.locked = false;
-            if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
-            QuestSystem.ScannedFish(fishInfo);
-            DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
-            // Aleksis <<
+        // Aleksis >>
+        FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
+        fishInfo.locked = false;
+        if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
+        QuestSystem.ScannedFish(fishInfo);
+        DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
+        // Aleksis <<
 
-            DisplayInfo(fishInfo);
-        }
+        if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 
+        DisplayInfo(fishInfo);
 
-        if (ScanEffect!=null )ScanEffect.Invoke(currentFish.gameObject, false);
-        
         ResetScanner(false);
         currentFish = null;
         currentState = ScannerState.Inactive;
@@ -221,6 +216,18 @@ public class Scanner : MonoBehaviour
         scanningInstance.setParameterByName("ScanningInput", 0);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
         // Janko <<
+    }
+
+    void FinishScanningSealog() {
+
+        Debug.Log("scanned sealog");
+        FindObjectOfType<DyingEvent>().ResetSealog();
+        if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
+        ResetScanner(false);
+        currentFish = null;
+        currentState = ScannerState.Inactive;
+        lockActive.Invoke(currentState);
+
     }
 
     private void OnDrawGizmos()

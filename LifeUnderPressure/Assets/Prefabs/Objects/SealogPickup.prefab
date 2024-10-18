@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7937803092191016934}
   m_Layer: 8
   m_Name: Cube2
-  m_TagString: Untagged
+  m_TagString: Sealog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 373268149870076538}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Sealog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 4824473857167837521}
   m_Layer: 8
   m_Name: SealogPickup
-  m_TagString: Untagged
+  m_TagString: Sealog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
