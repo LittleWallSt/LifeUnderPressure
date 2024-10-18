@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Great White Shark
+  m_EditorClassIdentifier: 
+  fishName: Great White Shark
+  fishSmallDescription: Great White Shark (Carcharodon carcharias) I'm sure you know
+    how they look. And as scary as they might look, they won't be a problem for the
+    submarine. They are curious, though, and might try to take a look at you.
+  infoWhere: 'Great whites are commonly found at depths between 0 to 200m. This is
+    because they hunt for food here, like seals. But they are capable of diving much
+    deeper. Some have been recorded diving as deep as 1200 meters.
+
+'
+  fishFullDescription: "Ah, so you scanned the Great White. Im guessing it was kinda
+    scary.\r\n\r\nThe Great White is one heavy guy, averaging 2000 kg. These guys
+    are a special sort of cold-blooded. They can keep parts of their bodies warmer
+    than the water around them, which helps them swim faster, hunt better, and stay
+    active in colder waters where most other fish would slow down. This is done with
+    a unique system in their bodies that keeps their muscles, eyes, and brain warmer.
+    It's like having built-in \u201Cheaters\u201D that help them move quickly and
+    stay sharp.\r\n\r\nIn the wild, their life span is usually about 30 to 70 years,
+    with some estimates suggesting they reach up to 70 years. Males reach maturity
+    around 26 years, while females take a bit longer at around 33 years.\r\n\r\nGreat
+    white sharks have a long gestation period (about 11 months) and typically give
+    birth to only a small number of pups (about 2 to 14). This slow reproductive
+    rate makes it difficult for their populations to recover quickly.\r\n\r\nSo,
+    an important thing about Great Whites even that they are apex predators and dont
+    face a lot of threats from other fish. They need our help. Currently, their population
+    is decreasing faster than it is being produced. This is because of overfishing
+    where they are caught for their fins, meat and teeth. There are hunters that
+    simply catch them to have some sort of \u201Cfishing trophy\u201D.\r\nPollution
+    is also ruining the habitat where sharks tend to reproduce."
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
