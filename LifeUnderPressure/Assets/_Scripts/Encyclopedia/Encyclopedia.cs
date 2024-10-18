@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +26,7 @@ public class Encyclopedia : MonoBehaviour
     
 
     FishButton[] fishes;
-
+    List<FishButton> cashedFish = new List<FishButton>();
     GameObject submarineBody;
 
     // Aleksis >>
@@ -142,6 +143,36 @@ public class Encyclopedia : MonoBehaviour
         {
             foreach(var fish in fishes)
             {
+                fish.SetIcon();
+            }
+        }
+    }
+
+    public void ClearSealog()
+    {
+        cashedFish.Clear();
+        if (fishes == null || fishes.Length <= 0) fishes = FindObjectsOfType<FishButton>();
+        if (fishes.Length > 0 )
+        {
+            foreach (FishButton fish in fishes)
+            {
+                if (fish.GetFishState()==FishState.Scanned)
+                {
+                    cashedFish.Add(fish);
+                    fish.SetFishState(FishState.None);
+                    fish.SetIcon();
+                }
+            }
+        }
+    }
+
+    public void ResetSealogCache()
+    {
+        if (cashedFish!=null && cashedFish.Count>0)
+        {
+            foreach(FishButton fish in cashedFish)
+            {
+                fish.SetFishState(FishState.Scanned);
                 fish.SetIcon();
             }
         }

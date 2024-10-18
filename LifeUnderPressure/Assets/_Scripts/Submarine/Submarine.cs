@@ -160,7 +160,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         }
     }
 
-    //Ulia chnanges**
+    //Ulia chnanges>>
 
     private void EncyclopediaInput()
     {
@@ -183,7 +183,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
 
 
-    //**
+    //<<
     private void UpgradeCanvasInput()
     {
         if (!docked) return;
@@ -219,6 +219,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         upgradeCanvas.EnableMenu(false);
         if (currentMenu == upgradeCanvas) currentMenu = null;
     }
+
+
     private void Die()
     {
         Debug.Log("Submarine died");
@@ -227,6 +229,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         movement.ResetMovement();
         health.ResetHealth();
     }
+
+
+
 
     private void LCStressCalculation(float depth)
     {

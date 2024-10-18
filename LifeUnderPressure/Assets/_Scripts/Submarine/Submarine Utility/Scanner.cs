@@ -193,18 +193,25 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
-        // Aleksis >>
-        FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
-        fishInfo.locked = false;
-        if (fishInfo.OnLockedChange!=null) fishInfo.OnLockedChange.Invoke();
-        QuestSystem.ScannedFish(fishInfo);
-        DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
-        // Aleksis <<
+        if (currentFish.GetComponent<SealogPickup>())
+        {
+            Debug.Log("scanned sealog");
+            FindObjectOfType<DyingEvent>().ResetSealog();
+        } else {
+            // Aleksis >>
+            FishInfo fishInfo = currentFish.gameObject.GetComponent<Fish>().FishInfo;
+            fishInfo.locked = false;
+            if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
+            QuestSystem.ScannedFish(fishInfo);
+            DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
+            // Aleksis <<
+
+            DisplayInfo(fishInfo);
+        }
+
 
         if (ScanEffect!=null )ScanEffect.Invoke(currentFish.gameObject, false);
         
-
-        DisplayInfo(fishInfo);
         ResetScanner(false);
         currentFish = null;
         currentState = ScannerState.Inactive;
