@@ -15062,7 +15062,9 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
+  cracksMaterial: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
   submarineBody: {fileID: 7225724622715461617}
+  submarineMeshRenderer: {fileID: 4375975015138722327}
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16487,7 +16489,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 1cd39c058fe3f6844929d151838b00c3, type: 2}
+      objectReference: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
     - target: {fileID: 919132149155446097, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
         type: 3}
       propertyPath: m_Name
@@ -16506,6 +16508,12 @@ PrefabInstance:
 --- !u!4 &3238574991575087480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3133102048970972819}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4375975015138722327 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
     type: 3}
   m_PrefabInstance: {fileID: 3133102048970972819}
   m_PrefabAsset: {fileID: 0}

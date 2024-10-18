@@ -26,8 +26,12 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
+    [SerializeField] private Material cracksMaterial = null;
 
     [SerializeField] private GameObject submarineBody;
+    [SerializeField] private MeshRenderer submarineMeshRenderer = null;
+
+    private Material cracksMaterialInstance = null;
 
     private GameObject currentMenu = null;
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
@@ -63,10 +67,26 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
+        CracksMaterialSetup();
+
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
     }
+    private void CracksMaterialSetup()
+    {
+        cracksMaterialInstance = Instantiate(cracksMaterial);
+        List<Material> mats = new List<Material>(submarineMeshRenderer.materials);
+        mats[1] = cracksMaterialInstance;
+        submarineMeshRenderer.SetMaterials(mats);
+    }
+    private void UpdateCracksOnWindshield(float value)
+    {
+        float fraction = Mathf.Abs(1f - (value / health.MaxHealth));
 
+        cracksMaterialInstance.SetFloat("_Cracks1", fraction > 0.25f ? 1f : 0f);
+        cracksMaterialInstance.SetFloat("_Cracks2", fraction > 0.50f ? 1f : 0f);
+        cracksMaterialInstance.SetFloat("_Cracks3", fraction > 0.75f ? 1f : 0f);
+    }
     private void Start()
     {
         // Janko >>
@@ -87,8 +107,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
+        health.Assign_OnValueChanged(UpdateCracksOnWindshield);
 
-        foreach(SubmarineUpgrade upgrade in GetComponents<SubmarineUpgrade>())
+        foreach (SubmarineUpgrade upgrade in GetComponents<SubmarineUpgrade>())
         {
             upgrades.Add(upgrade);
             upgrade.Init(this, movement);
@@ -220,11 +241,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if (currentMenu == upgradeCanvas) currentMenu = null;
     }
 
-
     private void Die()
     {
-        Debug.Log("Submarine died");
-        transform.position = new Vector3(0f, -2f, 0f);
+        transform.position = GameManager.Instance.InitialSpawnPoint;
         transform.rotation = Quaternion.identity;
         movement.ResetMovement();
         health.ResetHealth();
@@ -270,6 +289,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         DataManager.Remove_OnSaveData(StorePositionData);
         LevelVolume.Remove_OnCurrentVolumeChanged(OnLevelVolumeChanged);
+        health.Remove_OnDie(Die);
+        health.Remove_OnValueChanged(UpdateCracksOnWindshield);
+
         // Janko >>
         warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
@@ -322,7 +344,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         return gameObject.GetInstanceID();
     }
-
     // Gizmos
     private void OnDrawGizmosSelected()
     {
