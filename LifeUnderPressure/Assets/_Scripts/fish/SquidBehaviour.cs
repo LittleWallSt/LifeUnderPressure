@@ -19,13 +19,12 @@ public class SquidBehaviour : BoidUnit
     private float maxHeight;
     private float minHeight;
 
-    private Vector3 initialPosition; // Para almacenar la posición inicial
+    private Vector3 initialPosition; 
 
     private void Start()
     {
         averageSpeed = speed;
 
-        // Guardamos la posición inicial del calamar
         initialPosition = transform.position;
 
         if (assignedBoid != null)
@@ -34,7 +33,6 @@ public class SquidBehaviour : BoidUnit
             currentWaypointIndex = assignedBoid.currWayPointIndex;
         }
 
-        // Establecemos las alturas máximas y mínimas en función de los waypoints
         if (path.GetWaypoint(0).position.y > path.GetWaypoint(1).position.y)
         {
             maxHeight = path.GetWaypoint(0).position.y;
@@ -46,18 +44,14 @@ public class SquidBehaviour : BoidUnit
             minHeight = path.GetWaypoint(0).position.y;
         }
 
-        //Debug.Log("Max height: " + maxHeight + " Min height: " + minHeight);
-
         upTimer = UnityEngine.Random.Range(minUpTimer, maxUpTimer);
         downTimer = upTimer - UnityEngine.Random.Range(0.5f, 1.3f);
     }
 
     public override void MoveFish()
     {
-        // Si no hay waypoints
         if (path == null || path.Length == 0) return;
 
-        // Control de waypoint actual
         if (assignedBoid.currWayPointIndex > 2)
         {
             assignedBoid.SetNextWaypoint(0);
@@ -68,14 +62,10 @@ public class SquidBehaviour : BoidUnit
         FindNeighbours();
         CalculateAverageSpeed();
 
-        // Lógica de movimiento vertical
         squidTimer += Time.deltaTime;
 
         if (goingUp)
         {
-            //Debug.Log("Im going UP");
-
-            // Velocidad de subida
             if (!deceleration)
             {
                 squidVel = 1.1f;
@@ -88,7 +78,7 @@ public class SquidBehaviour : BoidUnit
             }
             else
             {
-                squidVel = -0.5f; // Fase de desaceleración mientras sube
+                squidVel = -0.5f; 
                 if (squidTimer > downTimer)
                 {
                     squidTimer = 0.0f;
@@ -99,35 +89,27 @@ public class SquidBehaviour : BoidUnit
         }
         else
         {
-            // Movimiento hacia abajo
-            squidVel = -0.7f; // Velocidad constante para bajar
-            //Debug.Log("Im going DOWN");
+            squidVel = -0.7f; 
         }
 
-        // Movimiento vertical hacia el waypoint (pero solo en el eje Y)
         directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
 
-        // El movimiento será únicamente en el eje Y
         Vector3 moveVector = new Vector3(0, squidVel, 0);
 
-        // Mantenemos la posición original en X y Z
         Vector3 newPosition = new Vector3(initialPosition.x, transform.position.y, initialPosition.z);
 
-        // Aplicamos el movimiento vertical
         newPosition += moveVector * speed * Time.deltaTime;
 
-        // Establecer la nueva posición manteniendo los valores X y Z originales
         transform.position = newPosition;
 
-        // Control de altura para cambiar de dirección
         if (transform.position.y > maxHeight)
         {
-            goingUp = false; // Cambiamos la dirección
+            goingUp = false; 
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
         }
         else if (transform.position.y < minHeight)
         {
-            goingUp = true; // Cambiamos la dirección
+            goingUp = true; 
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
         }
     }
