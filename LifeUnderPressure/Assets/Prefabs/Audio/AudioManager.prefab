@@ -128,13 +128,13 @@ MonoBehaviour:
       Data3: -1648541048
       Data4: -1054176509
     Path: event:/SFX/SFX_Death
-  <SFX_Cracking_Window>k__BackingField:
+  <SFX_Cracking>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1386473751
+      Data2: 1122173569
+      Data3: -1169633639
+      Data4: 346535153
+    Path: event:/SFX/SFX_Cracking
   <SFX_Lightswitch>k__BackingField:
     Guid:
       Data1: -970380706

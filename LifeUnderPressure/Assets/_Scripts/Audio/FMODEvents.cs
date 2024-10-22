@@ -53,7 +53,7 @@ public class FMODEvents : MonoBehaviour
     public EventReference SFX_Death {  get; private set; }
 
     [field: SerializeField]
-    public EventReference SFX_Cracking_Window { get; private set; }
+    public EventReference SFX_Cracking { get; private set; }
 
     [field: SerializeField]
     public EventReference SFX_Lightswitch { get; private set; }
