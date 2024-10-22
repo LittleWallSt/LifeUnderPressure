@@ -3474,7 +3474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25175efc69bef674586b1f7f72189b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanTimer: 6
+  scanTimer: 4
   scanAnimationSpeed: 20
   depletingSpeed: 0
   fishLayer: 8
@@ -12398,7 +12398,7 @@ Transform:
   m_LocalRotation: {x: 0.000000059604638, y: 0.000000009878165, z: -0.00000003226868,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 3}
+  m_LocalScale: {x: 3, y: 4, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8342072052881125108}
@@ -13472,7 +13472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &522031077887965260
 Transform:
   m_ObjectHideFlags: 0
@@ -15085,6 +15085,7 @@ MonoBehaviour:
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
   shakePositionOffset: {x: -0.01, y: 0.01}
+  shakeRotationOffset: {x: -3, y: 3}
   movementVector:
     forward: 4
     side: 3
