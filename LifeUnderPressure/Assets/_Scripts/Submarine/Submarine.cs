@@ -378,6 +378,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         return health;
     }
+
+    public Encyclopedia GetEncyclopedia()
+    {
+        return encyclopedia;
+    }
     private void OnGUI()
     {
         // Shows the stress on screen

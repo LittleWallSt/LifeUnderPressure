@@ -152,12 +152,15 @@ public class BeaconZone : MonoBehaviour
         UIPing.enabled = enabled;
         areaText.enabled = enabled;
         metersText.enabled = enabled;
+        
     }
 
     private bool IsEnable()
     {
         return UIPing.enabled;
     }
+
+   
 
 
 

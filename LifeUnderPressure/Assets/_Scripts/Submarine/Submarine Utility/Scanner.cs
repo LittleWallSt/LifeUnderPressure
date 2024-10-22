@@ -209,6 +209,8 @@ public class Scanner : MonoBehaviour
 
         ResetScanner(false);
         currentFish = null;
+        Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
+        Submarine.Instance.GetEncyclopedia().ping.pingArea = null; 
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
 
