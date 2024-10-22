@@ -245,6 +245,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
             warningInstance.setParameterByName("shouldPlay", 0);
         }
     }
+
+    public void DamageSubmarine(float damage)
+    {
+        health.DealDamage(damage * health.MaxHealth * Time.fixedDeltaTime);
+    }
     public void UpgradeSubmarine(System.Type upgradeType)
     {
         foreach(SubmarineUpgrade upgrade in upgrades)
