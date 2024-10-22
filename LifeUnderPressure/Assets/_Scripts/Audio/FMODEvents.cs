@@ -46,6 +46,18 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference SFX_Collision {  get; private set; }
 
+    [field: SerializeField]
+    public EventReference SFX_Implosion { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_Death {  get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_Cracking_Window { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_Lightswitch { get; private set; }
+
     [field: Header("Music Tracks")]
     [field: SerializeField]
     public EventReference musicToPlay { get; private set; }

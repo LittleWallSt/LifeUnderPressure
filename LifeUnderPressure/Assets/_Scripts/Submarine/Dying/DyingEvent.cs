@@ -13,11 +13,14 @@ public class DyingEvent : MonoBehaviour
 
     [SerializeField] Submarine submarine;
     [SerializeField] Encyclopedia encyclopedia;
-    float cooldown = 1f;
+    float cooldown = 3f;
     float fadeDuration = 3f;
     float blackScreenDuration = 3f;
 
-    
+    // Janko >>
+    private float waitBeforePlayingSound = .5f;
+    // Janko <<
+
     GameObject tempSealog;
 
     void Awake()
@@ -63,8 +66,15 @@ public class DyingEvent : MonoBehaviour
 
     IEnumerator FadeOutAfterCooldown(Vector3 placeOfDeath)
     {
+        // Janko >>
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Death, placeOfDeath);
+        // Janko <<
         yield return new WaitForSecondsRealtime(cooldown);
         blackScreen.alpha = 1f;
+        // Janko >>
+        yield return new WaitForSecondsRealtime(waitBeforePlayingSound);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Implosion, placeOfDeath);
+        // Janko<< 
         yield return new WaitForSecondsRealtime(blackScreenDuration);
         float elapsedTime = 0f;
         OnRespawn(placeOfDeath);
