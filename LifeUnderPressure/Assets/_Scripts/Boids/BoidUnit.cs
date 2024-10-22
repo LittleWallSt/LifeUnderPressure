@@ -23,6 +23,7 @@ public class BoidUnit : Fish
     public Transform myTransform { get; set; }
 
     protected bool isSquid = false;
+    protected float initialSpeed;
 
     public void setGeneralFish(bool general)
     {
@@ -51,6 +52,7 @@ public class BoidUnit : Fish
     public void InitializeSpeed(float speed)
     {
         this.speed = speed;
+        initialSpeed = speed;
     }
     public void SetCuriousBehaviour(CuriousInfo info)
     {
@@ -180,15 +182,22 @@ public class BoidUnit : Fish
             float dist = Vector3.Distance(transform.position, player.position);
             if (dist > curiousRange * 2)
             {
-                //Debug.Log("Going to range. Dist: " + dist);
-                if (speed < 0.1f) { //Debug.Log("Fixing Speed");
-                                    speed = 0.4f; }
+                if (speed < 0.1f) 
+                { 
+                    //Debug.Log("Fixing Speed");
+                    speed = 0.4f; 
+                }
+                if (speed < curiousSpeed) 
+                { 
+                    //Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration");
+                    speed *= 1.1f; 
+                }
 
-                if (speed < curiousSpeed) { //Debug.Log("AAAAAAAAAAAAAAAAAAAAAcceleration");
-                                            speed *= 1.1f; }
-
-                if (speed > curiousSpeed) { //Debug.Log("Curious speed");
-                                            speed = curiousSpeed; }
+                if (speed > curiousSpeed) 
+                { 
+                    //Debug.Log("Curious speed");
+                    speed = curiousSpeed;
+                }
 
             }
             else if (dist > curiousRange)

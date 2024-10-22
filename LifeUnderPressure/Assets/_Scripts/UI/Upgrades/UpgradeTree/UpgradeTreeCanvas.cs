@@ -22,6 +22,8 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     public static UpgradeTreeCanvas Instance { get; private set; } = null;
 
+    public Action<UpgradeType> onUnlock;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -83,6 +85,7 @@ public class UpgradeTreeCanvas : MonoBehaviour
         {
             if (upgrade.skillNode.upgradeType==type) 
             {
+                onUnlock.Invoke(type);
                 upgrade.UnlockQuestNode();
             } 
         }
