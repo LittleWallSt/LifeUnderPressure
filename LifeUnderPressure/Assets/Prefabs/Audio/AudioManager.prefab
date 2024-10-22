@@ -114,6 +114,34 @@ MonoBehaviour:
       Data3: 831644073
       Data4: 1545195173
     Path: event:/SFX/SFX_Collision
+  <SFX_Implosion>k__BackingField:
+    Guid:
+      Data1: 673618562
+      Data2: 1303277832
+      Data3: 1422725259
+      Data4: 208711903
+    Path: event:/SFX/SFX_Implosion
+  <SFX_Death>k__BackingField:
+    Guid:
+      Data1: -1760986229
+      Data2: 1280595516
+      Data3: -1648541048
+      Data4: -1054176509
+    Path: event:/SFX/SFX_Death
+  <SFX_Cracking>k__BackingField:
+    Guid:
+      Data1: -1386473751
+      Data2: 1122173569
+      Data3: -1169633639
+      Data4: 346535153
+    Path: event:/SFX/SFX_Cracking
+  <SFX_Lightswitch>k__BackingField:
+    Guid:
+      Data1: -970380706
+      Data2: 1139299800
+      Data3: 283928706
+      Data4: -119562563
+    Path: event:/SFX/SFX_Lightswitch
   <musicToPlay>k__BackingField:
     Guid:
       Data1: -806563434
@@ -173,3 +201,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a30bf83bdf9184183fd3e709679409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicChangeCooldown: 5
+  playMusicOrAmbienceDelay: 10
