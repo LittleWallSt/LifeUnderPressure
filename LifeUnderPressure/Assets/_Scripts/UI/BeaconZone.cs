@@ -70,7 +70,7 @@ public class BeaconZone : MonoBehaviour
                     camera,
                     out worldSpacePos);
                 pingTransformRect.position = worldSpacePos;
-                Debug.Log("Area IN camera vision: ");
+                //Debug.Log("Area IN camera vision: ");
                 AdjustPingSize(dist);
             }
             else

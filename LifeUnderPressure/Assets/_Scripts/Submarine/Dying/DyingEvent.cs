@@ -31,6 +31,7 @@ public class DyingEvent : MonoBehaviour
 
         if (submarine== null) submarine= FindObjectOfType<Submarine>();
         submarine.getSubmarineMovement().enabled= false;
+        submarine.enabled = false;
         StartCoroutine(FadeOutAfterCooldown(placeOfDeath));
         
 
@@ -38,6 +39,7 @@ public class DyingEvent : MonoBehaviour
 
     public void OnRespawn(Vector3 placeOfDeath)
     {
+        submarine.enabled = true;
         submarine.getSubmarineMovement().enabled = true;
 
         submarine.ForceSetPosition(new Vector3(0f, -2f, 0f));
