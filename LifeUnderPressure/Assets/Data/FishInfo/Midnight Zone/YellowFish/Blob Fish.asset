@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Blob Fish
+  m_EditorClassIdentifier: 
+  fishName: Blob Fish
+  fishSmallDescription: "Blobfish (Psychrolutes marcidus) probably wouldn\u2019t
+    win in a beauty contests but they do have a fascinating life in the deep sea.
+    They typically grow about 30cm long."
+  infoWhere: "Blobfish are usually found at depths between 600 - 1200m Atlantic,
+    Indian and pacific oceans. They stay where it\u2019s dark and cold. "
+  fishFullDescription: 'Full description: Intresting looking scan
+
+    
+
+    The
+    Blobfish has a squishy, which allows them to withstand the intense pressure of
+    the deep-sea. They float effortlessly above the ocean floor, where they wait
+    for prey to pass by. Blobfish primarily eat crustaceans, brittle stars, and carrion.
+
+    
+
+    Blobfish
+    lay about 100,000 eggs. They lay them in nests to increase their chances of survival.
+    A parent stays nearby to guard the eggs as they develop, showing a surprising
+    level of care for such an unusual fish.
+
+'
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0

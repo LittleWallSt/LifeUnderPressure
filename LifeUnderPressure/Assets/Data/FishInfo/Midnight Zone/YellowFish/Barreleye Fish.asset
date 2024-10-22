@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Barreleye Fish
+  m_EditorClassIdentifier: 
+  fishName: Barreleye Fish
+  fishSmallDescription: Barreleye (Macropinna microstoma) is a deep-sea fish known
+    for its transparent head and weird eyes. These guys having only reached a maximum
+    size of 15 cm.
+  infoWhere: They live between 600-800m deep, in the twilight zone. They are usually
+    found alone, swimming slowly around in dark waters.
+  fishFullDescription: 'Now this is an interesting looking fella. Cool scan
+
+    
+
+    This
+    weird looking fish has big fins that let them stay almost perfectly still in
+    the water or move with great precision. One of their cool features is that their
+    tubular eyes which are inside of their heads (which is transparent) This allows
+    them to see both above and in front of them as they search for food. Like zooplankton,
+    crustaceans, and siphonophores.
+
+    
+
+    This little one has only been spotted
+    a few times ever. This makes it so little is known about their reproduction,
+    but scientists do believe they are pelagic spawners, meaning that they release
+    their eggs and sperm directly into the water.'
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0

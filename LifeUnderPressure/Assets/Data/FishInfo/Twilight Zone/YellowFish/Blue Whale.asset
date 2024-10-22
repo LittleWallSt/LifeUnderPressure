@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Blue Whale
+  m_EditorClassIdentifier: 
+  fishName: Blue Whale
+  fishSmallDescription: 'The incredible Blue Whale (Balaenoptera musculus) is one
+    of the world''s greatest animals. This incredible animal is the largest animal
+    that we know to have ever existed, bigger than all of the dinosaurs. '
+  infoWhere: Blue whales typically stay near the surface of the ocean, around 100m,
+    but they are capable of diving further down. The furthest down a Blue Whale has
+    been spotted is 500 m.
+  fishFullDescription: 'You got the incredible Blue Whale scanned, and I''m jealous.
+
+    
+
+    Blue
+    Whales eat almost exclusively krill. They feed by swimming through krill swarms
+    with their mouths open, taking in water and food. Inside their mouths are baleen
+    plates, which act like filters. The whale pushes the water out, trapping the
+    krill inside, and then swallows them. This method allows blue whales to eat thousands
+    of tiny krill in a single gulp, sometimes up to 6 tons of krill in one gulp.
+
+    
+
+    Blue
+    Whales do have to breathe. Exhaling 90% of their lung capacity, the Blue Whale
+    will usually surface to breathe every 15-20 minutes. They can stay longer but
+    usually do not. One has been recorded to hold its breath for 36 minutes.
+
+    
+
+    During
+    their summer feeding grounds, blue whales are commonly found in colder waters,
+    such as those near the polar regions. There, they can find a lot of krill, which
+    is their primary food source. Even though they do go colder, they have been spotted
+    in all oceans except the Arctic Ocean.
+
+    
+
+    Then, during their Breeding
+    grounds, winter time, the blue whales migrate to warmer tropical and subtropical
+    waters to breed and give birth. These places are usually near the coastal of
+    Central America, the Indian ocean and areas around the equator.
+
+
+    Blue whales
+    occasionally swimes in small groups but usually alone or in pairs.'
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0

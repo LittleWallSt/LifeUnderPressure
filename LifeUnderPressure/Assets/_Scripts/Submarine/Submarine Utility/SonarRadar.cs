@@ -61,10 +61,13 @@ public class SonarRadar : MonoBehaviour
                 {
                     Vector3 angle;
                     int sIndex;
-                    fishAngle(fish, out angle, out sIndex);
-                    if (!timeFrames.ContainsKey(sIndex * framesPerSprite))
+                    if (fish != null)
                     {
-                        timeFrames.Add(sIndex * framesPerSprite, fish);
+                        fishAngle(fish, out angle, out sIndex);
+                        if (!timeFrames.ContainsKey(sIndex * framesPerSprite))
+                        {
+                            timeFrames.Add(sIndex * framesPerSprite, fish);
+                        }
                     }
 
                 }
@@ -131,6 +134,7 @@ public class SonarRadar : MonoBehaviour
 
     public void fishAngle(Collider fish, out Vector3 angle, out int spriteIndex)
     {
+        
         Vector3 directionToFish = fish.transform.position - submarine.transform.position;
 
         Vector3 submarineForward = submarine.transform.forward;

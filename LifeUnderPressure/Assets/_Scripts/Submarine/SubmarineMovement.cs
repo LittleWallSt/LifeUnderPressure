@@ -7,8 +7,11 @@ public class SubmarineMovement : MonoBehaviour
 {
     [SerializeField] private bool debugMode = false;
     [SerializeField] private Camera submarineCamera = null;
+    [Header("Screen Shake")]
     [SerializeField] private float screenShakeTimer = 0.5f;
     [SerializeField] private float screenShakeFrequency = 0.1f;
+    [SerializeField] private Vector2 shakePositionOffset = new Vector2(0.001f, 0.005f);
+    [SerializeField] private Vector2 shakeRotationOffset = new Vector2(-3f, 3f);
     [Header("Movement")]
     [SerializeField] private MovementVector movementVector;
     [Header("Rotation")]
@@ -199,11 +202,38 @@ public class SubmarineMovement : MonoBehaviour
         shaking = true;
         shakeDuration = 0f;
         Vector3 startPosition = submarineCamera.transform.localPosition;
-        while(shakeDuration < screenShakeTimer)
+        Vector3 recPosition = submarineCamera.transform.localPosition;
+        Vector3 targetPosition = submarineCamera.transform.localPosition;
+
+        float power = 0f;
+
+        targetPosition = startPosition + new Vector3(Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y));
+
+        // lerp to random spots while timer is on
+        while (shakeDuration < screenShakeTimer)
         {
-            submarineCamera.transform.localPosition = startPosition + new Vector3(Random.Range(0.001f, 0.005f), Random.Range(0.001f, 0.005f), 0f);
-            yield return new WaitForSeconds(screenShakeFrequency);
-            shakeDuration += screenShakeFrequency;
+            submarineCamera.transform.localPosition = Vector3.Lerp(recPosition, targetPosition, power);
+
+            power += Time.deltaTime / screenShakeFrequency;
+            if (power >= 1f)
+            {
+                power = 0f;
+                recPosition = targetPosition;
+                targetPosition = startPosition + new Vector3(Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y));
+            }
+            shakeDuration += Time.deltaTime;
+            yield return null;
+        }
+
+        // lerp to start position
+        power = 0f;
+        recPosition = submarineCamera.transform.localPosition;
+        while(power < 1f)
+        {
+            submarineCamera.transform.localPosition = Vector3.Lerp(recPosition, startPosition, power);
+
+            power += Time.deltaTime / screenShakeFrequency;
+            yield return null;
         }
 
         submarineCamera.transform.localPosition = startPosition;

@@ -17,11 +17,11 @@ public class HealthUI : MonoBehaviour
     private bool highlighting = false;
     private void Start()
     {
-        health.Assign_OnDamage(UpdateUI);
+        health.Assign_OnValueChanged(UpdateUI);
         slider.maxValue = health.MaxHealth;
         slider.value = health.Value;
     }
-    private void UpdateUI()
+    private void UpdateUI(float value)
     {
         if (slider.value > health.Value)
         {

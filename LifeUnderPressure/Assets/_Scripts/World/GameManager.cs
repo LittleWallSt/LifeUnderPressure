@@ -154,6 +154,11 @@ public class GameManager : MonoBehaviour
     {
         return terrain.SampleHeight(position) + terrain.transform.position.y;
     }
+    public bool IsUnderground(Vector3 position)
+    {
+        float terrainHeight = GetTerrainHeight(position);
+        return position.y <= terrainHeight;
+    }
     // Setters
     public void SetInTutorial(bool state)
     {

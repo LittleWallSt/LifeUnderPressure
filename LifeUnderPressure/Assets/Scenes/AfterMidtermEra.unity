@@ -7748,6 +7748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
+      propertyPath: scanner
+      value: 
+      objectReference: {fileID: 1675702701}
+    - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
       propertyPath: upgradeCost.Array.data[1]
       value: 0
       objectReference: {fileID: 0}
@@ -7776,6 +7781,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135518312450490496, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: encyclopedia
+      value: 
+      objectReference: {fileID: 1285573318}
+    - target: {fileID: 3135518312450490496, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: submarineMovement
+      value: 
+      objectReference: {fileID: 1230279352}
     - target: {fileID: 3364992363855063013, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -7876,6 +7891,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ddd04e77f3abb4c9ae87c2d368aa98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1230279352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6457192390758754892, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230279339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a96e8c16aef8d469a2e987476f0e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1231511486
@@ -8587,6 +8614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Encyclopedia
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339629208621609079, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6992107900316657160, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}
@@ -9475,6 +9507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UpgradeTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008911774827258708, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6662733196372168585, guid: 944d81b346ab7094da9855e29242872a,
         type: 3}
@@ -10787,6 +10824,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1151170335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675702701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5837270843069969581, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230279339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25175efc69bef674586b1f7f72189b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1690958277
 GameObject:
   m_ObjectHideFlags: 0

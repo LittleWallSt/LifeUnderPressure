@@ -93,6 +93,11 @@ public class LevelVolume : MonoBehaviour
         depthDependant.IDD_OnDepthLevelExit(level);
         if (itemsNotAllowed.Contains(depthDependant)) itemsNotAllowed.Remove(depthDependant);
     }
+    public static string GetCurrentZoneName()
+    {
+        if (Cave.Inside) return "Cave";
+        return Current != null ? Current.zoneName : string.Empty;
+    }
     // Action
     public static void Assign_OnCurrentVolumeChanged(Action action)
     {

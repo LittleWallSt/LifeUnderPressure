@@ -28,7 +28,7 @@ MonoBehaviour:
     part of their lives (usually a few months to a year) in freshwater before migrating
     to the ocean. When they reach maturity, they return to the same freshwater river
     where they were born to spawn, traveling long distances upstream.\r\n\r\n\r\nA
-    female lays 3,000 to 14,000 eggs at once.\r\n"
+    female lays 3,000 to 14,000 eggs at once.\r"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

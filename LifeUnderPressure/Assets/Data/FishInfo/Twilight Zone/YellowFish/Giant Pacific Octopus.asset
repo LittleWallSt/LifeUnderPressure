@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
+  m_Name: Giant Pacific Octopus
+  m_EditorClassIdentifier: 
+  fishName: Giant Pacific Octopus
+  fishSmallDescription: 'Giant Pacific Octopus (Enteroctopus dofleini) is quite big
+    and old. They live for about four years. '
+  infoWhere: This smart one usually lives between 0 and 200m but has been spotted
+    as far down as 400m. It likes to stay in crevices and caves, where it can hide
+    from predators and ambush prey.
+  fishFullDescription: 'Interesting catch, I had no idea caves were so dangerous
+    underwater. Well worth the risk, though. Great scan!
+
+    
+
+    The Giant Pacific
+    Octopus has an interesting feature: its skin has special pigment cells. These
+    cells allow the octopus to change colors and textures, which is great because
+    it can blend in with even the most intricately patterned corals, plants, and
+    rocks.
+
+    
+
+    Hunting is something they do at night, surviving mainly on
+    shrimps, clams, lobsters and fish. They have been known to attack and eat sharks
+    aswell.
+
+    
+
+    They are highly intelligent creatures. They have learned
+    to open jars, mimic other octopuses and solve mazes in lab tests. Their population
+    numbers arent known and they do not currently appear on any lists of endangered
+    or vulnerable animals.'
+  fishPrefab: {fileID: 0}
+  locked: 1
+  scale: 0
