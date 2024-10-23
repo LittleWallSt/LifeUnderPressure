@@ -119,11 +119,6 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     private bool working;
 
-    private int counter = 0;
-
-    [SerializeField]    
-    private int fishToUpdate = 20;
-
     // Javi from Alexis's code >>
     #region IDL
     public void IDL_AssignToGameManager()
@@ -164,7 +159,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
     #endregion
     // << Javi from Alexis's code
 
-    private IEnumerator Start()
+    private void Start()
     {
         if (_path.Length > 0)
         {
@@ -173,9 +168,6 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         }
         // We generate the boid units at the beginning
         GenerateUnits();
-        yield return new WaitForSeconds(1);
-        
-        StartCoroutine(UpdateFrequency());
     }
     public void SetRandomWaypoint()
     {
@@ -196,38 +188,14 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         Gizmos.color = new Color(1, 0, 0, 0.3f);
         Gizmos.DrawSphere(transform.position, zoneRadius);
     }
-
-    #region tick
-    
-    private IEnumerator UpdateFrequency()
+    private void Update()
     {
-        int nUpdates = 0;
-        while (true)
+        // Moves all the boid units
+        for (int i = 0; i < allUnits.Length; i++)
         {
-            nUpdates += fishToUpdate;
-            for (int i = counter; i < allUnits.Length && i < nUpdates; i++)
-            {
-                allUnits[i].MoveFish();
-            }
-            counter = nUpdates;
-            if(counter >= allUnits.Length - 1)
-            {
-                counter = 0;
-                nUpdates = 0;
-            }
-            yield return new WaitForSeconds(0.05f);
+            allUnits[i].MoveFish();
         }
     }
-    
-
-    //private void Update()
-    //{
-    //    for (int i = 0; i < allUnits.Length; i++)
-    //    {
-    //        allUnits[i].MoveFish();
-    //    }
-    //}
-    #endregion
 
     private void GenerateUnits()
     {

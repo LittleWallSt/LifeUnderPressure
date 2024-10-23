@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class BoidUnit : Fish
 {
@@ -21,13 +20,10 @@ public class BoidUnit : Fish
 
     protected BoidManager assignedBoid;
 
-    private int updater = 0;
-
     public Transform myTransform { get; set; }
 
     protected bool isSquid = false;
     protected float initialSpeed;
-    private Vector3 cohesionVector, avoidanceVector, aligementVector;
 
     public void setGeneralFish(bool general)
     {
@@ -98,7 +94,7 @@ public class BoidUnit : Fish
         directionToWaypoint = Vector3.zero;
 
         FindNeighbours();
-        //CalculateAverageSpeed();
+        CalculateAverageSpeed();
 
         FishBehaviour();
         // Path following behaviour
@@ -118,11 +114,11 @@ public class BoidUnit : Fish
                 curiousCooldown = false;
             }
         }
-        CalculateAverageSpeed();
-        cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
-          
+
+        Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
+        Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
+        Vector3 aligementVector =  CalculateAligementVector() * assignedBoid.aligementWeight;
+
         Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized;
@@ -133,7 +129,7 @@ public class BoidUnit : Fish
             moveVector = transform.forward;
 
         myTransform.forward = moveVector;
-        //myTransform.position += moveVector * Time.deltaTime;
+        myTransform.position += moveVector * Time.deltaTime;
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
         {
