@@ -55,9 +55,7 @@ public class Fish : MonoBehaviour
     protected float cooldownTimer = 0f;
     protected Vector3 directionToWaypoint = Vector3.zero;
 
-    
-
-    // Start is called before the first frame update
+   // Start is called before the first frame update
     void Start()
     {
         //Initial speed for fish, in boid it is the average speed of all the fish group
@@ -126,7 +124,6 @@ public class Fish : MonoBehaviour
         }
 
         ObstacleAvoidance(ref directionToWaypoint);
-        HeadTowards(directionToWaypoint);
 
         if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
         {
@@ -247,6 +244,7 @@ public class Fish : MonoBehaviour
     {
         transform.position += transform.forward * speed * Time.deltaTime;
 
+
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
@@ -283,11 +281,12 @@ public class Fish : MonoBehaviour
     }
 
     #endregion Movement
-   
+
     // Update is called once per frame
     void Update()
     {
-        MoveFish();
+        HeadTowards(directionToWaypoint);
+
     }
 
     private void OnDrawGizmos()
