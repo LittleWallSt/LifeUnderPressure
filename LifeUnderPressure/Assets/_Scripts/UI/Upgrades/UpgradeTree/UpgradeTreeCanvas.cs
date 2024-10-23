@@ -22,6 +22,8 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     public static UpgradeTreeCanvas Instance { get; private set; } = null;
 
+    public Action<UpgradeType> onUnlock;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -41,6 +43,7 @@ public class UpgradeTreeCanvas : MonoBehaviour
     public bool EnableMenu(bool state)
     {
         gameObject.SetActive(state);
+        submarine.getSubmarineMovement().enabled = !state;
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
         UpdateMoneyUI();
@@ -83,6 +86,7 @@ public class UpgradeTreeCanvas : MonoBehaviour
         {
             if (upgrade.skillNode.upgradeType==type) 
             {
+                onUnlock.Invoke(type);
                 upgrade.UnlockQuestNode();
             } 
         }

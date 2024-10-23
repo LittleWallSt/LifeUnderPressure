@@ -17,6 +17,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private float thicknessOfHull = 10f;
     [SerializeField] private float maxStressTreshold = 24f;
     [SerializeField] private float stressDamageModifier = 0.25f;
+    [SerializeField] private float crackLevel1 = 0.25f;
+    [SerializeField] private float crackLevel2 = 0.50f;
+    [SerializeField] private float crackLevel3 = 0.75f;
     [SerializeField] private TMP_Text heightText = null;
     [SerializeField] private TMP_Text warningText = null;
     [SerializeField] private TMP_Text dockText = null;
@@ -70,6 +73,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         else { Destroy(gameObject); return; }
 
         CracksMaterialSetup();
+
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
@@ -88,11 +92,36 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void UpdateCracksOnWindshield(float value)
     {
+        if(value >= health.MaxHealth)
+        {
+            ResetCracksOnWindshield();
+            return;
+        }
         float fraction = Mathf.Abs(1f - (value / health.MaxHealth));
 
-        cracksMaterialInstance.SetFloat("_Cracks1", fraction > 0.25f ? 1f : 0f);
-        cracksMaterialInstance.SetFloat("_Cracks2", fraction > 0.50f ? 1f : 0f);
-        cracksMaterialInstance.SetFloat("_Cracks3", fraction > 0.75f ? 1f : 0f);
+        bool cracked = false;
+        if (cracksMaterialInstance.GetFloat("_Cracks1") < 1f)
+        {
+            cracked = fraction > crackLevel1;
+            cracksMaterialInstance.SetFloat("_Cracks1", cracked ? 1f : 0f);
+        }
+        else if (cracksMaterialInstance.GetFloat("_Cracks2") < 1f)
+        {
+            cracked = fraction > crackLevel2;
+            cracksMaterialInstance.SetFloat("_Cracks2", cracked ? 1f : 0f);
+        }
+        else if (cracksMaterialInstance.GetFloat("_Cracks3") < 1f)
+        {
+            cracked = fraction > crackLevel3;
+            cracksMaterialInstance.SetFloat("_Cracks3", cracked ? 1f : 0f);
+        }
+        if (cracked) AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Cracking, transform.position);
+    }
+    private void ResetCracksOnWindshield()
+    {
+        cracksMaterialInstance.SetFloat("_Cracks1", 0f);
+        cracksMaterialInstance.SetFloat("_Cracks2", 0f);
+        cracksMaterialInstance.SetFloat("_Cracks3", 0f);
     }
     private void Start()
     {
@@ -377,6 +406,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public Health getSubmarineHealth()
     {
         return health;
+    }
+
+    public Encyclopedia GetEncyclopedia()
+    {
+        return encyclopedia;
     }
     private void OnGUI()
     {

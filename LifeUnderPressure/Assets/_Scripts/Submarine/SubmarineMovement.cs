@@ -68,7 +68,7 @@ public class SubmarineMovement : MonoBehaviour
     private void Update()
     {
         // Get input
-        float inputUp = Input.GetKey(KeyCode.LeftShift) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
+        float inputUp = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         // Janko and Aleksis 

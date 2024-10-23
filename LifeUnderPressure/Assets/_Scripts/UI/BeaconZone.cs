@@ -70,7 +70,7 @@ public class BeaconZone : MonoBehaviour
                     camera,
                     out worldSpacePos);
                 pingTransformRect.position = worldSpacePos;
-                Debug.Log("Area IN camera vision: ");
+                //Debug.Log("Area IN camera vision: ");
                 AdjustPingSize(dist);
             }
             else
@@ -152,12 +152,15 @@ public class BeaconZone : MonoBehaviour
         UIPing.enabled = enabled;
         areaText.enabled = enabled;
         metersText.enabled = enabled;
+        
     }
 
     private bool IsEnable()
     {
         return UIPing.enabled;
     }
+
+   
 
 
 
