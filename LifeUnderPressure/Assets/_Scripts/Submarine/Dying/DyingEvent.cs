@@ -48,6 +48,7 @@ public class DyingEvent : MonoBehaviour
     {
         submarine.enabled = true;
         submarine.getSubmarineMovement().enabled = true;
+        dyingText.text = "";
 
         submarine.ForceSetPosition(new Vector3(0f, -2f, 0f));
         submarine.transform.rotation = Quaternion.identity;
@@ -73,14 +74,23 @@ public class DyingEvent : MonoBehaviour
         // Janko >>
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Death, placeOfDeath);
         // Janko <<
-        yield return new WaitForSecondsRealtime(cooldown);
+        float elapsedTime = 0f;
+        while (elapsedTime < cooldown)
+        {
+            elapsedTime += Time.deltaTime;
+
+            blackScreen.alpha = Mathf.Lerp(0f, 1f, elapsedTime / cooldown);
+
+            yield return null;
+        }
+        
         blackScreen.alpha = 1f;
         // Janko >>
         yield return new WaitForSecondsRealtime(waitBeforePlayingSound);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Implosion, placeOfDeath);
         // Janko<< 
         yield return new WaitForSecondsRealtime(blackScreenDuration);
-        float elapsedTime = 0f;
+        elapsedTime = 0f;
         OnRespawn(placeOfDeath);
         while (elapsedTime < fadeDuration) 
         {
