@@ -55,11 +55,11 @@ public class CookieSharkBehaviour : BoidUnit
             }
         }
 
-        Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        Vector3 aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
+        //Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
+        //Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
+        //Vector3 aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
 
-        Vector3 moveVector = cohesionVector + avoidanceVector + aligementVector + directionToWaypoint;
+        Vector3 moveVector = directionToWaypoint;
         moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
         moveVector = moveVector.normalized;
         moveVector *= speed;
@@ -76,6 +76,7 @@ public class CookieSharkBehaviour : BoidUnit
             if (assignedBoid != null) assignedBoid.SetNextWaypoint();
 
         }
+
     }
     protected override void FishBehaviour()
     {
@@ -87,17 +88,18 @@ public class CookieSharkBehaviour : BoidUnit
                 //Debug.Log("Gonna ite u >:D");
                 approaching = true;
                 directionToWaypoint = (player.position - transform.position).normalized;
-                if (dist <= 2.5)
+                if (speed > 0f)speed *= 0.99f;
+                if (dist <= 1.5)
                 {
                     lastRot = player.eulerAngles.y;
                     inFrontOfGlass = true;
+                    approaching = false;
                 }
             }
             else if(inFrontOfGlass)
             {
                 //Debug.Log("I'm bitting u ^V-V^");
-                approaching =false;
-                speed *= 0.99f;
+                PositionAndFacePlayer();
                 DamagePlayer();
                 DetectLateralMov();
             }
@@ -106,8 +108,17 @@ public class CookieSharkBehaviour : BoidUnit
         {
             // Timer para poner nomnom a true a lo mejor
             GoAway();
-           // Debug.Log("I should go to waypoint");
+            //Debug.Log666666666666666666666("I should go to waypoint");
         }
+    }
+
+    private void PositionAndFacePlayer()
+    {
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+
+        myTransform.position = player.position + player.forward * 1.5f;
+
+        myTransform.LookAt(player.position);
     }
 
     private void DetectLateralMov()
@@ -116,7 +127,7 @@ public class CookieSharkBehaviour : BoidUnit
         float latMovement = Mathf.Abs(currentRot - lastRot);
 
         //Debug.Log("Lateral mov: " + latMovement);
-        if (latMovement > 0.03f /*&& latMovement <= movRangeToScareAway*/) // bonita
+        if (latMovement > 0.003f /*&& latMovement <= movRangeToScareAway*/) // bonita
         {
             movAccumulatedTimer += Time.deltaTime;
 
@@ -126,7 +137,7 @@ public class CookieSharkBehaviour : BoidUnit
             movAccumulatedTimer = 0f;
             //Debug.Log("nopnonpnopnonopnop");
         }
-        Debug.Log("Timer: " + movAccumulatedTimer);
+        //Debug.Log("Timer: " + movAccumulatedTimer);
 
         if (movAccumulatedTimer >= timeToGoAway)
         {
@@ -141,7 +152,7 @@ public class CookieSharkBehaviour : BoidUnit
     private void DamagePlayer()
     {
         // Not the best way but to try
-        player.GetComponentInParent<Health>().DealDamage(0.5f * Time.fixedDeltaTime);
+        player.GetComponentInParent<Health>().DealDamage(0.5f * Time.fixedDeltaTime, DamageType.CookieShark);
     }
 
     private void GoAway()

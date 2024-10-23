@@ -10225,6 +10225,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1023316159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1525995532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -54.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -41.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9085437
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4177899
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505951764936199108, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785297238101236491, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: boidSize
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785297238101236491, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: zoneRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700067045507564943, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_Name
+      value: SardineSpawnerTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700067045507564943, guid: b9cac8b0d7073844bb0125d1b2961617,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9cac8b0d7073844bb0125d1b2961617, type: 3}
 --- !u!1 &1538798335
 GameObject:
   m_ObjectHideFlags: 0
@@ -12356,6 +12439,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2084831400639252406, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: tickRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084831400639252406, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
         type: 3}
       propertyPath: terrain
@@ -12375,6 +12468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: upgradeCanvas
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: distanceToLoad
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5027743935536782442, guid: 3495d5d74049b124ebfe36d87c315a95,
         type: 3}
@@ -13561,3 +13659,4 @@ SceneRoots:
   - {fileID: 591848928}
   - {fileID: 736378079}
   - {fileID: 1084684466}
+  - {fileID: 1525995532}

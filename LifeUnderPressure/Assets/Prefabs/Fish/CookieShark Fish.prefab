@@ -115,7 +115,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   FOVAngle: 180
-  smoothDamp: 0
+  smoothDamp: 1
   timeToGoAway: 2
   minDist: 7
   damageInterval: 0.5
