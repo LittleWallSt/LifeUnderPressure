@@ -141,7 +141,7 @@ public class CookieSharkBehaviour : BoidUnit
     private void DamagePlayer()
     {
         // Not the best way but to try
-        player.GetComponentInParent<Health>().DealDamage(0.5f * Time.fixedDeltaTime);
+        player.GetComponentInParent<Health>().DealDamage(0.5f * Time.fixedDeltaTime, DamageType.CookieShark);
     }
 
     private void GoAway()
