@@ -32,7 +32,7 @@ public class FishButton : MonoBehaviour
 
         //gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
         gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.ping.setPingTransform(habitat, fishInfo.fishName);
-            fishState = FishState.Marked;
+            if (fishState!=FishState.Scanned) fishState = FishState.Marked;
             SetIcon();
         });
 

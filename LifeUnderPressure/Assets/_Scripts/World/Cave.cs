@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Cave : MonoBehaviour, IDistanceLoad
 {
-    [SerializeField] private float triggerStayUpdateTime = 1f;
+    [SerializeField] private float updateTimer = 1f;
 
     private Vector3 position;
 
@@ -22,11 +22,13 @@ public class Cave : MonoBehaviour, IDistanceLoad
             if (inside != value)
             {
                 inside = value;
+                Call_OnInsideChanged();
             }
         }
     }
     private void Start()
     {
+        IDL_AssignToGameManager();
         foreach(var coll in GetComponents<Collider>())
         {
             position += coll.bounds.center;
@@ -36,13 +38,17 @@ public class Cave : MonoBehaviour, IDistanceLoad
     private void Update()
     {
         updateTime += Time.fixedDeltaTime;
-        if (updateTime < triggerStayUpdateTime) return;
+        if (updateTime < updateTimer) return;
 
         updateTime = 0f;
         Inside = GameManager.Instance.IsUnderground(Submarine.Instance.transform.position);
         Submarine.Instance.UpdateZoneText();
     }
-
+    private void OnDisable()
+    {
+        Inside = GameManager.Instance.IsUnderground(Submarine.Instance.transform.position);
+        Submarine.Instance.UpdateZoneText();
+    }
     // IDL
     public void IDL_OffDistance()
     {

@@ -44,6 +44,8 @@ public class Health : MonoBehaviour
     }
     public void DealDamage(float damage)
     {
+        if (Value <= 0f) return;
+
         Value -= damage;
         Call_OnDamage();
     }

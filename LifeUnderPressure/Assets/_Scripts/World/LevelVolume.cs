@@ -64,7 +64,7 @@ public class LevelVolume : MonoBehaviour
         if (depthDependant.IDD_GetGOInstanceID() == Submarine.Instance.gameObject.GetInstanceID())
         {
             triggering.Add(this);
-            Current = triggering[triggering.Count - 1];
+            if (triggering.Count > 0) Current = triggering[triggering.Count - 1];
         }
 
         bool allowed = depthDependant.IDD_OnDepthLevelEnter(level);
@@ -88,7 +88,7 @@ public class LevelVolume : MonoBehaviour
         if (other.gameObject.GetInstanceID() == Submarine.Instance.gameObject.GetInstanceID())
         {
             triggering.Remove(this);
-            Current = triggering[triggering.Count - 1];
+            if(triggering.Count > 0) Current = triggering[triggering.Count - 1];
         }
         depthDependant.IDD_OnDepthLevelExit(level);
         if (itemsNotAllowed.Contains(depthDependant)) itemsNotAllowed.Remove(depthDependant);

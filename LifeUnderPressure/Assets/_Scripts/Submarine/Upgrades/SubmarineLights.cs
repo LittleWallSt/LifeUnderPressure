@@ -23,6 +23,10 @@ public class SubmarineLights : SubmarineUpgrade
     {
         if (Input.GetKeyDown(turnLightsKey))
         {
+            // Janko >>
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Lightswitch, transform.position);
+            // Janko <<
+
             foreach(Light light in submarineLights)
             {
                 light.gameObject.SetActive(!light.gameObject.activeSelf);
