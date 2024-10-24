@@ -48,6 +48,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
             fishList[i].gameObject.transform.localScale *= Random.Range(minScale, maxScale);
             if(randomPath)
                 fishList[i].GetComponent<Fish>().SetRandomPath();
+
             // << Javi
         }
         StartCoroutine(UpdateFrequency());
