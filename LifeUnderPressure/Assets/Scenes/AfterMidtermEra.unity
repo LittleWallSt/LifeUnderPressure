@@ -7790,7 +7790,7 @@ PrefabInstance:
     - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2248056714867313956, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -7885,12 +7885,12 @@ PrefabInstance:
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7311892231753551879, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
