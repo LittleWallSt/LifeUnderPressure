@@ -10,7 +10,8 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
     [SerializeField, Range(0.1f, 1.0f)] private float minScale;
     [SerializeField, Range(1.0f, 2.0f)] private float maxScale;
     [SerializeField] private bool randomPath = false;
-    
+
+
     // Javi >>
     [SerializeField] private Path path = null;
     // << Javi
@@ -18,6 +19,10 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
     private bool working = false;
 
     private List<Fish> fishList = new List<Fish>();
+    private int counter = 0;
+    [SerializeField]
+    private int fishToUpdate = 20;
+
     private void Start()
     {
         IDL_AssignToGameManager();
@@ -43,7 +48,34 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
             fishList[i].gameObject.transform.localScale *= Random.Range(minScale, maxScale);
             if(randomPath)
                 fishList[i].GetComponent<Fish>().SetRandomPath();
+
             // << Javi
+        }
+        StartCoroutine(UpdateFrequency());
+    }
+
+    /// <summary>
+    /// Iterates through all of the fish in it's group by subdividing into smaller groups 
+    /// so to not add executing time
+    /// </summary>
+    /// <returns>How long to wait each frame</returns>
+    private IEnumerator UpdateFrequency()
+    {
+        int nUpdates = 0;
+        while (true)
+        {
+            nUpdates += fishToUpdate;
+            for (int i = counter; i < fishList.Count && i < nUpdates; i++)
+            {
+                fishList[i].MoveFish();
+            }
+            counter = nUpdates;
+            if (counter >= fishList.Count - 1)
+            {
+                counter = 0;
+                nUpdates = 0;
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

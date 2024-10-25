@@ -182,7 +182,7 @@ public class SubmarineMovement : MonoBehaviour
         rb.velocity += impulse * bumpStrength;
 
         float damage = impulse.magnitude * bumpDamageModifier;
-        GetComponent<Health>().DealDamage(damage);
+        GetComponent<Health>().DealDamage(damage, DamageType.Crashed);
 
         if (shaking)
         {

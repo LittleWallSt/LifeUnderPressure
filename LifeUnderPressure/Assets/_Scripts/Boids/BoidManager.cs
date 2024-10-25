@@ -119,6 +119,13 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     private bool working;
 
+    private int counter = 0;
+
+    [SerializeField]    
+    private int fishToUpdate = 20;
+    [SerializeField, Range(0f, 0.5f)]
+    private float tickRate = 0.05f;
+
     // Javi from Alexis's code >>
     #region IDL
     public void IDL_AssignToGameManager()
@@ -159,7 +166,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
     #endregion
     // << Javi from Alexis's code
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (_path.Length > 0)
         {
@@ -168,6 +175,9 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         }
         // We generate the boid units at the beginning
         GenerateUnits();
+        yield return new WaitForSeconds(1);
+        
+        StartCoroutine(UpdateFrequency());
     }
     public void SetRandomWaypoint()
     {
@@ -188,14 +198,38 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         Gizmos.color = new Color(1, 0, 0, 0.3f);
         Gizmos.DrawSphere(transform.position, zoneRadius);
     }
-    private void Update()
+
+    #region tick
+    
+    private IEnumerator UpdateFrequency()
     {
-        // Moves all the boid units
-        for (int i = 0; i < allUnits.Length; i++)
+        int nUpdates = 0;
+        while (true)
         {
-            allUnits[i].MoveFish();
+            nUpdates += fishToUpdate;
+            for (int i = counter; i < allUnits.Length && i < nUpdates; i++)
+            {
+                allUnits[i].MoveFish();
+            }
+            counter = nUpdates;
+            if(counter >= allUnits.Length - 1)
+            {
+                counter = 0;
+                nUpdates = 0;
+            }
+            yield return new WaitForSeconds(tickRate);
         }
     }
+    
+
+    //private void Update()
+    //{
+    //    for (int i = 0; i < allUnits.Length; i++)
+    //    {
+    //        allUnits[i].MoveFish();
+    //    }
+    //}
+    #endregion
 
     private void GenerateUnits()
     {
