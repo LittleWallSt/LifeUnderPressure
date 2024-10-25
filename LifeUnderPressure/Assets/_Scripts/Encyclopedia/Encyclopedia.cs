@@ -13,7 +13,7 @@ public class Encyclopedia : MonoBehaviour
     [SerializeField] TextMeshProUGUI fishDescription;
     [SerializeField] GameObject lockImage;
 
-    
+    [SerializeField] GameObject firstHighlight;
 
     [Header("Images")]
     [Tooltip("Fish's states (None, Marked, Scanned)")]
@@ -23,6 +23,8 @@ public class Encyclopedia : MonoBehaviour
 
     [Header("Ping")]
     public BeaconZone ping;
+
+    bool firstTime = true;
     
 
     FishButton[] fishes;
@@ -75,6 +77,11 @@ public class Encyclopedia : MonoBehaviour
 
     public void OnFishButtonClick(FishButton fishButton)
     {
+        if (firstTime)
+        {
+            firstTime = false;
+            if (firstHighlight!=null) firstHighlight.SetActive(false);
+        }
         FishInfo fishInfo = fishButton.fishInfo;
         fishName.text = fishInfo.name;
         smallDescription.text = fishInfo.infoWhere;
