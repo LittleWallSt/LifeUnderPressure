@@ -117,7 +117,8 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
     [Range(0, 100)]
     [SerializeField] private float _curiousRange;
 
-    private bool working;
+    [SerializeField]
+    private bool unloadFish = true ;
 
     private int counter = 0;
 
@@ -135,9 +136,9 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     public void IDL_OffDistance()
     {
-        if (working)
+        if (unloadFish)
         {
-            working = false;
+            unloadFish = false;
             Debug.Log("off dista");
             foreach (BoidUnit fish in allUnits)
             {
@@ -148,9 +149,9 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     public void IDL_InDistance()
     {
-        if (!working)
+        if (!unloadFish)
         {
-            working = true;
+            unloadFish = true;
             Debug.Log("in  dista");
             foreach (BoidUnit fish in allUnits)
             {
@@ -168,6 +169,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     private IEnumerator Start()
     {
+        IDL_AssignToGameManager(        );
         if (_path.Length > 0)
         {
             transform.position = _path.GetWaypoint(_currentWaypointIndex).position;
