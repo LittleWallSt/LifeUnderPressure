@@ -25,7 +25,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
 
     private void Start()
     {
-        IDL_AssignToGameManager();
+        //IDL_AssignToGameManager();
         for(int i = 0; i < maxAmount; i++)
         {
             int checks = 0;

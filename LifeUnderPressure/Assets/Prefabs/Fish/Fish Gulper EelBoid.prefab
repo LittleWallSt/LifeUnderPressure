@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5672818725198563735}
   - component: {fileID: -1003233480381497181}
   - component: {fileID: -6419237639152304305}
+  - component: {fileID: 1675388214131492874}
   m_Layer: 8
   m_Name: Fish Gulper EelBoid
   m_TagString: Untagged
@@ -116,6 +117,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!205 &1675388214131492874
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.0000000055879354, y: 0.0056437366, z: -0.34279966}
+  m_Size: 1.0444537
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.05225444
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2544036239196663606}
+  m_Enabled: 1
 --- !u!1001 &3787438066720519090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,6 +204,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6ef94b108beb874ebe80fc3e017e98d, type: 3}
+--- !u!23 &2544036239196663606 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a6ef94b108beb874ebe80fc3e017e98d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3787438066720519090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3676370679547450457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a6ef94b108beb874ebe80fc3e017e98d,

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 757402598248073394}
   - component: {fileID: 1279890184145906600}
   - component: {fileID: 5023737430215678129}
+  - component: {fileID: 8488141973764716282}
   m_Layer: 8
   m_Name: Fish Sunfish
   m_TagString: Untagged
@@ -116,6 +117,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!205 &8488141973764716282
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0.11618304, z: -0.022505045}
+  m_Size: 3.9101343
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04730335
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 159799204136368905}
+  m_Enabled: 1
 --- !u!1001 &1582501961898567565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +240,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad6d181449a4a44b01c6d35e76eaff, type: 3}
+--- !u!23 &159799204136368905 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: c6ad6d181449a4a44b01c6d35e76eaff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1582501961898567565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1332102708927119462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c6ad6d181449a4a44b01c6d35e76eaff,

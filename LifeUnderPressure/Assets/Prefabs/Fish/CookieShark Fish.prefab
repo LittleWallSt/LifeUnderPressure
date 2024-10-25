@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5672818725198563735}
   - component: {fileID: -6419237639152304305}
   - component: {fileID: 4373524882820917927}
+  - component: {fileID: 5947839660684036038}
   m_Layer: 8
   m_Name: CookieShark Fish
   m_TagString: Untagged
@@ -121,6 +122,25 @@ MonoBehaviour:
   damageInterval: 0.5
   movRangeToScareAway: 3
   damage: 5
+--- !u!205 &5947839660684036038
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: -0.0036081746, z: -0.004213698}
+  m_Size: 0.11503312
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.054820556
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 159799204136368905}
+  m_Enabled: 1
 --- !u!1001 &1582501961898567565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,6 +219,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ad6d181449a4a44b01c6d35e76eaff, type: 3}
+--- !u!23 &159799204136368905 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: c6ad6d181449a4a44b01c6d35e76eaff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1582501961898567565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1332102708927119462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c6ad6d181449a4a44b01c6d35e76eaff,

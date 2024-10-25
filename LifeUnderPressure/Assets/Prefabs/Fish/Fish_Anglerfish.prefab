@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1279890184145906600}
   - component: {fileID: 5023737430215678129}
   - component: {fileID: 6897842571661562207}
+  - component: {fileID: 7706507591088091602}
   m_Layer: 8
   m_Name: Fish_Anglerfish
   m_TagString: Untagged
@@ -118,6 +119,26 @@ MonoBehaviour:
     m_Bits: 0
   FOVAngle: 0
   smoothDamp: 0
+--- !u!205 &7706507591088091602
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117038511062740693}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: -0.0076868534, z: -0.008872181}
+  m_Size: 1.0331147
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04730335
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3500447566439042708}
+    - renderer: {fileID: 6387869286816213570}
+  m_Enabled: 1
 --- !u!1001 &6350787601807115978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +217,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc14a510cfed31e4eaec31c3cd4d60a5, type: 3}
+--- !u!23 &3500447566439042708 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7545377856517425246, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6350787601807115978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6387869286816213570 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 37369001464425608, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6350787601807115978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6892828294762619169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
