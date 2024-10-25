@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject buttons = null;
     [SerializeField] private GameObject controlsMenu = null;
 
+    private static Action<bool> onPaused = null;
     public bool EnableMenu(bool state)
     {
         gameObject.SetActive(state);
@@ -16,6 +18,8 @@ public class PauseMenu : MonoBehaviour
         controlsMenu.SetActive(false);
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
+
+        Call_OnPaused(state);
         return state;
     }
     public void Button_Continue()
@@ -50,5 +54,18 @@ public class PauseMenu : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #endif
+    }
+
+    private static void Call_OnPaused(bool paused)
+    {
+        if (onPaused != null) onPaused(paused);
+    }
+    public static void Assign_OnPaused(Action<bool> action)
+    {
+        onPaused += action;
+    }
+    public static void Remove_OnPaused(Action<bool> action)
+    {
+        onPaused -= action;
     }
 }
