@@ -16046,7 +16046,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
   type: 0
-  scanner: {fileID: 0}
+  scanner: {fileID: 5837270843069969581}
   upgrades:
   - scanTimer: 3
     scanAnimationSpeed: 20
