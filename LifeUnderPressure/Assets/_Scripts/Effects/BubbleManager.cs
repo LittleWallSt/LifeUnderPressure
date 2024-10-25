@@ -27,6 +27,8 @@ public class BubbleManager : MonoBehaviour
         while (true)
         {
             Vector3 submarinePosition = Submarine.Instance.transform.position;
+            if (submarinePosition.y < GameManager.Instance.GetTerrainHeight(submarinePosition)) yield return new WaitForSeconds(updateTime);
+
             foreach (ParticleSystem bubble in bubbles)
             {
                 float distance = Vector3.Distance(bubble.transform.position, submarinePosition);
