@@ -160,8 +160,9 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         }
     }
 
-    public Vector3 IDL_GetPosition()
+    public Vector3 IDL_GetPosition(out float distanceOffset)
     {
+        distanceOffset = 0f;
         return transform.position;
     }
     #endregion

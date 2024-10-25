@@ -1,6 +1,4 @@
 using System;
-using System.ComponentModel;
-using System.Reflection;
 using UnityEngine;
 
 public class Health : MonoBehaviour

@@ -30,6 +30,7 @@ public class SubmarineMovement : MonoBehaviour
     private float shakeDuration = 0f;
 
     private Rigidbody rb;
+    private Health health;
     private Vector3 input;
     private Vector2 mouse;
     private Vector2 rotationVelocity;
@@ -37,10 +38,10 @@ public class SubmarineMovement : MonoBehaviour
     // Janko and Aleksis
     private EventInstance propellerSFX;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        health = GetComponent<Health>();
         input = new Vector3();
     }
     private void OnEnable()
@@ -170,7 +171,7 @@ public class SubmarineMovement : MonoBehaviour
 
     private void BumpCollision(Collision collision)
     {
-        if(collision.transform.gameObject.layer == 8 || collision.transform.gameObject.layer == 4) // just for now to block going higher than water surface, 8 is fish layer
+        if(collision.transform.gameObject.layer == 8 || collision.transform.gameObject.layer == 4) // just for now to block going higher than water surface, 8 is fish layer, 4 is water
         {
             return;
         }
@@ -182,7 +183,14 @@ public class SubmarineMovement : MonoBehaviour
         rb.velocity += impulse * bumpStrength;
 
         float damage = impulse.magnitude * bumpDamageModifier;
-        GetComponent<Health>().DealDamage(damage, DamageType.Crashed);
+        if (collision.transform.gameObject.layer == 10) // insta kill layer
+        {
+            health.DealDamage(10000f, DamageType.Cave);
+        }
+        else
+        {
+            health.DealDamage(damage, DamageType.Crashed);
+        }
 
         if (shaking)
         {

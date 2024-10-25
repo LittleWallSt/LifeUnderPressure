@@ -265,7 +265,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
 
-        if (stress > 100)
+        if (!Cave.Inside && stress > 100)
         {
             float diff = stress - 100f;
             health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
