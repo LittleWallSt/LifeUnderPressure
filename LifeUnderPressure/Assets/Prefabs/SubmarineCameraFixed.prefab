@@ -15587,10 +15587,10 @@ MonoBehaviour:
   type: 0
   scanner: {fileID: 0}
   upgrades:
-  - scanTimer: 6
+  - scanTimer: 3
     scanAnimationSpeed: 20
     depletingSpeed: 0
-  - scanTimer: 5
+  - scanTimer: 2
     scanAnimationSpeed: 20
     depletingSpeed: 0
 --- !u!114 &4182694629026491733
