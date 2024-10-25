@@ -15,7 +15,7 @@ public class DepthMeterUI : MonoBehaviour
 
     private void Start()
     {
-        previousDepth = ((int)Submarine.Instance.GetSubmarineDepth()/50)*50;
+        previousDepth = ((int)Submarine.Instance.GetSubmarineDepth()/offset)*offset;
 
     }
 
@@ -26,7 +26,7 @@ public class DepthMeterUI : MonoBehaviour
 
     public void DepthCheck()
     {
-        int currDepth = ((int)Submarine.Instance.GetSubmarineDepth() / 50) * 50;
+        int currDepth = ((int)Submarine.Instance.GetSubmarineDepth() / offset) * offset;
         if (currDepth != previousDepth)
         {
             int sign = currDepth > previousDepth ? 1 : -1;
@@ -38,7 +38,7 @@ public class DepthMeterUI : MonoBehaviour
     IEnumerator ChangeDepth(int sign)
     {
         Vector2 basePos = depthTransform.anchoredPosition;
-        Vector2 targetPos = basePos + new Vector2(0, sign*30);
+        Vector2 targetPos = basePos + new Vector2(0, sign*cellHeight);
 
         float elapsedTime = 0;
         while (elapsedTime < rollDuration)
