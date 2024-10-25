@@ -13842,7 +13842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Warning
+  m_text: 'Too Deep! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15459,6 +15459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugMode: 0
   submarineCamera: {fileID: 5897422571100704064}
+  controlAnimator: {fileID: 7937843593826252885}
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
   shakePositionOffset: {x: -0.01, y: 0.01}
