@@ -48,6 +48,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private float stress = 0f;
     private float inDeepTime = 0f;
     private bool docked = false;
+
+    private float currDepth = 0f;
     public static Submarine Instance { get; private set; } = null;
     public int Money 
     {
@@ -124,6 +126,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void Start()
     {
+        currDepth = -transform.position.y;
         // Janko >>
         warningInstance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Warning);
         warningInstance.setParameterByName("shouldPlay", 0);
@@ -170,6 +173,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         LerpSunIntensity(current, depth);
 
         depth = FakeDepth(current, depth);
+
+        currDepth = depth;
 
         LCStressCalculation(-transform.position.y);
 
@@ -410,6 +415,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public Encyclopedia GetEncyclopedia()
     {
         return encyclopedia;
+    }
+
+    public float GetSubmarineDepth()
+    {
+        return currDepth;
     }
     private void OnGUI()
     {
