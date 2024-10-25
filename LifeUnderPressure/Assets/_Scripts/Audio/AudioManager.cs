@@ -21,10 +21,13 @@ public class AudioManager : MonoBehaviour
     private EventInstance currentInstance;
     private float timeLastSetInstance;
 
+    private bool isPaused = false;
+
     [SerializeField]
     private float musicChangeCooldown = 5f;
     [SerializeField]
     private float playMusicOrAmbienceDelay = 2f;
+
 
     private void Awake()
     {
@@ -39,11 +42,14 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Start ambience here or somewhere else?
+        Submarine.Instance.getSubmarineHealth().Assign_OnDie(OnDie);
+        Submarine.Instance.getSubmarineHealth().Assign_OnRespawn(OnRespawn);
+
+        PauseMenu.Assign_OnPaused(OnPause);
+
         LevelVolume.Assign_OnCurrentVolumeChanged(SetArea);
         InitializeMusic(FMODEvents.instance.musicToPlay);
         InitializeAmbience(FMODEvents.instance.ambienceToPlay);
-        //shouldPlaySoundTimer = timeBetweenSounds;
 
         currentInstance = musicEventInstance;
         currentInstance.start();
@@ -51,16 +57,10 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        SetMusicOrAmbience();
+        if (isPaused)
+            return;
 
-        /*if (!IsPlaying(musicEventInstance))
-        {
-            InitializeAmbience(FMODEvents.instance.ambienceToPlay);
-        }
-        else if (!IsPlaying(ambienceEventInstance))
-        {
-            InitializeMusic(FMODEvents.instance.musicToPlay);
-        }*/
+        SetMusicOrAmbience();
     }
 
     private void SetMusicOrAmbience()
@@ -79,6 +79,24 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         currentInstance.start();
+    }
+
+    private void OnDie(DamageType type)
+    {
+        currentInstance.setPaused(true);
+        isPaused = true;
+    }
+
+    private void OnRespawn()
+    {
+        currentInstance.setPaused(false);       
+        isPaused = false;
+    }
+
+    private void OnPause(bool paused)
+    {
+        currentInstance.setPaused(paused);
+        isPaused = paused;
     }
 
     private bool IsPlaying(EventInstance instance)
@@ -173,5 +191,8 @@ public class AudioManager : MonoBehaviour
     {
         CleanUp();
         LevelVolume.Remove_OnCurrentVolumeChanged(SetArea);
+        Submarine.Instance.getSubmarineHealth().Remove_OnDie(OnDie);
+        Submarine.Instance.getSubmarineHealth().Remove_OnRespawn(OnRespawn);
+        PauseMenu.Remove_OnPaused(OnPause);
     }
 }

@@ -41,6 +41,7 @@ public class Health : MonoBehaviour
     public void Respawn()
     {
         ResetHealth();
+        Call_OnRespawn();
     }
     public void ResetHealth()
     {
@@ -85,7 +86,7 @@ public class Health : MonoBehaviour
     {
         onValueChanged += action;
     }
-    public void Assign_OnValueChanged(Action action)
+    public void Assign_OnRespawn(Action action)
     {
         onRespawn += action;
     }
