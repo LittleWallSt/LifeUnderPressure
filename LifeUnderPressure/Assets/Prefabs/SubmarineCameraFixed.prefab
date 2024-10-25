@@ -13204,6 +13204,7 @@ RectTransform:
   - {fileID: 1075276134984426927}
   - {fileID: 1302004229407228259}
   - {fileID: 5412024668025371782}
+  - {fileID: 4553154513322435637}
   m_Father: {fileID: 8534196113522667514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -15460,6 +15461,7 @@ MonoBehaviour:
   debugMode: 0
   submarineCamera: {fileID: 5897422571100704064}
   controlAnimator: {fileID: 7937843593826252885}
+  controlRigLerp: 2
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
   shakePositionOffset: {x: -0.01, y: 0.01}
@@ -15488,7 +15490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 3
-  upgradeCost: 0000000064000000c80000002c010000
+  upgradeCost: 01000000010000000100000001000000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -15529,7 +15531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
-  upgradeCost: 000000002c01000090010000
+  upgradeCost: 010000000100000001000000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -15556,7 +15558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 1
-  upgradeCost: 00000000e8030000
+  upgradeCost: 0100000001000000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -15626,7 +15628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 2
-  upgradeCost: 00000000f401000084030000
+  upgradeCost: 010000000100000001000000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -15724,7 +15726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLevel: 0
-  upgradeCost: 00000000
+  upgradeCost: e8030000
   upgradeEvents:
   - m_PersistentCalls:
       m_Calls: []

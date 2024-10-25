@@ -127,6 +127,7 @@ public class Encyclopedia : MonoBehaviour
         if (submarineBody == null) submarineBody = _submarineBody;
         gameObject.SetActive(state);
         submarineBody.SetActive(!state);
+        Submarine.Instance.getSubmarineMovement().enabled = !state;
         InternalSettings.EnableCursor(gameObject.activeSelf);
         if (state)
         {
