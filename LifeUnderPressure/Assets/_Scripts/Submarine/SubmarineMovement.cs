@@ -7,6 +7,8 @@ public class SubmarineMovement : MonoBehaviour
 {
     [SerializeField] private bool debugMode = false;
     [SerializeField] private Camera submarineCamera = null;
+    [SerializeField] private Animator controlAnimator = null;
+    [SerializeField] private float controlRigLerp = 2f;
     [Header("Screen Shake")]
     [SerializeField] private float screenShakeTimer = 0.5f;
     [SerializeField] private float screenShakeFrequency = 0.1f;
@@ -27,6 +29,7 @@ public class SubmarineMovement : MonoBehaviour
     private float bumpDuration = 0f;    
 
     private bool shaking = false;
+    private bool continuousShaking = false;
     private float shakeDuration = 0f;
 
     private Rigidbody rb;
@@ -34,6 +37,9 @@ public class SubmarineMovement : MonoBehaviour
     private Vector3 input;
     private Vector2 mouse;
     private Vector2 rotationVelocity;
+
+    private float frontControl = 0f;
+    private float rightControl = 0f;
 
     // Janko and Aleksis
     private EventInstance propellerSFX;
@@ -72,9 +78,22 @@ public class SubmarineMovement : MonoBehaviour
         float inputUp = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        UpdateControlRig();
+
         // Janko and Aleksis 
         propellerSFX.setParameterByName("Input", input.magnitude);
     }
+
+    private void UpdateControlRig()
+    {
+        frontControl = Mathf.Lerp(frontControl, input.z, Time.deltaTime * controlRigLerp);
+        rightControl = Mathf.Lerp(rightControl, input.x, Time.deltaTime * controlRigLerp);
+
+        controlAnimator.SetFloat("FrontBack", frontControl);
+        controlAnimator.SetFloat("LeftRight", rightControl);
+    }
+
     private void FixedUpdate()
     {
         float deltaTime = Time.fixedDeltaTime;
@@ -218,7 +237,7 @@ public class SubmarineMovement : MonoBehaviour
         targetPosition = startPosition + new Vector3(Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y));
 
         // lerp to random spots while timer is on
-        while (shakeDuration < screenShakeTimer)
+        while (continuousShaking || shakeDuration < screenShakeTimer)
         {
             submarineCamera.transform.localPosition = Vector3.Lerp(recPosition, targetPosition, power);
 
@@ -246,6 +265,11 @@ public class SubmarineMovement : MonoBehaviour
 
         submarineCamera.transform.localPosition = startPosition;
         shaking = false;
+    }
+    public void SetScreenShakeContinuous(bool state)
+    {
+        continuousShaking = state;
+        if (continuousShaking) StartCoroutine(ScreenShake());
     }
     public static Vector3 PositionFlat(Vector3 position)
     {
