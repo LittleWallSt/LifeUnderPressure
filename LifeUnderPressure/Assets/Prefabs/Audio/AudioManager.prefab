@@ -209,4 +209,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicChangeCooldown: 5
-  playMusicOrAmbienceDelay: 10
+  playMusicOrAmbienceDelay: 2
