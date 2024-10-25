@@ -53,7 +53,7 @@ public class Fish : MonoBehaviour
 
     protected float timer = 0f;
     protected float cooldownTimer = 0f;
-    protected Vector3 directionToWaypoint = Vector3.zero;
+    protected Vector3 directionToWaypoint = new Vector3(0,1,0);
 
    // Start is called before the first frame update
     void Start()
@@ -286,7 +286,6 @@ public class Fish : MonoBehaviour
     void Update()
     {
         HeadTowards(directionToWaypoint);
-
     }
 
     private void OnDrawGizmos()

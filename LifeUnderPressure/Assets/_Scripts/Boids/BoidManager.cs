@@ -123,6 +123,8 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     [SerializeField]    
     private int fishToUpdate = 20;
+    [SerializeField, Range(0f, 0.5f)]
+    private float tickRate = 0.05f;
 
     // Javi from Alexis's code >>
     #region IDL
@@ -215,7 +217,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
                 counter = 0;
                 nUpdates = 0;
             }
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(tickRate);
         }
     }
     
