@@ -491,6 +491,7 @@ MonoBehaviour:
   maxScale: 1
   randomPath: 1
   path: {fileID: 490540782}
+  fishToUpdate: 20
 --- !u!1 &51328581
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 598856808}
+  fishToUpdate: 20
 --- !u!1 &118855711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1091,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &197407337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1532,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 21262957}
+  fishToUpdate: 20
 --- !u!1 &248654245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1719,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &290308526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +2843,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &448254919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,6 +3360,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &525292381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,6 +3466,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &532181904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,6 +4827,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &771102168
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,6 +5199,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &812723964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5340,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 968484626}
+  fishToUpdate: 20
 --- !u!1001 &835718591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6321,6 +6346,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1014198218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6497,6 +6525,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 448254921}
+  fishToUpdate: 20
 --- !u!1 &1042224584
 GameObject:
   m_ObjectHideFlags: 0
@@ -6626,6 +6655,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1001 &1084684466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7320,6 +7352,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 1023316160}
+  fishToUpdate: 20
 --- !u!1 &1195388101
 GameObject:
   m_ObjectHideFlags: 0
@@ -7393,6 +7426,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1208129841
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,7 +7790,7 @@ PrefabInstance:
     - target: {fileID: 1302524302371959227, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2248056714867313956, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -7834,27 +7870,27 @@ PrefabInstance:
     - target: {fileID: 6763968442118710192, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6763968442118710192, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6763968442118710192, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[3]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7311892231753551879, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -7864,12 +7900,12 @@ PrefabInstance:
     - target: {fileID: 8095224013186788544, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8095224013186788544, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: upgradeCost.Array.data[2]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8408860143801451377, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -8024,6 +8060,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 699382963}
+  fishToUpdate: 20
 --- !u!1 &1246581363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8971,6 +9008,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 1318346226}
+  fishToUpdate: 20
 --- !u!1 &1368572433
 GameObject:
   m_ObjectHideFlags: 0
@@ -10701,6 +10739,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1629340135
 GameObject:
   m_ObjectHideFlags: 0
@@ -11142,6 +11183,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1701192787
 GameObject:
   m_ObjectHideFlags: 0
@@ -12152,6 +12196,7 @@ MonoBehaviour:
   maxScale: 1
   randomPath: 1
   path: {fileID: 157332646}
+  fishToUpdate: 20
 --- !u!1 &1921712369
 GameObject:
   m_ObjectHideFlags: 0
@@ -12400,6 +12445,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1941967657
 GameObject:
   m_ObjectHideFlags: 0
@@ -12675,6 +12723,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1978962916
 GameObject:
   m_ObjectHideFlags: 0
@@ -12838,6 +12889,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 421987077}
+  fishToUpdate: 20
 --- !u!1 &2037307698
 GameObject:
   m_ObjectHideFlags: 0

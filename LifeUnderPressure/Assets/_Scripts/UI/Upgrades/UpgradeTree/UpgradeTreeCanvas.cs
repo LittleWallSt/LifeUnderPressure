@@ -44,9 +44,9 @@ public class UpgradeTreeCanvas : MonoBehaviour
     {
         gameObject.SetActive(state);
         submarine.getSubmarineMovement().enabled = !state;
+        UpdateMoneyUI();
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
-        UpdateMoneyUI();
         return state;
     }
 
@@ -63,16 +63,18 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
 
 
-    private void UpdateMoneyUI()
+    public void UpdateMoneyUI()
     {
-        XP.text = "XP: " + submarine.Money;
+        XP.text = "XP: " + Submarine.Instance.Money;
     }
 
     
 
     public bool EnableMenu(bool state, GameObject _submarineBody)
     {
+        Submarine.Instance.getSubmarineMovement().enabled = !state;
         gameObject.SetActive(state);
+        UpdateMoneyUI();
         InternalSettings.EnableCursor(gameObject.activeSelf);
         return state;
     }
