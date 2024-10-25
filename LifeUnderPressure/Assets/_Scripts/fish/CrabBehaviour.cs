@@ -14,6 +14,9 @@ public class CrabBehaviour : MonoBehaviour
     [SerializeField] public float minMoveDist = 0.2f;
     [SerializeField] public float minDistToEdge = 5.0f;
 
+    [Header("Animations")]
+    [SerializeField] public Animator animator;
+
     private NavMeshAgent agent;
     private bool stop = false;
     private Vector3 lastPos;
@@ -23,7 +26,7 @@ public class CrabBehaviour : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
-
+        //animator = GetComponent<Animator>();
         lastPos = transform.position;
 
         SetNewRandomDestination();
@@ -42,8 +45,15 @@ public class CrabBehaviour : MonoBehaviour
             else
             {
                 CheckIfStuck();
+                //if (!animator.enabled) animator.enabled = true;
                 MoveLaterally();
+                
             }
+            animator.SetFloat("Speed", agent.speed);
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
         }
     }
 
@@ -124,8 +134,8 @@ public class CrabBehaviour : MonoBehaviour
 
         if(dir != Vector3.zero)
         {
-            Vector3 latDir = Vector3.Cross(Vector3.up, dir);
-            Quaternion rot = Quaternion.LookRotation(latDir);
+            //Vector3 latDir = Vector3.Cross(Vector3.up, dir);
+            Quaternion rot = Quaternion.LookRotation(-dir);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 2.0f);
         }
