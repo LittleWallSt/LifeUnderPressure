@@ -1509,6 +1509,7 @@ RectTransform:
   - {fileID: 5544376994498245923}
   - {fileID: 8063347075904536100}
   - {fileID: 677734113706772879}
+  - {fileID: 753759961416773200}
   m_Father: {fileID: 409380971382807985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11822,7 +11823,7 @@ GameObject:
   - component: {fileID: 6277770424266794503}
   - component: {fileID: 2749249402212353598}
   m_Layer: 6
-  m_Name: Detph
+  m_Name: DepthUpgradeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13204,6 +13205,7 @@ RectTransform:
   - {fileID: 1075276134984426927}
   - {fileID: 1302004229407228259}
   - {fileID: 5412024668025371782}
+  - {fileID: 4553154513322435637}
   m_Father: {fileID: 8534196113522667514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14830,6 +14832,100 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!1 &8088678655728984895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753759961416773200}
+  - component: {fileID: 9193435082866054594}
+  - component: {fileID: 9160229471800850245}
+  - component: {fileID: 4069288215106583008}
+  m_Layer: 6
+  m_Name: UpDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &753759961416773200
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088678655728984895}
+  m_LocalRotation: {x: 0.00056995265, y: 0.16702572, z: -0.015290283, w: 0.9858339}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6903879282319724189}
+  m_LocalEulerAnglesHint: {x: 0.357, y: 19.227, z: -1.717}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.2469, y: -0.024}
+  m_SizeDelta: {x: 0.05, y: 0.05}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9193435082866054594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088678655728984895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5048a98bbf8008746b8ff654a7516225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 4069288215106583008}
+  horizonSprite: {fileID: 21300000, guid: 9db45e2cfbbddc84fabc96838d468c2d, type: 3}
+  upSprite: {fileID: 21300000, guid: 53ec2970129cb0b42a043c7b2a61ea5b, type: 3}
+  fullUpSprite: {fileID: 21300000, guid: 6a13c25ace753c54c95c8bdf64c2a2bc, type: 3}
+  upDot: 0.2
+  fullUpDot: 0.7
+--- !u!222 &9160229471800850245
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088678655728984895}
+  m_CullTransparentMesh: 1
+--- !u!114 &4069288215106583008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088678655728984895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8203516323181047658
 GameObject:
   m_ObjectHideFlags: 0
@@ -15442,6 +15538,9 @@ MonoBehaviour:
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
   cracksMaterial: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
+  crackLevel1: 0.25
+  crackLevel2: 0.5
+  crackLevel3: 0.75
   dyingEvent: {fileID: 3135518312450490496}
   submarineBody: {fileID: 7225724622715461617}
   submarineMeshRenderer: {fileID: 4375975015138722327}
@@ -15460,6 +15559,7 @@ MonoBehaviour:
   debugMode: 0
   submarineCamera: {fileID: 5897422571100704064}
   controlAnimator: {fileID: 7937843593826252885}
+  controlRigLerp: 2
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
   shakePositionOffset: {x: -0.01, y: 0.01}
