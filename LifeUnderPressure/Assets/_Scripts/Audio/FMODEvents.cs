@@ -16,6 +16,9 @@ public class FMODEvents : MonoBehaviour
     public EventReference ambienceToPlay { get; private set; }
 
     [field: SerializeField]
+    public EventReference AMB_Random_Ambient_SFX { get; private set; }
+
+    [field: SerializeField]
     public EventReference SFX_Whale { get; set; }
 
     [field: Header("Upgrades")]
