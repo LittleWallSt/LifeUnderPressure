@@ -491,6 +491,7 @@ MonoBehaviour:
   maxScale: 1
   randomPath: 1
   path: {fileID: 490540782}
+  fishToUpdate: 20
 --- !u!1 &51328581
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 598856808}
+  fishToUpdate: 20
 --- !u!1 &118855711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,6 +1091,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &197407337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1532,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 21262957}
+  fishToUpdate: 20
 --- !u!1 &248654245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,6 +1719,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &290308526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +2874,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &448254919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3379,6 +3391,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &525292381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3482,6 +3497,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &532181904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,6 +4920,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &771102168
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,6 +5292,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &812723964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5440,6 +5464,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 968484626}
+  fishToUpdate: 20
 --- !u!1001 &835718591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6477,6 +6502,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1014198218
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,6 +6681,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 448254921}
+  fishToUpdate: 20
 --- !u!1 &1042224584
 GameObject:
   m_ObjectHideFlags: 0
@@ -6782,6 +6811,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1001 &1084684466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7476,6 +7508,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 1023316160}
+  fishToUpdate: 20
 --- !u!1 &1195388101
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,6 +7582,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1208129841
 GameObject:
   m_ObjectHideFlags: 0
@@ -8153,6 +8189,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 699382963}
+  fishToUpdate: 20
 --- !u!1 &1246581363
 GameObject:
   m_ObjectHideFlags: 0
@@ -9160,6 +9197,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 1318346226}
+  fishToUpdate: 20
 --- !u!1 &1368572433
 GameObject:
   m_ObjectHideFlags: 0
@@ -9676,6 +9714,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1429230781
 GameObject:
   m_ObjectHideFlags: 0
@@ -10972,6 +11013,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1629340135
 GameObject:
   m_ObjectHideFlags: 0
@@ -11401,6 +11445,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1701192787
 GameObject:
   m_ObjectHideFlags: 0
@@ -12504,6 +12551,7 @@ MonoBehaviour:
   maxScale: 1
   randomPath: 1
   path: {fileID: 157332646}
+  fishToUpdate: 20
 --- !u!1 &1921712369
 GameObject:
   m_ObjectHideFlags: 0
@@ -12752,6 +12800,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1941967657
 GameObject:
   m_ObjectHideFlags: 0
@@ -13012,6 +13063,9 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
+  fishToUpdate: 20
+  tickRate: 0.05
 --- !u!1 &1978962916
 GameObject:
   m_ObjectHideFlags: 0
@@ -13206,6 +13260,7 @@ MonoBehaviour:
   maxScale: 1.2
   randomPath: 1
   path: {fileID: 421987077}
+  fishToUpdate: 20
 --- !u!1 &2037307698
 GameObject:
   m_ObjectHideFlags: 0
@@ -13852,6 +13907,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 448254920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &759415758714536723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6935695077667502912, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueWhaleAnimated
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.641308
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 61.146885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713356924732547578, guid: 56e04e492c1497247a3e3ce0cc60a345,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56e04e492c1497247a3e3ce0cc60a345, type: 3}
 --- !u!1001 &1070305761771060043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14027,3 +14150,4 @@ SceneRoots:
   - {fileID: 591848928}
   - {fileID: 736378079}
   - {fileID: 1084684466}
+  - {fileID: 759415758714536723}
