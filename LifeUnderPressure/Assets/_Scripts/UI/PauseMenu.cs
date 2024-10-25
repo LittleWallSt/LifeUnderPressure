@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
         controlsMenu.SetActive(false);
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
+        Submarine.Instance.getSubmarineMovement().enabled = !state;
 
         Call_OnPaused(state);
         return state;

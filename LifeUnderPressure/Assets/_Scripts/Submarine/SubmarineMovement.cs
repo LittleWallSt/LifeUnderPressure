@@ -53,6 +53,7 @@ public class SubmarineMovement : MonoBehaviour
     private void OnEnable()
     {
         ResetMovement();
+        propellerSFX.start();
     }
 
     private void Start()
@@ -294,9 +295,8 @@ public class SubmarineMovement : MonoBehaviour
         GUI.Label(new Rect(10, 500, 500, 80), string.Format("Time: {0}", Time.time), InternalSettings.Get.DebugStyle);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        // Janko and Aleksis
         propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
     }
 }
