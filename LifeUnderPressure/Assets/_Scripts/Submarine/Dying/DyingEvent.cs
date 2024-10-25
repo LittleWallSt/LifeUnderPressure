@@ -50,7 +50,7 @@ public class DyingEvent : MonoBehaviour
         submarine.getSubmarineMovement().enabled = true;
         dyingText.text = "";
 
-        submarine.ForceSetPosition(new Vector3(0f, -2f, 0f));
+        submarine.ForceSetPosition(GameManager.Instance.InitialSpawnPoint);
         submarine.transform.rotation = Quaternion.identity;
 
         submarine.getSubmarineMovement().ResetMovement();

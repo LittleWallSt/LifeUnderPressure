@@ -15473,7 +15473,7 @@ MonoBehaviour:
   maxBumpDuration: 2
   bumpDurationModifier: 0.25
   bumpStrength: 0.6
-  bumpDamageModifier: 10
+  bumpDamageModifier: 5
 --- !u!114 &6763968442118710192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15586,7 +15586,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
   type: 0
-  scanner: {fileID: 0}
+  scanner: {fileID: 5837270843069969581}
   upgrades:
   - scanTimer: 3
     scanAnimationSpeed: 20

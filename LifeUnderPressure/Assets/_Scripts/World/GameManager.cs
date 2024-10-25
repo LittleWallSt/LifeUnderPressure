@@ -134,8 +134,8 @@ public class GameManager : MonoBehaviour
     {
         foreach (IDistanceLoad idl in idls)
         {
-            float distance = Vector3.Distance(idl.IDL_GetPosition(), submarine.transform.position);
-            if (distance > distanceToLoad)
+            float distance = Vector3.Distance(idl.IDL_GetPosition(out float distanceOffset), submarine.transform.position);
+            if (distance > distanceToLoad + distanceOffset)
             {
                 idl.IDL_OffDistance();
             }
@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
     // Getters
     public float GetTerrainHeight(Vector3 position)
     {
+        if (terrain == null) return -1000f;
         return terrain.SampleHeight(position) + terrain.transform.position.y;
     }
     public bool IsUnderground(Vector3 position)
