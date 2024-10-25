@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 
     private Action<DamageType> onDie;
     private Action onDamage;
+    private Action onRespawn;
     private Action<float> onValueChanged;
 
     private float hp = 0;
@@ -37,6 +38,10 @@ public class Health : MonoBehaviour
         }
     }
     public float MaxHealth => maxHealth;
+    public void Respawn()
+    {
+        ResetHealth();
+    }
     public void ResetHealth()
     {
         Value = maxHealth;
@@ -64,6 +69,10 @@ public class Health : MonoBehaviour
     {
         if (onValueChanged != null) onValueChanged(value);
     }
+    private void Call_OnRespawn()
+    {
+        if (onRespawn != null) onRespawn();
+    }
     public void Assign_OnDie(Action<DamageType> action)
     {
         onDie += action;
@@ -76,6 +85,10 @@ public class Health : MonoBehaviour
     {
         onValueChanged += action;
     }
+    public void Assign_OnValueChanged(Action action)
+    {
+        onRespawn += action;
+    }
     public void Remove_OnDie(Action<DamageType> action)
     {
         onDie -= action;
@@ -87,6 +100,10 @@ public class Health : MonoBehaviour
     public void Remove_OnValueChanged(Action<float> action)
     {
         onValueChanged -= action;
+    }
+    public void Remove_OnRespawn(Action action)
+    {
+        onRespawn -= action;
     }
 
     public DamageType GetLastGamageType()

@@ -54,7 +54,7 @@ public class DyingEvent : MonoBehaviour
         submarine.transform.rotation = Quaternion.identity;
 
         submarine.getSubmarineMovement().ResetMovement();
-        submarine.getSubmarineHealth().ResetHealth();
+        submarine.getSubmarineHealth().Respawn();
 
         Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
