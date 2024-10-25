@@ -206,6 +206,8 @@ public class Scanner : MonoBehaviour
         if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 
         DisplayInfo(fishInfo);
+        Submarine.Instance.AddMoney(1);
+        //Debug.Log(Submarine.Instance.Money);
 
         ResetScanner(false);
         currentFish = null;

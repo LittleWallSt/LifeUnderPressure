@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private float musicChangeCooldown = 5f;
     [SerializeField]
-    private float playMusicOrAmbienceDelay = 10f;
+    private float playMusicOrAmbienceDelay = 2f;
 
     private void Awake()
     {
@@ -69,7 +69,8 @@ public class AudioManager : MonoBehaviour
         {
             currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentInstance = currentInstance.Equals(musicEventInstance) ? ambienceEventInstance : musicEventInstance;
-            StartCoroutine(StartInstanceDelay(2f));
+            playMusicOrAmbienceDelay = Random.Range(2f, 7f);
+            StartCoroutine(StartInstanceDelay(playMusicOrAmbienceDelay));
             timeLastSetInstance = Time.time;
         }
     }

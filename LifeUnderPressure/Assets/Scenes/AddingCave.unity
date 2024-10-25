@@ -1097,6 +1097,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &197407337
@@ -1724,6 +1725,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &290308526
@@ -2847,6 +2849,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &448254919
@@ -3363,6 +3366,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &525292381
@@ -3468,6 +3472,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &532181904
@@ -4828,6 +4833,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &771102168
@@ -5199,6 +5205,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &812723964
@@ -6345,6 +6352,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1014198218
@@ -6653,6 +6661,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1001 &1084684466
@@ -7424,6 +7433,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1208129841
@@ -10646,6 +10656,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1629340135
@@ -11077,6 +11088,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1701192787
@@ -12338,6 +12350,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1941967657
@@ -12454,7 +12467,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2084831400639252406, guid: 3495d5d74049b124ebfe36d87c315a95, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12600,6 +12614,7 @@ MonoBehaviour:
   _curiousTimer: 0
   _curiousCoolDownTimer: 0
   _curiousRange: 0
+  unloadFish: 1
   fishToUpdate: 20
   tickRate: 0.05
 --- !u!1 &1978962916

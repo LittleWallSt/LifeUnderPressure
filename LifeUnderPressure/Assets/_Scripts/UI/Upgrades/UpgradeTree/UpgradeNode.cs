@@ -102,6 +102,9 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         bool upgraded = skillNode.GetUpgrade().TryUpgradeLevel(submarine.Money);
         if (!upgraded) return;
 
+        submarine.Money -= skillNode.GetUpgrade().GetLevelUpgradeCost();
+        UpgradeTreeCanvas.Instance.UpdateMoneyUI(); 
+
         UpdateNode();
         UnlockUpgrade(false);
 
