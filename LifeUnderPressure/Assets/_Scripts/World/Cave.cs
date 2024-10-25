@@ -81,6 +81,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     }
     public IEnumerator Collapse(float delay)
     {
+        Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(true);
         yield return new WaitForSeconds(delay);
 
         collapsed = true;
@@ -91,8 +92,9 @@ public class Cave : MonoBehaviour, IDistanceLoad
     {
         if(!Inside && collapsed)
         {
-            Debug.Log("outside when collapsed"); 
-            exit.gameObject.SetActive(collapsed);
+            Debug.Log("outside when collapsed");
+            Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(false);
+            //exit.gameObject.SetActive(collapsed);   
         }
     }
     private void OnDisable()
