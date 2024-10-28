@@ -127,17 +127,27 @@ public class CrabBehaviour : MonoBehaviour
 
     void MoveLaterally()
     {
-        Vector3 dir = agent.steeringTarget - transform.position;
+        //Vector3 dir = agent.steeringTarget - transform.position;
 
-        dir.y = 0;
-        dir.Normalize();
+        //dir.y = 0;
+        //dir.Normalize();
 
-        if(dir != Vector3.zero)
+        //if(dir != Vector3.zero)
+        //{
+        //    //Vector3 latDir = Vector3.Cross(Vector3.up, dir);
+        //    Quaternion rot = Quaternion.LookRotation(-dir);
+
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 2.0f);
+        //}
+
+        Vector3 directionToTarget = agent.steeringTarget - transform.position;
+        directionToTarget.y = 0;  
+        directionToTarget.Normalize();
+
+        if (directionToTarget != Vector3.zero)
         {
-            //Vector3 latDir = Vector3.Cross(Vector3.up, dir);
-            Quaternion rot = Quaternion.LookRotation(-dir);
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 2.0f);
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * lateralSpeed);
         }
     }
 }
