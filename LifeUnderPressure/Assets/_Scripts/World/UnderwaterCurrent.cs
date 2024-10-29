@@ -66,6 +66,10 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
         list.Remove(this);
         Triggering = list;
     }
+    private void OnDestroy()
+    {
+        if (Triggering.Contains(this)) Triggering.Remove(this);
+    }
     private void OnDrawGizmos()
     {
         Quaternion rotation = Quaternion.LookRotation(Direction);
