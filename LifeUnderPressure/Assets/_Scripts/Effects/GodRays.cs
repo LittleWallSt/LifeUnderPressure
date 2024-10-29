@@ -9,12 +9,11 @@ public class GodRays : MonoBehaviour
 
     [SerializeField] private float maxDepth = -30;
 
-
+    private bool stopped = false; 
     
     private void Start()
     {
         if (sun == null) gameObject.SetActive(false);
-
     }
     private void Update()
     {
@@ -24,10 +23,15 @@ public class GodRays : MonoBehaviour
         direction.Normalize();
         transform.up = sun.transform.forward;
 
-        if(submarinePosition.y < maxDepth)
+        if (!stopped && submarinePosition.y < maxDepth)
         {
-            GetComponent<ParticleSystem>().Stop(); 
+            GetComponent<ParticleSystem>().Stop();
+            stopped = true; 
         }
-        else GetComponent<ParticleSystem>().Play();
+        else if (stopped && submarinePosition.y >= maxDepth)
+        {
+            GetComponent<ParticleSystem>().Play();
+            stopped = false; 
+        }
     }
 }
