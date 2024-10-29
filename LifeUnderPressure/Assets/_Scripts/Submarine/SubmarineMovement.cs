@@ -52,7 +52,7 @@ public class SubmarineMovement : MonoBehaviour
 
     float boostForce = 15f;
     float maxChargeTime = 1f;
-    float boostCDTime = 2f;
+    float boostCDTime = 4f;
 
     float chargeTimer = 0f;
     float boostCDTimer = 0f;
