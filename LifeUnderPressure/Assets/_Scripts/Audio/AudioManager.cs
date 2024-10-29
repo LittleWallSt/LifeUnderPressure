@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         {
             currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentInstance = currentInstance.Equals(musicEventInstance) ? ambienceEventInstance : musicEventInstance;
-            playMusicOrAmbienceDelay = Random.Range(2f, 7f);
+            playMusicOrAmbienceDelay = Random.Range(2f, 4.5f); // can't be higher than music change cooldown
             StartCoroutine(StartInstanceDelay(playMusicOrAmbienceDelay));
             timeLastSetInstance = Time.time;
         }
