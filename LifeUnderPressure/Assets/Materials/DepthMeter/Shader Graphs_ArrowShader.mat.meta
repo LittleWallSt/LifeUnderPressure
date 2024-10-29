@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 7990a53fd231a3c42a68580d4bde5c10
-labels:
-- FMOD
-DefaultImporter:
+guid: 74bacac8dea8d294cb431323158b2965
+NativeFormatImporter:
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
