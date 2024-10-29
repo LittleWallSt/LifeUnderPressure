@@ -12,10 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: Cookie Cutter Shark
   m_EditorClassIdentifier: 
-  fishName: 
-  fishSmallDescription: 
-  infoWhere: 
-  fishFullDescription: 
+  fishName: Cookie-Cutter Shark
+  fishSmallDescription: 'Cookiecutter shark (Isistius brasiliensis) is a deep-sea
+    shark that is quite tiny. Despite its small size, it can be a very dangerous
+    little guy.   known for taking circular bites out of much larger animals and
+    even submarines. '
+  infoWhere: These guys stay at a range between 1000 - 3,700m. Usually, they swim
+    around in the open water as they look for food.
+  fishFullDescription: "Surprised you managed to scan this one without getting bit
+    to pieces.\r\n\r\nThe cookiecutter shark is a tiny 40-50cm fish that shouldn\u2019t
+    be under estimated. As can be told from their name they are famous for taking
+    cookie shaped bites from larger fish.\r\n\r\nDuring day time it stays around
+    1000 - 3700 meters but at night it ventures closer to the surface to find food.
+    They do this as not venturing up during the daytime increases their chances of
+    not getting eaten by a bigger predator. \r\n"
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0

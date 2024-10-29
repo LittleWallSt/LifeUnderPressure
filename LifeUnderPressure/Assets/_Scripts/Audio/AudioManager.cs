@@ -42,9 +42,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Submarine.Instance.getSubmarineHealth().Assign_OnDie(OnDie);
-        Submarine.Instance.getSubmarineHealth().Assign_OnRespawn(OnRespawn);
-
         PauseMenu.Assign_OnPaused(OnPause);
 
         LevelVolume.Assign_OnCurrentVolumeChanged(SetArea);
@@ -54,7 +51,11 @@ public class AudioManager : MonoBehaviour
         currentInstance = musicEventInstance;
         currentInstance.start();
     }
-
+    public void AssignSubmarineEvents(Submarine submarine)
+    {
+        Submarine.Instance.getSubmarineHealth().Assign_OnDie(OnDie);
+        Submarine.Instance.getSubmarineHealth().Assign_OnRespawn(OnRespawn);
+    }
     private void Update()
     {
         if (isPaused)
@@ -191,8 +192,8 @@ public class AudioManager : MonoBehaviour
     {
         CleanUp();
         LevelVolume.Remove_OnCurrentVolumeChanged(SetArea);
-        Submarine.Instance.getSubmarineHealth().Remove_OnDie(OnDie);
-        Submarine.Instance.getSubmarineHealth().Remove_OnRespawn(OnRespawn);
+        if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnDie(OnDie);
+        if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         PauseMenu.Remove_OnPaused(OnPause);
     }
 }

@@ -164,6 +164,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
         Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
         transform.eulerAngles = eulerAngles;
+
+        AudioManager.instance.AssignSubmarineEvents(this);
     }
     private void FixedUpdate()
     {
