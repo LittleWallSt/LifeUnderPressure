@@ -44,6 +44,11 @@ public class SubmarineMovement : MonoBehaviour
     // Janko and Aleksis
     private EventInstance propellerSFX;
 
+    //Boost change >>
+    int inputSpace;
+
+    //<<
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -79,6 +84,11 @@ public class SubmarineMovement : MonoBehaviour
         float inputUp = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Space) ? 1f : Input.GetKey(KeyCode.LeftControl) ? -1f : 0f;
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        //Boost change >>
+
+        inputSpace = Input.GetKey(KeyCode.Space) ? 1: 0;
+        //<<
 
         UpdateControlRig();
 
