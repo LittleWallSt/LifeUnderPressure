@@ -7,6 +7,10 @@ public class GodRays : MonoBehaviour
     [SerializeField] private Light sun = null;
     [SerializeField] private Vector3 offset;
 
+    [SerializeField] private float maxDepth = -30;
+
+    private bool stopped = false; 
+    
     private void Start()
     {
         if (sun == null) gameObject.SetActive(false);
@@ -18,5 +22,16 @@ public class GodRays : MonoBehaviour
         Vector3 direction = submarinePosition - transform.position;
         direction.Normalize();
         transform.up = sun.transform.forward;
+
+        if (!stopped && submarinePosition.y < maxDepth)
+        {
+            GetComponent<ParticleSystem>().Stop();
+            stopped = true; 
+        }
+        else if (stopped && submarinePosition.y >= maxDepth)
+        {
+            GetComponent<ParticleSystem>().Play();
+            stopped = false; 
+        }
     }
 }

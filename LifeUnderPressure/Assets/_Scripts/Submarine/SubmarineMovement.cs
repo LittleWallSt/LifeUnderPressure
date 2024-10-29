@@ -141,14 +141,13 @@ public class SubmarineMovement : MonoBehaviour
             inputModified.z * deltaTime
             );
 
-        if (UnderwaterCurrent.Triggering.Count != 0)
+        foreach(UnderwaterCurrent uCurrent in UnderwaterCurrent.Triggering)
         {
-            UnderwaterCurrent curr = UnderwaterCurrent.Triggering[0];
-            Vector3 v = curr.GetPointOnCurrent(transform.position);
+            Vector3 v = uCurrent.GetPointOnCurrent(transform.position);
             float distance = Vector3.Distance(transform.position, v);
-            float strength = Mathf.Abs(1f - Mathf.Clamp01(distance / curr.Radius));
+            float strength = Mathf.Abs(1f - Mathf.Clamp01(distance / uCurrent.Radius));
 
-            velocityChange += curr.Direction * (curr.Strength * strength) * Time.deltaTime;
+            velocityChange += uCurrent.Direction * (uCurrent.Strength * strength) * Time.deltaTime;
         }
         rb.velocity += new Vector3(
             velocityChange.x,
