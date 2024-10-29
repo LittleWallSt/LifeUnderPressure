@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1000, y: 59, z: 1000}
-  m_Center: {x: 0, y: -84.5, z: 0}
+  m_Size: {x: 1000, y: 58, z: 1000}
+  m_Center: {x: 0, y: -85, z: 0}
 --- !u!114 &4569398579940342484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   zoneName: Twilight Zone
-  maxFakeDepth: 1000
+  maxFakeDepth: 800
   volumeCollider: {fileID: 35404001565296963}
-  depthRange: {x: 55, y: 114}
+  depthRange: {x: 56, y: 114}
   sunLightIntensityRange: {x: 0, y: 0}
   gizmoColor: {r: 0.16981131, g: 0, b: 0.015376567, a: 0.50980395}
