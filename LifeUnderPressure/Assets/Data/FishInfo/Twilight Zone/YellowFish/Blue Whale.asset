@@ -21,23 +21,23 @@ MonoBehaviour:
     been spotted is 500 m.
   fishFullDescription: 'You got the incredible Blue Whale scanned, and I''m jealous.
 
-    
+
 
     Blue
     Whales eat almost exclusively krill. They feed by swimming through krill swarms
     with their mouths open, taking in water and food. Inside their mouths are baleen
     plates, which act like filters. The whale pushes the water out, trapping the
     krill inside, and then swallows them. This method allows blue whales to eat thousands
-    of tiny krill in a single gulp, sometimes up to 6 tons of krill in one gulp.
+    of tiny krill in a single gulp, sometimes up to 6 tons of krill in one day.
 
-    
+
 
     Blue
     Whales do have to breathe. Exhaling 90% of their lung capacity, the Blue Whale
     will usually surface to breathe every 15-20 minutes. They can stay longer but
     usually do not. One has been recorded to hold its breath for 36 minutes.
 
-    
+
 
     During
     their summer feeding grounds, blue whales are commonly found in colder waters,
@@ -45,16 +45,16 @@ MonoBehaviour:
     is their primary food source. Even though they do go colder, they have been spotted
     in all oceans except the Arctic Ocean.
 
-    
-
-    Then, during their Breeding
-    grounds, winter time, the blue whales migrate to warmer tropical and subtropical
-    waters to breed and give birth. These places are usually near the coastal of
-    Central America, the Indian ocean and areas around the equator.
 
 
-    Blue whales
-    occasionally swimes in small groups but usually alone or in pairs.'
+    Then, during their Breeding grounds,
+    winter time, the blue whales migrate to warmer tropical and subtropical waters
+    to breed and give birth. These places are usually near the coastal of Central
+    America, the Indian ocean and areas around the equator.
+
+
+    Blue whales occasionally
+    swimes in small groups but usually alone or in pairs.'
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
