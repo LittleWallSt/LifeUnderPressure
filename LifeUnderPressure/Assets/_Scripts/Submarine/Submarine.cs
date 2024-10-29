@@ -392,6 +392,12 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     public void UpdateZoneText()
     {
+        if(zoneText.text != LevelVolume.GetCurrentZoneName())
+        {
+            zoneText.gameObject.SetActive(false);
+            zoneText.enabled = true;
+            zoneText.gameObject.SetActive(true);
+        }
         zoneText.text = LevelVolume.GetCurrentZoneName();
     }
     // IDepthDependant
