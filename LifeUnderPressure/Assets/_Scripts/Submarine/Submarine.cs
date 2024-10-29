@@ -27,6 +27,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
     [SerializeField] private Material cracksMaterial = null;
+    [SerializeField] private Material depthMeterMaterial = null;
     [SerializeField] private float crackLevel1 = 0.25f;
     [SerializeField] private float crackLevel2 = 0.50f;
     [SerializeField] private float crackLevel3 = 0.75f;
@@ -34,8 +35,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     [SerializeField] private GameObject submarineBody;
     [SerializeField] private MeshRenderer submarineMeshRenderer = null;
+    [SerializeField] private MeshRenderer depthMeterMeshRenderer = null;
 
     private Material cracksMaterialInstance = null;
+    private Material depthMeterMaterialInstance = null;
 
     private GameObject currentMenu = null;
     private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
@@ -74,10 +77,20 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
+        DepthMeterMaterialSetup();
         CracksMaterialSetup();
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
+    }
+    private void DepthMeterMaterialSetup()
+    {
+        depthMeterMaterialInstance = Instantiate(depthMeterMaterial);
+
+        depthMeterMaterialInstance.SetInt("_On", 0);
+        List<Material> mats = new List<Material>(depthMeterMeshRenderer.materials);
+        mats[1] = depthMeterMaterialInstance;
+        depthMeterMeshRenderer.SetMaterials(mats);
     }
     private void CracksMaterialSetup()
     {
@@ -90,6 +103,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
         List<Material> mats = new List<Material>(submarineMeshRenderer.materials);
         mats[1] = cracksMaterialInstance;
         submarineMeshRenderer.SetMaterials(mats);
+    }
+    private void UpdateDepthMeterMaterial(bool warningOn)
+    {
+        depthMeterMaterialInstance.SetInt("_On", warningOn ? 1 : 0);
     }
     private void UpdateCracksOnWindshield(float value)
     {
@@ -308,12 +325,12 @@ public class Submarine : MonoBehaviour, IDepthDependant
         {
             float diff = stress - 100f;
             health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
-            warningText.gameObject.SetActive(true);
+            UpdateDepthMeterMaterial(true);
             warningInstance.setParameterByName("shouldPlay", 1);
         }
         else
         {
-            warningText.gameObject.SetActive(false);
+            UpdateDepthMeterMaterial(false);
             warningInstance.setParameterByName("shouldPlay", 0);
         }
     }

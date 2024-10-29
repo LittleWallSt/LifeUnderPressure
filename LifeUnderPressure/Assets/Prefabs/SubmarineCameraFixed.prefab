@@ -3856,7 +3856,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 951
+    m_Bits: 1975
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15536,12 +15536,14 @@ MonoBehaviour:
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
   cracksMaterial: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
+  depthMeterMaterial: {fileID: 2100000, guid: 74bacac8dea8d294cb431323158b2965, type: 2}
   crackLevel1: 0.25
   crackLevel2: 0.5
   crackLevel3: 0.75
   dyingEvent: {fileID: 3135518312450490496}
   submarineBody: {fileID: 7225724622715461617}
   submarineMeshRenderer: {fileID: 4375975015138722327}
+  depthMeterMeshRenderer: {fileID: 8825506992747990702}
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17512,6 +17514,12 @@ PrefabInstance:
 --- !u!4 &7651988523312461249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fa03457652c5b354898ce0fd3c13cc43,
+    type: 3}
+  m_PrefabInstance: {fileID: 7907171373571297834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8825506992747990702 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: fa03457652c5b354898ce0fd3c13cc43,
     type: 3}
   m_PrefabInstance: {fileID: 7907171373571297834}
   m_PrefabAsset: {fileID: 0}

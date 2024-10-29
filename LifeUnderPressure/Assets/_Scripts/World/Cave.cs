@@ -85,8 +85,8 @@ public class Cave : MonoBehaviour, IDistanceLoad
         yield return new WaitForSeconds(delay);
 
         collapsed = true;
-        DataManager.Write("CaveCollapsed", 1);
         UpdateCollapsed();
+        DataManager.Write("CaveCollapsed", 1);
     }
     private void UpdateInside()
     {
@@ -103,8 +103,15 @@ public class Cave : MonoBehaviour, IDistanceLoad
         {
             
         }
-        Inside = GameManager.Instance.IsUnderground(Submarine.Instance.transform.position);
-        Submarine.Instance.UpdateZoneText();
+        if (Submarine.Instance)
+        {
+            Inside = GameManager.Instance.IsUnderground(Submarine.Instance.transform.position);
+            Submarine.Instance.UpdateZoneText();
+        }
+        else
+        {
+            Inside = false;
+        }
     }
     private void OnDestroy()
     {
