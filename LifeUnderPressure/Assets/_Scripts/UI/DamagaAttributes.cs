@@ -11,7 +11,9 @@ public enum DamageType
     [Description("from the relentless bites of the cookiecutter sharks.")]
     CookieShark,
     [Description("from the crushing force of a collapsing cave.")]
-    Cave
+    Cave,
+    [Description("from the explosion of a naval mine.")]
+    Mine
 }
 
 public static class EnumExtensions
