@@ -172,7 +172,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
         LerpSunIntensity(current, depth);
 
-        depth = FakeDepth(current, depth);
+        depth = FakeDepth(current);
 
         currDepth = depth;
 
@@ -191,12 +191,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
         }
     }
 
-    private float FakeDepth(LevelVolume current, float depth)
+    private float FakeDepth(LevelVolume current)
     {
+        float depth = -transform.position.y;
         if (current)
         {
-            depth = ((-transform.position.y - current.DepthRange.x) / current.DepthRange.y) * current.MaxFakeDepth;
-            if (current.Level > 0) depth += LevelVolume.List.Find(x => x.Level == current.Level - 1).MaxFakeDepth;
+            depth = ((depth - current.DepthRange.x) / (current.DepthRange.y - current.DepthRange.x)) * current.MaxFakeDepth;
+            for(int i = 0; i < current.Level; i++)
+            {
+                depth += LevelVolume.List.Find(x => x.Level == i).MaxFakeDepth;
+            }
         }
 
         return depth;

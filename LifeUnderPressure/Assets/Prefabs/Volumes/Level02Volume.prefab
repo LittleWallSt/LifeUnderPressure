@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1000, y: 88, z: 1000}
-  m_Center: {x: 0, y: -149, z: 0}
+  m_Size: {x: 1000, y: 79, z: 1000}
+  m_Center: {x: 0, y: -153.5, z: 0}
 --- !u!114 &1049343509484158125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 5
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 113fcc96d3c44b349b88742fd00605d3, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7ee4c90dd139742498437e13160fd3e4, type: 2}
 --- !u!114 &892740847877226276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 2
   zoneName: Midnight Zone
-  maxFakeDepth: 4000
+  maxFakeDepth: 3000
   volumeCollider: {fileID: 3396624007437096837}
-  depthRange: {x: 105, y: 193}
+  depthRange: {x: 114, y: 193}
+  sunLightIntensityRange: {x: 0, y: 0}
   gizmoColor: {r: 0.16981131, g: 0, b: 0.015376567, a: 0.50980395}
