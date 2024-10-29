@@ -8,15 +8,20 @@ public class DepthMeterUI : MonoBehaviour
     [SerializeField]RectTransform depthTransform;
 
     [SerializeField] float cellHeight = 30f;
-    [SerializeField] float rollDuration = 0.5f;
-    [SerializeField] int offset = 50;
+    [SerializeField] float rollDuration = 0.2f;
+    [SerializeField] int _offset = 50;
+
+    [SerializeField] float midnightZoneDepth = 900f;
+    [SerializeField] int _midnightOffset = 150;
 
     int previousDepth;
 
+    Vector2 basePos;
+
     private void Start()
     {
-        previousDepth = ((int)Submarine.Instance.GetSubmarineDepth()/offset)*offset;
-
+        previousDepth = ((int)Submarine.Instance.GetSubmarineDepth()/_offset)*_offset;
+        basePos = depthTransform.anchoredPosition;
     }
 
     private void Update()
@@ -26,18 +31,22 @@ public class DepthMeterUI : MonoBehaviour
 
     public void DepthCheck()
     {
+        
+        depthTransform.anchoredPosition = basePos; 
+        int offset = (int)Submarine.Instance.GetSubmarineDepth() >= midnightZoneDepth ? _midnightOffset : _offset;
         int currDepth = ((int)Submarine.Instance.GetSubmarineDepth() / offset) * offset;
-        if (currDepth != previousDepth)
+
+        if (currDepth != previousDepth) 
         {
             int sign = currDepth > previousDepth ? 1 : -1;
             previousDepth = currDepth;
-            StartCoroutine(ChangeDepth(sign));
+            StartCoroutine(ChangeDepth(sign, offset));
         }
     }
 
-    IEnumerator ChangeDepth(int sign)
+    IEnumerator ChangeDepth(int sign, int offset)
     {
-        Vector2 basePos = depthTransform.anchoredPosition;
+        
         Vector2 targetPos = basePos + new Vector2(0, sign*cellHeight);
 
         float elapsedTime = 0;

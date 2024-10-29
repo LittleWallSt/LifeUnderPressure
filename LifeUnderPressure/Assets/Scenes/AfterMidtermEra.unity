@@ -14938,6 +14938,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.975
       objectReference: {fileID: 0}
+    - target: {fileID: 5656990762446369953, guid: ff384a78e80340846bd63b1e2b795a83,
+        type: 3}
+      propertyPath: rollDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5656990762446369953, guid: ff384a78e80340846bd63b1e2b795a83,
+        type: 3}
+      propertyPath: midnightZoneDepth
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 5981354763046794381, guid: ff384a78e80340846bd63b1e2b795a83,
         type: 3}
       propertyPath: m_Name

@@ -45,8 +45,19 @@ public class SubmarineMovement : MonoBehaviour
     private EventInstance propellerSFX;
 
     //Boost change >>
-    int inputSpace;
+    bool inputSpace;
+    bool inputSpaceUp;
+    bool inputSpacePressed;
+    bool boostCD = false;
 
+    float boostForce = 15f;
+    float maxChargeTime = 1f;
+    float boostCDTime = 2f;
+
+    float chargeTimer = 0f;
+    float boostCDTimer = 0f;
+
+    bool charging = false;
     //<<
 
     private void Awake()
@@ -86,8 +97,9 @@ public class SubmarineMovement : MonoBehaviour
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
         //Boost change >>
-
-        inputSpace = Input.GetKey(KeyCode.Space) ? 1: 0;
+        inputSpacePressed = Input.GetKeyDown(KeyCode.B);
+        inputSpace = Input.GetKey(KeyCode.B);
+        inputSpaceUp = Input.GetKeyUp(KeyCode.B);
         //<<
 
         UpdateControlRig();
@@ -116,6 +128,19 @@ public class SubmarineMovement : MonoBehaviour
 
     private void PositionUpdate(float deltaTime)
     {
+        //Boost>>
+        if (boostCD)
+        {
+            boostCDTimer += deltaTime;
+            if (boostCDTimer >= boostCDTime)
+            {
+                boostCD = false;
+                boostCDTimer = 0;
+            } 
+        }
+        //<<<<<
+
+
         // Bumping process
         if (bumped)
         {
@@ -149,11 +174,40 @@ public class SubmarineMovement : MonoBehaviour
 
             velocityChange += uCurrent.Direction * (uCurrent.Strength * strength) * Time.deltaTime;
         }
+
+
+        
+
         rb.velocity += new Vector3(
             velocityChange.x,
             velocityChange.y,
             velocityChange.z
             );
+
+        //Boost >>> ??
+        if (inputSpacePressed && !boostCD)
+        {
+            charging = true;
+            chargeTimer = 0f; 
+        }
+
+        if (!charging) return;
+
+        if (inputSpace)
+        {
+            chargeTimer += deltaTime;
+        }
+
+        if (inputSpaceUp || chargeTimer >= maxChargeTime)
+        {
+            float chargeForce = Mathf.Clamp(chargeTimer / maxChargeTime, 0.2f, 1f);
+            rb.velocity = boostForce * chargeForce * transform.forward;
+            boostCD = true; 
+            charging = false; 
+        }
+
+        //<<<
+
     }
 
     private void VelocityUpdate(float deltaTime)
