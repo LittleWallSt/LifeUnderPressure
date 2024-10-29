@@ -51,6 +51,13 @@ MonoBehaviour:
       Data3: -469148001
       Data4: -1189912816
     Path: event:/Ambience/Ambience
+  <AMB_Cave>k__BackingField:
+    Guid:
+      Data1: 2046674071
+      Data2: 1113546106
+      Data3: -476064336
+      Data4: 779669253
+    Path: event:/Ambience/Amb_Cave
   <AMB_Random_Ambient_SFX>k__BackingField:
     Guid:
       Data1: -2027707746
@@ -156,6 +163,13 @@ MonoBehaviour:
       Data3: -1761005149
       Data4: -1787139460
     Path: event:/Music/Menu Song
+  <MUS_Cave>k__BackingField:
+    Guid:
+      Data1: 886815877
+      Data2: 1123246898
+      Data3: -1215511886
+      Data4: 2132011473
+    Path: event:/Music/MUS_Cave_Chase
   <voice01>k__BackingField:
     Guid:
       Data1: 0

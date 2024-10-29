@@ -59,6 +59,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     {
         if (Input.GetKeyDown(KeyCode.Y)) // debug
         {
+            AudioManager.instance.StartCaveCollapse();
             animator.SetFloat("Offset", 0f);
             StartCoroutine(Collapse(collapseDelay));
         }

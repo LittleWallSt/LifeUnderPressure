@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PauseMenu.Assign_OnPaused(OnPause);
+        Cave.Assign_OnInsideChanged(OnCaveInsideChanged);
 
         LevelVolume.Assign_OnCurrentVolumeChanged(SetArea);
         InitializeMusic(FMODEvents.instance.musicToPlay);
@@ -66,10 +67,12 @@ public class AudioManager : MonoBehaviour
 
     private void SetMusicOrAmbience()
     {
+        if (Cave.Inside) return;
+
         if (!IsPlaying(currentInstance) && Time.time - timeLastSetInstance > musicChangeCooldown)
         {
             currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            currentInstance = currentInstance.Equals(musicEventInstance) ? ambienceEventInstance : musicEventInstance;
+            SwapCurrentInstance();
             playMusicOrAmbienceDelay = Random.Range(2f, 4.5f); // can't be higher than music change cooldown
             StartCoroutine(StartInstanceDelay(playMusicOrAmbienceDelay));
             timeLastSetInstance = Time.time;
@@ -81,7 +84,32 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         currentInstance.start();
     }
-
+    public void SwapCurrentInstance()
+    {
+        currentInstance = currentInstance.Equals(musicEventInstance) ? ambienceEventInstance : musicEventInstance;
+    }
+    // Events
+    public void StartCaveCollapse()
+    {
+        currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        SwapCurrentInstance();
+        currentInstance.start();
+    }
+    private void OnCaveInsideChanged()
+    {
+        currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        if (Cave.Inside)
+        {
+            ambienceEventInstance.setParameterByName("Area", 3);
+            musicEventInstance.setParameterByName("Area", 3);
+            currentInstance = ambienceEventInstance;
+            currentInstance.start();
+        }
+        else
+        {
+            SetArea();
+        }
+    }
     private void OnDie(DamageType type)
     {
         currentInstance.setPaused(true);
@@ -96,6 +124,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnPause(bool paused)
     {
+        Debug.Log("pa");
         currentInstance.setPaused(paused);
         isPaused = paused;
     }
@@ -119,6 +148,8 @@ public class AudioManager : MonoBehaviour
 
     public void SetArea()
     {
+        if (Cave.Inside) return;
+
         musicEventInstance.setParameterByName("Area", LevelVolume.Current.Level);
         ambienceEventInstance.setParameterByName("Area", LevelVolume.Current.Level);
     }
@@ -195,5 +226,6 @@ public class AudioManager : MonoBehaviour
         if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnDie(OnDie);
         if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         PauseMenu.Remove_OnPaused(OnPause);
+        Cave.Remove_OnInsideChanged(OnCaveInsideChanged);
     }
 }
