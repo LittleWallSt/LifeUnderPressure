@@ -46,7 +46,7 @@ public class CrabBehaviour : MonoBehaviour
             {
                 CheckIfStuck();
                 //if (!animator.enabled) animator.enabled = true;
-                MoveLaterally();
+                MoveForward();
                 
             }
             animator.SetFloat("Speed", agent.speed);
@@ -125,20 +125,8 @@ public class CrabBehaviour : MonoBehaviour
         return true;
     }
 
-    void MoveLaterally()
+    void MoveForward()
     {
-        //Vector3 dir = agent.steeringTarget - transform.position;
-
-        //dir.y = 0;
-        //dir.Normalize();
-
-        //if(dir != Vector3.zero)
-        //{
-        //    //Vector3 latDir = Vector3.Cross(Vector3.up, dir);
-        //    Quaternion rot = Quaternion.LookRotation(-dir);
-
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 2.0f);
-        //}
 
         Vector3 directionToTarget = agent.steeringTarget - transform.position;
         directionToTarget.y = 0;  
