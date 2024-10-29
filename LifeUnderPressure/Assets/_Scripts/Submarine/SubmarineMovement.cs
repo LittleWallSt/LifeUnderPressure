@@ -58,6 +58,8 @@ public class SubmarineMovement : MonoBehaviour
     float boostCDTimer = 0f;
 
     bool charging = false;
+
+    BoostUI boostUI = null;
     //<<
 
     private void Awake()
@@ -132,10 +134,13 @@ public class SubmarineMovement : MonoBehaviour
         if (boostCD)
         {
             boostCDTimer += deltaTime;
+            if (boostUI == null) boostUI = FindAnyObjectByType<BoostUI>();
+            boostUI.UpdateUI(0, Mathf.Clamp(boostCDTime - boostCDTimer, 0, boostCDTime));
             if (boostCDTimer >= boostCDTime)
             {
                 boostCD = false;
                 boostCDTimer = 0;
+                boostUI.UpdateUI(0, 0);
             } 
         }
         //<<<<<
@@ -185,10 +190,11 @@ public class SubmarineMovement : MonoBehaviour
             );
 
         //Boost >>> ??
-        if (inputSpacePressed && !boostCD)
+        if ((inputSpacePressed || inputSpace) && !boostCD && !charging)
         {
+            
             charging = true;
-            chargeTimer = 0f; 
+            chargeTimer = 0f;  
         }
 
         if (!charging) return;
@@ -196,12 +202,14 @@ public class SubmarineMovement : MonoBehaviour
         if (inputSpace)
         {
             chargeTimer += deltaTime;
+            if (boostUI==null) boostUI = FindAnyObjectByType<BoostUI>();
+            boostUI.UpdateUI(Mathf.Clamp01(chargeTimer / maxChargeTime), 0);
         }
 
         if (inputSpaceUp || chargeTimer >= maxChargeTime)
         {
             float chargeForce = Mathf.Clamp(chargeTimer / maxChargeTime, 0.2f, 1f);
-            rb.velocity = boostForce * chargeForce * transform.forward;
+            rb.velocity += boostForce * chargeForce * transform.forward;
             boostCD = true; 
             charging = false; 
         }
