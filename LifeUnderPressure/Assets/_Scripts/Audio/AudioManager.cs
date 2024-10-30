@@ -124,7 +124,6 @@ public class AudioManager : MonoBehaviour
 
     private void OnPause(bool paused)
     {
-        Debug.Log("pa");
         currentInstance.setPaused(paused);
         isPaused = paused;
     }
