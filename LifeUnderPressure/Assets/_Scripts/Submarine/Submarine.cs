@@ -465,7 +465,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     // Janko >>
     private void OnDie(DamageType type)
     {
-        warningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     private void OnRespawn()
