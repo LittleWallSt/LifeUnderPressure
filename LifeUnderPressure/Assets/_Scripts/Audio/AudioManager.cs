@@ -112,19 +112,19 @@ public class AudioManager : MonoBehaviour
     }
     private void OnDie(DamageType type)
     {
-        currentInstance.setPaused(true);
+        currentInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         isPaused = true;
     }
 
     private void OnRespawn()
     {
-        currentInstance.setPaused(false);       
+        currentInstance.start();
+        //currentInstance.setPaused(false);       
         isPaused = false;
     }
 
     private void OnPause(bool paused)
     {
-        Debug.Log("pa");
         currentInstance.setPaused(paused);
         isPaused = paused;
     }

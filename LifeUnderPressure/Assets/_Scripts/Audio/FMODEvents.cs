@@ -16,9 +16,6 @@ public class FMODEvents : MonoBehaviour
     public EventReference ambienceToPlay { get; private set; }
 
     [field: SerializeField]
-    public EventReference AMB_Cave { get; private set; }
-
-    [field: SerializeField]
     public EventReference AMB_Random_Ambient_SFX { get; private set; }
 
     [field: SerializeField]
@@ -67,9 +64,6 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Music Tracks")]
     [field: SerializeField]
     public EventReference musicToPlay { get; private set; }
-
-    [field: SerializeField]
-    public EventReference MUS_Cave { get; private set; }
 
     [field: Header("VO Tracks")]
     [field: SerializeField]

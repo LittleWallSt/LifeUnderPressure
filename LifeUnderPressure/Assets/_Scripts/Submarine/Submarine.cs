@@ -145,6 +145,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         currDepth = -transform.position.y;
         // Janko >>
+        getSubmarineHealth().Assign_OnDie(OnDie);
+        getSubmarineHealth().Assign_OnRespawn(OnRespawn);
+
         warningInstance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Warning);
         warningInstance.setParameterByName("shouldPlay", 0);
         warningInstance.start();
@@ -363,6 +366,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         health.Remove_OnDie(Die);
         // Janko >>
         warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
+
+        getSubmarineHealth().Remove_OnDie(OnDie);
+        getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         // Janko <<
     }
     // Setters
@@ -455,4 +461,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
         // Shows the stress on screen
         //GUI.Label(new Rect(1000, 10, 500, 100), string.Format("LC Stress: {0}", stress), InternalSettings.Get.DebugStyle);
     }
+
+    // Janko >>
+    private void OnDie(DamageType type)
+    {
+        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    private void OnRespawn()
+    {
+        warningInstance.start();
+    }
+    // Janko << 
 }
