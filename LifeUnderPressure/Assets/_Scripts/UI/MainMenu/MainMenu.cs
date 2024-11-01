@@ -12,12 +12,19 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject buttonsGrid = null;
     [SerializeField] private GameObject controlsMenu = null;
 
+    // Janko >>
+    [SerializeField] private GameObject settingsMenu = null;
+    // Janko <<
+
     private bool pressedPlay = false;
     private float timer = 0f;
     private void Start()
     {
         buttonsGrid.SetActive(true);
         controlsMenu.SetActive(false);
+        // Janko >>
+        settingsMenu.SetActive(false);
+        // Janko <<
     }
     private void Update()
     {
@@ -44,7 +51,23 @@ public class MainMenu : MonoBehaviour
     public void Button_Options()
     {
         if (pressedPlay) return;
+
+        // Janko >>
+        buttonsGrid.SetActive(false);
+        settingsMenu.SetActive(true);
+        // Janko <<
     }
+
+    // Janko >>
+    public void Button_SettingsBack()
+    {
+        if (pressedPlay) return;
+
+        buttonsGrid.SetActive(true);
+        settingsMenu.SetActive(false);
+    }
+    // Janko <<
+
     public void Button_Controls()
     {
         if (pressedPlay) return;
@@ -69,7 +92,6 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
-    // Janko >>
     public void PlayClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Click, transform.position);

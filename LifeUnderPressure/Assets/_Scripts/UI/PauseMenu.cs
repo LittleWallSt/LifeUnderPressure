@@ -9,6 +9,9 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject buttons = null;
     [SerializeField] private GameObject controlsMenu = null;
+    // Janko >>
+    [SerializeField] private GameObject settingsMenu = null;
+    // Janko <<
 
     private static Action<bool> onPaused = null;
     public bool EnableMenu(bool state)
@@ -16,6 +19,9 @@ public class PauseMenu : MonoBehaviour
         gameObject.SetActive(state);
         buttons.SetActive(state);
         controlsMenu.SetActive(false);
+        // Janko >>
+        settingsMenu.SetActive(false);
+        // Janko <<
         Time.timeScale = state ? 0f : 1f;
         InternalSettings.EnableCursor(gameObject.activeSelf);
         Submarine.Instance.getSubmarineMovement().enabled = !state;
@@ -29,8 +35,20 @@ public class PauseMenu : MonoBehaviour
     }
     public void Button_Options()
     {
-
+        // Janko >>
+        buttons.SetActive(false);
+        settingsMenu.SetActive(true);
+        // Janko <<
     }
+
+    // Janko >>
+    public void Button_SettingsBack()
+    {
+        buttons.SetActive(true);
+        settingsMenu.SetActive(false);
+    }
+    // Janko <<
+
     public void Button_Controls()
     {
         buttons.SetActive(false);
