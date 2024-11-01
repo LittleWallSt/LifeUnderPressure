@@ -65,6 +65,13 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference musicToPlay { get; private set; }
 
+    [field: Header("UI")]
+    [field: SerializeField]
+    public EventReference SFX_UI_Click { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_UI_Hover { get; private set; }
+
     [field: Header("VO Tracks")]
     [field: SerializeField]
     public EventReference voice01 { get; private set; }

@@ -44,7 +44,6 @@ public class MainMenu : MonoBehaviour
     public void Button_Options()
     {
         if (pressedPlay) return;
-
     }
     public void Button_Controls()
     {
@@ -69,4 +68,16 @@ public class MainMenu : MonoBehaviour
         EditorApplication.isPlaying = false;
 #endif
     }
+
+    // Janko >>
+    public void PlayClickSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Click, transform.position);
+    }
+
+    public void PlayHoverSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Hover, transform.position);
+    }
+    // Janko <<
 }
