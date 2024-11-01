@@ -83,13 +83,12 @@ public class Encyclopedia : MonoBehaviour
         if (!firstTime&& fishInfo == fishButton.fishInfo)
         {
             fishButton.no = true;
-            fishButton.SetFishState(FishState.None);
-            currFish.SetFishState(FishState.None);
             currFish.SetIcon();
             ping.pingArea = null;
             fishName.text = "";
             smallDescription.text = "";
-            //ShowFullDescription(fishButton.GetFishState() == FishState.None, fishInfo);
+            ShowFullDescription(fishButton.GetFishState() == FishState.Scanned, fishInfo);
+            fishDescription.text = "";
             ShowTheBeacon(fishInfo);
             ping.EnablePing(false);
             UpdateIcons();
