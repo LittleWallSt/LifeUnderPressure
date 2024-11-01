@@ -9334,6 +9334,11 @@ PrefabInstance:
       propertyPath: habitat.Array.data[1]
       value: 
       objectReference: {fileID: 892703490}
+    - target: {fileID: 1012094905458149894, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.654114
+      objectReference: {fileID: 0}
     - target: {fileID: 1234858015588305214, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
