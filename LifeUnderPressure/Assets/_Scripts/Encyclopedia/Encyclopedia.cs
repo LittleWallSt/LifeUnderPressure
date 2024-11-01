@@ -84,6 +84,10 @@ public class Encyclopedia : MonoBehaviour
         {
             fishButton.no = true;
             currFish.SetIcon();
+            if (fishButton.GetFishState() != FishState.Scanned)
+            {
+                fishButton.SetFishState(FishState.None);
+            }
             ping.pingArea = null;
             fishName.text = "";
             smallDescription.text = "";
