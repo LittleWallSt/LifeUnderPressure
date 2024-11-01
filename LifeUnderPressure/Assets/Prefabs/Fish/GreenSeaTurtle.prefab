@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1279890184145906600}
   - component: {fileID: 5023737430215678129}
   m_Layer: 8
-  m_Name: AnglerFish
+  m_Name: GreenSeaTurtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
