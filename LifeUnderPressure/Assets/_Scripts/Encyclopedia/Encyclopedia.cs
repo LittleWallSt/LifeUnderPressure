@@ -30,7 +30,7 @@ public class Encyclopedia : MonoBehaviour
     FishButton[] fishes;
     List<FishButton> cashedFish = new List<FishButton>();
     GameObject submarineBody;
-
+    FishInfo fishInfo; 
     // Aleksis >>
     private static Action OnCurrentFishChanged;
 
@@ -77,12 +77,35 @@ public class Encyclopedia : MonoBehaviour
 
     public void OnFishButtonClick(FishButton fishButton)
     {
+        // >> Javi
+        fishButton.no = false;
+
+        if (!firstTime&& fishInfo == fishButton.fishInfo)
+        {
+            fishButton.no = true;
+            fishButton.SetFishState(FishState.None);
+            currFish.SetFishState(FishState.None);
+            currFish.SetIcon();
+            ping.pingArea = null;
+            fishName.text = "";
+            smallDescription.text = "";
+            //ShowFullDescription(fishButton.GetFishState() == FishState.None, fishInfo);
+            ShowTheBeacon(fishInfo);
+            ping.EnablePing(false);
+            UpdateIcons();
+            
+
+            fishInfo = null; 
+            return; 
+        }
+        // << Javi
+
         if (firstTime)
         {
             firstTime = false;
             if (firstHighlight!=null) firstHighlight.SetActive(false);
         }
-        FishInfo fishInfo = fishButton.fishInfo;
+        fishInfo = fishButton.fishInfo;
         fishName.text = fishInfo.name;
         smallDescription.text = fishInfo.infoWhere;
         if (currFish!=null)

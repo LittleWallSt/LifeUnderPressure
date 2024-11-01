@@ -20,6 +20,8 @@ public class FishButton : MonoBehaviour
     private FishState fishState;
     private bool inQuest;
 
+    public bool no = false; 
+
     private void Start()
     {
         fishInfo.OnLockedChange += ChangeImage;
@@ -31,9 +33,13 @@ public class FishButton : MonoBehaviour
         }
 
         //gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.SetCurrentFish(fishInfo); });
-        gameObject.GetComponent<Button>().onClick.AddListener(() => { encyclopedia.ping.setPingTransform(habitat, fishInfo.fishName);
-            if (fishState!=FishState.Scanned) fishState = FishState.Marked;
-            SetIcon();
+        gameObject.GetComponent<Button>().onClick.AddListener(() => {
+            if (!no)
+            {
+                encyclopedia.ping.setPingTransform(habitat, fishInfo.fishName);
+                if (fishState != FishState.Scanned) fishState = FishState.Marked;
+                SetIcon();
+            }
         });
 
         // Aleksis >>
