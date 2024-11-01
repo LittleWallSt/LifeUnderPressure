@@ -10343,10 +10343,65 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2020388610}
+    - target: {fileID: 403737376614754268, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403737376614754268, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403737376614754268, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403737376614754268, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 403737376614754268, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634397449970831039, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634397449970831039, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634397449970831039, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634397449970831039, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 634397449970831039, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2008911774827258708, guid: 944d81b346ab7094da9855e29242872a,
         type: 3}
       propertyPath: m_Name
       value: UpgradeTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008911774827258708, guid: 944d81b346ab7094da9855e29242872a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3537838548766002391, guid: 944d81b346ab7094da9855e29242872a,
         type: 3}
