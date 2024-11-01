@@ -55,23 +55,29 @@ public class Fish : MonoBehaviour
     protected float cooldownTimer = 0f;
     protected Vector3 directionToWaypoint = new Vector3(0,1,0);
 
+    [SerializeField]
+    protected bool update = true; 
+
    // Start is called before the first frame update
     void Start()
     {
-        //Initial speed for fish, in boid it is the average speed of all the fish group
-        averageSpeed = speed;
-
-        if (path.Length > 0)
+        if (update)
         {
-            if (!random)
-                SetNextWaypoint();
-            else
-                SetRandomPath();
-        }
+            //Initial speed for fish, in boid it is the average speed of all the fish group
+            averageSpeed = speed;
 
-        // Aleksis >>
-        player = Submarine.Instance.transform;
-        // Aleksis <<
+            if (path.Length > 0)
+            {
+                if (!random)
+                    SetNextWaypoint();
+                else
+                    SetRandomPath();
+            }
+
+            // Aleksis >>
+            player = Submarine.Instance.transform;
+            // Aleksis <<
+        }
 
     }
 
@@ -285,7 +291,7 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HeadTowards(directionToWaypoint);
+        if(update)HeadTowards(directionToWaypoint);
     }
 
     private void OnDrawGizmos()

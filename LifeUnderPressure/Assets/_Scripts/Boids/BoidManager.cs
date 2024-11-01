@@ -170,7 +170,7 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
 
     private IEnumerator Start()
     {
-        IDL_AssignToGameManager(        );
+        if(unloadFish) IDL_AssignToGameManager();
         if (_path.Length > 0)
         {
             transform.position = _path.GetWaypoint(_currentWaypointIndex).position;
