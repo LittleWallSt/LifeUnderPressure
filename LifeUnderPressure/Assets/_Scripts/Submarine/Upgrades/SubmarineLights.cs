@@ -39,7 +39,7 @@ public class SubmarineLights : SubmarineUpgrade
 
         foreach(Light light in submarineLights)
         {
-            light.intensity = lightIntensity[level];
+            light.intensity *= lightIntensity[level];
         }
     }
 }
