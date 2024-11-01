@@ -69,4 +69,16 @@ public class PauseMenu : MonoBehaviour
     {
         onPaused -= action;
     }
+
+    // Janko >>
+    public void PlayClickSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Click, transform.position);
+    }
+
+    public void PlayHoverSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Hover, transform.position);
+    }
+    // Janko <<
 }

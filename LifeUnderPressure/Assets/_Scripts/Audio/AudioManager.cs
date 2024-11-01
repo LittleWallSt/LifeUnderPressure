@@ -8,6 +8,23 @@ public class AudioManager : MonoBehaviour
 {
     // ANYTHING THAT USES THIS SCRIPT WILL NEED using FMODUnity; and maybe using FMOD.Studio;
     // Add [RequireComponent(typeof(StudioEventEmitter))] on top of the classes that will have Event Emitters.
+    [Header("Volume Settings")]
+    [Range(0f, 1f)]
+    public float masterVolume = 1f;
+
+    [Range(0f, 1f)]
+    public float gameSoundVolume = 1f;
+
+    [Range(0f, 1f)]
+    public float musicVolume = 1f;
+
+    [Range(0f, 1f)]
+    public float ambienceVolume = 1f;
+
+    private Bus masterBus;
+    private Bus sfxBus;
+    private Bus musicBus;
+    private Bus ambienceBus;
 
     public static AudioManager instance { get; private set; }
 
@@ -23,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     private bool isPaused = false;
 
+    [Header("Music Settings")]
     [SerializeField]
     private float musicChangeCooldown = 5f;
     [SerializeField]
@@ -38,6 +56,11 @@ public class AudioManager : MonoBehaviour
 
         eventInstancesList = new List<EventInstance>();
         eventEmittersList = new List<StudioEventEmitter>();
+
+        masterBus = RuntimeManager.GetBus("bus:/");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX_Bus");
+        musicBus = RuntimeManager.GetBus("bus:/Music_Bus");
+        ambienceBus = RuntimeManager.GetBus("bus:/Ambience_Bus");
     }
 
     private void Start()
@@ -59,10 +82,20 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
+        SetVolume();
+
         if (isPaused)
             return;
 
         SetMusicOrAmbience();
+    }
+
+    private void SetVolume()
+    {
+        masterBus.setVolume(masterVolume);
+        sfxBus.setVolume(gameSoundVolume);
+        musicBus.setVolume(musicVolume);
+        ambienceBus.setVolume(ambienceVolume);
     }
 
     private void SetMusicOrAmbience()

@@ -72,10 +72,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference SFX_UI_Hover { get; private set; }
 
-    [field: Header("VO Tracks")]
-    [field: SerializeField]
-    public EventReference voice01 { get; private set; }
-
+    [field: Header("VO")]
+    //[field: SerializeField]
+    public EventReference VO_Tutorial_01 { get; private set; }
 
     private void Awake()
     {
