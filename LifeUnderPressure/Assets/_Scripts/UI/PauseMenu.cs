@@ -98,5 +98,10 @@ public class PauseMenu : MonoBehaviour
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Hover, transform.position);
     }
+
+    public void PlayFishClickSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Click_Fish, transform.position);
+    }
     // Janko <<
 }

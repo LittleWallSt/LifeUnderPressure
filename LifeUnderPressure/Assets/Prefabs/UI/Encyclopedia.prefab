@@ -329,6 +329,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Encyclopedia canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221377012587231988, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 383036147549591538, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1272,6 +1302,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847505015649814952, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6883500051100878305, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
       propertyPath: habitat.Array.size
@@ -1322,6 +1382,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.32941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417215647009461158, guid: c0b30356e60553e4d96804cb86c28c61,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7452896852028432752, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}

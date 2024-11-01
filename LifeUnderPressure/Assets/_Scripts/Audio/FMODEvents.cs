@@ -70,7 +70,11 @@ public class FMODEvents : MonoBehaviour
     public EventReference SFX_UI_Click { get; private set; }
 
     [field: SerializeField]
+    public EventReference SFX_UI_Click_Fish { get; private set; }
+
+    [field: SerializeField]
     public EventReference SFX_UI_Hover { get; private set; }
+
 
     [field: Header("VO")]
     //[field: SerializeField]

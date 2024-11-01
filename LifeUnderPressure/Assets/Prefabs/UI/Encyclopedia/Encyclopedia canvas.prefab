@@ -1410,6 +1410,7 @@ MonoBehaviour:
   habitat:
   - {fileID: 0}
   - {fileID: 0}
+  no: 0
 --- !u!114 &2154138277009191680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1447,7 +1448,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2095,6 +2096,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: fd8000336958eda4487171b2168bcb4d, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &2562764691429685212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,7 +2134,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2689,6 +2691,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: 0f33f8f79205f8f49a223942ea70f2f1, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &6305037252927654885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2726,7 +2729,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2862,6 +2865,7 @@ MonoBehaviour:
   habitat:
   - {fileID: 0}
   - {fileID: 0}
+  no: 0
 --- !u!114 &2967065842441879774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2899,7 +2903,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3654,6 +3658,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: 5dbf7a7e3bb190646a0a84201015b266, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &7349700317315362881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3691,7 +3696,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4113,6 +4118,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: 6f1a694e2c1bc0f43a4bd341dbfc0142, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &5602060661826264117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,7 +4156,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6198,6 +6204,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &2831570841654969264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6235,7 +6242,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6371,6 +6378,7 @@ MonoBehaviour:
   habitat:
   - {fileID: 0}
   - {fileID: 0}
+  no: 0
 --- !u!114 &5305935138190520993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6408,7 +6416,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6544,6 +6552,7 @@ MonoBehaviour:
   habitat:
   - {fileID: 0}
   - {fileID: 0}
+  no: 0
 --- !u!114 &233592745986064875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6581,7 +6590,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7225,6 +7234,7 @@ MonoBehaviour:
   fishInfo: {fileID: 11400000, guid: 85708322d240f5a43b44d765be2ece54, type: 2}
   habitat:
   - {fileID: 0}
+  no: 0
 --- !u!114 &2617312372358084660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7262,7 +7272,7 @@ MonoBehaviour:
         - m_Target: {fileID: 6043101191730990455, guid: 47b246197f3d8dd40aecabfc347cb164,
             type: 3}
           m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-          m_MethodName: PlayClickSound
+          m_MethodName: PlayFishClickSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

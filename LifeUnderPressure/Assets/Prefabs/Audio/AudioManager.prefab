@@ -163,6 +163,13 @@ MonoBehaviour:
       Data3: 640417685
       Data4: 1574783766
     Path: event:/SFX/UI/SFX_UI_Click
+  <SFX_UI_Click_Fish>k__BackingField:
+    Guid:
+      Data1: -2010021145
+      Data2: 1120760505
+      Data3: -1303098478
+      Data4: 721553495
+    Path: event:/SFX/UI/SFX_UI_Click_Fish
   <SFX_UI_Hover>k__BackingField:
     Guid:
       Data1: 1101921057
@@ -170,13 +177,6 @@ MonoBehaviour:
       Data3: -550824520
       Data4: 224268713
     Path: event:/SFX/UI/SFX_UI_Hover
-  <voice01>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!1 &5198397898280333016
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,5 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a30bf83bdf9184183fd3e709679409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  gameSoundVolume: 1
+  musicVolume: 1
+  ambienceVolume: 1
   musicChangeCooldown: 5
   playMusicOrAmbienceDelay: 2
