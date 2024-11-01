@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,12 +28,23 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
             }
         }
     }
+
+    // Janko >>
+    //private EventInstance SFX_Current_Instance;
+    // Janko <<
+
     private void OnValidate()
     {
         Setup();
     }
     private void Start()
     {
+        // Janko >>
+        /*SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
+        SFX_Current_Instance.start();
+        SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);*/
+        // Janko <<
+
         Setup();
         IDL_AssignToGameManager();
     }
@@ -57,10 +69,25 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
         list.Add(this);
         Triggering = list;
     }
+
+    // Janko >>
+    /*private void OnTriggerStay(Collider other)
+    {
+        Submarine submarine = other.GetComponent<Submarine>();
+        if (submarine = null) return;
+
+        SFX_Current_Instance.setParameterByName("currentSoundPlay", 1);
+    }*/
+    // Janko <<
+
     private void OnTriggerExit(Collider other)
     {
         Submarine submarine = other.GetComponent<Submarine>();
         if (submarine = null) return;
+
+        // Janko >>
+        //SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
+        // Janko <<
 
         List<UnderwaterCurrent> list = new List<UnderwaterCurrent>(triggering);
         list.Remove(this);
@@ -69,6 +96,10 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     private void OnDestroy()
     {
         if (Triggering.Contains(this)) Triggering.Remove(this);
+
+        // Janko >>
+        //SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
+        // Janko <<
     }
     private void OnDrawGizmos()
     {

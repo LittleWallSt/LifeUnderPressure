@@ -75,6 +75,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference SFX_UI_Hover { get; private set; }
 
+    [field: Header("Misc")]
+    [field: SerializeField]
+    public EventReference SFX_Current {  get; private set; }
 
     [field: Header("VO")]
     //[field: SerializeField]
