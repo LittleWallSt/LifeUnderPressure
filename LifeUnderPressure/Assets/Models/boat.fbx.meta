@@ -3,7 +3,17 @@ guid: 1736c86209a19664f92a94d92190b311
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Boat
+    second: {fileID: 2100000, guid: 2ce78b12f7c58354f9fdae83ed4a131e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 5063ba005c64fc0409ddd8df583cfb82, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -34,7 +44,9 @@ ModelImporter:
     clipAnimations: []
     isReadable: 0
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0
