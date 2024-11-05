@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DyingEvent : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class DyingEvent : MonoBehaviour
     [SerializeField] Encyclopedia encyclopedia;
 
     [Header("Endgame")]
-    [SerializeField] CanvasGroup endScreen;
+    [SerializeField] private string sceneToLoad = "Credits";
     [SerializeField] GameObject lights;
     float firstVoiceline = 1f;
     float chokingTime = 4f;
@@ -39,7 +40,8 @@ public class DyingEvent : MonoBehaviour
     }
 
     public void OnDie(Vector3 placeOfDeath, DamageType damageType)
-    {        
+    {
+        if (damageType == DamageType.End) return; 
         if (encyclopedia!=null)encyclopedia.ClearSealog();
 
         if (submarine== null) submarine= FindObjectOfType<Submarine>();
@@ -58,6 +60,10 @@ public class DyingEvent : MonoBehaviour
         submarine.getSubmarineMovement().enabled = false;
         submarine.enabled = false;
         dyingText.text = "You died. There is no life under this pressure.";
+        Debug.Log("called here");
+
+        StartCoroutine(CallEndScreen());
+        Debug.Log("called");
     }
 
     public void OnRespawn(Vector3 placeOfDeath)
@@ -159,18 +165,8 @@ public class DyingEvent : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(blackScreenDuration);
         dyingText.text = "";
-        elapsedTime = 0f;
+        SceneManager.LoadScene(sceneToLoad);
 
-        while (elapsedTime < cooldown)
-        {
-            elapsedTime += Time.deltaTime;
-
-            endScreen.alpha = Mathf.Lerp(0f, 1f, elapsedTime / cooldown);
-
-            yield return null;
-        }
-
-        endScreen.alpha = 0f;
 
     }
 

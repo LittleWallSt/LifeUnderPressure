@@ -3533,6 +3533,18 @@ MonoBehaviour:
   - {fileID: 1145785700}
   - {fileID: 1584143463}
   - {fileID: 684103846}
+--- !u!114 &432715482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3135518312450490496, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1230279339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d538cad1dcc7a143a63840a2621d03c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &435592578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15729,6 +15741,31 @@ PrefabInstance:
         type: 3}
       propertyPath: distanceToLoad
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: scannedFishEvents.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: scannedFishEvents.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 432715482}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: scannedFishEvents.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: scannedFishEvents.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DyingEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953976675032423819, guid: 3495d5d74049b124ebfe36d87c315a95,
+        type: 3}
+      propertyPath: scannedFishEvents.Array.data[0]._event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5027743935536782442, guid: 3495d5d74049b124ebfe36d87c315a95,
         type: 3}
