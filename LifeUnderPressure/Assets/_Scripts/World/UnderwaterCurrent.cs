@@ -30,7 +30,7 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
 
     // Janko >>
-    //private EventInstance SFX_Current_Instance;
+    private EventInstance SFX_Current_Instance;
     // Janko <<
 
     private void OnValidate()
@@ -40,9 +40,9 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     private void Start()
     {
         // Janko >>
-        /*SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
+        SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
         SFX_Current_Instance.start();
-        SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);*/
+        SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
         // Janko <<
 
         Setup();
@@ -68,37 +68,31 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
         List<UnderwaterCurrent> list = new List<UnderwaterCurrent>(triggering);
         list.Add(this);
         Triggering = list;
+        if(triggering.Count > 0)
+        {
+            SFX_Current_Instance.setParameterByName("currentSoundPlay", 1);
+        }
     }
-
-    // Janko >>
-    /*private void OnTriggerStay(Collider other)
-    {
-        Submarine submarine = other.GetComponent<Submarine>();
-        if (submarine = null) return;
-
-        SFX_Current_Instance.setParameterByName("currentSoundPlay", 1);
-    }*/
-    // Janko <<
 
     private void OnTriggerExit(Collider other)
     {
         Submarine submarine = other.GetComponent<Submarine>();
         if (submarine = null) return;
 
-        // Janko >>
-        //SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
-        // Janko <<
-
         List<UnderwaterCurrent> list = new List<UnderwaterCurrent>(triggering);
         list.Remove(this);
         Triggering = list;
+        if (triggering.Count == 0)
+        {
+            SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
+        }
     }
     private void OnDestroy()
     {
         if (Triggering.Contains(this)) Triggering.Remove(this);
 
         // Janko >>
-        //SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
+        SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
     }
     private void OnDrawGizmos()
