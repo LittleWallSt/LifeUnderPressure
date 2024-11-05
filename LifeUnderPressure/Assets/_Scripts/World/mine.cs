@@ -10,16 +10,19 @@ public class mine : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> explosionVFX = new List<GameObject>();
+    
     private void OnCollisionEnter(Collision collision)
     {
-        Submarine.Instance.DamageSubmarine(1000, DamageType.Mine);
-        this.gameObject.SetActive(false);
+        if (collision.gameObject.layer == 6) {
+            Submarine.Instance.DamageSubmarine(1000, DamageType.Mine);
+            this.gameObject.SetActive(false);
 
-        for (int i = 0; i < explosionVFX.Count; i++) {
-            explosionVFX[i].SetActive(true);
-            explosionVFX[i].GetComponent<ParticleSystem>().Play(); 
+            for (int i = 0; i < explosionVFX.Count; i++) {
+                explosionVFX[i].SetActive(true);
+                explosionVFX[i].GetComponent<ParticleSystem>().Play();
+            }
+
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }
