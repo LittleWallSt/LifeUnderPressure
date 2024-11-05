@@ -62,13 +62,12 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
     private void OnTriggerEnter(Collider other)
     {
-        Submarine submarine = other.GetComponent<Submarine>();
-        if (submarine = null) return;
+        if (!other.GetComponent<Submarine>()) return;
 
         List<UnderwaterCurrent> list = new List<UnderwaterCurrent>(triggering);
         list.Add(this);
         Triggering = list;
-        if(triggering.Count > 0)
+        if(list.Count > 0)
         {
             SFX_Current_Instance.setParameterByName("currentSoundPlay", 1);
         }
@@ -76,13 +75,12 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
 
     private void OnTriggerExit(Collider other)
     {
-        Submarine submarine = other.GetComponent<Submarine>();
-        if (submarine = null) return;
+        if (!other.GetComponent<Submarine>()) return;
 
         List<UnderwaterCurrent> list = new List<UnderwaterCurrent>(triggering);
         list.Remove(this);
         Triggering = list;
-        if (triggering.Count == 0)
+        if (list.Count == 0)
         {
             SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
         }
