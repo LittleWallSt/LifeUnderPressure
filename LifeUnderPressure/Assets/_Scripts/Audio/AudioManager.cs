@@ -51,6 +51,10 @@ public class AudioManager : MonoBehaviour
     {
         if (instance)
         {
+            foreach(Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
             Destroy(gameObject);
             return;
         }
@@ -260,6 +264,8 @@ public class AudioManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (instance != this) return;
+
         CleanUp();
         LevelVolume.Remove_OnCurrentVolumeChanged(SetArea);
         if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnDie(OnDie);
