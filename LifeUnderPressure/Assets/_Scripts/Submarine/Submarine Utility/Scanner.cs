@@ -169,8 +169,9 @@ public class Scanner : MonoBehaviour
         if (timeLeft <= 0.0f)
         {
             if (currentFish != null && currentFish.gameObject.tag == "Sealog") FinishScanningSealog();
+            else if (currentFish != null && currentFish.gameObject.tag == "FinalFish") FinishScanningEnd();
             else
-            FinishedScanner();
+                FinishedScanner();
         }
     }
 
@@ -223,6 +224,20 @@ public class Scanner : MonoBehaviour
         scanningInstance.setParameterByName("ScanningInput", 0);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
         // Janko <<
+    }
+
+    void FinishScanningEnd()
+    {
+        Debug.Log("final fish");
+        if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
+        ResetScanner(false);
+        currentFish = null;
+
+        Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
+        Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
+        currentState = ScannerState.Inactive;
+        lockActive.Invoke(currentState);
+        FindObjectOfType<DyingEvent>().onDieEnd();
     }
 
     void FinishScanningSealog() {

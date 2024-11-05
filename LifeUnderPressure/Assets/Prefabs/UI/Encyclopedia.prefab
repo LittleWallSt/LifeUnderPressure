@@ -816,7 +816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6553851165677176418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -835,10 +835,10 @@ RectTransform:
   - {fileID: 5884814209113958125}
   m_Father: {fileID: 1045827453482068875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 370, y: -370}
-  m_SizeDelta: {x: 240, y: 240}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5824439397090799306
 CanvasRenderer:
@@ -920,7 +920,7 @@ MonoBehaviour:
   lockedFishImage: {fileID: 21300000, guid: f0f7729a4ee0ff342a9a6bc02085d0cb, type: 3}
   stateIcon: {fileID: 4851711607509668949}
   fishIcon: {fileID: 8265336926136586493}
-  fishInfo: {fileID: 11400000, guid: 85708322d240f5a43b44d765be2ece54, type: 2}
+  fishInfo: {fileID: 11400000, guid: 2c165657e3be3974bb3d4af21e9dd266, type: 2}
   habitat:
   - {fileID: 0}
   no: 0
@@ -1258,7 +1258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1071848034753455100
 RectTransform:
   m_ObjectHideFlags: 0

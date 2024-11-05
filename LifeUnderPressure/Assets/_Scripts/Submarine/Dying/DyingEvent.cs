@@ -20,6 +20,9 @@ public class DyingEvent : MonoBehaviour
     [Header("Endgame")]
     [SerializeField] private string sceneToLoad = "Credits";
     [SerializeField] GameObject lights;
+
+    [SerializeField] private GameObject questionIcon;
+    [SerializeField] GameObject finalFish;
     float firstVoiceline = 1f;
     float chokingTime = 4f;
 
@@ -37,6 +40,8 @@ public class DyingEvent : MonoBehaviour
     void Awake()
     {
         if (encyclopedia==null) encyclopedia = FindObjectOfType<Encyclopedia>();
+        finalFish.SetActive(false); //?
+        questionIcon.SetActive(false);
     }
 
     public void OnDie(Vector3 placeOfDeath, DamageType damageType)
@@ -55,6 +60,15 @@ public class DyingEvent : MonoBehaviour
     }
 
     public void OnEnd()
+    {
+        questionIcon.SetActive(true);
+        /* voiceline about fish spawned
+         */
+        finalFish.SetActive(true);
+        
+    }
+
+    public void onDieEnd()
     {
         if (submarine == null) submarine = FindObjectOfType<Submarine>();
         submarine.getSubmarineMovement().enabled = false;

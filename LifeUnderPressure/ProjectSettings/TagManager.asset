@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fish
   - Sealog
+  - FinalFish
   layers:
   - Default
   - TransparentFX
