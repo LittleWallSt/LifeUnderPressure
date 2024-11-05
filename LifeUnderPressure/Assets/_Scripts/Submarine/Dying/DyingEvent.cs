@@ -44,6 +44,14 @@ public class DyingEvent : MonoBehaviour
 
     }
 
+    public void OnEnd()
+    {
+        if (submarine == null) submarine = FindObjectOfType<Submarine>();
+        submarine.getSubmarineMovement().enabled = false;
+        submarine.enabled = false;
+        dyingText.text = "You died. There is no life under this pressure.";
+    }
+
     public void OnRespawn(Vector3 placeOfDeath)
     {
         submarine.enabled = true;
@@ -102,8 +110,7 @@ public class DyingEvent : MonoBehaviour
         }
 
         blackScreen.alpha = 0f;
-
-        
+      
     }
 
 
