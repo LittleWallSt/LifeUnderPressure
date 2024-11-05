@@ -142,7 +142,7 @@ public class AudioManager : MonoBehaviour
             ambienceEventInstance.setParameterByName("Area", 3);
             musicEventInstance.setParameterByName("Area", 3);
             currentInstance = ambienceEventInstance;
-            currentInstance.start();
+            StartCoroutine(StartInstanceDelay(2f));
         }
         else
         {
