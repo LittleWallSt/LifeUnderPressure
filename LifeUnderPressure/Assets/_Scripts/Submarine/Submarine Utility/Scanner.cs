@@ -196,12 +196,9 @@ public class Scanner : MonoBehaviour
     private void FinishedScanner()
     {
         // Aleksis >>
-        Fish fish = currentFish.transform.root.GetComponent<Fish>();
-        if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
-
-        FishInfo fishInfo = fish.FishInfo;
-        fishInfo.locked = false;
-        GameManager.Instance.ScannedFish(fishInfo);
+        Debug.Log(currentFish.transform.root);
+        FishInfo fishInfo = currentFish.GetComponent<Fish>().FishInfo;
+                fishInfo.locked = false;
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         QuestSystem.ScannedFish(fishInfo);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);

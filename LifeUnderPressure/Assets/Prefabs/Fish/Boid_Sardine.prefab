@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 9132730458740176457}
   - component: {fileID: 926019389125619577}
   - component: {fileID: 8509498930784082884}
-  - component: {fileID: 2150989633708008210}
   m_Layer: 8
   m_Name: Boid_Sardine (1)
   m_TagString: Untagged
@@ -116,27 +115,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2150989633708008210
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3595972282579599633}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 0.3, z: 6.123235e-17}
-  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &3976071570644377693
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8836254909109166683}
   - component: {fileID: 3992919510446934936}
+  - component: {fileID: 5730291183077019761}
   m_Layer: 8
   m_Name: Boid_Sardine
   m_TagString: Untagged
@@ -201,5 +180,27 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
+  update: 1
   FOVAngle: 180
   smoothDamp: 1
+--- !u!65 &5730291183077019761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976071570644377693}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 0.3, z: 1}
+  m_Center: {x: 0, y: 0.05, z: 0}
