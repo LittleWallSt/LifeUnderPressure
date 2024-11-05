@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 94936414}
   - component: {fileID: 94936413}
   - component: {fileID: 94936412}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: RightInvisibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8136,7 +8136,7 @@ GameObject:
   - component: {fileID: 973554698}
   - component: {fileID: 973554697}
   - component: {fileID: 973554695}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: InvisibleFrontWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9738,7 +9738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1209153634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10672,6 +10672,11 @@ PrefabInstance:
       propertyPath: habitat.Array.data[1]
       value: 
       objectReference: {fileID: 892703490}
+    - target: {fileID: 1012094905458149894, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.6540527
+      objectReference: {fileID: 0}
     - target: {fileID: 1311471047684451033, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -14786,7 +14791,7 @@ GameObject:
   - component: {fileID: 1881830494}
   - component: {fileID: 1881830493}
   - component: {fileID: 1881830492}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: InvisibleLeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
