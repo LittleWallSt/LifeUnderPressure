@@ -196,9 +196,11 @@ public class Scanner : MonoBehaviour
     private void FinishedScanner()
     {
         // Aleksis >>
-        Debug.Log(currentFish.transform.root);
-        FishInfo fishInfo = currentFish.GetComponent<Fish>().FishInfo;
-                fishInfo.locked = false;
+        Fish fish = currentFish.GetComponent<Fish>();
+        if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
+
+        FishInfo fishInfo = fish.FishInfo;
+        fishInfo.locked = false;
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         QuestSystem.ScannedFish(fishInfo);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
@@ -208,7 +210,6 @@ public class Scanner : MonoBehaviour
 
         DisplayInfo(fishInfo);
         Submarine.Instance.AddMoney(1);
-        //Debug.Log(Submarine.Instance.Money);
 
         ResetScanner(false);
         currentFish = null;
