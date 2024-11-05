@@ -136,13 +136,13 @@ public class AudioManager : MonoBehaviour
     }
     private void OnCaveInsideChanged()
     {
-        currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if (Cave.Inside)
         {
             ambienceEventInstance.setParameterByName("Area", 3);
             musicEventInstance.setParameterByName("Area", 3);
+            currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentInstance = ambienceEventInstance;
-            StartCoroutine(StartInstanceDelay(2f));
+            currentInstance.start();
         }
         else
         {
