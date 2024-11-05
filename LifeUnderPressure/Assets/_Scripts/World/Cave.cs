@@ -57,13 +57,6 @@ public class Cave : MonoBehaviour, IDistanceLoad
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y)) // debug
-        {
-            AudioManager.instance.StartCaveCollapse();
-            animator.SetFloat("Offset", 0f);
-            StartCoroutine(Collapse(collapseDelay));
-        }
-
         updateTime += Time.fixedDeltaTime;
         if (updateTime < updateTimer) return;
 
@@ -79,6 +72,13 @@ public class Cave : MonoBehaviour, IDistanceLoad
         else exit.gameObject.SetActive(collapsed);
 
         animator.SetBool("Collapsed", collapsed);
+    }
+    public void StartCaveCollapseSequence()
+    {
+        Debug.Log("Start cave coll");
+        AudioManager.instance.StartCaveCollapse();
+        animator.SetFloat("Offset", 0f);
+        StartCoroutine(Collapse(collapseDelay));
     }
     public IEnumerator Collapse(float delay)
     {

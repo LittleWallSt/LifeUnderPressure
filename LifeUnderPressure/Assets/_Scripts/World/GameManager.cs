@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ScannedFishInfo[] scannedFishEvents = null;
 
+    [Header("Debug")]
+    [SerializeField] private int eventIndex = 0;
+
     public static GameManager Instance { get; private set; }
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
     public Vector3 InitialEulerAngles => initialEulerAngles;
@@ -38,6 +41,11 @@ public class GameManager : MonoBehaviour
         public FishInfo[] fish;
         public UnityEvent _event;
         public bool invoked;
+    }
+    [ContextMenu("Invoke Fish Event")]
+    private void InvokeEventDebug()
+    {
+        scannedFishEvents[eventIndex]._event.Invoke();
     }
     private void Awake()
     {

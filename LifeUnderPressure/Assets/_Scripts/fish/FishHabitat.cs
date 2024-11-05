@@ -26,6 +26,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
     private void Start()
     {
         IDL_AssignToGameManager();
+        bool underground = transform.position.y < GameManager.Instance.GetTerrainHeight(transform.position);
         for(int i = 0; i < maxAmount; i++)
         {
             int checks = 0;
@@ -33,7 +34,7 @@ public class FishHabitat : MonoBehaviour, IDistanceLoad
             Collider[] colls = Physics.OverlapSphere(spawnPos, 0.2f, InternalSettings.EnvironmentLayer);
 
             float terrainHeight = GameManager.Instance.GetTerrainHeight(spawnPos);
-            if(spawnPos.y < terrainHeight) spawnPos.y = terrainHeight + 0.2f;
+            if(!underground && spawnPos.y < terrainHeight) spawnPos.y = terrainHeight + 0.2f;
 
             while(colls.Length > 0 && checks < 50)
             {

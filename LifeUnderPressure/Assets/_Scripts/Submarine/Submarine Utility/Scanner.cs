@@ -201,6 +201,7 @@ public class Scanner : MonoBehaviour
 
         FishInfo fishInfo = fish.FishInfo;
         fishInfo.locked = false;
+        GameManager.Instance.ScannedFish(fishInfo);
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         QuestSystem.ScannedFish(fishInfo);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
