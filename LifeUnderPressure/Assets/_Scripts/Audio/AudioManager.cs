@@ -132,7 +132,7 @@ public class AudioManager : MonoBehaviour
     {
         currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SwapCurrentInstance();
-        currentInstance.start();
+        StartCoroutine(StartInstanceDelay(2f));
     }
     private void OnCaveInsideChanged()
     {
