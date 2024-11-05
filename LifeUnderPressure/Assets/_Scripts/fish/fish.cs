@@ -71,7 +71,7 @@ public class Fish : MonoBehaviour
                 if (!random)
                     SetNextWaypoint();
                 else
-                    SetRandomPath();
+                { SetRandomPath(); SetRandomWaypoint(); }
             }
 
             // Aleksis >>
