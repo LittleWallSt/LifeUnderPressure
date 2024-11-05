@@ -1,10 +1,10 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class DyingEvent : MonoBehaviour
 {
+    [Header("Dying")]
     [SerializeField] GameObject submarineBroken;
     [SerializeField] GameObject sealogPickable;
 
@@ -15,6 +15,14 @@ public class DyingEvent : MonoBehaviour
 
     [SerializeField] Submarine submarine;
     [SerializeField] Encyclopedia encyclopedia;
+
+    [Header("Endgame")]
+    [SerializeField] CanvasGroup endScreen;
+    [SerializeField] GameObject lights;
+    float firstVoiceline = 1f;
+    float chokingTime = 4f;
+
+
     float cooldown = 3f;
     float fadeDuration = 3f;
     float blackScreenDuration = 3f;
@@ -113,8 +121,61 @@ public class DyingEvent : MonoBehaviour
       
     }
 
+    IEnumerator CallEndScreen()
+    {
+        /*you lose control over the submarine, and ben's voiceline starts to play.
+         * he tells you that he is happy that you found the rare fish, but that he has to kill you to get the rewards 100% for himself.
+         */
+        yield return new WaitForSecondsRealtime(firstVoiceline);
 
-    
+        /*you will start taking damage slowly while a sound effect of choking is playing.
+         */
+        float elapsedTime = 0f;
+        lights.gameObject.SetActive(false);
+        float dmgPerFrame = Time.deltaTime / chokingTime * Submarine.Instance.getSubmarineHealth().MaxHealth;
+        while (elapsedTime < chokingTime)
+        {
+            elapsedTime += Time.deltaTime;
+            Submarine.Instance.getSubmarineHealth().DealDamage(dmgPerFrame, DamageType.End);
 
-    
+            yield return null;
+        }
+
+        /*he says goodbye and thank you, screen fades out. THE END
+         * 
+         */
+
+        elapsedTime = 0f;
+        while (elapsedTime < cooldown)
+        {
+            elapsedTime += Time.deltaTime;
+
+            blackScreen.alpha = Mathf.Lerp(0f, 1f, elapsedTime / cooldown);
+
+            yield return null;
+        }
+
+        blackScreen.alpha = 1f;
+
+        yield return new WaitForSecondsRealtime(blackScreenDuration);
+        dyingText.text = "";
+        elapsedTime = 0f;
+
+        while (elapsedTime < cooldown)
+        {
+            elapsedTime += Time.deltaTime;
+
+            endScreen.alpha = Mathf.Lerp(0f, 1f, elapsedTime / cooldown);
+
+            yield return null;
+        }
+
+        endScreen.alpha = 0f;
+
+    }
+
+
+
+
+
 }

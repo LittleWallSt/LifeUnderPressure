@@ -56,3 +56,24 @@ MonoBehaviour:
   delayToStartNewQuest: 2.5
   distanceLoadFrequency: 0.5
   distanceToLoad: 40
+  scannedFishEvents:
+  - fish:
+    - {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
+    - {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
+    - {fileID: 11400000, guid: 5823d77003ff409478595af3d52db9f6, type: 2}
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    invoked: 0

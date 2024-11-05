@@ -13,7 +13,8 @@ public enum DamageType
     [Description("from the crushing force of a collapsing cave.")]
     Cave,
     [Description("from the explosion of a naval mine.")]
-    Mine
+    Mine,
+    End
 }
 
 public static class EnumExtensions
