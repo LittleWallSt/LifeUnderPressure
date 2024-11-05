@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float delayToStartNewQuest = 2.5f;
     [SerializeField] private float distanceLoadFrequency = 0.5f;
     [SerializeField] private float distanceToLoad = 25f;
+
+    [SerializeField] private ScannedFishInfo[] scannedFishEvents = null;
+
     public static GameManager Instance { get; private set; }
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
     public Vector3 InitialEulerAngles => initialEulerAngles;
@@ -28,12 +32,18 @@ public class GameManager : MonoBehaviour
 
     private bool inTutorial = false;
 
+    [Serializable]
+    public struct ScannedFishInfo
+    {
+        public FishInfo[] fish;
+        public UnityEvent _event;
+        public bool invoked;
+    }
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
-        DontDestroyOnLoad(gameObject);
         QuestSystem.Reset();
         StartCoroutine(LoadDataProcess());
     }
@@ -119,6 +129,23 @@ public class GameManager : MonoBehaviour
                 break;
         }
         DataManager.Write(boolName, value);
+    }
+    public void ScannedFish(FishInfo fish)
+    {
+        for(int i = 0; i < scannedFishEvents.Length; i++)
+        {
+            if (scannedFishEvents[i].invoked) continue;
+
+            bool allScanned = true;
+            foreach(FishInfo scannedFish in scannedFishEvents[i].fish)
+            {
+                if (scannedFish.locked) allScanned = false;
+            }
+            if (!allScanned) continue;
+
+            scannedFishEvents[i]._event.Invoke();
+            scannedFishEvents[i].invoked = true;
+        }
     }
     // Distance Load
     private void DistanceLoadProcess()
