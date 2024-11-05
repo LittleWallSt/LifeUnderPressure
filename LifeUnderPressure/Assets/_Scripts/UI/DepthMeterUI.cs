@@ -56,7 +56,7 @@ public class DepthMeterUI : MonoBehaviour
             previousThreshold = newThreshold;
             ChangeThreshold(offset);
         }*/
-        Debug.Log(Vector2.Distance(depthTransform.anchoredPosition, basePos));
+        //Debug.Log(Vector2.Distance(depthTransform.anchoredPosition, basePos));
         if (Vector2.Distance(depthTransform.anchoredPosition, basePos)>=29f)
         {
             previousThreshold = newThreshold;
