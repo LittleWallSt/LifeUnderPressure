@@ -487,8 +487,13 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
+  - Desktop/Master
   Banks:
   - Ambience
+  - Desktop/Ambience
+  - Desktop/Music
+  - Desktop/SFX
+  - Desktop/VO
   - Music
   - SFX
   - VO
