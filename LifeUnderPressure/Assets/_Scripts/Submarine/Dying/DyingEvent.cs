@@ -95,7 +95,10 @@ public class DyingEvent : MonoBehaviour
         Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
 
-        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog"); 
+        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
+
+        var depthMeter = FindAnyObjectByType<DepthMeterUI>();
+        depthMeter.OnRespawn();
 
     }
 
