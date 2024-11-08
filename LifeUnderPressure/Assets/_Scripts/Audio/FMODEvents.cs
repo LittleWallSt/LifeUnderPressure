@@ -63,7 +63,7 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("Music Tracks")]
     [field: SerializeField]
-    public EventReference musicToPlay { get; private set; }
+    public EventReference musicToPlay { get; set; }
 
     [field: Header("UI")]
     [field: SerializeField]

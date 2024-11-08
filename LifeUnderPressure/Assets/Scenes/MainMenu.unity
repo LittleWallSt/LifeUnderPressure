@@ -665,6 +665,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3848048904165130953, guid: 57c5e0b21a20407438f83349a3a5010d,
+        type: 3}
+      propertyPath: <musicToPlay>k__BackingField.Path
+      value: event:/Music/Menu Song
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848048904165130953, guid: 57c5e0b21a20407438f83349a3a5010d,
+        type: 3}
+      propertyPath: <musicToPlay>k__BackingField.Guid.Data1
+      value: -806563434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848048904165130953, guid: 57c5e0b21a20407438f83349a3a5010d,
+        type: 3}
+      propertyPath: <musicToPlay>k__BackingField.Guid.Data2
+      value: 1230845738
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848048904165130953, guid: 57c5e0b21a20407438f83349a3a5010d,
+        type: 3}
+      propertyPath: <musicToPlay>k__BackingField.Guid.Data3
+      value: -1761005149
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848048904165130953, guid: 57c5e0b21a20407438f83349a3a5010d,
+        type: 3}
+      propertyPath: <musicToPlay>k__BackingField.Guid.Data4
+      value: -1787139460
+      objectReference: {fileID: 0}
     - target: {fileID: 5198397898280333016, guid: 57c5e0b21a20407438f83349a3a5010d,
         type: 3}
       propertyPath: m_Name

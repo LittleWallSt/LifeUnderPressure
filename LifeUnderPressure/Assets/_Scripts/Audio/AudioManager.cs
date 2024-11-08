@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -92,6 +93,8 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
+        //CheckWhatMusicToPlay();
+
         SetVolume();
 
         if (isPaused)
@@ -99,6 +102,20 @@ public class AudioManager : MonoBehaviour
 
         SetMusicOrAmbience();
     }
+
+    /*private void CheckWhatMusicToPlay()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            FMODEvents.instance.musicToPlay = EventReference.Find("event:/Music/Menu Song");
+        }
+        else if (SceneManager.GetActiveScene().rootCount == 1)
+        {
+            FMODEvents.instance.musicToPlay = EventReference.Find("event:/Music/Levels Music");
+        }
+        else
+            return;
+    }*/
 
     private void SetVolume()
     {
