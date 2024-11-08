@@ -11019,6 +11019,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4524600474292338062, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6168632057091521474, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -11092,7 +11097,7 @@ PrefabInstance:
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: submarineLights.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
@@ -11109,6 +11114,11 @@ PrefabInstance:
       propertyPath: lightIntensity.Array.data[2]
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
+        type: 3}
+      propertyPath: submarineLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 959019326}
     - target: {fileID: 6871879323347866732, guid: 6ef8eb81d1619ec40801545bc3121f2f,
         type: 3}
       propertyPath: submarineLights.Array.data[1]
