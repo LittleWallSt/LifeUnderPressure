@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
                 hp = value;
             }
             Call_OnValueChanged(hp);
-            Debug.Log(lastDamageType.ToString());
+            //Debug.Log(lastDamageType.ToString());
         }
     }
     public float MaxHealth => maxHealth;

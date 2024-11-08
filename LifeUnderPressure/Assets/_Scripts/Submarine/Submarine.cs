@@ -310,7 +310,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     private void Die(DamageType damageType)
     {
-        Debug.Log("Submarine died");
+        //Debug.Log("Submarine died");
         dyingEvent.OnDie(transform.position, damageType);
     }
 

@@ -57,7 +57,7 @@ public class Scanner : MonoBehaviour
             {
                 _currentState = value;
                 if (lockActive!=null) lockActive.Invoke(_currentState);
-                Debug.Log("Value changes");// Call the method when the current state changes
+                //Debug.Log("Value changes");// Call the method when the current state changes
             }
         }
     }

@@ -23,7 +23,7 @@ public class ScanningEffect : MonoBehaviour
 
     private void ChangeMaterial(GameObject fish)
     {
-        Debug.Log("reacjed");
+        //Debug.Log("reacjed");
         cashedObject = fish.GetComponentInChildren<Renderer>();
         cash = cashedObject.materials;
         fish.GetComponentInChildren<Renderer>().material = scanEffect; 
