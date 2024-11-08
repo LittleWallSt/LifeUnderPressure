@@ -11873,6 +11873,16 @@ PrefabInstance:
       propertyPath: habitat.Array.data[3]
       value: 
       objectReference: {fileID: 2063454026}
+    - target: {fileID: 4396596618339691793, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: habitat.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126232501}
+    - target: {fileID: 4396596618339691793, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
+        type: 3}
+      propertyPath: habitat.Array.data[1]
+      value: 
+      objectReference: {fileID: 1848449527}
     - target: {fileID: 4612042025277807202, guid: 9c5e3f413880f7b4abffd9b1d8513ddc,
         type: 3}
       propertyPath: habitat.Array.data[0]
