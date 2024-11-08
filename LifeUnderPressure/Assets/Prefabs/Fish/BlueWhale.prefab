@@ -59,16 +59,18 @@ MonoBehaviour:
   curiousTimer: 0
   curiousCooldownTime: 0
   curiousRange: 0
+  path: {fileID: 0}
   random: 0
   speed: 0
-  rotationSpeed: 0
+  rotationSpeed: 0.2
   alignmentThreshold: 0
   avoidanceDetection: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
     m_Bits: 0
+  update: 1
   FOVAngle: 180
-  smoothDamp: 1
+  smoothDamp: 10
 --- !u!136 &3757797662658737322
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -101,8 +103,8 @@ Rigidbody:
   m_GameObject: {fileID: 7293394897869035242}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
