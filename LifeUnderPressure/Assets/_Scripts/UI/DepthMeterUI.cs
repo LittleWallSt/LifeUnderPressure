@@ -117,4 +117,15 @@ public class DepthMeterUI : MonoBehaviour
 
         depthTransform.anchoredPosition = basePos;
     }
+
+    public void OnRespawn()
+    {
+        int offset = (int)Submarine.Instance.GetSubmarineDepth() >= twiglightZoneDepth ?
+            ((int)Submarine.Instance.GetSubmarineDepth() >= midnightZoneDepth ? _midnightOffset : _twiglightOffset) : _sunsetOffset;
+
+        int newThreshold = ((int)Submarine.Instance.GetSubmarineDepth() / offset) * offset;
+
+        previousThreshold = newThreshold;
+        ChangeThreshold(offset);
+    }
 }
