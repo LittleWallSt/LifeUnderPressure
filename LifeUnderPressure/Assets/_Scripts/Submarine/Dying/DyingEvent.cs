@@ -37,6 +37,8 @@ public class DyingEvent : MonoBehaviour
 
     GameObject tempSealog;
 
+    ImageAnimation sonar;
+
     void Awake()
     {
         if (encyclopedia==null) encyclopedia = FindObjectOfType<Encyclopedia>();
@@ -53,7 +55,10 @@ public class DyingEvent : MonoBehaviour
         submarine.getSubmarineMovement().enabled= false;
         submarine.enabled = false;
         dyingText.text = "You died " + damageType.ToCustomString();
-        
+
+        if (sonar == null) sonar = FindAnyObjectByType<ImageAnimation>();
+        if (sonar != null) sonar.enabled = false;
+
         StartCoroutine(FadeOutAfterCooldown(placeOfDeath));
         
 
@@ -74,10 +79,9 @@ public class DyingEvent : MonoBehaviour
         submarine.getSubmarineMovement().enabled = false;
         submarine.enabled = false;
         dyingText.text = "You died. There is no life under this pressure.";
-        Debug.Log("called here");
-
+        
         StartCoroutine(CallEndScreen());
-        Debug.Log("called");
+        
     }
 
     public void OnRespawn(Vector3 placeOfDeath)
@@ -99,6 +103,9 @@ public class DyingEvent : MonoBehaviour
 
         var depthMeter = FindAnyObjectByType<DepthMeterUI>();
         depthMeter.OnRespawn();
+
+        if (sonar == null) sonar = FindAnyObjectByType<ImageAnimation>();
+        if (sonar != null) sonar.enabled = true ;
 
     }
 
