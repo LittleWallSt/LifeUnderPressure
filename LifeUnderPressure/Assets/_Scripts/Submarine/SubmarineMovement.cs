@@ -370,4 +370,9 @@ public class SubmarineMovement : MonoBehaviour
     {
         propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
     }
+
+    public void UpgradeBoost()
+    {
+        boostCDTime *= 0.75f;
+    }
 }

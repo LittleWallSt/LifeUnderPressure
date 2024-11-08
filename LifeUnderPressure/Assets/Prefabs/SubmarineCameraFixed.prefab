@@ -15850,11 +15850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c7f3887eee9143921b9c9ffb920bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLevel: 0
-  upgradeCost: e8030000
-  upgradeEvents:
-  - m_PersistentCalls:
-      m_Calls: []
+  maxLevel: 1
+  upgradeCost: 0100000001000000
+  upgradeEvents: []
   type: 3
 --- !u!1 &8419524572803582262
 GameObject:

@@ -166,7 +166,7 @@ public class Scanner : MonoBehaviour
         {
             if (currentFish != null && currentFish.gameObject.tag == "Sealog") FinishScanningSealog();
             else if (currentFish != null && currentFish.gameObject.tag == "FinalFish") FinishScanningEnd();
-            else
+            else if (currentFish!=null) ///??????/
                 FinishedScanner();
         }
     }
@@ -192,8 +192,9 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
+        
         // Aleksis >>
-        Fish fish = currentFish.GetComponent<Fish>();
+        Fish fish = currentFish?.GetComponent<Fish>();
         if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
 
         FishInfo fishInfo = fish.FishInfo;

@@ -12,5 +12,15 @@ public class SubmarineBoost : SubmarineUpgrade
         base.SU_EditorSetup();
 
     }
-    
+
+    public override void UpgradeLevel()
+    {
+        base.UpgradeLevel();
+
+        if (movement == null) {
+            movement = Submarine.Instance.getSubmarineMovement();
+        }
+        movement.UpgradeBoost();
+    }
+
 }
