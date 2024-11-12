@@ -30,6 +30,7 @@ public class Quest : ScriptableObject
         Scan,
         Capture,
         Location,
+        ScanSealog,
         None
     }
     [Serializable]

@@ -9,9 +9,11 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject buttons = null;
     [SerializeField] private GameObject controlsMenu = null;
+    [SerializeField] private GameObject controlsButton = null;
     // Janko >>
     [SerializeField] private GameObject settingsMenu = null;
     // Janko <<
+    [SerializeField] private GameObject settings = null;
 
     private static Action<bool> onPaused = null;
     public bool EnableMenu(bool state)
@@ -39,6 +41,7 @@ public class PauseMenu : MonoBehaviour
         buttons.SetActive(false);
         settingsMenu.SetActive(true);
         // Janko <<
+        settings.SetActive(true);
     }
 
     // Janko >>
@@ -46,18 +49,26 @@ public class PauseMenu : MonoBehaviour
     {
         buttons.SetActive(true);
         settingsMenu.SetActive(false);
+        DataManager.SaveData();
     }
     // Janko <<
 
     public void Button_Controls()
     {
-        buttons.SetActive(false);
         controlsMenu.SetActive(true);
+        settings.SetActive(false);
+        controlsButton.SetActive(false);
+    }
+    public void Button_ExitToMenu()
+    {
+        SceneManager.LoadScene(InternalSettings.MainMenuSceneName);
+        Time.timeScale = 1f;
     }
     public void Button_ControlsBack()
     {
-        buttons.SetActive(true);
         controlsMenu.SetActive(false);
+        settings.SetActive(true);
+        controlsButton.SetActive(true);
     }
     public void Button_Save()
     {

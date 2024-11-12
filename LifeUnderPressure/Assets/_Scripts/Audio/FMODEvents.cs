@@ -65,6 +65,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference musicToPlay { get; set; }
 
+    [field: SerializeField]
+    public EventReference menuMusic { get; set; }
+
     [field: Header("UI")]
     [field: SerializeField]
     public EventReference SFX_UI_Click { get; private set; }
@@ -85,9 +88,7 @@ public class FMODEvents : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
-            Debug.LogError("Found more than one <FMODEvents> instance in the scene.");
-
-        instance = this;
+        if (instance == null) instance = this;
+        else { Destroy(gameObject); return; }
     }
 }

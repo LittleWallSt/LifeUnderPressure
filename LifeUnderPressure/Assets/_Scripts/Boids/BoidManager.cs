@@ -139,7 +139,6 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         if (unloadFish)
         {
             unloadFish = false;
-            Debug.Log("off dista");
             foreach (BoidUnit fish in allUnits)
             {
                 fish.gameObject.SetActive(false);
@@ -152,7 +151,6 @@ public class BoidManager: MonoBehaviour, IDistanceLoad
         if (!unloadFish)
         {
             unloadFish = true;
-            Debug.Log("in  dista");
             foreach (BoidUnit fish in allUnits)
             {
                 fish.gameObject.SetActive(true);

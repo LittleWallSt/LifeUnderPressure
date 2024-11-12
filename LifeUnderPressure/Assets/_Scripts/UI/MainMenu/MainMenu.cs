@@ -11,10 +11,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Animator menuAnimator = null;
     [SerializeField] private GameObject buttonsGrid = null;
     [SerializeField] private GameObject controlsMenu = null;
+    [SerializeField] private GameObject controlsButton = null;
 
     // Janko >>
     [SerializeField] private GameObject settingsMenu = null;
     // Janko <<
+    [SerializeField] private GameObject settings = null;
 
     private bool pressedPlay = false;
     private float timer = 0f;
@@ -72,14 +74,16 @@ public class MainMenu : MonoBehaviour
     {
         if (pressedPlay) return;
 
-        buttonsGrid.SetActive(false);
+        settings.SetActive(false);
+        controlsButton.SetActive(false);
         controlsMenu.SetActive(true);
     }
     public void Button_ControlsBack()
     {
         if (pressedPlay) return;
 
-        buttonsGrid.SetActive(true);
+        settings.SetActive(true);
+        controlsButton.SetActive(true);
         controlsMenu.SetActive(false);
     }
     public void Button_Quit()

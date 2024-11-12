@@ -151,11 +151,18 @@ MonoBehaviour:
     Path: event:/SFX/SFX_Lightswitch
   <musicToPlay>k__BackingField:
     Guid:
-      Data1: -806563434
-      Data2: 1230845738
-      Data3: -1761005149
-      Data4: -1787139460
-    Path: event:/Music/Menu Song
+      Data1: 802546568
+      Data2: 1098053918
+      Data3: 705760159
+      Data4: -940120037
+    Path: event:/Music/Levels Music
+  <menuMusic>k__BackingField:
+    Guid:
+      Data1: -2045915043
+      Data2: 1295564760
+      Data3: 1200504996
+      Data4: 1665333168
+    Path: event:/Music/MUS_MainMenu
   <SFX_UI_Click>k__BackingField:
     Guid:
       Data1: 1966318384

@@ -20,7 +20,7 @@ public class QuestUI : MonoBehaviour
     {
         if (QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
-            RebuildQuestReqTexts(0);
+            ClearUI();
             TMP_Text text = Instantiate(questReqPrefab, gridTransform);
             text.text = string.Format("Go to {0}", QuestSystem.GetQuestLocation().name);
             questReqTexts.Add(text);
@@ -30,7 +30,7 @@ public class QuestUI : MonoBehaviour
             List<Quest.FishAmount> questReqs = QuestSystem.GetQuestReqs();
             if (questReqs == null)
             {
-                RebuildQuestReqTexts(0);
+                ClearUI();
                 return;
             }
 
