@@ -308,7 +308,7 @@ MonoBehaviour:
         m_MethodName: OnFishButtonClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 5311341870844187477}
           m_ObjectArgumentAssemblyTypeName: FishButton, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -331,11 +331,10 @@ MonoBehaviour:
   lockedFishImage: {fileID: 21300000, guid: f0f7729a4ee0ff342a9a6bc02085d0cb, type: 3}
   stateIcon: {fileID: 2376422972920858361}
   fishIcon: {fileID: 2331497060696497358}
-  fishInfo: {fileID: 0}
+  fishInfo: {fileID: 11400000, guid: b178c81a9efa4b945b405f68fd1ee725, type: 2}
   habitat:
   - {fileID: 0}
-  - {fileID: 0}
-  no: 0
+  no: 1
 --- !u!114 &84449982542879923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,7 +3135,7 @@ PrefabInstance:
     - target: {fileID: 8851780371396162425, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.654114
+      value: 4.6540527
       objectReference: {fileID: 0}
     - target: {fileID: 9210481813017426348, guid: c0b30356e60553e4d96804cb86c28c61,
         type: 3}
