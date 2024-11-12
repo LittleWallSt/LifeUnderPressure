@@ -19,7 +19,7 @@ public class UpdatePopupUI : MonoBehaviour
     {
         popup.gameObject.SetActive(true);
         popup.alpha = 1.0f;
-        popupText.text = "-New Update" + type.ToString() + " Unlocked-";
+        popupText.text = "-New Upgrade" + type.ToString() + " Unlocked-";
         StartCoroutine(FadeOutAfterCooldown());
     }
 
