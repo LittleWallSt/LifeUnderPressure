@@ -30,7 +30,7 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
 
     // Janko >>
-    private EventInstance SFX_Current_Instance;
+    private static EventInstance SFX_Current_Instance;
     // Janko <<
 
     private void OnValidate()
@@ -90,7 +90,7 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
         if (Triggering.Contains(this)) Triggering.Remove(this);
 
         // Janko >>
-        SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
+        //SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
     }
     private void OnDrawGizmos()
