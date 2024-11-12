@@ -58,7 +58,7 @@ public class SubmarineMovement : MonoBehaviour
     float boostCDTimer = 0f;
 
     bool charging = false;
-
+    Vector3 boostvel;
     BoostUI boostUI = null;
     //<<
 
@@ -102,8 +102,44 @@ public class SubmarineMovement : MonoBehaviour
         inputSpacePressed = Input.GetKeyDown(KeyCode.B);
         inputSpace = Input.GetKey(KeyCode.B);
         inputSpaceUp = Input.GetKeyUp(KeyCode.B);
-        //<<
 
+        if (boostCD)
+        {
+            boostCDTimer += Time.deltaTime;
+            if (boostUI == null) boostUI = FindAnyObjectByType<BoostUI>();
+            boostUI.UpdateUI(0, Mathf.Clamp(boostCDTime - boostCDTimer, 0, boostCDTime));
+            if (boostCDTimer >= boostCDTime)
+            {
+                boostCD = false;
+                boostCDTimer = 0;
+                boostUI.UpdateUI(0, 0);
+            }
+        }
+
+        if ((inputSpacePressed || inputSpace) && !boostCD && !charging)
+        {
+
+            charging = true;
+            chargeTimer = 0f;
+        }
+
+        if (!charging) return;
+
+        if (inputSpace)
+        {
+            chargeTimer += Time.deltaTime;
+            if (boostUI == null) boostUI = FindAnyObjectByType<BoostUI>();
+            boostUI.UpdateUI(Mathf.Clamp01(chargeTimer / maxChargeTime), 0);
+        }
+
+        if (inputSpaceUp || chargeTimer >= maxChargeTime)
+        {
+            float chargeForce = Mathf.Clamp(chargeTimer / maxChargeTime, 0.2f, 1f);
+            rb.velocity += boostForce * chargeForce * transform.forward;
+            boostCD = true;
+            charging = false;
+        }
+        // Boost <<
         UpdateControlRig();
 
         // Janko and Aleksis 
@@ -130,22 +166,6 @@ public class SubmarineMovement : MonoBehaviour
 
     private void PositionUpdate(float deltaTime)
     {
-        //Boost>>
-        if (boostCD)
-        {
-            boostCDTimer += deltaTime;
-            if (boostUI == null) boostUI = FindAnyObjectByType<BoostUI>();
-            boostUI.UpdateUI(0, Mathf.Clamp(boostCDTime - boostCDTimer, 0, boostCDTime));
-            if (boostCDTimer >= boostCDTime)
-            {
-                boostCD = false;
-                boostCDTimer = 0;
-                boostUI.UpdateUI(0, 0);
-            } 
-        }
-        //<<<<<
-
-
         // Bumping process
         if (bumped)
         {
@@ -180,42 +200,11 @@ public class SubmarineMovement : MonoBehaviour
             velocityChange += uCurrent.Direction * (uCurrent.Strength * strength) * Time.deltaTime;
         }
 
-
-        
-
         rb.velocity += new Vector3(
             velocityChange.x,
             velocityChange.y,
             velocityChange.z
             );
-
-        //Boost >>> ??
-        if ((inputSpacePressed || inputSpace) && !boostCD && !charging)
-        {
-            
-            charging = true;
-            chargeTimer = 0f;  
-        }
-
-        if (!charging) return;
-
-        if (inputSpace)
-        {
-            chargeTimer += deltaTime;
-            if (boostUI==null) boostUI = FindAnyObjectByType<BoostUI>();
-            boostUI.UpdateUI(Mathf.Clamp01(chargeTimer / maxChargeTime), 0);
-        }
-
-        if (inputSpaceUp || chargeTimer >= maxChargeTime)
-        {
-            float chargeForce = Mathf.Clamp(chargeTimer / maxChargeTime, 0.2f, 1f);
-            rb.velocity += boostForce * chargeForce * transform.forward;
-            boostCD = true; 
-            charging = false; 
-        }
-
-        //<<<
-
     }
 
     private void VelocityUpdate(float deltaTime)

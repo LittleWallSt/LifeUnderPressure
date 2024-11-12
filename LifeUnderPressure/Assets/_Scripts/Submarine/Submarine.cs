@@ -177,10 +177,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
         Money = DataManager.Get("Money", 0);
 
         Vector3 spawnPosition = GameManager.Instance ? GameManager.Instance.InitialSpawnPoint : Vector3.zero;
-        spawnPosition.x = DataManager.Get("SpawnPositionX", Mathf.RoundToInt(spawnPosition.x));
-        spawnPosition.y = DataManager.Get("SpawnPositionY", Mathf.RoundToInt(spawnPosition.y));
-        spawnPosition.z = DataManager.Get("SpawnPositionZ", Mathf.RoundToInt(spawnPosition.z));
-        transform.position = spawnPosition;
+        spawnPosition.x = DataManager.Get("SpawnPositionX", (int)GameManager.Instance.InitialSpawnPoint.x);
+        spawnPosition.y = DataManager.Get("SpawnPositionY", (int)GameManager.Instance.InitialSpawnPoint.y);
+        spawnPosition.z = DataManager.Get("SpawnPositionZ", (int)GameManager.Instance.InitialSpawnPoint.z);
+        //transform.position = spawnPosition;
+        transform.position = GameManager.Instance.InitialSpawnPoint;
 
         Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
         transform.eulerAngles = eulerAngles;

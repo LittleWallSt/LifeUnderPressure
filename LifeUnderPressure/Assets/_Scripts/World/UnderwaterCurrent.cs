@@ -39,11 +39,14 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
     private void Start()
     {
-        // Janko >>
-        SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
-        SFX_Current_Instance.start();
-        SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
-        // Janko <<
+        if (!SFX_Current_Instance.isValid())
+        {
+            // Janko >>
+            SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
+            SFX_Current_Instance.start();
+            SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
+            // Janko <<
+        }
 
         Setup();
         IDL_AssignToGameManager();

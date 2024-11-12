@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class InternalSettings : MonoBehaviour
@@ -14,6 +15,13 @@ public class InternalSettings : MonoBehaviour
     private Vector2 lastMousePosition = Vector3.zero;
     private Vector2 mouseDelta = Vector3.zero;
 
+    public static bool DataLoaded { get; private set; } = false;
+    public static int SunlightZone { get; } = 0;
+    public static int TwilightZone { get; } = 1;
+    public static int MidnightZone { get; } = 2;
+    public static int CaveZone { get; } = 3;
+    public static int MainMenu { get; } = 4;
+    public static string MainMenuSceneName { get; } = "MainMenu";
     public static InternalSettings Get { get; private set; } = null;
     private void Awake()
     {
@@ -24,6 +32,16 @@ public class InternalSettings : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+
+        StartCoroutine(LoadDataProcess());
+    }
+    private IEnumerator LoadDataProcess()
+    {
+        DataManager.Init();
+        yield return StartCoroutine(DataManager.LoadData());
+
+        yield return null;
+        DataLoaded = true;
     }
     public static LayerMask FishLayer => Get.fishLayer;
     public static LayerMask EnvironmentLayer => Get.environmentLayer;

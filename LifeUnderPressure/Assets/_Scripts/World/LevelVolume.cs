@@ -72,6 +72,7 @@ public class LevelVolume : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        return;
         foreach (IDepthDependant depthDependant in itemsNotAllowed)
         {
             if (depthDependant.IDD_GetGOInstanceID() == other.gameObject.GetInstanceID())

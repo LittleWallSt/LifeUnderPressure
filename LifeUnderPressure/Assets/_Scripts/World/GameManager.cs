@@ -53,24 +53,22 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); return; }
 
         QuestSystem.Reset();
-        StartCoroutine(LoadDataProcess());
     }
-    private IEnumerator LoadDataProcess()
+    private IEnumerator Start()
     {
-        DataManager.Init();
-        yield return StartCoroutine(DataManager.LoadData());
+        InternalSettings.EnableCursor(false);
 
-        yield return null;
+        while (!InternalSettings.DataLoaded)
+        {
+            if (!InternalSettings.Get) throw new Exception("NO INTERNAL SETTINGS IN THE SCENE");
+            yield return null;
+        }
         DataManager.Assign_OnSaveData(StoreQuestData);
         Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
         inTutorial = DataManager.Get("InTutorial", 0) == 1 ? true : false;
         submarine.Init();
         upgradeCanvas?.SetupCanvas(submarine);
-    }
-    private void Start()
-    {
-        InternalSettings.EnableCursor(false);
     }
     private void Update()
     {
@@ -115,6 +113,7 @@ public class GameManager : MonoBehaviour
     private void StoreQuestData()
     {
         DataManager.Write("QuestIndex", questIndex);
+        QuestSystem.SaveCurrentQuest();
     }
     public void ProcessWriteBool(string boolName, int value)
     {
@@ -219,7 +218,6 @@ public class GameManager : MonoBehaviour
     {
         QuestSystem.Reset();
         DataManager.Remove_OnSaveData(StoreQuestData);
-        DataManager.Reset();
     }
     private void OnDrawGizmos()
     {
