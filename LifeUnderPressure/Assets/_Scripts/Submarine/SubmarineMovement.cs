@@ -100,6 +100,9 @@ public class SubmarineMovement : MonoBehaviour
 
         UpdateControlRig();
 
+        // Janko and Aleksis 
+        propellerSFX.setParameterByName("Input", input.magnitude);
+
         //Boost change >>
         inputSpacePressed = Input.GetKeyDown(KeyCode.B);
         inputSpace = Input.GetKey(KeyCode.B);
@@ -142,9 +145,6 @@ public class SubmarineMovement : MonoBehaviour
             charging = false;
         }
         // Boost <<
-
-        // Janko and Aleksis 
-        propellerSFX.setParameterByName("Input", input.magnitude);
     }
 
     private void UpdateControlRig()
