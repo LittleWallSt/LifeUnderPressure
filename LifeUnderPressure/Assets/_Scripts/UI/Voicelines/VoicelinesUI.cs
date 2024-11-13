@@ -70,6 +70,7 @@ public class VoicelinesUI : MonoBehaviour
 
             j++;
             Debug.Log(j);
+            yield return new WaitForSecondsRealtime(0.6f);
 
         }
 
