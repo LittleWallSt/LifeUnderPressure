@@ -26,6 +26,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
+    [SerializeField] private Animator redlightAnimator = null;
     [SerializeField] private Material cracksMaterial = null;
     [SerializeField] private Material depthMeterMaterial = null;
     [SerializeField] private float crackLevel1 = 0.25f;
@@ -320,23 +321,19 @@ public class Submarine : MonoBehaviour, IDepthDependant
         rb.position = pos;
     }
 
-
     private void LCStressCalculation(float depth)
     {
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
 
+        bool warning = false;
         if (!Cave.Inside && stress > 100)
         {
-            float diff = stress - 100f;
-            health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
-            UpdateDepthMeterMaterial(true);
-            warningInstance.setParameterByName("shouldPlay", 1);
+            warning = true;
+            health.DealDamage(((stress - 100f) / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
         }
-        else
-        {
-            UpdateDepthMeterMaterial(false);
-            warningInstance.setParameterByName("shouldPlay", 0);
-        }
+        UpdateDepthMeterMaterial(warning);
+        redlightAnimator.SetBool("Warning", warning);
+        warningInstance.setParameterByName("shouldPlay", warning ? 1 : 0);
     }
 
     public void DamageSubmarine(float damage, DamageType damageType)

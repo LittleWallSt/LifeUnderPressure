@@ -98,6 +98,8 @@ public class SubmarineMovement : MonoBehaviour
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
+        UpdateControlRig();
+
         //Boost change >>
         inputSpacePressed = Input.GetKeyDown(KeyCode.B);
         inputSpace = Input.GetKey(KeyCode.B);
@@ -140,7 +142,6 @@ public class SubmarineMovement : MonoBehaviour
             charging = false;
         }
         // Boost <<
-        UpdateControlRig();
 
         // Janko and Aleksis 
         propellerSFX.setParameterByName("Input", input.magnitude);

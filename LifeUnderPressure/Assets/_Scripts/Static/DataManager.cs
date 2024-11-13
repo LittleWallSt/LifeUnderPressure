@@ -119,11 +119,13 @@ public static class DataManager
     public static void Clear()
     {
         if (!File.Exists(FilePath)) return;
+
         File.Delete(FilePath);
+        Reset();
     }
     public static void Reset()
     {
-        Data = null;
+        Data = new List<DataStruct>();
         OnSaveData = null;
     }
     // Action
