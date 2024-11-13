@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: Testrsrrr
   voicelines:
-  - asjldahskd kla sdjlojk hasjodi
+  - clown fhis yes kaheopd
+  - and it sfsplio jaskd
+  charPerSecond: 6
   OnVoicelineStart:
   - Guid:
       Data1: -2038654936

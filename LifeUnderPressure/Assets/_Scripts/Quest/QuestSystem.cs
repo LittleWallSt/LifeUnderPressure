@@ -92,6 +92,8 @@ public static class QuestSystem
     }
     public static void SaveCurrentQuest()
     {
+        if (CurrentQuest == null) return;
+
         for(int i = 0; i < CurrentValues.Length; i++)
         {
             DataManager.Write("QuestCurrentValue_" + i, CurrentValues[i]);

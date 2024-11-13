@@ -44,7 +44,7 @@ public class VoicelinesUI : MonoBehaviour
         //if (v.onVoicelineStart == null) yield return null;
         foreach (string line in v.voicelines)
         {
-            if (v.onVoicelineStart!=null && v.onVoicelineStart.Length>0 &&!v.onVoicelineStart[j].IsNull) AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
+            if (v.onVoicelineStart!=null && v.onVoicelineStart.Length>j &&!v.onVoicelineStart[j].IsNull) AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
                 Submarine.Instance.transform.position); //?? play voiceline idk
             float timer = 0;
             float interval = 1 / v.charPerSecond; 
