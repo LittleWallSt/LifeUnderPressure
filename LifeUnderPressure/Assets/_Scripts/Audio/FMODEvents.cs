@@ -83,8 +83,169 @@ public class FMODEvents : MonoBehaviour
     public EventReference SFX_Current {  get; private set; }
 
     [field: Header("VO")]
-    //[field: SerializeField]
-    public EventReference VO_Tutorial_01 { get; private set; }
+
+    [field: Header("Tutorial")]
+    [field: SerializeField]
+    public EventReference VO_TUT_01 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_02 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_03 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_04 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_05 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_06 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_07 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_08 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_09 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_10 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_11 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_12 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_13 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_14 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_15 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_16 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_17 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_18 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_19 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_20 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_21 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_22 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_23 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_24 { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TUT_25 { get; private set; }
+
+    [field: Header("Sunlight Zone")]
+    [field: SerializeField]
+    public EventReference VO_SZ_BlueTang { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_BlueTangDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_ChinookSalmon { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_ChinookSalmonDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_Clownfish { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_ClownfishDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_GreenTurtle { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_GreenTurtleDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_SZ_NotBad { get; private set; }
+
+    [field: Header("Twilight Zone")]
+    [field: SerializeField]
+    public EventReference VO_TZ_BlueWhale { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_BlueWhaleDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_FireflySquid { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_FireflySquidDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_GiantOctopus { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_GiantOctopusDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_SpiderCrab { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_SpiderCrabDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_Sunfish { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_SunfishDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_TZ_NiceOne { get; private set; }
+
+    [field: Header("Midnight Zone")]
+    [field: SerializeField]
+    public EventReference VO_MZ_Anglerfish { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_AnglerfishDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_CookieCutter { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_CookieCutterDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_GulperEel { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_GulperEelDesc { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_DumboOctopus { get; private set; }
+
+    [field: SerializeField]
+    public EventReference VO_MZ_DumboOctopusDesc { get; private set; }
 
     private void Awake()
     {

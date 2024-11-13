@@ -22,10 +22,14 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)]
     public float ambienceVolume = 1f;
 
+    [Range(0f, 1f)]
+    public float voVolume = 1f;
+
     private Bus masterBus;
     private Bus sfxBus;
     private Bus musicBus;
     private Bus ambienceBus;
+    private Bus voBus;
 
     public static AudioManager instance { get; private set; }
 
@@ -73,6 +77,7 @@ public class AudioManager : MonoBehaviour
         sfxBus = RuntimeManager.GetBus("bus:/SFX_Bus");
         musicBus = RuntimeManager.GetBus("bus:/Music_Bus");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience_Bus");
+        voBus = RuntimeManager.GetBus("bus:/VO_Bus");
     }
 
     private IEnumerator Start()
@@ -156,6 +161,7 @@ public class AudioManager : MonoBehaviour
         sfxBus.setVolume(gameSoundVolume);
         musicBus.setVolume(musicVolume);
         ambienceBus.setVolume(ambienceVolume);
+        voBus.setVolume(voVolume);
     }
 
     private void SetMusicOrAmbience()

@@ -10,7 +10,8 @@ public class VolumeSlider : MonoBehaviour
         MASTER,
         SFX,
         MUSIC,
-        AMBIENCE
+        AMBIENCE,
+        VO
     }
 
     [Header("Type")]
@@ -38,6 +39,9 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.AMBIENCE:
                 volumeSlider.value = AudioManager.instance.ambienceVolume;
                 break;
+            case VolumeType.VO:
+                volumeSlider.value = AudioManager.instance.voVolume;
+                break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
                 break;
@@ -62,6 +66,9 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.AMBIENCE:
                 AudioManager.instance.ambienceVolume = volumeSlider.value;
                 DataManager.Write("Volume_Ambience", (int)(volumeSlider.value * 100f));
+                break;
+            case VolumeType.VO:
+                AudioManager.instance.voVolume = volumeSlider.value;
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
