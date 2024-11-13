@@ -72,6 +72,7 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     public bool EnableMenu(bool state, GameObject _submarineBody)
     {
+        Submarine.Instance.getSubmarineMovement().StopSubmarine();
         Submarine.Instance.getSubmarineMovement().enabled = !state;
         gameObject.SetActive(state);
         UpdateMoneyUI();

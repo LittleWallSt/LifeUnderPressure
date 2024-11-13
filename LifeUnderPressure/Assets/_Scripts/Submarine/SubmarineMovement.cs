@@ -342,6 +342,11 @@ public class SubmarineMovement : MonoBehaviour
         return new Vector3(position.x, 0f, position.z).normalized;
     }
 
+    public void StopSubmarine()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     private void OnGUI()
     {
         if (!debugMode) return;
