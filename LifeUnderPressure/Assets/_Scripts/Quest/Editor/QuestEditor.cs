@@ -11,6 +11,10 @@ public class QuestEditor : Editor
     private SerializedProperty rewards;
     private SerializedProperty location;
 
+    private SerializedProperty voicelineOnAssign;
+    private SerializedProperty voicelineOnProgress;
+    private SerializedProperty voicelineOnEnd;
+
     private SerializedProperty audioOnAssign;
     private SerializedProperty audioOnProgress;
     private SerializedProperty audioOnEnd;
@@ -20,6 +24,10 @@ public class QuestEditor : Editor
         fishes = serializedObject.FindProperty("fishes");
         rewards = serializedObject.FindProperty("rewards");
         location = serializedObject.FindProperty("location");
+
+        voicelineOnAssign = serializedObject.FindProperty("voicelineOnAssign");
+        voicelineOnProgress = serializedObject.FindProperty("voicelineOnProgress");
+        voicelineOnEnd = serializedObject.FindProperty("voicelineOnEnd");
 
         audioOnAssign = serializedObject.FindProperty("audioOnAssign");
         audioOnProgress = serializedObject.FindProperty("audioOnProgress");
@@ -83,10 +91,14 @@ public class QuestEditor : Editor
             }
         }
 
-        EditorGUILayout.LabelField("Audio", EditorStyles.boldLabel);
-        EditorGUILayout.PropertyField(audioOnAssign, new GUIContent("On Quest Assign"));
-        EditorGUILayout.PropertyField(audioOnProgress, new GUIContent("On Quest Progress"));
-        EditorGUILayout.PropertyField(audioOnEnd, new GUIContent("On Quest End"));
+        EditorGUILayout.LabelField("Voicelines", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(voicelineOnAssign, new GUIContent("On Quest Assign"));
+        EditorGUILayout.PropertyField(voicelineOnProgress, new GUIContent("On Quest Progress"));
+        EditorGUILayout.PropertyField(voicelineOnEnd, new GUIContent("On Quest End"));
+
+        //EditorGUILayout.PropertyField(audioOnAssign, new GUIContent("On Quest Assign"));
+        //EditorGUILayout.PropertyField(audioOnProgress, new GUIContent("On Quest Progress"));
+        //EditorGUILayout.PropertyField(audioOnEnd, new GUIContent("On Quest End"));
 
         serializedObject.ApplyModifiedProperties();
     }

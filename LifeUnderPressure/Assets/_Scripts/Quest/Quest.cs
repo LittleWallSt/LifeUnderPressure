@@ -13,6 +13,10 @@ public class Quest : ScriptableObject
 
     [SerializeField] private Location location;
 
+    [SerializeField] private Voiceline voicelineOnAssign;
+    [SerializeField] private Voiceline[] voicelineOnProgress;
+    [SerializeField] private Voiceline voicelineOnEnd;
+
     [SerializeField] private EventReference audioOnAssign;
     [SerializeField] private EventReference[] audioOnProgress;
     [SerializeField] private EventReference audioOnEnd;
@@ -25,6 +29,10 @@ public class Quest : ScriptableObject
     public EventReference AudioOnAssign => audioOnAssign;
     public EventReference[] AudioOnProgress => audioOnProgress;
     public EventReference AudioOnEnd => audioOnEnd;
+
+    public Voiceline VoicelineOnAssign => voicelineOnAssign;
+    public Voiceline[] VoicelineOnProgress => voicelineOnProgress;
+    public Voiceline VoicelineOnEnd => voicelineOnEnd;
     public enum QuestType
     {
         Scan,

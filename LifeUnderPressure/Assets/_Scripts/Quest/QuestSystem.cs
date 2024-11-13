@@ -25,7 +25,9 @@ public static class QuestSystem
                 CurrentValues[i]++;
                 if (CurrentValues[i] == CurrentQuest.Fishes[i].amount)
                 {
-                    if (CurrentQuest.AudioOnProgress.Length > i && !CurrentQuest.AudioOnProgress[i].IsNull) AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
+                    if (CurrentQuest.VoicelineOnProgress.Length > i && CurrentQuest.VoicelineOnProgress[i])
+                        VoicelinesUI.Instance.CallVoiceline(CurrentQuest.VoicelineOnProgress[i]);
+                    //AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
                 }
             }
         }
@@ -35,7 +37,9 @@ public static class QuestSystem
     public static void AssignQuest(Quest quest)
     {
         CurrentQuest = quest;
-        AudioManager.instance?.PlayOneShot(quest.AudioOnAssign, Submarine.Instance.transform.position);
+        if(quest.VoicelineOnAssign) 
+            VoicelinesUI.Instance.CallVoiceline(quest.VoicelineOnAssign);
+        //AudioManager.instance?.PlayOneShot(quest.AudioOnAssign, Submarine.Instance.transform.position);
 
         CurrentValues = new int[quest.Fishes.Count];
 
@@ -57,7 +61,9 @@ public static class QuestSystem
     }
     private static void QuestFinish()
     {
-        AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
+        if (CurrentQuest.VoicelineOnEnd)
+            VoicelinesUI.Instance.CallVoiceline(CurrentQuest.VoicelineOnEnd);
+        //AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
         AcquireRewards();
 
         for (int i = 0; i < CurrentValues.Length; i++)
