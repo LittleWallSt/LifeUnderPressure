@@ -45,6 +45,7 @@ public class AudioManager : MonoBehaviour
     private float timeLastSetInstance;
 
     private bool isPaused = false;
+    private bool inMenu = false;
 
     [Header("Music Settings")]
     [SerializeField]
@@ -89,6 +90,8 @@ public class AudioManager : MonoBehaviour
         InitializeMusic(FMODEvents.instance.musicToPlay);
         InitializeAmbience(FMODEvents.instance.ambienceToPlay);
         menuMusicEventInstance = CreateInstance(FMODEvents.instance.menuMusic);
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
         if (InternalSettings.Get)
         {
@@ -106,27 +109,22 @@ public class AudioManager : MonoBehaviour
         gameSoundVolume = DataManager.Get("Volume_SFX", 100) / 100f;
         musicVolume = DataManager.Get("Volume_Music", 100) / 100f;
         ambienceVolume = DataManager.Get("Volume_Ambience", 100) / 100f;
-
-        if(scena.name.Contains("MainMenu")) currentInstance = menuMusicEventInstance;
-        else currentInstance = musicEventInstance;
-        currentInstance.start();
-        
-
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
     {
         if (newScene.name.Contains("MainMenu"))
         {
+            inMenu = true;
             ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            menuMusicEventInstance.start();
+            currentInstance = menuMusicEventInstance;
+            currentInstance.start();
         }
         else
         {
+            inMenu = false;
             menuMusicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicEventInstance.start();
-            ambienceEventInstance.start();
         }
     }
 
@@ -172,7 +170,7 @@ public class AudioManager : MonoBehaviour
 
     private void SetMusicOrAmbience()
     {
-        if (Cave.Inside) return;
+        if (Cave.Inside || inMenu) return;
 
         if (!IsPlaying(currentInstance) && Time.time - timeLastSetInstance > musicChangeCooldown)
         {

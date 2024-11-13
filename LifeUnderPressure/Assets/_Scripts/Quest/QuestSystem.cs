@@ -146,7 +146,6 @@ public static class QuestSystem
         OnQuestUpdated = null;
         _TimeLastQuestFinished = Time.time;
         LoadedQuestData = false;
-        Debug.Log("res");
     }
     // Getters
     public static List<Quest.FishAmount> GetQuestReqs()
