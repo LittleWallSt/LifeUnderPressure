@@ -86,79 +86,53 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("Tutorial")]
     [field: SerializeField]
-    public EventReference VO_TUT_01 { get; private set; }
+    public EventReference VO_TUT_AddLineHERE { get; private set; }
+
+    [field: Header("MISC")]
+    [field: SerializeField]
+    public EventReference VO_MISC_GetToWork { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_02 { get; private set; }
+    public EventReference VO_MISC_AfterLastFishSZ { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_03 { get; private set; }
+    public EventReference VO_MISC_AfterLastFishTZ { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_04 { get; private set; }
+    public EventReference VO_MISC_AfterLastFishMZ { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_05 { get; private set; }
+    public EventReference VO_MISC_CaveCollapsingNoIssue { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_06 { get; private set; }
+    public EventReference VO_MISC_CaveCollapsedOut { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_07 { get; private set; }
+    public EventReference VO_MISC_TooDeep_01 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_08 { get; private set; }
+    public EventReference VO_MISC_TooDeep_02 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_09 { get; private set; }
+    public EventReference VO_MISC_TooDeep_03 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_10 { get; private set; }
+    public EventReference VO_MISC_AfterCollision_01 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_11 { get; private set; }
+    public EventReference VO_MISC_AfterCollision_02 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_12 { get; private set; }
+    public EventReference VO_MISC_Start {  get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_13 { get; private set; }
+    public EventReference VO_MISC_AfterDeath_01 { get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_14 { get; private set; }
+    public EventReference VO_MISC_AfterDeath_02 {  get; private set; }
 
     [field: SerializeField]
-    public EventReference VO_TUT_15 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_16 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_17 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_18 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_19 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_20 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_21 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_22 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_23 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_24 { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TUT_25 { get; private set; }
+    public EventReference VO_MISC_AfterGoodFind { get; private set; }
 
     [field: Header("Sunlight Zone")]
     [field: SerializeField]
@@ -184,9 +158,6 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField]
     public EventReference VO_SZ_GreenTurtleDesc { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_SZ_NotBad { get; private set; }
 
     [field: Header("Twilight Zone")]
     [field: SerializeField]
@@ -218,9 +189,6 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField]
     public EventReference VO_TZ_SunfishDesc { get; private set; }
-
-    [field: SerializeField]
-    public EventReference VO_TZ_NiceOne { get; private set; }
 
     [field: Header("Midnight Zone")]
     [field: SerializeField]
