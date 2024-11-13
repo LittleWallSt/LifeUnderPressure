@@ -8,6 +8,8 @@ public class Voiceline : ScriptableObject
     [TextArea(5, 5)]
     public string[] voicelines;
 
+    public int charPerSecond = 10;
+
     [SerializeField] private EventReference[] OnVoicelineStart;
 
     public EventReference[] onVoicelineStart => OnVoicelineStart;

@@ -36,7 +36,7 @@ public class VoicelinesUI : MonoBehaviour
 
     
 
-    float charactersPerSecond = 10;
+    //float charactersPerSecond = 10;
 
     IEnumerator TypeTextUncapped(Voiceline v)
     {
@@ -47,7 +47,7 @@ public class VoicelinesUI : MonoBehaviour
             if (v.onVoicelineStart!=null && v.onVoicelineStart.Length>0 &&!v.onVoicelineStart[j].IsNull) AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
                 Submarine.Instance.transform.position); //?? play voiceline idk
             float timer = 0;
-            float interval = 1 / charactersPerSecond;
+            float interval = 1 / v.charPerSecond; 
             string textBuffer = null;
             char[] chars = line.ToCharArray();
             int i = 0;
