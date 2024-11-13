@@ -99,28 +99,34 @@ public class AudioManager : MonoBehaviour
         }
 
         SceneManager.activeSceneChanged += OnSceneChanged;
-        OnSceneChanged(new Scene(), SceneManager.GetActiveScene());
+        Scene scena = SceneManager.GetActiveScene();
+        OnSceneChanged(new Scene(), scena);
 
         masterVolume = DataManager.Get("Volume_Master", 100) / 100f;
         gameSoundVolume = DataManager.Get("Volume_SFX", 100) / 100f;
         musicVolume = DataManager.Get("Volume_Music", 100) / 100f;
         ambienceVolume = DataManager.Get("Volume_Ambience", 100) / 100f;
 
-        currentInstance = musicEventInstance;
+        if(scena.name.Contains("MainMenu")) currentInstance = menuMusicEventInstance;
+        else currentInstance = musicEventInstance;
         currentInstance.start();
+        
+
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
     {
         if (newScene.name.Contains("MainMenu"))
         {
-            ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             menuMusicEventInstance.start();
         }
         else
         {
             menuMusicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicEventInstance.start();
+            ambienceEventInstance.start();
         }
     }
 
