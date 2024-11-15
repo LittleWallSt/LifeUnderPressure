@@ -50,6 +50,20 @@ public class DyingEvent : MonoBehaviour
         controlsScreen?.SetActive(false);
 
         StartCoroutine(OnStart());
+
+        OnStartSetup(GameManager.Instance.InitialSpawnPoint);
+    }
+
+
+    void OnStartSetup(Vector3 SealogPlacement)
+    {
+
+        Instantiate(submarineBroken, SealogPlacement, Quaternion.identity);
+        tempSealog = Instantiate(sealogPickable, SealogPlacement + sealogOffset, Quaternion.identity);
+
+        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
+
+        
     }
 
     public void OnDie(Vector3 placeOfDeath, DamageType damageType)
