@@ -23,6 +23,8 @@ public class DyingEvent : MonoBehaviour
 
     [SerializeField] private GameObject questionIcon;
     [SerializeField] GameObject finalFish;
+
+    [SerializeField] GameObject controlsScreen;
     float firstVoiceline = 1f;
     float chokingTime = 4f;
 
@@ -44,6 +46,10 @@ public class DyingEvent : MonoBehaviour
         if (encyclopedia==null) encyclopedia = FindObjectOfType<Encyclopedia>();
         finalFish.SetActive(false); //?
         questionIcon.SetActive(false);
+
+        controlsScreen?.SetActive(false);
+
+        StartCoroutine(OnStart());
     }
 
     public void OnDie(Vector3 placeOfDeath, DamageType damageType)
@@ -191,6 +197,18 @@ public class DyingEvent : MonoBehaviour
         dyingText.text = "";
         SceneManager.LoadScene(sceneToLoad);
 
+
+    }
+
+    IEnumerator OnStart()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+
+        controlsScreen?.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(5f);
+
+        controlsScreen?.SetActive(false);
 
     }
 
