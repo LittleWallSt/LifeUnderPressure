@@ -58,10 +58,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7250310187227539520, guid: 2f3dc4cb8e17e494c923398771dbfde8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -5355907461802275324, guid: 2f3dc4cb8e17e494c923398771dbfde8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -3496002671001616387, guid: 2f3dc4cb8e17e494c923398771dbfde8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2f3dc4cb8e17e494c923398771dbfde8,
         type: 3}
       propertyPath: m_Name
       value: P_Anemone
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2f3dc4cb8e17e494c923398771dbfde8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 2f3dc4cb8e17e494c923398771dbfde8,
         type: 3}

@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NoPost
   - Water
   - UI
   - Submarine
@@ -19,8 +19,8 @@ TagManager:
   - Fish
   - UCurrent
   - InstaKill
-  - 
-  - 
+  - Rock
+  - SeaBio
   - 
   - 
   - 
