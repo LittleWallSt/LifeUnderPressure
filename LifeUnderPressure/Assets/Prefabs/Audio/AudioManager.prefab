@@ -151,11 +151,18 @@ MonoBehaviour:
     Path: event:/SFX/SFX_Lightswitch
   <musicToPlay>k__BackingField:
     Guid:
-      Data1: -806563434
-      Data2: 1230845738
-      Data3: -1761005149
-      Data4: -1787139460
-    Path: event:/Music/Menu Song
+      Data1: 802546568
+      Data2: 1098053918
+      Data3: 705760159
+      Data4: -940120037
+    Path: event:/Music/Levels Music
+  <menuMusic>k__BackingField:
+    Guid:
+      Data1: -2045915043
+      Data2: 1295564760
+      Data3: 1200504996
+      Data4: 1665333168
+    Path: event:/Music/MUS_MainMenu
   <SFX_UI_Click>k__BackingField:
     Guid:
       Data1: 1966318384
@@ -184,6 +191,300 @@ MonoBehaviour:
       Data3: -1909413461
       Data4: 1939578370
     Path: event:/SFX/SFX_Current
+  <VO_TUT_AddLineHERE>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <VO_MISC_GetToWork>k__BackingField:
+    Guid:
+      Data1: 304895050
+      Data2: 1261747385
+      Data3: -667096413
+      Data4: 1818485560
+    Path: event:/SFX/VO/TUT/VO_TUT_11_Get_To_Work
+  <VO_MISC_AfterLastFishSZ>k__BackingField:
+    Guid:
+      Data1: -2106328909
+      Data2: 1116322877
+      Data3: -335200847
+      Data4: -1441184468
+    Path: event:/SFX/VO/TUT/VO_TUT_12_Can_Reach_TZ
+  <VO_MISC_AfterLastFishTZ>k__BackingField:
+    Guid:
+      Data1: -1097258333
+      Data2: 1210642331
+      Data3: -463788884
+      Data4: 1398477080
+    Path: event:/SFX/VO/TUT/VO_TUT_13_Great_Work
+  <VO_MISC_AfterLastFishMZ>k__BackingField:
+    Guid:
+      Data1: 2092599319
+      Data2: 1157699414
+      Data3: 1440901002
+      Data4: -203249869
+    Path: event:/SFX/VO/TUT/VO_TUT_15_Getting_Signals
+  <VO_MISC_CaveCollapsingNoIssue>k__BackingField:
+    Guid:
+      Data1: -1556893222
+      Data2: 1311218655
+      Data3: -325953906
+      Data4: 811841737
+    Path: event:/SFX/VO/TUT/VO_TUT_16_No_Issue
+  <VO_MISC_CaveCollapsedOut>k__BackingField:
+    Guid:
+      Data1: 233519504
+      Data2: 1175071418
+      Data3: 996768906
+      Data4: 585939155
+    Path: event:/SFX/VO/TUT/VO_TUT_17_Needed_Scan
+  <VO_MISC_TooDeep_01>k__BackingField:
+    Guid:
+      Data1: 1894686297
+      Data2: 1078954393
+      Data3: 486097307
+      Data4: 1234156996
+    Path: event:/SFX/VO/TUT/VO_TUT_18_Not_So_Fast
+  <VO_MISC_TooDeep_02>k__BackingField:
+    Guid:
+      Data1: -426757037
+      Data2: 1268756033
+      Data3: -661034088
+      Data4: 879590688
+    Path: event:/SFX/VO/TUT/VO_TUT_19_Really
+  <VO_MISC_TooDeep_03>k__BackingField:
+    Guid:
+      Data1: 1950620847
+      Data2: 1267794070
+      Data3: -1278324591
+      Data4: 317892088
+    Path: event:/SFX/VO/TUT/VO_TUT_20_Wanna_Implode
+  <VO_MISC_AfterCollision_01>k__BackingField:
+    Guid:
+      Data1: -488967783
+      Data2: 1077113972
+      Data3: -1799656001
+      Data4: -228287515
+    Path: event:/SFX/VO/TUT/VO_TUT_21_Navigate_Carefully
+  <VO_MISC_AfterCollision_02>k__BackingField:
+    Guid:
+      Data1: -1088697888
+      Data2: 1273182608
+      Data3: -1953080147
+      Data4: 1779958835
+    Path: event:/SFX/VO/TUT/VO_TUT_22_Keep_Crashing
+  <VO_MISC_Start>k__BackingField:
+    Guid:
+      Data1: -2093749227
+      Data2: 1233041954
+      Data3: 1921996428
+      Data4: -1360731178
+    Path: event:/SFX/VO/TUT/VO_TUT_23_New_Captain
+  <VO_MISC_AfterDeath_01>k__BackingField:
+    Guid:
+      Data1: 137098929
+      Data2: 1217765937
+      Data3: -1912369785
+      Data4: 2104976274
+    Path: event:/SFX/VO/TUT/VO_TUT_24_Maybe_You
+  <VO_MISC_AfterDeath_02>k__BackingField:
+    Guid:
+      Data1: -842172304
+      Data2: 1252528056
+      Data3: -1682316868
+      Data4: -2116307176
+    Path: event:/SFX/VO/TUT/VO_TUT_25_My_God
+  <VO_MISC_AfterGoodFind>k__BackingField:
+    Guid:
+      Data1: 29400518
+      Data2: 1308515704
+      Data3: 1982796180
+      Data4: -584579200
+    Path: event:/SFX/VO/TZ/VO_TZ_Nice_One
+  <VO_SZ_BlueTang>k__BackingField:
+    Guid:
+      Data1: -2075932460
+      Data2: 1104977804
+      Data3: -1164805210
+      Data4: -594860448
+    Path: event:/SFX/VO/SZ/VO_SZ_Blue_Tang
+  <VO_SZ_BlueTangDesc>k__BackingField:
+    Guid:
+      Data1: 1969945049
+      Data2: 1186019685
+      Data3: 1140934067
+      Data4: 551537710
+    Path: event:/SFX/VO/SZ/VO_SZ_Blue_Tang_Desc
+  <VO_SZ_ChinookSalmon>k__BackingField:
+    Guid:
+      Data1: -71189475
+      Data2: 1206832157
+      Data3: -1161498221
+      Data4: 108579489
+    Path: event:/SFX/VO/SZ/VO_SZ_Chinook_Salmon
+  <VO_SZ_ChinookSalmonDesc>k__BackingField:
+    Guid:
+      Data1: -430312364
+      Data2: 1178060971
+      Data3: 1070906759
+      Data4: 340405826
+    Path: event:/SFX/VO/SZ/VO_SZ_Chinook_Salmon_Desc
+  <VO_SZ_Clownfish>k__BackingField:
+    Guid:
+      Data1: 1069963866
+      Data2: 1212676719
+      Data3: -499151952
+      Data4: -1212462235
+    Path: event:/SFX/VO/SZ/VO_SZ_Clown_Fish
+  <VO_SZ_ClownfishDesc>k__BackingField:
+    Guid:
+      Data1: 1658368535
+      Data2: 1309571465
+      Data3: 1017538695
+      Data4: -1774251862
+    Path: event:/SFX/VO/SZ/VO_SZ_Clown_Fish_Desc
+  <VO_SZ_GreenTurtle>k__BackingField:
+    Guid:
+      Data1: 819961302
+      Data2: 1129127302
+      Data3: -1275123579
+      Data4: 185618188
+    Path: event:/SFX/VO/SZ/VO_SZ_Green_Turtle
+  <VO_SZ_GreenTurtleDesc>k__BackingField:
+    Guid:
+      Data1: -1181754687
+      Data2: 1339672075
+      Data3: -192996683
+      Data4: 579612205
+    Path: event:/SFX/VO/SZ/VO_SZ_Green_Turtle_Desc
+  <VO_TZ_BlueWhale>k__BackingField:
+    Guid:
+      Data1: -1254696863
+      Data2: 1094311927
+      Data3: 176170930
+      Data4: -2074345494
+    Path: event:/SFX/VO/TZ/VO_TZ_Blue_Whale
+  <VO_TZ_BlueWhaleDesc>k__BackingField:
+    Guid:
+      Data1: -1738051258
+      Data2: 1205064806
+      Data3: -300849748
+      Data4: -1484268473
+    Path: event:/SFX/VO/TZ/VO_TZ_Blue_Whale_Desc
+  <VO_TZ_FireflySquid>k__BackingField:
+    Guid:
+      Data1: 365158240
+      Data2: 1139098873
+      Data3: 871933830
+      Data4: -1550222033
+    Path: event:/SFX/VO/TZ/VO_TZ_Firefly_Squid
+  <VO_TZ_FireflySquidDesc>k__BackingField:
+    Guid:
+      Data1: -1318377005
+      Data2: 1257944594
+      Data3: -2071362884
+      Data4: 1882198323
+    Path: event:/SFX/VO/TZ/VO_TZ_Firefly_Squid_Desc
+  <VO_TZ_GiantOctopus>k__BackingField:
+    Guid:
+      Data1: 1733988875
+      Data2: 1122270194
+      Data3: 592105097
+      Data4: -1333694761
+    Path: event:/SFX/VO/TZ/VO_TZ_Giant_Octopus
+  <VO_TZ_GiantOctopusDesc>k__BackingField:
+    Guid:
+      Data1: 815780865
+      Data2: 1228798279
+      Data3: -174081357
+      Data4: 707698418
+    Path: event:/SFX/VO/TZ/VO_TZ_Giant_Octopus_Desc
+  <VO_TZ_SpiderCrab>k__BackingField:
+    Guid:
+      Data1: 1458210518
+      Data2: 1284588829
+      Data3: -1854394984
+      Data4: 701929402
+    Path: event:/SFX/VO/TZ/VO_TZ_Spider_Crab
+  <VO_TZ_SpiderCrabDesc>k__BackingField:
+    Guid:
+      Data1: -484877314
+      Data2: 1146855834
+      Data3: 1593803679
+      Data4: 700716249
+    Path: event:/SFX/VO/TZ/VO_TZ_Spider_Crab_Desc
+  <VO_TZ_Sunfish>k__BackingField:
+    Guid:
+      Data1: 603036723
+      Data2: 1119974036
+      Data3: 1977110709
+      Data4: -95344392
+    Path: event:/SFX/VO/TZ/VO_TZ_Sunfish
+  <VO_TZ_SunfishDesc>k__BackingField:
+    Guid:
+      Data1: 1552341917
+      Data2: 1295142232
+      Data3: -1148965725
+      Data4: -457239814
+    Path: event:/SFX/VO/TZ/VO_TZ_Sunfish_Desc
+  <VO_MZ_Anglerfish>k__BackingField:
+    Guid:
+      Data1: -2038654936
+      Data2: 1338879884
+      Data3: 97924761
+      Data4: 2118557959
+    Path: event:/SFX/VO/MZ/VO_MZ_Angler_Fish
+  <VO_MZ_AnglerfishDesc>k__BackingField:
+    Guid:
+      Data1: 44316244
+      Data2: 1194439972
+      Data3: -187453816
+      Data4: 1414338487
+    Path: event:/SFX/VO/MZ/VO_MZ_Angler_Fish_Desc
+  <VO_MZ_CookieCutter>k__BackingField:
+    Guid:
+      Data1: 665036491
+      Data2: 1155281834
+      Data3: -1283804760
+      Data4: -1905516372
+    Path: event:/SFX/VO/MZ/VO_MZ_Cookie_Cutter
+  <VO_MZ_CookieCutterDesc>k__BackingField:
+    Guid:
+      Data1: 1573195218
+      Data2: 1308639265
+      Data3: 42185858
+      Data4: -690564253
+    Path: event:/SFX/VO/MZ/VO_MZ_Cookie_Cutter_Desc
+  <VO_MZ_GulperEel>k__BackingField:
+    Guid:
+      Data1: -1369863634
+      Data2: 1201834880
+      Data3: 1090811059
+      Data4: -1008360747
+    Path: event:/SFX/VO/MZ/VO_MZ_Gulper_Eel
+  <VO_MZ_GulperEelDesc>k__BackingField:
+    Guid:
+      Data1: 190431297
+      Data2: 1113968457
+      Data3: -1296345439
+      Data4: 454624450
+    Path: event:/SFX/VO/MZ/VO_MZ_Gulper_Eel_Desc
+  <VO_MZ_DumboOctopus>k__BackingField:
+    Guid:
+      Data1: -139228123
+      Data2: 1229247108
+      Data3: -1437823298
+      Data4: -2023704533
+    Path: event:/SFX/VO/MZ/VO_MZ_Dumbo_Octopus
+  <VO_MZ_DumboOctopusDesc>k__BackingField:
+    Guid:
+      Data1: -1859309981
+      Data2: 1253884991
+      Data3: 52199079
+      Data4: 965856465
+    Path: event:/SFX/VO/MZ/VO_MZ_Dumbo_Octopus_Desc
 --- !u!1 &5198397898280333016
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,5 +534,6 @@ MonoBehaviour:
   gameSoundVolume: 1
   musicVolume: 1
   ambienceVolume: 1
+  voVolume: 1
   musicChangeCooldown: 5
   playMusicOrAmbienceDelay: 2

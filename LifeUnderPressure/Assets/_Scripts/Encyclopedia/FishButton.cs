@@ -17,7 +17,7 @@ public class FishButton : MonoBehaviour
     public Transform[] habitat;
     private Encyclopedia encyclopedia;
 
-    private FishState fishState;
+    private FishState fishState = FishState.None;
     private bool inQuest;
 
     public bool no = false; 

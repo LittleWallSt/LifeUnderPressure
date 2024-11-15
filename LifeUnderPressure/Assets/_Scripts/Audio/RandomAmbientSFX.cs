@@ -19,6 +19,8 @@ public class RandomAmbientSFX : MonoBehaviour
 
     private void Update()
     {
+        if (!LevelVolume.Current) return;
+
         if (LevelVolume.Current.Level == 2)
         {
             if (timer < 0f)

@@ -10,7 +10,8 @@ public class VolumeSlider : MonoBehaviour
         MASTER,
         SFX,
         MUSIC,
-        AMBIENCE
+        AMBIENCE,
+        VO
     }
 
     [Header("Type")]
@@ -22,8 +23,7 @@ public class VolumeSlider : MonoBehaviour
     {
         volumeSlider = GetComponentInChildren<Slider>();
     }
-
-    private void Update()
+    private void OnEnable()
     {
         switch (volumeType)
         {
@@ -39,27 +39,36 @@ public class VolumeSlider : MonoBehaviour
             case VolumeType.AMBIENCE:
                 volumeSlider.value = AudioManager.instance.ambienceVolume;
                 break;
+            case VolumeType.VO:
+                volumeSlider.value = AudioManager.instance.voVolume;
+                break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
                 break;
         }
     }
-
     public void OnSliderValueChanged()
     {
         switch (volumeType)
         {
             case VolumeType.MASTER:
                 AudioManager.instance.masterVolume = volumeSlider.value;
+                DataManager.Write("Volume_Master", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.SFX:
                 AudioManager.instance.gameSoundVolume = volumeSlider.value;
+                DataManager.Write("Volume_SFX", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.MUSIC:
                 AudioManager.instance.musicVolume = volumeSlider.value;
+                DataManager.Write("Volume_Music", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.AMBIENCE:
                 AudioManager.instance.ambienceVolume = volumeSlider.value;
+                DataManager.Write("Volume_Ambience", (int)(volumeSlider.value * 100f));
+                break;
+            case VolumeType.VO:
+                AudioManager.instance.voVolume = volumeSlider.value;
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);

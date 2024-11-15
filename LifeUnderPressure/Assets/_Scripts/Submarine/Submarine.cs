@@ -26,6 +26,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private PauseMenu pauseMenu = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Light sun = null;
+    [SerializeField] private Animator redlightAnimator = null;
     [SerializeField] private Material cracksMaterial = null;
     [SerializeField] private Material depthMeterMaterial = null;
     [SerializeField] private float crackLevel1 = 0.25f;
@@ -177,10 +178,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
         Money = DataManager.Get("Money", 0);
 
         Vector3 spawnPosition = GameManager.Instance ? GameManager.Instance.InitialSpawnPoint : Vector3.zero;
-        spawnPosition.x = DataManager.Get("SpawnPositionX", Mathf.RoundToInt(spawnPosition.x));
-        spawnPosition.y = DataManager.Get("SpawnPositionY", Mathf.RoundToInt(spawnPosition.y));
-        spawnPosition.z = DataManager.Get("SpawnPositionZ", Mathf.RoundToInt(spawnPosition.z));
-        transform.position = spawnPosition;
+        spawnPosition.x = DataManager.Get("SpawnPositionX", (int)GameManager.Instance.InitialSpawnPoint.x);
+        spawnPosition.y = DataManager.Get("SpawnPositionY", (int)GameManager.Instance.InitialSpawnPoint.y);
+        spawnPosition.z = DataManager.Get("SpawnPositionZ", (int)GameManager.Instance.InitialSpawnPoint.z);
+        //transform.position = spawnPosition;
+        transform.position = GameManager.Instance.InitialSpawnPoint;
 
         Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
         transform.eulerAngles = eulerAngles;
@@ -319,23 +321,19 @@ public class Submarine : MonoBehaviour, IDepthDependant
         rb.position = pos;
     }
 
-
     private void LCStressCalculation(float depth)
     {
         stress = (((1000f + (depth / 11000f * 50f)) * 9.81f * depth * radiusOfHull) / (2f * thicknessOfHull)) / 101325f;
 
+        bool warning = false;
         if (!Cave.Inside && stress > 100)
         {
-            float diff = stress - 100f;
-            health.DealDamage((diff / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
-            UpdateDepthMeterMaterial(true);
-            warningInstance.setParameterByName("shouldPlay", 1);
+            warning = true;
+            health.DealDamage(((stress - 100f) / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
         }
-        else
-        {
-            UpdateDepthMeterMaterial(false);
-            warningInstance.setParameterByName("shouldPlay", 0);
-        }
+        UpdateDepthMeterMaterial(warning);
+        redlightAnimator.SetBool("Warning", warning);
+        warningInstance.setParameterByName("shouldPlay", warning ? 1 : 0);
     }
 
     public void DamageSubmarine(float damage, DamageType damageType)

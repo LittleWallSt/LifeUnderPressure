@@ -12,12 +12,22 @@ public static class DataManager
     private static Action OnSaveData;
     private static string FilePath;
 
+    private static string Profile = "main";
     public static void Init()
     {
-        FilePath = Application.persistentDataPath + "/testsave00.sav";
+        UpdateFilePath();
         LoadData();
     }
-
+    public static void SetProfile(string profile)
+    {
+        if (profile != Profile) Reset();
+        Profile = profile;
+        UpdateFilePath();
+    }
+    private static void UpdateFilePath()
+    {
+        FilePath = Application.persistentDataPath + "/" + Profile + ".sav";
+    }
     public static void SaveData()
     {
         Call_OnSaveData();
@@ -86,14 +96,36 @@ public static class DataManager
         }
         return false;
     }
+    public static bool Remove(string name)
+    {
+        if (!Exist(name)) return false;
+
+        DataStruct dataToRemove = new DataStruct() { name = "NULL" };
+        foreach (DataStruct dataStruct in Data)
+        {
+            if (dataStruct.name == name)
+            {
+                dataToRemove = dataStruct;
+                break;
+            }
+        }
+        if(dataToRemove.name != "NULL")
+        {
+            Data.Remove(dataToRemove);
+            return true;
+        }
+        return false;
+    }
     public static void Clear()
     {
-        if (!File.Exists(FilePath + "/testsave00.sav")) return;
-        File.Delete(FilePath + "/testsave00.sav");
+        if (!File.Exists(FilePath)) return;
+
+        File.Delete(FilePath);
+        Reset();
     }
     public static void Reset()
     {
-        Data = null;
+        Data = new List<DataStruct>();
         OnSaveData = null;
     }
     // Action

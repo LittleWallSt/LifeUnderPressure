@@ -30,7 +30,7 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
 
     // Janko >>
-    private EventInstance SFX_Current_Instance;
+    private static EventInstance SFX_Current_Instance;
     // Janko <<
 
     private void OnValidate()
@@ -39,11 +39,14 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
     }
     private void Start()
     {
-        // Janko >>
-        SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
-        SFX_Current_Instance.start();
-        SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
-        // Janko <<
+        if (!SFX_Current_Instance.isValid())
+        {
+            // Janko >>
+            SFX_Current_Instance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Current);
+            SFX_Current_Instance.start();
+            SFX_Current_Instance.setParameterByName("currentSoundPlay", 0);
+            // Janko <<
+        }
 
         Setup();
         IDL_AssignToGameManager();
@@ -90,7 +93,7 @@ public class UnderwaterCurrent : MonoBehaviour, IDistanceLoad
         if (Triggering.Contains(this)) Triggering.Remove(this);
 
         // Janko >>
-        SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
+        //SFX_Current_Instance.stop(STOP_MODE.ALLOWFADEOUT);
         // Janko <<
     }
     private void OnDrawGizmos()

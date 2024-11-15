@@ -22,10 +22,14 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)]
     public float ambienceVolume = 1f;
 
+    [Range(0f, 1f)]
+    public float voVolume = 1f;
+
     private Bus masterBus;
     private Bus sfxBus;
     private Bus musicBus;
     private Bus ambienceBus;
+    private Bus voBus;
 
     public static AudioManager instance { get; private set; }
 
@@ -35,11 +39,13 @@ public class AudioManager : MonoBehaviour
     // We will use all ambience sound in a single event for each level? Use this approach then.
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
+    private EventInstance menuMusicEventInstance;
 
     private EventInstance currentInstance;
     private float timeLastSetInstance;
 
     private bool isPaused = false;
+    private bool inMenu = false;
 
     [Header("Music Settings")]
     [SerializeField]
@@ -72,9 +78,10 @@ public class AudioManager : MonoBehaviour
         sfxBus = RuntimeManager.GetBus("bus:/SFX_Bus");
         musicBus = RuntimeManager.GetBus("bus:/Music_Bus");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience_Bus");
+        voBus = RuntimeManager.GetBus("bus:/VO_Bus");
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         PauseMenu.Assign_OnPaused(OnPause);
         Cave.Assign_OnInsideChanged(OnCaveInsideChanged);
@@ -82,10 +89,45 @@ public class AudioManager : MonoBehaviour
         LevelVolume.Assign_OnCurrentVolumeChanged(SetArea);
         InitializeMusic(FMODEvents.instance.musicToPlay);
         InitializeAmbience(FMODEvents.instance.ambienceToPlay);
+        menuMusicEventInstance = CreateInstance(FMODEvents.instance.menuMusic);
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
-        currentInstance = musicEventInstance;
-        currentInstance.start();
+        if (InternalSettings.Get)
+        {
+            while (!InternalSettings.DataLoaded)
+            {
+                yield return null;
+            }
+        }
+
+        SceneManager.activeSceneChanged += OnSceneChanged;
+        Scene scena = SceneManager.GetActiveScene();
+        OnSceneChanged(new Scene(), scena);
+
+        masterVolume = DataManager.Get("Volume_Master", 100) / 100f;
+        gameSoundVolume = DataManager.Get("Volume_SFX", 100) / 100f;
+        musicVolume = DataManager.Get("Volume_Music", 100) / 100f;
+        ambienceVolume = DataManager.Get("Volume_Ambience", 100) / 100f;
     }
+
+    private void OnSceneChanged(Scene oldScene, Scene newScene)
+    {
+        if (newScene.name.Contains("MainMenu"))
+        {
+            inMenu = true;
+            ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            currentInstance = menuMusicEventInstance;
+            currentInstance.start();
+        }
+        else
+        {
+            inMenu = false;
+            menuMusicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     public void AssignSubmarineEvents(Submarine submarine)
     {
         Submarine.Instance.getSubmarineHealth().Assign_OnDie(OnDie);
@@ -123,11 +165,12 @@ public class AudioManager : MonoBehaviour
         sfxBus.setVolume(gameSoundVolume);
         musicBus.setVolume(musicVolume);
         ambienceBus.setVolume(ambienceVolume);
+        voBus.setVolume(voVolume);
     }
 
     private void SetMusicOrAmbience()
     {
-        if (Cave.Inside) return;
+        if (Cave.Inside || inMenu) return;
 
         if (!IsPlaying(currentInstance) && Time.time - timeLastSetInstance > musicChangeCooldown)
         {
@@ -159,8 +202,8 @@ public class AudioManager : MonoBehaviour
     {
         if (Cave.Inside)
         {
-            ambienceEventInstance.setParameterByName("Area", 3);
-            musicEventInstance.setParameterByName("Area", 3);
+            ambienceEventInstance.setParameterByName("Area", InternalSettings.CaveZone);
+            musicEventInstance.setParameterByName("Area", InternalSettings.CaveZone);
             currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentInstance = ambienceEventInstance;
             currentInstance.start();
@@ -289,5 +332,7 @@ public class AudioManager : MonoBehaviour
         if (Submarine.Instance) Submarine.Instance.getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         PauseMenu.Remove_OnPaused(OnPause);
         Cave.Remove_OnInsideChanged(OnCaveInsideChanged);
+
+        SceneManager.activeSceneChanged -= OnSceneChanged;
     }
 }
