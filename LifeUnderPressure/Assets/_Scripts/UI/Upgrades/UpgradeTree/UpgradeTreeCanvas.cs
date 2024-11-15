@@ -38,6 +38,12 @@ public class UpgradeTreeCanvas : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+            EnableMenu(false);
+    }
+
 
 
     public bool EnableMenu(bool state)
