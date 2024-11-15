@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Spider_Crab
+  m_EditorClassIdentifier: 
+  voicelineName: Spider_Crab
+  voicelines:
+  - This crab can live for over 100 years, making it one of the longest-living crab
+    species.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1458210518
+      Data2: 1284588829
+      Data3: -1854394984
+      Data4: 701929402
+    Path: event:/SFX/VO/TZ/VO_TZ_Spider_Crab

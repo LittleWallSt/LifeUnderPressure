@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Angler_Fish
+  m_EditorClassIdentifier: 
+  voicelineName: Angler_Fish
+  voicelines:
+  - "The angler fish, these guys look pretty terrifying. Similar to the firefly squid
+    light attracts them. \r\n\r\n"
+  - The depth range for them is between 100 and 4,500 meters.
+  charPerSecond: 6
+  OnVoicelineStart:
+  - Guid:
+      Data1: -2038654936
+      Data2: 1338879884
+      Data3: 97924761
+      Data4: 2118557959
+    Path: event:/SFX/VO/MZ/VO_MZ_Angler_Fish

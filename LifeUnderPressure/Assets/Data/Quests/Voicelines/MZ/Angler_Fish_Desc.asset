@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Angler_Fish_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: 'Angler_Fish_Desc '
+  voicelines:
+  - 'The male angler fish has the quality of attaching itself to the female and never
+    detaching from her. '
+  - It will fuse with the female and after a while becomes a part of her.
+  charPerSecond: 6
+  OnVoicelineStart:
+  - Guid:
+      Data1: 44316244
+      Data2: 1194439972
+      Data3: -187453816
+      Data4: 1414338487
+    Path: event:/SFX/VO/MZ/VO_MZ_Angler_Fish_Desc

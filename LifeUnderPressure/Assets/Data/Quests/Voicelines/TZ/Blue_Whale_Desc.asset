@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Blue_Whale_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: Blue_Whale_Desc
+  voicelines:
+  - 'The blue whale is one of the world''s biggest animals. '
+  - Stay near the surface of the ocean at a depth of around 100 meters, but can dive
+    down as far as 500 meters.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1738051258
+      Data2: 1205064806
+      Data3: -300849748
+      Data4: -1484268473
+    Path: event:/SFX/VO/TZ/VO_TZ_Blue_Whale_Desc

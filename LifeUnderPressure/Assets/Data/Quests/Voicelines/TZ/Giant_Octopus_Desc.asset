@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Giant_Octopus_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: Giant_Octopus_Desc
+  voicelines:
+  - 'Giant Pacific Octopus, is a big and old octopus. They live for about four years.
+    Usually staying between 0 and 200 meters. '
+  - They enjoy staying in crevices and rocks where they can hide from predators and
+    ambush prey.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: 815780865
+      Data2: 1228798279
+      Data3: -174081357
+      Data4: 707698418
+    Path: event:/SFX/VO/TZ/VO_TZ_Giant_Octopus_Desc

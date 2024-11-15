@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Blue_Whale
+  m_EditorClassIdentifier: 
+  voicelineName: Blue_Whale
+  voicelines:
+  - Blue Whales are able to eat up to 6 tons of krill in one day. And weight between
+    3 and 5 tons when fully grown.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1254696863
+      Data2: 1094311927
+      Data3: 176170930
+      Data4: -2074345494
+    Path: event:/SFX/VO/TZ/VO_TZ_Blue_Whale

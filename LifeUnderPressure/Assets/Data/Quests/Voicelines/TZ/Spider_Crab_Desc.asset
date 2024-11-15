@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Spider_Crab_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: Spider_Crab_Desc
+  voicelines:
+  - 'Spider Crab is one of the largest crabs in the world. It has a leg span that
+    can reach up to four meters and weigh over 40 kilograms. '
+  - Spider crabs are found on the sea floor around around 200 - 550 meters.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: -484877314
+      Data2: 1146855834
+      Data3: 1593803679
+      Data4: 700716249
+    Path: event:/SFX/VO/TZ/VO_TZ_Spider_Crab_Desc
