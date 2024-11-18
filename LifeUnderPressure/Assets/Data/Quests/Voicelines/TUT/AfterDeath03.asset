@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: AfterDeath03
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: AfterDeath03
+  voicelines:
+  - "Hello and welcome. Before anything else I\u2019d like you to go and get the
+    sea log."
+  - There was an accident and we kind of need it.
+  charPerSecond: 12
   OnVoicelineStart: []

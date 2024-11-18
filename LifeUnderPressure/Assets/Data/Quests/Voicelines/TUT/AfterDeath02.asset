@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: AfterDeath02
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: AfterDeath02
+  voicelines:
+  - 'Welcome, you must be the new captain. You should go get the sea log that was
+    lost in a submarine accident. '
+  - "I\u2019ll give you some estimated coordinates."
+  charPerSecond: 12
   OnVoicelineStart: []

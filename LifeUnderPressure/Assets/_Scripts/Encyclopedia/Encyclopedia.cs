@@ -56,15 +56,30 @@ public class Encyclopedia : MonoBehaviour
     private void Start()
     {
         ClearText();
+
+        ping.onInArea += PlayShortVoiceline;
         lockImage.SetActive(true);
         gameObject.SetActive(false);
         currFish = null;
+
+        
     }
 
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
             EnableMenu(false, submarineBody);
+    }
+
+    void PlayShortVoiceline()
+    {
+        if (currFish == null || currFish.fishInfo == null) return;
+        if (currFish.fishInfo.shortVO!= null && !currFish.shortPlayed)
+        {
+            VoicelinesUI.Instance.CallVoiceline(currFish.fishInfo.shortVO);
+            currFish.shortPlayed = true; 
+        }
+
     }
 
     void ClearText()

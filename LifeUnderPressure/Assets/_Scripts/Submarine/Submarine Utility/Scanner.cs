@@ -198,12 +198,21 @@ public class Scanner : MonoBehaviour
         if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
 
         FishInfo fishInfo = fish.FishInfo;
+
+        //Aleki <<
+
+        if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
+
+        //Aleksis>>
+
         fishInfo.locked = false;
         GameManager.Instance.ScannedFish(fishInfo);
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         QuestSystem.ScannedFish(fishInfo);
         DataManager.Write("FishScanned_" + fishInfo.fishName, 1);
         // Aleksis <<
+
+
 
         if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 

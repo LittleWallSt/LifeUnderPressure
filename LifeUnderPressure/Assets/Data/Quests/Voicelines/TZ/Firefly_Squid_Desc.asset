@@ -19,7 +19,7 @@ MonoBehaviour:
   - They are known for their striking blue and green glow, which might be the reason
     they are attracted to light. Firefly squid stay in depths of about 100 and 300
     meters.
-  charPerSecond: 10
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: -1318377005

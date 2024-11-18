@@ -20,7 +20,9 @@ public class FishButton : MonoBehaviour
     private FishState fishState = FishState.None;
     private bool inQuest;
 
-    public bool no = false; 
+    public bool no = false;
+
+    public bool shortPlayed = false;
 
     private void Start()
     {

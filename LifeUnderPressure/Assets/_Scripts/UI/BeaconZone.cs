@@ -25,6 +25,12 @@ public class BeaconZone : MonoBehaviour
 
     private RectTransform pingTransformRect;  // Transform rect from UI ping
 
+
+    //>> Ulia change
+    public Action onInArea;
+
+    //<<<
+
     void Start()
     {
         // We need the icon rect transform so we can move it
@@ -91,6 +97,8 @@ public class BeaconZone : MonoBehaviour
         // Area outside range
         else
         {
+            Debug.Log("invoked");
+            onInArea.Invoke();
             EnablePing(false);
         }
     }

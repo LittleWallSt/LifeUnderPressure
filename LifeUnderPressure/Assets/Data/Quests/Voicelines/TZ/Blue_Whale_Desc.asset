@@ -17,7 +17,7 @@ MonoBehaviour:
   - 'The blue whale is one of the world''s biggest animals. '
   - Stay near the surface of the ocean at a depth of around 100 meters, but can dive
     down as far as 500 meters.
-  charPerSecond: 10
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: -1738051258

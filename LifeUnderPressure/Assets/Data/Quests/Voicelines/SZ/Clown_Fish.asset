@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Clown_Fish
   voicelines:
   - This one matures as a male but can change its sex to female.
-  charPerSecond: 10
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: 1069963866

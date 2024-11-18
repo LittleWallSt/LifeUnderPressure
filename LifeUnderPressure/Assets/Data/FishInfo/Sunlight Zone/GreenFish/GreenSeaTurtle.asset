@@ -27,3 +27,5 @@ MonoBehaviour:
     type: 3}
   locked: 0
   scale: 0
+  shortVO: {fileID: 11400000, guid: 46af54598bc3b3c4dbdf88186df24f6d, type: 2}
+  longVO: {fileID: 11400000, guid: d11d4eb9c588e4442823257bb1c477c3, type: 2}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: Collision01
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: Collision01
+  voicelines:
+  - Navigate more carefully, will you?
+  charPerSecond: 12
   OnVoicelineStart: []

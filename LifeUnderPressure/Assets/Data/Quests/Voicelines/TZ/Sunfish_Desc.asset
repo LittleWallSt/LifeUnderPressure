@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - This is one of the largest bony fishes in the world. Sunfish are usually around
     jellyfish as this is their primary food source at depths from 0 to 600 meters.
-  charPerSecond: 10
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: 1552341917

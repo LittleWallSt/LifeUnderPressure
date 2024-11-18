@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: TooDeep01
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: TooDeep01
+  voicelines:
+  - Woah, not so fast. Pressure is high and you don't have the upgrades yet. We want
+    to get all the scans, don't we?
+  charPerSecond: 12
   OnVoicelineStart: []

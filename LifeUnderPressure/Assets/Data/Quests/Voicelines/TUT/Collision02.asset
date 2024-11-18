@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: Collision02
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: Collision02
+  voicelines:
+  - "Won\u2019t get many scans if you're gonna keep crashing, are we?"
+  charPerSecond: 12
   OnVoicelineStart: []

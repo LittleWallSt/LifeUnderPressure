@@ -17,7 +17,7 @@ MonoBehaviour:
   - Cute little Dumbo octopus. Given their name from the movie since they share the
     feature of having abnormally big ears.
   - Usually found at the bottom of the sea at a depth of around 4,000 meters.
-  charPerSecond: 6
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: -1859309981

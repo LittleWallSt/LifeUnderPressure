@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: TooDeep02
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: TooDeep02
+  voicelines:
+  - Really? You know that you have to upgrade the submarine before going deeper.
+  charPerSecond: 12
   OnVoicelineStart: []

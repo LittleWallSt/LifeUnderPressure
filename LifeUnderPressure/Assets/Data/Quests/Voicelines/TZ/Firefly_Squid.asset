@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Firefly_Squid
   voicelines:
   - Firefly Squid, delicious. Good scan.
-  charPerSecond: 10
+  charPerSecond: 12
   OnVoicelineStart:
   - Guid:
       Data1: 365158240

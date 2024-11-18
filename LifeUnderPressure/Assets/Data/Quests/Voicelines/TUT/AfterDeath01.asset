@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: AfterDeath01
   m_EditorClassIdentifier: 
-  voicelineName: 
-  voicelines: []
-  charPerSecond: 10
+  voicelineName: AfterDeath01
+  voicelines:
+  - 'Hello Captain, maybe you will be the one to finish the mission. '
+  - There is a sea log at the wreckage, I can give you a waypoint, but it won't be
+    100 percent accurate.
+  charPerSecond: 12
   OnVoicelineStart: []

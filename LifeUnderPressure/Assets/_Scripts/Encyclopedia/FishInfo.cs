@@ -24,6 +24,9 @@ public class FishInfo : ScriptableObject
     [Tooltip("Fishing scales in meters for the preview.")]
     public float scale;
 
+    public Voiceline shortVO; 
+    public Voiceline longVO;
+
     [HideInInspector]public Action OnLockedChange;
 
 }
