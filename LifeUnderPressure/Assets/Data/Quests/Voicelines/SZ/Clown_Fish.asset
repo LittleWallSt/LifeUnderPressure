@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Clown_Fish
+  m_EditorClassIdentifier: 
+  voicelineName: Clown_Fish
+  voicelines:
+  - This one matures as a male but can change its sex to female.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1069963866
+      Data2: 1212676719
+      Data3: -499151952
+      Data4: -1212462235
+    Path: event:/SFX/VO/SZ/VO_SZ_Clown_Fish

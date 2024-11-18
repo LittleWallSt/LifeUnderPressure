@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Green_Turtle_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: Green_Turtle_Desc
+  voicelines:
+  - Green Sea Turtles are big graceful marine reptiles. They are known for their
+    distinctive olive-green shells.
+  - Mostly they inhabit shallow coastal waters, coral reefs, seagrass beds and can
+    be found near shorelines.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1181754687
+      Data2: 1339672075
+      Data3: -192996683
+      Data4: 579612205
+    Path: event:/SFX/VO/SZ/VO_SZ_Green_Turtle_Desc

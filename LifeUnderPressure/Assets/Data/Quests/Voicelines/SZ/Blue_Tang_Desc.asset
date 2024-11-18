@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Blue_Tang_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: Blue_Tang_Desc
+  voicelines:
+  - 'Blue tang is a small colored fish known for its vibrant blue body. '
+  - Usually staying in coral reefs, rocky and inshore areas. They stay between 2
+    and 40 meters.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1969945049
+      Data2: 1186019685
+      Data3: 1140934067
+      Data4: 551537710
+    Path: event:/SFX/VO/SZ/VO_SZ_Blue_Tang_Desc
