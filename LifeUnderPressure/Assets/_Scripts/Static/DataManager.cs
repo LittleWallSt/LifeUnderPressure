@@ -9,15 +9,20 @@ using UnityEngine;
 public static class DataManager
 {
     private static List<DataStruct> Data;
+    private static List<DataStruct> SettingsData;
 
     private static Action OnSaveData;
-    private static string FilePath;
 
     private static string Profile = "main";
+    private static string SettingsProfile = "settings";
+
+    private static string FilePath;
+    private static string SettingsPath = Application.persistentDataPath + "/" + SettingsProfile + ".sav";
+
     public static void Init()
     {
         UpdateFilePath();
-        LoadData();
+        LoadAllData();
     }
     public static void SetProfile(string profile)
     {
@@ -29,57 +34,74 @@ public static class DataManager
     {
         FilePath = Application.persistentDataPath + "/" + Profile + ".sav";
     }
-    public static void SaveData()
+    public static void SaveMainData()
     {
         Call_OnSaveData();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(FilePath);
         bf.Serialize(file, Data);
         file.Close();
-        UnityEngine.Debug.Log("Data saved in binary format at " + FilePath);
+        UnityEngine.Debug.Log("Main Data saved in binary format at " + FilePath);
+    }
+    public static void SaveSettingsData()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(SettingsPath);
+        bf.Serialize(file, SettingsData);
+        file.Close();
+        UnityEngine.Debug.Log("Settings Data saved in binary format at " + SettingsPath);
     }
 
-    public static IEnumerator LoadData()
+    public static IEnumerator LoadAllData()
     {
-        if (File.Exists(FilePath))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(FilePath, FileMode.Open);
-            Data = (List<DataStruct>)bf.Deserialize(file);
-            file.Close();
-        }
-        else
-        {
-            UnityEngine.Debug.Log("No save data found");
-            Data = new List<DataStruct>();
-        }
+        LoadSaveFile(ref Data, FilePath);
+        LoadSaveFile(ref SettingsData, SettingsPath);
         yield return null;
     }
-    private static void Add(string name, int value)
+    private static void LoadSaveFile(ref List<DataStruct> Dataset, string Path)
     {
-        Data.Add(new DataStruct(name, value));
+        Dataset = new List<DataStruct>();
+        if (!File.Exists(Path)) return;
+
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Path, FileMode.Open);
+        Dataset = (List<DataStruct>)bf.Deserialize(file);
+        file.Close();
     }
-    private static void Update(string name, int value)
+    private static void Add(string name, int value, ref List<DataStruct> dataset)
     {
-        for (int i = 0; i < Data.Count; i++)
+        dataset.Add(new DataStruct(name, value));
+    }
+    private static void Update(string name, int value, ref List<DataStruct> dataset)
+    {
+        for (int i = 0; i < dataset.Count; i++)
         {
-            if (Data[i].name == name)
+            if (dataset[i].name == name)
             {
-                DataStruct d = Data[i];
+                DataStruct d = dataset[i];
                 d.value = value;
-                Data[i] = d;
+                dataset[i] = d;
                 break;
             }
         }
     }
     public static void Write(string name, int value)
     {
-        if (Exist(name))
+        if (Exist(name, Data))
         {
-            Update(name, value);
+            Update(name, value, ref Data);
             return;
         }
-        Add(name, value);
+        Add(name, value, ref Data);
+    }
+    public static void WriteSettings(string name, int value)
+    {
+        if (Exist(name, SettingsData))
+        {
+            Update(name, value, ref SettingsData);
+            return;
+        }
+        Add(name, value, ref SettingsData);
     }
     public static int Get(string name, int defaultValue)
     {
@@ -89,9 +111,17 @@ public static class DataManager
         }
         return defaultValue;
     }
-    public static bool Exist(string name)
+    public static int GetSettings(string name, int defaultValue)
     {
-        foreach(DataStruct dataStruct in Data)
+        foreach(DataStruct dataStruct in SettingsData)
+        {
+            if (dataStruct.name == name) return dataStruct.value;
+        }
+        return defaultValue;
+    }
+    public static bool Exist(string name, List<DataStruct> dataset)
+    {
+        foreach(DataStruct dataStruct in dataset)
         {
             if(dataStruct.name == name) return true;
         }
@@ -99,7 +129,7 @@ public static class DataManager
     }
     public static bool Remove(string name)
     {
-        if (!Exist(name)) return false;
+        if (!Exist(name, Data)) return false;
 
         DataStruct dataToRemove = new DataStruct() { name = "NULL" };
         foreach (DataStruct dataStruct in Data)

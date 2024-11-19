@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblePrefab: {fileID: 239804550180244025, guid: 1a133768be7e2ff43a11cb1437d884a9,
     type: 3}
-  updateTime: 1
+  updateTime: 2
   bubbleCount: 6
-  bubbleSpawnDistance: 10
-  bubbleRenderDistance: 20
+  bubbleSpawnDistance: 15
+  bubbleRenderDistance: 25

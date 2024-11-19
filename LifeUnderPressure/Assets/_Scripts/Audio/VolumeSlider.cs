@@ -56,19 +56,19 @@ public class VolumeSlider : MonoBehaviour
         {
             case VolumeType.MASTER:
                 AudioManager.instance.masterVolume = volumeSlider.value;
-                DataManager.Write("Volume_Master", (int)(volumeSlider.value * 100f));
+                DataManager.WriteSettings("Volume_Master", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.SFX:
                 AudioManager.instance.gameSoundVolume = volumeSlider.value;
-                DataManager.Write("Volume_SFX", (int)(volumeSlider.value * 100f));
+                DataManager.WriteSettings("Volume_SFX", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.MUSIC:
                 AudioManager.instance.musicVolume = volumeSlider.value;
-                DataManager.Write("Volume_Music", (int)(volumeSlider.value * 100f));
+                DataManager.WriteSettings("Volume_Music", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.AMBIENCE:
                 AudioManager.instance.ambienceVolume = volumeSlider.value;
-                DataManager.Write("Volume_Ambience", (int)(volumeSlider.value * 100f));
+                DataManager.WriteSettings("Volume_Ambience", (int)(volumeSlider.value * 100f));
                 break;
             case VolumeType.VO:
                 AudioManager.instance.voVolume = volumeSlider.value;

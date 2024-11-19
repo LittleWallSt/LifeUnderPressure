@@ -41,7 +41,7 @@ public class InternalSettings : MonoBehaviour
     private IEnumerator LoadDataProcess()
     {
         DataManager.Init();
-        yield return StartCoroutine(DataManager.LoadData());
+        yield return StartCoroutine(DataManager.LoadAllData());
 
         yield return null;
         DataLoaded = true;

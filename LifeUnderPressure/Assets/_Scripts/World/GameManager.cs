@@ -6,33 +6,24 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Required Components")]
     [SerializeField] private Submarine submarine = null;
     [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Terrain terrain = null;
+
+    [Header("Game Process")]
     [SerializeField] private Quest[] questLine = null;
+    [SerializeField] private ScannedFishInfo[] scannedFishEvents = null;
     [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
     [SerializeField] private Vector3 initialEulerAngles = Vector3.zero;
     [SerializeField] private float delayToStartNewQuest = 2.5f;
-    [SerializeField] private float distanceLoadFrequency = 0.5f;
-    [SerializeField] private float distanceToLoad = 25f;
-
-    [SerializeField] private ScannedFishInfo[] scannedFishEvents = null;
-
-    [Header("Debug")]
-    [SerializeField] private int eventIndex = 0;
 
     public static GameManager Instance { get; private set; }
     public Vector3 InitialSpawnPoint => initialSpawnPoint;
     public Vector3 InitialEulerAngles => initialEulerAngles;
 
-    private List<IDistanceLoad> idls = new List<IDistanceLoad>();
-
-    private Action onDataLoaded;
-
-    private float distanceLoadTimer = 0f;
     private int questIndex = -1;
     private bool questsFinished = false;
-
     private bool inTutorial = false;
 
     [Serializable]
@@ -42,11 +33,23 @@ public class GameManager : MonoBehaviour
         public UnityEvent _event;
         public bool invoked;
     }
+
+    [Header("Distance Load")]
+    [SerializeField] private float distanceLoadFrequency = 0.5f;
+    [SerializeField] private float distanceToLoad = 25f;
+
+    private List<IDistanceLoad> idls = new List<IDistanceLoad>();
+    private float distanceLoadTimer = 0f;
+
+    [Header("Debug")]
+    [SerializeField] private int eventIndex = 0;
+
     [ContextMenu("Invoke Fish Event")]
     private void InvokeEventDebug()
     {
         scannedFishEvents[eventIndex]._event.Invoke();
     }
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -62,7 +65,6 @@ public class GameManager : MonoBehaviour
 
         if (encyclopedia) encyclopedia.LoadFishData();
         DataManager.Assign_OnSaveData(StoreQuestData);
-        Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
         inTutorial = DataManager.Get("InTutorial", 0) == 1 ? true : false;
         if (submarine) submarine.Init(initialSpawnPoint, initialEulerAngles);
@@ -205,19 +207,7 @@ public class GameManager : MonoBehaviour
         DataManager.Write("InTutorial", state ? 1 : 0);
         if (state) QuestSystem.Reset();
     }
-    // Action
-    public void Assign_OnDataLoaded(Action action)
-    {
-        onDataLoaded += action;
-    }
-    public void Remove_OnDataLoaded(Action action)
-    {
-        onDataLoaded -= action;
-    }
-    private void Call_OnDataLoaded()
-    {
-        if (onDataLoaded != null) onDataLoaded();
-    }
+
     private void OnDestroy()
     {
         QuestSystem.Reset();

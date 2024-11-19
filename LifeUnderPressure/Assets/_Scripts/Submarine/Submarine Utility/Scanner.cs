@@ -340,7 +340,7 @@ public class Scanner : MonoBehaviour
 
     
     // Setters
-    //Aleksis>>
+    // Aleksis >>
     public void SetScanTimer(float timer)
     {
         scanTimer = timer;
@@ -353,6 +353,7 @@ public class Scanner : MonoBehaviour
     {
         depletingSpeed = speed;
     }
+    // Aleksis <<
 }
 
 public enum ScannerState

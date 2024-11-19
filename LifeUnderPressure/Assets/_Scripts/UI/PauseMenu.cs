@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +8,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject buttons = null;
     [SerializeField] private GameObject controlsMenu = null;
     [SerializeField] private GameObject controlsButton = null;
-    // Janko >>
     [SerializeField] private GameObject settingsMenu = null;
-    // Janko <<
     [SerializeField] private GameObject settings = null;
 
     private static Action<bool> onPaused = null;
@@ -49,7 +45,7 @@ public class PauseMenu : MonoBehaviour
     {
         buttons.SetActive(true);
         settingsMenu.SetActive(false);
-        DataManager.SaveData();
+        DataManager.SaveSettingsData();
     }
     // Janko <<
 
@@ -72,7 +68,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Button_Save()
     {
-        DataManager.SaveData();
+        DataManager.SaveMainData();
     }
     public void Button_Restart()
     {

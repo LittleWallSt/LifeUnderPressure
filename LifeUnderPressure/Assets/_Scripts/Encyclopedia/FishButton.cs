@@ -81,7 +81,6 @@ public class FishButton : MonoBehaviour
     public void LoadFishInfo()
     {
         fishInfo.locked = DataManager.Get("FishScanned_" + fishInfo.name, 0) == 1 ? false : true;
-        Debug.Log(fishInfo.name + " " + fishInfo.locked);
         if (!fishInfo.locked)
         {
             fishState = FishState.Scanned;

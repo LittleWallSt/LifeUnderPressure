@@ -19,17 +19,13 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         //UpdateNode();
     }
 
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (UpgradeTreeCanvas.Instance!=null && !UpgradeTreeCanvas.Instance.hoverActive)
         {
-            
             UpgradeTreeCanvas.Instance.SetHoverMenu(true, description, 
                 getRequirementText(skillNode), gameObject.GetComponent<RectTransform>());
             UpgradeTreeCanvas.Instance.hoverActive = true;
-
-
         }
     }
 
@@ -70,14 +66,11 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         } 
     }
 
-    
-
     public void UpdateNode()
     {
         level.text = "Lv: " + skillNode.GetUpgrade().Level.ToString();
         //skillNode.GetUpgrade();
     }
-
 
     public void AssignUpgrade()
     {
@@ -114,8 +107,6 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         // Janko >> 
         AudioManager.instance.PlayOneShot(FMODEvents.instance.upgradeFX, Camera.main.transform.position);
         // Janko <<
-
-
     }
 
 
@@ -148,10 +139,6 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         UnlockUpgrade(true);
         
     }
-
-   
-
-    
 }
 
 [Serializable]

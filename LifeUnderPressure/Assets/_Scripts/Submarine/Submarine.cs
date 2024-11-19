@@ -7,63 +7,74 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class Submarine : MonoBehaviour, IDepthDependant
 {
-    // Janko >>
-    private EventInstance warningInstance;
-    // Janko <<
+    // Deprecated
+    [HideInInspector][SerializeField] private float inDeepMaxTime = 10f;
+    [HideInInspector][SerializeField] private float deepOffset = 0f;
+    [HideInInspector][SerializeField] private UpgradeCanvas upgradeCanvas = null;
+    [HideInInspector][SerializeField] private TMP_Text heightText = null;
+    [HideInInspector][SerializeField] private TMP_Text warningText = null;
+    [HideInInspector][SerializeField] private TMP_Text dockText = null;
 
-    [SerializeField] private float inDeepMaxTime = 10f;
-    [SerializeField] private float deepOffset = 0f;
+    [Header("Submarine Parameters")]
     [SerializeField] private float radiusOfHull = 10f;
     [SerializeField] private float thicknessOfHull = 10f;
     [SerializeField] private float maxStressTreshold = 24f;
     [SerializeField] private float stressDamageModifier = 0.25f;
-    [SerializeField] private TMP_Text heightText = null;
-    [SerializeField] private TMP_Text warningText = null;
-    [SerializeField] private TMP_Text dockText = null;
-    [SerializeField] private TMP_Text zoneText = null;
-    [SerializeField] private UpgradeCanvas upgradeCanvas = null;
-    [SerializeField] private UpgradeTreeCanvas upgradeTreeCanvas = null;
-    [SerializeField] private PauseMenu pauseMenu = null;
-    [SerializeField] private Encyclopedia encyclopedia = null;
-    [SerializeField] private Light sun = null;
-    [SerializeField] private Animator redlightAnimator = null;
-    [SerializeField] private Material cracksMaterial = null;
-    [SerializeField] private Material depthMeterMaterial = null;
-    [SerializeField] private float crackLevel1 = 0.25f;
-    [SerializeField] private float crackLevel2 = 0.50f;
-    [SerializeField] private float crackLevel3 = 0.75f;
-    [SerializeField] private DyingEvent dyingEvent = null;
-
-    [SerializeField] private GameObject submarineBody;
-    [SerializeField] private MeshRenderer submarineMeshRenderer = null;
-    [SerializeField] private MeshRenderer depthMeterMeshRenderer = null;
-
-
-    [SerializeField] private Voiceline[] Collision = null;
-
-    private Material cracksMaterialInstance = null;
-    private Material depthMeterMaterialInstance = null;
-
-    private GameObject currentMenu = null;
-    private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
-
-    private Health health;
-    private SubmarineMovement movement;
-    private Rigidbody rb;
 
     private int money = 0;
     private float stress = 0f;
     private float inDeepTime = 0f;
     private bool docked = false;
-
     private float currDepth = 0f;
+
+    [Header("Dependencies")]
+    [SerializeField] private UpgradeTreeCanvas upgradeTreeCanvas = null;
+    [SerializeField] private PauseMenu pauseMenu = null;
+    [SerializeField] private Encyclopedia encyclopedia = null;
+    [SerializeField] private Light sun = null;
+
+    [Header("Windshield Cracks")]
+    [SerializeField] private Material cracksMaterial = null;
+    [SerializeField] private float crackLevel1 = 0.25f;
+    [SerializeField] private float crackLevel2 = 0.50f;
+    [SerializeField] private float crackLevel3 = 0.75f;
+
+    private Material cracksMaterialInstance = null;
+
+    [Header("Depth Meter")]
+    [SerializeField] private Material depthMeterMaterial = null;
+    [SerializeField] private MeshRenderer depthMeterMeshRenderer = null;
+
+    private Material depthMeterMaterialInstance = null;
+
+    [Header("UI")]
+    [SerializeField] private TMP_Text zoneText = null;
+
+    private GameObject currentMenu = null;
+
+    [Header("Submarine Components")]
+    [SerializeField] private GameObject submarineBody;
+    [SerializeField] private MeshRenderer submarineMeshRenderer = null;
+    [SerializeField] private Animator redlightAnimator = null;
+    [SerializeField] private DyingEvent dyingEvent = null;
+
+    private List<SubmarineUpgrade> upgrades = new List<SubmarineUpgrade>();
+    private Health health;
+    private SubmarineMovement movement;
+    private Rigidbody rb;
+
+    [Header("Audio")]
+    [SerializeField] private Voiceline[] Collision = null;
+
+    private EventInstance warningInstance;
+
     public static Submarine Instance { get; private set; } = null;
-    public int Money 
+    public int Money
     {
-        get 
-        { 
-            return money; 
-        } 
+        get
+        {
+            return money;
+        }
         set
         {
             if (value < 0)
@@ -74,18 +85,24 @@ public class Submarine : MonoBehaviour, IDepthDependant
             else money = value;
 
             DataManager.Write("Money", money);
-        } 
+        }
     }
     private void Awake()
     {
+        // Singleton initialization
         if (Instance == null) Instance = this;
         else { Destroy(gameObject); return; }
 
         DepthMeterMaterialSetup();
         CracksMaterialSetup();
+        AssignSubmarineComponents();
+    }
+    private void AssignSubmarineComponents()
+    {
         movement = GetComponent<SubmarineMovement>();
         health = GetComponent<Health>();
         rb = GetComponent<Rigidbody>();
+        if (!movement || !health || !rb) throw new System.Exception("CRUCIAL COMPONENT MISSING");
     }
     private void DepthMeterMaterialSetup()
     {
@@ -165,7 +182,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         warningText.gameObject.SetActive(false);
         if (upgradeCanvas != null) upgradeCanvas.gameObject.SetActive(false);
         if (pauseMenu != null) pauseMenu.EnableMenu(false);
-        EnableDockText(false);
+        // EnableDockText(false); // deprecated
         inDeepTime = 0f;
 
         health.Assign_OnDie(Die);
@@ -184,10 +201,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
         //spawnPosition.x = DataManager.Get("SpawnPositionX", (int)GameManager.Instance.InitialSpawnPoint.x);
         //spawnPosition.y = DataManager.Get("SpawnPositionY", (int)GameManager.Instance.InitialSpawnPoint.y);
         //spawnPosition.z = DataManager.Get("SpawnPositionZ", (int)GameManager.Instance.InitialSpawnPoint.z);
-        //transform.position = spawnPosition;
         rb.position = position;
 
-        //Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
         rb.rotation = Quaternion.Euler(euler);
 
         AudioManager.instance.AssignSubmarineEvents(this);
@@ -205,10 +220,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
         LCStressCalculation(-transform.position.y);
 
-        if (heightText)
-        {
-            heightText.text = string.Format("{0:F1}m", depth);
-        }
+        // Deprecated
+        //if (heightText)
+        //{
+        //    heightText.text = string.Format("{0:F1}m", depth);
+        //}
     }
     private void LerpSunIntensity(LevelVolume current, float depth)
     {
@@ -253,7 +269,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
 
     //Ulia chnanges>>
-
     private void EncyclopediaInput()
     {
         if (!Input.GetKeyDown(KeyCode.Q)) return;
@@ -273,8 +288,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
             currentMenu = upgradeTreeCanvas.EnableMenu(!upgradeTreeCanvas.gameObject.activeSelf, submarineBody) ? upgradeTreeCanvas.gameObject : null;
         }
     }
-
-
     //<<
     private void UpgradeCanvasInput()
     {
@@ -312,20 +325,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if (currentMenu == upgradeCanvas) currentMenu = null;
     }
 
-
     private void Die(Vector3 direction, DamageType damageType)
     {
-        //Debug.Log("Submarine died");
         dyingEvent.OnDie(transform.position, direction, damageType);
-    }
-
-    public void ForceSetPosition(Vector3 pos)
-    {
-        rb.position = pos;
-    }
-    public void ForceSetEuler(Vector3 euler)
-    {
-        rb.rotation = Quaternion.Euler(euler);
     }
 
     private void LCStressCalculation(float depth)
@@ -357,6 +359,16 @@ public class Submarine : MonoBehaviour, IDepthDependant
             }
         }
     }
+    public void UpdateZoneText()
+    {
+        if (zoneText.text != LevelVolume.GetCurrentZoneName())
+        {
+            zoneText.gameObject.SetActive(false);
+            zoneText.enabled = true;
+            zoneText.gameObject.SetActive(true);
+        }
+        zoneText.text = LevelVolume.GetCurrentZoneName();
+    }
     private void StorePositionData()
     {
         DataManager.Write("SpawnPositionX", Mathf.RoundToInt(transform.position.x));
@@ -376,7 +388,31 @@ public class Submarine : MonoBehaviour, IDepthDependant
         getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         // Janko <<
     }
+    // Events
+    private void OnLevelVolumeChanged()
+    {
+        UpdateZoneText();
+    }
+        // Janko >>
+    private void OnDie(Vector3 direction, DamageType type)
+    {
+        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    private void OnRespawn()
+    {
+        warningInstance.start();
+    }
+        // Janko <<
     // Setters
+    public void ForceSetPosition(Vector3 pos)
+    {
+        rb.position = pos;
+    }
+    public void ForceSetEuler(Vector3 euler)
+    {
+        rb.rotation = Quaternion.Euler(euler);
+    }
     public void SetDocked(bool state)
     {
         docked = state;
@@ -397,21 +433,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         Money += amount;
     }
-    private void OnLevelVolumeChanged()
-    {
-        UpdateZoneText();
-    }
-    public void UpdateZoneText()
-    {
-        if(zoneText.text != LevelVolume.GetCurrentZoneName())
-        {
-            zoneText.gameObject.SetActive(false);
-            zoneText.enabled = true;
-            zoneText.gameObject.SetActive(true);
-        }
-        zoneText.text = LevelVolume.GetCurrentZoneName();
-    }
-    // IDepthDependant
+    // IDepthDependant [deprecated]
     public bool IDD_OnDepthLevelEnter(int level)
     {
         return true;
@@ -435,13 +457,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         return gameObject.GetInstanceID();
     }
 
-    // Gizmos
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + new Vector3(0f, deepOffset, 0f), 0.1f);
-    }
-
+    // Getters
     public SubmarineMovement getSubmarineMovement()
     {
         return movement;
@@ -461,27 +477,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         return currDepth;
     }
-    private void OnGUI()
-    {
-        // Shows the stress on screen
-        //GUI.Label(new Rect(1000, 10, 500, 100), string.Format("LC Stress: {0}", stress), InternalSettings.Get.DebugStyle);
-    }
-
-    // Janko >>
-    private void OnDie(Vector3 direction, DamageType type)
-    {
-        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-    }
-
-    private void OnRespawn()
-    {
-        warningInstance.start();
-    }
-
 
     public Voiceline[] getCollisionVoicelines()
     {
         return Collision;
     }
-    // Janko << 
 }

@@ -8,6 +8,7 @@ public class VoicelinesUI : MonoBehaviour
     [SerializeField] GameObject voicelineBox;
     public static VoicelinesUI Instance { get; private set; } = null;
 
+    private bool gameIsPaused = false;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -18,8 +19,12 @@ public class VoicelinesUI : MonoBehaviour
     private void Start()
     {
         ResetBox();
+        PauseMenu.Assign_OnPaused(OnGamePaused);
     }
-
+    private void OnGamePaused(bool paused)
+    {
+        gameIsPaused = paused;
+    }
     public void CallVoiceline(Voiceline v)
     {
         if (v.delay <= 0)
@@ -58,6 +63,8 @@ public class VoicelinesUI : MonoBehaviour
         //if (v.onVoicelineStart == null) yield return null;
         foreach (string line in v.voicelines)
         {
+            while (gameIsPaused) yield return null;
+
             if (v.onVoicelineStart != null && v.onVoicelineStart.Length > j && !v.onVoicelineStart[j].IsNull) //AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
                 //Submarine.Instance.transform.position); //?? play voiceline idk 
                 AudioManager.instance?.PlayVoiceline(v.onVoicelineStart[j]); 
@@ -90,5 +97,9 @@ public class VoicelinesUI : MonoBehaviour
         }
 
         ResetBox();
+    }
+    private void OnDestroy()
+    {
+        PauseMenu.Remove_OnPaused(OnGamePaused);
     }
 }

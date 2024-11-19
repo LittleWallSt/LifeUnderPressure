@@ -100,10 +100,11 @@ public class AudioManager : MonoBehaviour
         Scene scena = SceneManager.GetActiveScene();
         OnSceneChanged(new Scene(), scena);
 
-        masterVolume = DataManager.Get("Volume_Master", 100) / 100f;
-        gameSoundVolume = DataManager.Get("Volume_SFX", 100) / 100f;
-        musicVolume = DataManager.Get("Volume_Music", 100) / 100f;
-        ambienceVolume = DataManager.Get("Volume_Ambience", 100) / 100f;
+        masterVolume = DataManager.GetSettings("Volume_Master", 100) / 100f;
+        gameSoundVolume = DataManager.GetSettings("Volume_SFX", 100) / 100f;
+        musicVolume = DataManager.GetSettings("Volume_Music", 100) / 100f;
+        ambienceVolume = DataManager.GetSettings("Volume_Ambience", 100) / 100f;
+        voVolume = gameSoundVolume;
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
@@ -225,6 +226,7 @@ public class AudioManager : MonoBehaviour
     private void OnPause(bool paused)
     {
         currentInstance.setPaused(paused);
+        currentVoiceline.setPaused(paused);
         isPaused = paused;
     }
 

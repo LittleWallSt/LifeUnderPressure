@@ -10,7 +10,7 @@ public static class QuestSystem
     private static Action OnQuestUpdated;
     private static Action OnQuestFinished;
 
-    private static float _TimeLastQuestFinished;
+    public static float TimeLastQuestFinished { get; private set; }
 
     private static bool LoadedQuestData;
 
@@ -27,7 +27,6 @@ public static class QuestSystem
                 {
                     if (CurrentQuest.VoicelineOnProgress.Length > i && CurrentQuest.VoicelineOnProgress[i])
                         VoicelinesUI.Instance.CallVoiceline(CurrentQuest.VoicelineOnProgress[i]);
-                    //AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnProgress[i], Submarine.Instance.transform.position);
                 }
             }
         }
@@ -39,7 +38,6 @@ public static class QuestSystem
         CurrentQuest = quest;
         if(quest.VoicelineOnAssign) 
             VoicelinesUI.Instance.CallVoiceline(quest.VoicelineOnAssign);
-        //AudioManager.instance?.PlayOneShot(quest.AudioOnAssign, Submarine.Instance.transform.position);
 
         CurrentValues = new int[quest.Fishes.Count];
 
@@ -63,7 +61,7 @@ public static class QuestSystem
     {
         if (CurrentQuest.VoicelineOnEnd)
             VoicelinesUI.Instance.CallVoiceline(CurrentQuest.VoicelineOnEnd);
-        //AudioManager.instance?.PlayOneShot(CurrentQuest.AudioOnEnd, Submarine.Instance.transform.position);
+
         AcquireRewards();
 
         for (int i = 0; i < CurrentValues.Length; i++)
@@ -71,7 +69,7 @@ public static class QuestSystem
             DataManager.Remove("QuestCurrentValue_" + i);
         }
         CurrentQuest = null;
-        _TimeLastQuestFinished = Time.time;
+        TimeLastQuestFinished = Time.time;
         Call_OnQuestFinished();
     }
 
@@ -139,14 +137,6 @@ public static class QuestSystem
     {
         OnQuestFinished -= action;
     }
-    public static void Reset()
-    {
-        CurrentQuest = null;
-        CurrentValues = null;
-        OnQuestUpdated = null;
-        _TimeLastQuestFinished = Time.time;
-        LoadedQuestData = false;
-    }
     // Getters
     public static List<Quest.FishAmount> GetQuestReqs()
     {
@@ -168,5 +158,12 @@ public static class QuestSystem
     {
         return CurrentQuest != null;
     }
-    public static float TimeLastQuestFinished => _TimeLastQuestFinished;
+    public static void Reset()
+    {
+        CurrentQuest = null;
+        CurrentValues = null;
+        OnQuestUpdated = null;
+        TimeLastQuestFinished = Time.time;
+        LoadedQuestData = false;
+    }
 }

@@ -1,15 +1,15 @@
-using TMPro;
 using UnityEngine;
 using FMOD.Studio;
 using System.Collections;
-using System;
 
 public class SubmarineMovement : MonoBehaviour
 {
+    [Header("Debug")]
     [SerializeField] private bool debugMode = false;
+    [Header("Submarine Components")]
     [SerializeField] private Camera submarineCamera = null;
     [SerializeField] private Animator controlAnimator = null;
-    [SerializeField] private float controlRigLerp = 2f;
+    [SerializeField] private float controlRigLerpSpeed = 2f;
     [Header("Screen Shake")]
     [SerializeField] private float screenShakeTimer = 0.5f;
     [SerializeField] private float screenShakeFrequency = 0.1f;
@@ -42,7 +42,6 @@ public class SubmarineMovement : MonoBehaviour
     private float frontControl = 0f;
     private float rightControl = 0f;
 
-    // Janko and Aleksis
     private EventInstance propellerSFX;
 
     //Boost change >>
@@ -150,8 +149,8 @@ public class SubmarineMovement : MonoBehaviour
 
     private void UpdateControlRig()
     {
-        frontControl = Mathf.Lerp(frontControl, input.z, Time.deltaTime * controlRigLerp);
-        rightControl = Mathf.Lerp(rightControl, input.x, Time.deltaTime * controlRigLerp);
+        frontControl = Mathf.Lerp(frontControl, input.z, Time.deltaTime * controlRigLerpSpeed);
+        rightControl = Mathf.Lerp(rightControl, input.x, Time.deltaTime * controlRigLerpSpeed);
 
         controlAnimator.SetFloat("FrontBack", frontControl);
         controlAnimator.SetFloat("LeftRight", rightControl);
