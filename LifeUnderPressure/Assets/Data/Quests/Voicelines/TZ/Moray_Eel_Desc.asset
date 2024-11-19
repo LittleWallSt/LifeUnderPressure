@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Moray_Eel_Desc
+  m_EditorClassIdentifier: 
+  voicelineName: 
+  voicelines:
+  - "You risked this much for the Moray Eel? Submarines aren\u2019t cheap, but good
+    job. We want all the scans."
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1430109511
+      Data2: 1093424990
+      Data3: 460228540
+      Data4: -480422173
+    Path: event:/SFX/VO/TZ/VO_TZ_Moray_Eel_Desc

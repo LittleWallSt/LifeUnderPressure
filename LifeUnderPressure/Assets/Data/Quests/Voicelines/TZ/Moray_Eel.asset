@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
+  m_Name: Moray_Eel
+  m_EditorClassIdentifier: 
+  voicelineName: 
+  voicelines:
+  - Moray Eel's tend to hide in caves and crevices as they ambush-hunt.
+  charPerSecond: 10
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1259669299
+      Data2: 1271127293
+      Data3: -2039378242
+      Data4: -538473791
+    Path: event:/SFX/VO/TZ/VO_TZ_Moray_Eel
