@@ -43,7 +43,7 @@ public class AudioManager : MonoBehaviour
 
     private EventInstance currentInstance;
     private EventInstance currentVoiceline;
-    private float timeLastSetInstance;
+    private float timeLastSetInstance = -100f;
 
     private bool isPaused = false;
     private bool inMenu = false;

@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
 
     private float hp = 0;
 
+    
+
     private DamageType lastDamageType;
     private Vector3 lastDamageDirection;
 
@@ -58,6 +60,7 @@ public class Health : MonoBehaviour
         Value -= damage;
         lastDamageType = damageType;
         lastDamageDirection = direction;
+        
         Call_OnDamage(damageType);
     }
     private void Call_OnDie(Vector3 direction, DamageType damageType)

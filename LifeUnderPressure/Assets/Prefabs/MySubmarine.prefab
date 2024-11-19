@@ -5495,7 +5495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6858abb4516aae344881bf286b3aac33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f1d5baae1d26404a8a639a07e5c7766, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19099,6 +19099,9 @@ MonoBehaviour:
   submarineBody: {fileID: 7225724622715461617}
   submarineMeshRenderer: {fileID: 4375975015138722327}
   depthMeterMeshRenderer: {fileID: 8825506992747990702}
+  Collision:
+  - {fileID: 11400000, guid: 5cae83f64ede37c479fb061e9b0fdd7e, type: 2}
+  - {fileID: 11400000, guid: 06242677a0d923546b1c64d759a3783f, type: 2}
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0

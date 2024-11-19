@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using FMOD.Studio;
 using System.Collections;
+using System;
 
 public class SubmarineMovement : MonoBehaviour
 {
@@ -271,6 +272,12 @@ public class SubmarineMovement : MonoBehaviour
         else
         {
             health.DealDamage(damage, -impulse.normalized, DamageType.Crashed);
+            if (Submarine.Instance.getCollisionVoicelines()!=null && Submarine.Instance.getCollisionVoicelines().Length>0)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, Submarine.Instance.getCollisionVoicelines().Length);
+                VoicelinesUI.Instance?.CallVoiceline(Submarine.Instance.getCollisionVoicelines()[randomIndex]);  
+            }
+            
         }
 
         if (shaking)
@@ -296,7 +303,7 @@ public class SubmarineMovement : MonoBehaviour
 
         float power = 0f;
 
-        targetPosition = startPosition + new Vector3(Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y));
+        targetPosition = startPosition + new Vector3(UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y), UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y), UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y));
 
         // lerp to random spots while timer is on
         while (continuousShaking || shakeDuration < screenShakeTimer)
@@ -308,7 +315,7 @@ public class SubmarineMovement : MonoBehaviour
             {
                 power = 0f;
                 recPosition = targetPosition;
-                targetPosition = startPosition + new Vector3(Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y), Random.Range(shakePositionOffset.x, shakePositionOffset.y));
+                targetPosition = startPosition + new Vector3(UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y), UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y), UnityEngine.Random.Range(shakePositionOffset.x, shakePositionOffset.y));
             }
             shakeDuration += Time.deltaTime;
             yield return null;
