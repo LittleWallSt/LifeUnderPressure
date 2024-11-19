@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour
     private EventInstance menuMusicEventInstance;
 
     private EventInstance currentInstance;
+    private EventInstance currentVoiceline;
     private float timeLastSetInstance;
 
     private bool isPaused = false;
@@ -93,13 +94,7 @@ public class AudioManager : MonoBehaviour
         musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
-        if (InternalSettings.Get)
-        {
-            while (!InternalSettings.DataLoaded)
-            {
-                yield return null;
-            }
-        }
+        yield return InternalSettings.WaitForDataLoading();
 
         SceneManager.activeSceneChanged += OnSceneChanged;
         Scene scena = SceneManager.GetActiveScene();
@@ -194,6 +189,7 @@ public class AudioManager : MonoBehaviour
     // Events
     public void StartCaveCollapse()
     {
+        // current instance is ambience, stop it and play music
         currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         SwapCurrentInstance();
         StartCoroutine(StartInstanceDelay(2f));
@@ -213,7 +209,7 @@ public class AudioManager : MonoBehaviour
             SetArea();
         }
     }
-    private void OnDie(DamageType type)
+    private void OnDie(Vector3 direction, DamageType type)
     {
         currentInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         isPaused = true;
@@ -272,6 +268,12 @@ public class AudioManager : MonoBehaviour
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+    public void PlayVoiceline(EventReference sound)
+    {
+        if (currentVoiceline.isValid()) currentVoiceline.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        currentVoiceline = CreateInstance(sound);
+        currentVoiceline.start();
     }
 
     // Used for sounds that will need to loop and will be played and stopped somewhere.

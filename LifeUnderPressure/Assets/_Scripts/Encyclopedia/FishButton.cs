@@ -43,10 +43,6 @@ public class FishButton : MonoBehaviour
                 SetIcon();
             }
         });
-
-        // Aleksis >>
-        GameManager.Instance.Assign_OnDataLoaded(LoadFishInfo);
-        // Aleksis <<
     }
     void ChangeImage()
     {
@@ -82,10 +78,19 @@ public class FishButton : MonoBehaviour
     
 
     // Aleksis >>
-    private void LoadFishInfo()
+    public void LoadFishInfo()
     {
         fishInfo.locked = DataManager.Get("FishScanned_" + fishInfo.name, 0) == 1 ? false : true;
-        GameManager.Instance.Remove_OnDataLoaded(LoadFishInfo);
+        Debug.Log(fishInfo.name + " " + fishInfo.locked);
+        if (!fishInfo.locked)
+        {
+            fishState = FishState.Scanned;
+            SetIcon();
+        }
+        if (TryGetComponent<Image>(out Image image))
+        {
+            image.sprite = fishInfo.locked ? lockedFishImage : fishImage;
+        }
     }
     // Aleksis <<
 

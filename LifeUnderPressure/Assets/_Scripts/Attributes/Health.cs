@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
 
-    private Action<DamageType> onDie;
+    private Action<Vector3, DamageType> onDie;
     private Action onDamage;
     private Action onRespawn;
     private Action<float> onValueChanged;
@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     private float hp = 0;
 
     private DamageType lastDamageType;
+    private Vector3 lastDamageDirection;
 
     public float Value
     {
@@ -27,7 +28,7 @@ public class Health : MonoBehaviour
             if (value <= 0f)
             {
                 hp = 0f;
-                Call_OnDie(lastDamageType);
+                Call_OnDie(lastDamageDirection, lastDamageType);
             }
             else
             {
@@ -51,16 +52,17 @@ public class Health : MonoBehaviour
     {
         ResetHealth();
     }
-    public void DealDamage(float damage, DamageType damageType)
+    public void DealDamage(float damage, Vector3 direction, DamageType damageType)
     {
         if (Value <= 0f) return; 
         Value -= damage;
         lastDamageType = damageType;
+        lastDamageDirection = direction;
         Call_OnDamage(damageType);
     }
-    private void Call_OnDie(DamageType damageType)
+    private void Call_OnDie(Vector3 direction, DamageType damageType)
     {
-        if (onDie != null) onDie(damageType);
+        if (onDie != null) onDie(direction, damageType);
     }
     private void Call_OnDamage(DamageType damageType)
     {
@@ -74,7 +76,7 @@ public class Health : MonoBehaviour
     {
         if (onRespawn != null) onRespawn();
     }
-    public void Assign_OnDie(Action<DamageType> action)
+    public void Assign_OnDie(Action<Vector3, DamageType> action)
     {
         onDie += action;
     }
@@ -90,7 +92,7 @@ public class Health : MonoBehaviour
     {
         onRespawn += action;
     }
-    public void Remove_OnDie(Action<DamageType> action)
+    public void Remove_OnDie(Action<Vector3, DamageType> action)
     {
         onDie -= action;
     }

@@ -4,7 +4,7 @@ using System.Reflection;
 
 public enum DamageType
 {
-    [Description("trying to reach the deapth beyond your grasp.")]
+    [Description("trying to reach the depth beyond your grasp.")]
     Depth,
     [Description("from crashing into the jagged rocks.")]
     Crashed,

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &711938986180098465
 Transform:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8557383089668817290
 Transform:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4453060831835564925
 Transform:
   m_ObjectHideFlags: 0
@@ -414,6 +414,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: submarineInterrior
       objectReference: {fileID: 0}
+    - target: {fileID: 6557103134779198890, guid: 1088922d14836504dbe5ee3e0a8863f5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f6307f666d89e34b9513f10840cd46e, type: 2}
+    - target: {fileID: 8826351013989330403, guid: 1088922d14836504dbe5ee3e0a8863f5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f6307f666d89e34b9513f10840cd46e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -483,6 +493,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a638df5569039194a90358bdaa903ac0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: b3f1883fdd9397a4ca33e92b566b527b,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: 432c1bda8a2996d46bdf7c3b77bb6da8,
         type: 3}
       propertyPath: m_Name

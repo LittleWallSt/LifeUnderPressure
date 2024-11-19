@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,10 +62,16 @@ public class Encyclopedia : MonoBehaviour
         lockImage.SetActive(true);
         gameObject.SetActive(false);
         currFish = null;
-
-        
     }
-
+    // Aleksis >>
+    public void LoadFishData()
+    {
+        foreach (FishButton button in GetComponentsInChildren<FishButton>())
+        {
+            button.LoadFishInfo();
+        }
+    }
+    // Aleksis <<
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -124,7 +131,7 @@ public class Encyclopedia : MonoBehaviour
             if (firstHighlight!=null) firstHighlight.SetActive(false);
         }
         fishInfo = fishButton.fishInfo;
-        fishName.text = fishInfo.name;
+        fishName.text = fishInfo.fishName;
         smallDescription.text = fishInfo.infoWhere;
         if (currFish!=null)
         {

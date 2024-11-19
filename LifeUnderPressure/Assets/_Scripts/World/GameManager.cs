@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Submarine submarine = null;
-    [SerializeField] private UpgradeCanvas upgradeCanvas = null;
+    [SerializeField] private Encyclopedia encyclopedia = null;
     [SerializeField] private Terrain terrain = null;
     [SerializeField] private Quest[] questLine = null;
     [SerializeField] private Vector3 initialSpawnPoint = Vector3.zero;
@@ -58,17 +58,14 @@ public class GameManager : MonoBehaviour
     {
         InternalSettings.EnableCursor(false);
 
-        while (!InternalSettings.DataLoaded)
-        {
-            if (!InternalSettings.Get) throw new Exception("NO INTERNAL SETTINGS IN THE SCENE");
-            yield return null;
-        }
+        yield return InternalSettings.WaitForDataLoading();
+
+        if (encyclopedia) encyclopedia.LoadFishData();
         DataManager.Assign_OnSaveData(StoreQuestData);
         Call_OnDataLoaded();
         questIndex = DataManager.Get("QuestIndex", 0) - 1;
         inTutorial = DataManager.Get("InTutorial", 0) == 1 ? true : false;
-        submarine.Init();
-        upgradeCanvas?.SetupCanvas(submarine);
+        if (submarine) submarine.Init(initialSpawnPoint, initialEulerAngles);
     }
     private void Update()
     {
@@ -153,6 +150,13 @@ public class GameManager : MonoBehaviour
             scannedFishEvents[i]._event.Invoke();
             scannedFishEvents[i].invoked = true;
         }
+
+        QuestSystem.ScannedFish(fish);
+        DataManager.Write("FishScanned_" + fish.name, 1);
+    }
+    public void ResetEventForScannedFish(int index)
+    {
+        scannedFishEvents[index].invoked = false;
     }
     // Distance Load
     private void DistanceLoadProcess()

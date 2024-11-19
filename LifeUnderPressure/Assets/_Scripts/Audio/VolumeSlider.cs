@@ -25,6 +25,9 @@ public class VolumeSlider : MonoBehaviour
     }
     private void OnEnable()
     {
+        AudioManager manager = AudioManager.instance;
+        if (!manager) return;
+
         switch (volumeType)
         {
             case VolumeType.MASTER:

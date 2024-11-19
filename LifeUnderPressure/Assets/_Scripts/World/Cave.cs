@@ -15,6 +15,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     private Vector3 position;
 
     private float updateTime = 0f;
+    private int invokeIndex = -1;
 
     private static Action OnCaveInsideChanged;
 
@@ -31,12 +32,14 @@ public class Cave : MonoBehaviour, IDistanceLoad
             }
         }
     }
-    private void Start()
+    private IEnumerator Start()
     {
         IDL_AssignToGameManager();
         Assign_OnInsideChanged(UpdateInside);
-        GameManager.Instance.Assign_OnDataLoaded(OnDataLoaded);
         SetPosition();
+        Submarine.Instance.getSubmarineHealth().Assign_OnDie(OnPlayerDeath);
+        yield return InternalSettings.WaitForDataLoading();
+        OnDataLoaded();
     }
 
     private void SetPosition()
@@ -51,9 +54,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     private void OnDataLoaded()
     {
         collapsed = DataManager.Get("CaveCollapsed", 0) == 1 ? true : false;
-        animator.SetFloat("Offset", collapsed ? 0.95f : 0);
         UpdateCollapsed();
-        GameManager.Instance.Remove_OnDataLoaded(OnDataLoaded);
     }
     private void Update()
     {
@@ -71,12 +72,13 @@ public class Cave : MonoBehaviour, IDistanceLoad
         if (Inside) exit.gameObject.SetActive(!collapsed);
         else exit.gameObject.SetActive(collapsed);
 
+        animator.SetFloat("Offset", collapsed ? 0.95f : 0);
         animator.SetBool("Collapsed", collapsed);
     }
-    public void StartCaveCollapseSequence()
+    public void StartCaveCollapseSequence(int invokeIndex)
     {
-        Debug.Log("Start cave coll");
         AudioManager.instance.StartCaveCollapse();
+        this.invokeIndex = invokeIndex;
         animator.SetFloat("Offset", 0f);
         StartCoroutine(Collapse(collapseDelay));
     }
@@ -95,15 +97,61 @@ public class Cave : MonoBehaviour, IDistanceLoad
         {
             Debug.Log("outside when collapsed");
             Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(false);
-            //exit.gameObject.SetActive(collapsed);   
+            StartCoroutine(BlockExit());
+        }
+        else if (Inside && !collapsed)
+        {
+            exit.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("what that");
+        }
+    }
+    private IEnumerator BlockExit()
+    {
+        bool playerOnExit = CheckIfPlayerOnExit();
+
+        int count = 0;
+        while (playerOnExit)
+        {
+            yield return new WaitForSeconds(1f);
+
+            playerOnExit = CheckIfPlayerOnExit();
+            count++;
+            if(count > 50)
+            {
+                Debug.LogError("SUBMARINE IS ALWAYS ON EXIT. WHAT IS HAPPENING?");
+            }
+        }
+
+        exit.SetActive(true);
+    }
+    private bool CheckIfPlayerOnExit()
+    {
+        return Physics.CheckSphere(exit.transform.position, 10f, InternalSettings.SubmarineLayer);
+    }
+    private void PlayerDiedWhileCollapsing()
+    {
+        Submarine submarine = Submarine.Instance;
+        collapsed = false;
+        UpdateCollapsed();
+        GameManager.Instance.ResetEventForScannedFish(invokeIndex);
+        DataManager.Write("CaveCollapsed", 0);
+
+        if (submarine && submarine.getSubmarineMovement().GetContinuousShaking())
+            submarine.getSubmarineMovement().SetScreenShakeContinuous(false);
+    }
+    private void OnPlayerDeath(Vector3 direction, DamageType dType)
+    {
+        Debug.Log("duie");
+        if (Inside && collapsed)
+        {
+            PlayerDiedWhileCollapsing();
         }
     }
     private void OnDisable()
     {
-        if(Inside && collapsed) // player died in cave
-        {
-            
-        }
         if (Submarine.Instance)
         {
             Inside = GameManager.Instance.IsUnderground(Submarine.Instance.transform.position);
@@ -116,7 +164,8 @@ public class Cave : MonoBehaviour, IDistanceLoad
     }
     private void OnDestroy()
     {
-        Remove_OnInsideChanged(UpdateInside);
+        Submarine submarine = Submarine.Instance;
+        if(submarine) submarine.getSubmarineHealth().Remove_OnDie(OnPlayerDeath);
     }
     // IDL
     public void IDL_OffDistance()

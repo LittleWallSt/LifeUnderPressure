@@ -51,9 +51,11 @@ public class DyingEvent : MonoBehaviour
 
         StartCoroutine(OnStart());
 
-        OnStartSetup(GameManager.Instance.InitialSpawnPoint);
     }
-
+    private void Start()
+    {
+        OnStartSetup(GameManager.Instance.InitialSpawnPoint + new Vector3(-12, 0, 0));
+    }
 
     void OnStartSetup(Vector3 SealogPlacement)
     {
@@ -66,7 +68,7 @@ public class DyingEvent : MonoBehaviour
         
     }
 
-    public void OnDie(Vector3 placeOfDeath, DamageType damageType)
+    public void OnDie(Vector3 placeOfDeath, Vector3 direction, DamageType damageType)
     {
         if (damageType == DamageType.End) return; 
         if (encyclopedia!=null)encyclopedia.ClearSealog();
@@ -79,9 +81,7 @@ public class DyingEvent : MonoBehaviour
         if (sonar == null) sonar = FindAnyObjectByType<ImageAnimation>();
         if (sonar != null) sonar.enabled = false;
 
-        StartCoroutine(FadeOutAfterCooldown(placeOfDeath));
-        
-
+        StartCoroutine(FadeOutAfterCooldown(placeOfDeath, direction));
     }
 
     public void OnEnd()
@@ -104,20 +104,43 @@ public class DyingEvent : MonoBehaviour
         
     }
 
-    public void OnRespawn(Vector3 placeOfDeath)
+    public void OnRespawn(Vector3 placeOfDeath, Vector3 direction)
     {
+        submarine.ForceSetPosition(GameManager.Instance.InitialSpawnPoint);
+        submarine.ForceSetEuler(GameManager.Instance.InitialEulerAngles);
+
         submarine.enabled = true;
         submarine.getSubmarineMovement().enabled = true;
         dyingText.text = "";
 
-        submarine.ForceSetPosition(GameManager.Instance.InitialSpawnPoint);
-        submarine.transform.rotation = Quaternion.identity;
-
         submarine.getSubmarineMovement().ResetMovement();
         submarine.getSubmarineHealth().Respawn();
 
-        Instantiate(submarineBroken, placeOfDeath, Quaternion.identity);
-        tempSealog = Instantiate(sealogPickable, placeOfDeath + sealogOffset, Quaternion.identity);
+        Physics.SphereCast(placeOfDeath, 0.05f, Vector3.down, out RaycastHit hit, 100f);
+        if (hit.transform)
+        {
+            placeOfDeath = hit.point;
+            direction = hit.normal;
+        }
+        else direction = -direction;
+
+        float distance = 1f;
+        bool sealogBlocked = true;
+        int count = 0;
+        while (sealogBlocked)
+        {
+            distance += 1f;
+            sealogBlocked = Physics.CheckSphere(placeOfDeath + direction.normalized * distance, .2f);
+            if(++count > 5)
+            {
+                distance = 2f;
+                Debug.Log("brea");
+                break;
+            }
+        }
+
+        Instantiate(submarineBroken, placeOfDeath, Quaternion.Euler(0, Random.Range(0, 360), 0));
+        tempSealog = Instantiate(sealogPickable, placeOfDeath + direction.normalized * distance, Quaternion.identity);
 
         encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
 
@@ -135,7 +158,7 @@ public class DyingEvent : MonoBehaviour
         tempSealog.SetActive(false); 
     }
 
-    IEnumerator FadeOutAfterCooldown(Vector3 placeOfDeath)
+    IEnumerator FadeOutAfterCooldown(Vector3 placeOfDeath, Vector3 direction)
     {
         // Janko >>
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Death, placeOfDeath);
@@ -157,7 +180,7 @@ public class DyingEvent : MonoBehaviour
         // Janko<< 
         yield return new WaitForSecondsRealtime(blackScreenDuration);
         elapsedTime = 0f;
-        OnRespawn(placeOfDeath);
+        OnRespawn(placeOfDeath, direction);
         while (elapsedTime < fadeDuration) 
         {
             elapsedTime += Time.deltaTime;
@@ -186,7 +209,7 @@ public class DyingEvent : MonoBehaviour
         while (elapsedTime < chokingTime)
         {
             elapsedTime += Time.deltaTime;
-            Submarine.Instance.getSubmarineHealth().DealDamage(dmgPerFrame, DamageType.End);
+            Submarine.Instance.getSubmarineHealth().DealDamage(dmgPerFrame, Vector3.zero, DamageType.End);
 
             yield return null;
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class InternalSettings : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask fishLayer = new LayerMask();
     [SerializeField] private LayerMask environmentLayer = new LayerMask();
+    [SerializeField] private LayerMask submarineLayer = new LayerMask();
     [Header("Debug")]
     [SerializeField] private GUIStyle debugStyle = null;
 
@@ -32,6 +34,7 @@ public class InternalSettings : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+        DataLoaded = false;
 
         StartCoroutine(LoadDataProcess());
     }
@@ -43,8 +46,20 @@ public class InternalSettings : MonoBehaviour
         yield return null;
         DataLoaded = true;
     }
+    public static IEnumerator WaitForDataLoading()
+    {
+        while (!DataLoaded)
+        {
+            Debug.Log("waitng");
+            if (!Get) throw new Exception("NO INTERNAL SETTINGS IN THE SCENE");
+            yield return null;
+        }
+        Debug.Log("stop waitng");
+        yield return null;
+    }
     public static LayerMask FishLayer => Get.fishLayer;
     public static LayerMask EnvironmentLayer => Get.environmentLayer;
+    public static LayerMask SubmarineLayer => Get.submarineLayer;
     private void Start()
     {
         lastMousePosition = Input.mousePosition;

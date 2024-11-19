@@ -157,7 +157,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         LevelVolume.Assign_OnCurrentVolumeChanged(OnLevelVolumeChanged);
     }
 
-    public void Init()
+    public void Init(Vector3 position, Vector3 euler)
     {
         warningText.gameObject.SetActive(false);
         if (upgradeCanvas != null) upgradeCanvas.gameObject.SetActive(false);
@@ -177,15 +177,15 @@ public class Submarine : MonoBehaviour, IDepthDependant
         DataManager.Assign_OnSaveData(StorePositionData);
         Money = DataManager.Get("Money", 0);
 
-        Vector3 spawnPosition = GameManager.Instance ? GameManager.Instance.InitialSpawnPoint : Vector3.zero;
-        spawnPosition.x = DataManager.Get("SpawnPositionX", (int)GameManager.Instance.InitialSpawnPoint.x);
-        spawnPosition.y = DataManager.Get("SpawnPositionY", (int)GameManager.Instance.InitialSpawnPoint.y);
-        spawnPosition.z = DataManager.Get("SpawnPositionZ", (int)GameManager.Instance.InitialSpawnPoint.z);
+        //Vector3 spawnPosition = GameManager.Instance ? GameManager.Instance.InitialSpawnPoint : Vector3.zero;
+        //spawnPosition.x = DataManager.Get("SpawnPositionX", (int)GameManager.Instance.InitialSpawnPoint.x);
+        //spawnPosition.y = DataManager.Get("SpawnPositionY", (int)GameManager.Instance.InitialSpawnPoint.y);
+        //spawnPosition.z = DataManager.Get("SpawnPositionZ", (int)GameManager.Instance.InitialSpawnPoint.z);
         //transform.position = spawnPosition;
-        transform.position = GameManager.Instance.InitialSpawnPoint;
+        rb.position = position;
 
-        Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
-        transform.eulerAngles = eulerAngles;
+        //Vector3 eulerAngles = GameManager.Instance ? GameManager.Instance.InitialEulerAngles : Vector3.zero;
+        rb.rotation = Quaternion.Euler(euler);
 
         AudioManager.instance.AssignSubmarineEvents(this);
     }
@@ -310,15 +310,19 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
 
 
-    private void Die(DamageType damageType)
+    private void Die(Vector3 direction, DamageType damageType)
     {
         //Debug.Log("Submarine died");
-        dyingEvent.OnDie(transform.position, damageType);
+        dyingEvent.OnDie(transform.position, direction, damageType);
     }
 
     public void ForceSetPosition(Vector3 pos)
     {
         rb.position = pos;
+    }
+    public void ForceSetEuler(Vector3 euler)
+    {
+        rb.rotation = Quaternion.Euler(euler);
     }
 
     private void LCStressCalculation(float depth)
@@ -329,7 +333,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if (!Cave.Inside && stress > 100)
         {
             warning = true;
-            health.DealDamage(((stress - 100f) / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, DamageType.Depth);
+            health.DealDamage(((stress - 100f) / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, Vector3.down, DamageType.Depth);
         }
         UpdateDepthMeterMaterial(warning);
         redlightAnimator.SetBool("Warning", warning);
@@ -338,7 +342,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     public void DamageSubmarine(float damage, DamageType damageType)
     {
-        health.DealDamage(damage * health.MaxHealth * Time.fixedDeltaTime, damageType);
+        health.DealDamage(damage * health.MaxHealth * Time.fixedDeltaTime, Vector3.zero, damageType);
     }
     public void UpgradeSubmarine(System.Type upgradeType)
     {
@@ -415,7 +419,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         if(inDeepTime > inDeepMaxTime)
         {
             inDeepTime = 0f;
-            Die(health.GetLastGamageType());
+            Die(Vector3.down, health.GetLastGamageType());
         }
     }
 
@@ -461,7 +465,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
 
     // Janko >>
-    private void OnDie(DamageType type)
+    private void OnDie(Vector3 direction, DamageType type)
     {
         warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }

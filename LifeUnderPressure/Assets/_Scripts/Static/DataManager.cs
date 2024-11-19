@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 
 public static class DataManager
@@ -121,6 +122,15 @@ public static class DataManager
         if (!File.Exists(FilePath)) return;
 
         File.Delete(FilePath);
+        Reset();
+    }
+    [MenuItem("LUP/Clear Main Save")]
+    public static void ClearMainSave()
+    {
+        string filePath = Application.persistentDataPath + "/" + Profile + ".sav";
+        if (!File.Exists(filePath)) return;
+
+        File.Delete(filePath);
         Reset();
     }
     public static void Reset()

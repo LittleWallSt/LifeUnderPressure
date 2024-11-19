@@ -52,6 +52,9 @@ MonoBehaviour:
   environmentLayer:
     serializedVersion: 2
     m_Bits: 128
+  submarineLayer:
+    serializedVersion: 2
+    m_Bits: 64
   debugStyle:
     m_Name: 
     m_Normal:

@@ -16,6 +16,8 @@ MonoBehaviour:
   fishes:
   - fish: {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
     amount: 1
+  - fish: {fileID: 11400000, guid: b178c81a9efa4b945b405f68fd1ee725, type: 2}
+    amount: 1
   - fish: {fileID: 11400000, guid: cce9bc5aba663d7449f08645d094007c, type: 2}
     amount: 1
   rewards:
@@ -29,6 +31,9 @@ MonoBehaviour:
     position: {x: 90.19, y: -13.58, z: -35.21}
     closeDistance: 5
     name: Docking Station
+  voicelineOnAssign: {fileID: 0}
+  voicelineOnProgress: []
+  voicelineOnEnd: {fileID: 0}
   audioOnAssign:
     Guid:
       Data1: 0

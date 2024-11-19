@@ -266,11 +266,11 @@ public class SubmarineMovement : MonoBehaviour
         float damage = impulse.magnitude * bumpDamageModifier;
         if (collision.transform.gameObject.layer == 10) // insta kill layer
         {
-            health.DealDamage(10000f, DamageType.Cave);
+            health.DealDamage(10000f, -impulse.normalized, DamageType.Cave);
         }
         else
         {
-            health.DealDamage(damage, DamageType.Crashed);
+            health.DealDamage(damage, -impulse.normalized, DamageType.Crashed);
         }
 
         if (shaking)
@@ -333,6 +333,10 @@ public class SubmarineMovement : MonoBehaviour
         continuousShaking = state;
         if (continuousShaking) StartCoroutine(ScreenShake());
     }
+    public bool GetContinuousShaking()
+    {
+        return continuousShaking;
+    }
     public static Vector3 PositionFlat(Vector3 position)
     {
         return new Vector3(position.x, 0f, position.z);
@@ -364,6 +368,7 @@ public class SubmarineMovement : MonoBehaviour
     private void OnDisable()
     {
         propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
+        StopAllCoroutines();
     }
 
     public void UpgradeBoost()

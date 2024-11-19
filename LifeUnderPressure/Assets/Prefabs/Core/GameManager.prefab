@@ -45,35 +45,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   submarine: {fileID: 0}
-  upgradeCanvas: {fileID: 0}
+  encyclopedia: {fileID: 0}
   terrain: {fileID: 0}
   questLine:
   - {fileID: 11400000, guid: 7449ed507fe7f4b4f97a39f51412be0d, type: 2}
   - {fileID: 11400000, guid: bae0cfd3c84396746a0dd7d80098c13d, type: 2}
   - {fileID: 11400000, guid: 36c61c4e6721b9944a04720372a571fd, type: 2}
   initialSpawnPoint: {x: 61.69, y: -4.38, z: -0.24}
-  initialEulerAngles: {x: 0, y: 90, z: 0}
+  initialEulerAngles: {x: 0, y: -90, z: 0}
   delayToStartNewQuest: 2.5
   distanceLoadFrequency: 0.5
-  distanceToLoad: 40
+  distanceToLoad: 200
   scannedFishEvents:
   - fish:
-    - {fileID: 11400000, guid: 06e3dcee08b14f742acd4433a023f056, type: 2}
-    - {fileID: 11400000, guid: dee71a92baa96b24db1366f9b2eaff4e, type: 2}
     - {fileID: 11400000, guid: 5823d77003ff409478595af3d52db9f6, type: 2}
+    - {fileID: 11400000, guid: c906a7ba31b8d1c489e67fdaf78a9c88, type: 2}
+    - {fileID: 11400000, guid: 70444fe5743685744820164e4d244b83, type: 2}
     _event:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 0
+          m_TargetAssemblyTypeName: DyingEvent, Assembly-CSharp
+          m_MethodName: OnEnd
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
     invoked: 0
+  - fish:
+    - {fileID: 11400000, guid: b178c81a9efa4b945b405f68fd1ee725, type: 2}
+    _event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Cave, Assembly-CSharp
+          m_MethodName: StartCaveCollapseSequence
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    invoked: 0
+  eventIndex: 0
