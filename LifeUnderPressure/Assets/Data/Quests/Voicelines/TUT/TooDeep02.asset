@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: TooDeep02
   voicelines:
   - Really? You know that you have to upgrade the submarine before going deeper.
-  charPerSecond: 12
+  charPerSecond: 18.5
   OnVoicelineStart:
   - Guid:
       Data1: -426757037

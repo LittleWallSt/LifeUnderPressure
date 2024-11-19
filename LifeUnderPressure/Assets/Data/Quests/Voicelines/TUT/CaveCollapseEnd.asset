@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - 'Great, we needed that scan. I will be able to sell uhh.. the information, to
     get a better budget for the submarine. '
-  charPerSecond: 12
+  charPerSecond: 16.3
   OnVoicelineStart:
   - Guid:
       Data1: 233519504

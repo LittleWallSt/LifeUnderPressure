@@ -17,7 +17,7 @@ MonoBehaviour:
   - "The angler fish, these guys look pretty terrifying. Similar to the firefly squid
     light attracts them. \r\n\r\n"
   - The depth range for them is between 100 and 4,500 meters.
-  charPerSecond: 12
+  charPerSecond: 12.9
   OnVoicelineStart:
   - Guid:
       Data1: -2038654936

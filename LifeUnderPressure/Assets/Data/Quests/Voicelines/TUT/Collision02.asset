@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Collision02
   voicelines:
   - "Won\u2019t get many scans if you're gonna keep crashing, are we?"
-  charPerSecond: 12
+  charPerSecond: 21
   OnVoicelineStart:
   - Guid:
       Data1: -1088697888

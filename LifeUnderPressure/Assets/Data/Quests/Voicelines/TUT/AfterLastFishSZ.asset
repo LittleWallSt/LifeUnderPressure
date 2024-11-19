@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: AfterLastFishSZ
   voicelines:
-  - "Now you can reach the Twilight Zone, don\u2019t forget to upgrade"
-  charPerSecond: 12
+  - "Now you can reach the Twilight Zone, don\u2019t forget to upgrade."
+  charPerSecond: 16.5
   OnVoicelineStart:
   - Guid:
       Data1: -2106328909

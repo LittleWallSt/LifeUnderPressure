@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: AfterLastFishTZ
   voicelines:
-  - '-Great work, but we need to go deeper, the rarest species are down there.
+  - 'Great work, but we need to go deeper, the rarest species are down there.
 
 '
-  charPerSecond: 12
+  charPerSecond: 14.7
   OnVoicelineStart:
   - Guid:
       Data1: -1097258333

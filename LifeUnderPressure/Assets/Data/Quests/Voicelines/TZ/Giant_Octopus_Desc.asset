@@ -18,7 +18,7 @@ MonoBehaviour:
     Usually staying between 0 and 200 meters. '
   - They enjoy staying in crevices and rocks where they can hide from predators and
     ambush prey.
-  charPerSecond: 12
+  charPerSecond: 15.7
   OnVoicelineStart:
   - Guid:
       Data1: 815780865
