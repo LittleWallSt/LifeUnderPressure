@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Collision01
   voicelines:
   - Navigate more carefully, will you?
-  charPerSecond: 12
+  charPerSecond: 12.6
   OnVoicelineStart:
   - Guid:
       Data1: -488967783

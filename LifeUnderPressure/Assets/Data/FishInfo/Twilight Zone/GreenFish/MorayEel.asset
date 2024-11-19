@@ -13,11 +13,30 @@ MonoBehaviour:
   m_Name: MorayEel
   m_EditorClassIdentifier: 
   fishName: Moray Eel
-  fishSmallDescription: it is in cave chilling
-  infoWhere: in cave i think but not sure
-  fishFullDescription: backstabber kesha
+  fishSmallDescription: "The moray eel (Muraenidae) is a snake-like fish. Known for
+    its sharp teeth and ambush-style hunting, it\u2019s a master of camouflage."
+  infoWhere: " Found in rocky and coral reef habitats between 0\u2013150 meters deep,
+    often lurking in caves or crevices waiting for prey.\r\n"
+  fishFullDescription: 'That was quite a scan. Great job that was needed.
+
+    
+
+    The
+    moray eel is a stealthy predator, known for its long, snake-like body and sharp,
+    needle-like teeth. Unlike most fish, it has a second set of jaws called pharyngeal
+    jaws, which help it grab and pull prey into its mouth. Its diet consists primarily
+    of fish, crustaceans, and even octopuses, making it a formidable hunter.
+
+    
+
+    Moray
+    eels are masters of disguise. They often blend into rocky crevices and coral
+    reefs, where they lie in wait to ambush passing prey. Their unique ability to
+    camouflage helps them both hunt and evade predators.
+
+'
   fishPrefab: {fileID: 0}
-  locked: 1
+  locked: 0
   scale: 0
   shortVO: {fileID: 0}
   longVO: {fileID: 0}

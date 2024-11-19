@@ -33,7 +33,7 @@ MonoBehaviour:
     name: Docking Station
   voicelineOnAssign: {fileID: 0}
   voicelineOnProgress: []
-  voicelineOnEnd: {fileID: 0}
+  voicelineOnEnd: {fileID: 11400000, guid: a36eb6f6e53ee6548b6c4ae23434bc3c, type: 2}
   audioOnAssign:
     Guid:
       Data1: 0

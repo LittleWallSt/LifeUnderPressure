@@ -22,9 +22,17 @@ public class VoicelinesUI : MonoBehaviour
 
     public void CallVoiceline(Voiceline v)
     {
-        ResetBox();
-        voicelineBox.SetActive(true);
-        StartCoroutine(TypeTextUncapped(v)); 
+        if (v.delay <= 0)
+        {
+            ResetBox();
+            voicelineBox.SetActive(true);
+            StartCoroutine(TypeTextUncapped(v));
+        }
+        else
+        {
+            Debug.Log("supposedly run");
+            StartCoroutine(RunCoroutinesInSequence(v)); 
+        }
     }
 
     private void ResetBox()
@@ -34,18 +42,25 @@ public class VoicelinesUI : MonoBehaviour
         voicelineBox.SetActive(false);
     }
 
-    
+    IEnumerator RunCoroutinesInSequence(Voiceline v)
+    {
+        yield return new WaitForSecondsRealtime(v.delay);
+        ResetBox();
+        voicelineBox.SetActive(true);
+        yield return StartCoroutine(TypeTextUncapped(v));
+    }
 
-    //float charactersPerSecond = 10;
 
     IEnumerator TypeTextUncapped(Voiceline v)
     {
+        
         int j = 0;
         //if (v.onVoicelineStart == null) yield return null;
         foreach (string line in v.voicelines)
         {
-            if (v.onVoicelineStart!=null && v.onVoicelineStart.Length>j &&!v.onVoicelineStart[j].IsNull) AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
-                Submarine.Instance.transform.position); //?? play voiceline idk
+            if (v.onVoicelineStart != null && v.onVoicelineStart.Length > j && !v.onVoicelineStart[j].IsNull) //AudioManager.instance?.PlayOneShot(v.onVoicelineStart[j], 
+                //Submarine.Instance.transform.position); //?? play voiceline idk 
+                AudioManager.instance?.PlayVoiceline(v.onVoicelineStart[j]); 
             float timer = 0;
             float interval = 1 / v.charPerSecond; 
             string textBuffer = null;

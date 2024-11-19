@@ -10,6 +10,8 @@ public class Voiceline : ScriptableObject
 
     public float charPerSecond = 10;
 
+    public float delay = 0f;
+
     [SerializeField] private EventReference[] OnVoicelineStart;
 
     public EventReference[] onVoicelineStart => OnVoicelineStart;

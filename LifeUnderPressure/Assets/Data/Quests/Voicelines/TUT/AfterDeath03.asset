@@ -17,7 +17,7 @@ MonoBehaviour:
   - "Hello and welcome. Before anything else I\u2019d like you to go and get the
     sea log."
   - There was an accident and we kind of need it.
-  charPerSecond: 12
+  charPerSecond: 19.5
   OnVoicelineStart:
   - Guid:
       Data1: -842172304

@@ -18,7 +18,7 @@ MonoBehaviour:
     distinctive olive-green shells.
   - Mostly they inhabit shallow coastal waters, coral reefs, seagrass beds and can
     be found near shorelines.
-  charPerSecond: 12
+  charPerSecond: 22.9
   OnVoicelineStart:
   - Guid:
       Data1: -1181754687

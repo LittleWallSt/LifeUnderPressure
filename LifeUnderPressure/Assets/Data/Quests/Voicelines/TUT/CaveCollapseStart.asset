@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: 'CaveCollapseStart '
   voicelines:
   - It shouldn't be an issue, unless you weren't prepared for this.
-  charPerSecond: 12
+  charPerSecond: 22.5
   OnVoicelineStart:
   - Guid:
       Data1: -1556893222

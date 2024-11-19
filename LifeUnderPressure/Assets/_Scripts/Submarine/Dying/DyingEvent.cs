@@ -17,6 +17,10 @@ public class DyingEvent : MonoBehaviour
     [SerializeField] Submarine submarine;
     [SerializeField] Encyclopedia encyclopedia;
 
+    [Header("Voicelines")]
+    [SerializeField] private Voiceline[] afterDeath;
+    int VOiterator = 0;
+
     [Header("Endgame")]
     [SerializeField] private string sceneToLoad = "Credits";
     [SerializeField] GameObject lights;
@@ -146,6 +150,9 @@ public class DyingEvent : MonoBehaviour
 
         var depthMeter = FindAnyObjectByType<DepthMeterUI>();
         depthMeter.OnRespawn();
+
+        if (afterDeath!=null && afterDeath.Length>VOiterator) VoicelinesUI.Instance?.CallVoiceline(afterDeath[VOiterator]);
+        VOiterator++;
 
         if (sonar == null) sonar = FindAnyObjectByType<ImageAnimation>();
         if (sonar != null) sonar.enabled = true ;

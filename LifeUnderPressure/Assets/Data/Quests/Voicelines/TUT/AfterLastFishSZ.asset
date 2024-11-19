@@ -16,6 +16,7 @@ MonoBehaviour:
   voicelines:
   - "Now you can reach the Twilight Zone, don\u2019t forget to upgrade"
   charPerSecond: 12
+  delay: 7
   OnVoicelineStart:
   - Guid:
       Data1: -2106328909

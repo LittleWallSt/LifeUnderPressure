@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Blue_Tang
   voicelines:
   - "This blue one? Be careful not  to eat it as it\u2019s poisonous. "
-  charPerSecond: 12
+  charPerSecond: 17.1
   OnVoicelineStart:
   - Guid:
       Data1: -2075932460
