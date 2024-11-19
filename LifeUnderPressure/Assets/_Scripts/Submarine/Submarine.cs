@@ -38,6 +38,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [SerializeField] private MeshRenderer submarineMeshRenderer = null;
     [SerializeField] private MeshRenderer depthMeterMeshRenderer = null;
 
+
+    [SerializeField] private Voiceline[] Collision = null;
+
     private Material cracksMaterialInstance = null;
     private Material depthMeterMaterialInstance = null;
 
@@ -473,6 +476,12 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void OnRespawn()
     {
         warningInstance.start();
+    }
+
+
+    public Voiceline[] getCollisionVoicelines()
+    {
+        return Collision;
     }
     // Janko << 
 }
