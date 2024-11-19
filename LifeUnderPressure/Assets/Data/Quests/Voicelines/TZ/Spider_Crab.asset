@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - This crab can live for over 100 years, making it one of the longest-living crab
     species.
-  charPerSecond: 12
+  charPerSecond: 20.7
   OnVoicelineStart:
   - Guid:
       Data1: 1458210518

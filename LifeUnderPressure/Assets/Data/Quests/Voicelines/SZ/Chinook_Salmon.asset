@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - The Chinook Salmon lives in both freshwater and saltwater, depending on their
     age.
-  charPerSecond: 12
+  charPerSecond: 16.07
   OnVoicelineStart:
   - Guid:
       Data1: -71189475

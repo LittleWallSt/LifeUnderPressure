@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - These can hold their breath for up to five hours. The human world record is 25
     minutes.
-  charPerSecond: 12
+  charPerSecond: 14
   OnVoicelineStart:
   - Guid:
       Data1: 819961302

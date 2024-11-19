@@ -17,7 +17,7 @@ MonoBehaviour:
   - 'Hello Captain, maybe you will be the one to finish the mission. '
   - There is a sea log at the wreckage, I can give you a waypoint, but it won't be
     100 percent accurate.
-  charPerSecond: 12
+  charPerSecond: 18.85
   OnVoicelineStart:
   - Guid:
       Data1: 137098929

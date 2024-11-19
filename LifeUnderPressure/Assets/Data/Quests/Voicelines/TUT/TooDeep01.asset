@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - Woah, not so fast. Pressure is high and you don't have the upgrades yet. We want
     to get all the scans, don't we?
-  charPerSecond: 12
+  charPerSecond: 14.93
   OnVoicelineStart:
   - Guid:
       Data1: 1894686297
