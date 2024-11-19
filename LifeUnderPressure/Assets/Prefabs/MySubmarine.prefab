@@ -1394,6 +1394,10 @@ MonoBehaviour:
   dyingText: {fileID: 2810188857672972425}
   submarine: {fileID: 201767885911418638}
   encyclopedia: {fileID: 0}
+  afterDeath:
+  - {fileID: 11400000, guid: c06923232ffb5a04f8023f76e1ef3a8b, type: 2}
+  - {fileID: 11400000, guid: acbc1d41a5259b843a88622166b0a3f5, type: 2}
+  - {fileID: 11400000, guid: f8770249d5ccda845a74ef2a2abb8e69, type: 2}
   sceneToLoad: Credits
   lights: {fileID: 478550146530887109}
   questionIcon: {fileID: 0}
