@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: Cookie_Cutter_Desc
   m_EditorClassIdentifier: 
   voicelineName: Cookie_Cutter_Desc
-  voicelines: []
+  voicelines:
+  - Be careful of cookie-cutter sharks. Despite being very tiny they can bite into
+    hard surfaces like submarines. They will stay at ranges between 1000 - 3700 meters,
+    swimming in open waters as they look for food.
   charPerSecond: 10
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1573195218
+      Data2: 1308639265
+      Data3: 42185858
+      Data4: -690564253
+    Path: event:/SFX/VO/MZ/VO_MZ_Cookie_Cutter_Desc
