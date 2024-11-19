@@ -17,7 +17,8 @@ MonoBehaviour:
   - 'Welcome, you must be the new captain. You should go get the sea log that was
     lost in a submarine accident. '
   - "I\u2019ll give you some estimated coordinates."
-  charPerSecond: 17.8
+  charPerSecond: 18.5
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: -2093749227
