@@ -60,6 +60,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6662733196372168585}
     m_Modifications:
+    - target: {fileID: 914738445947769646, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -491
+      objectReference: {fileID: 0}
+    - target: {fileID: 914738445947769646, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497506715036658257, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -179
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -123
+      objectReference: {fileID: 0}
     - target: {fileID: 5621899399034688882, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -160,10 +185,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6067157504806003683, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162810004885605434, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162810004885605434, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -478
+      objectReference: {fileID: 0}
     - target: {fileID: 6919893066992718832, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_Name
       value: UpgradeTreeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8334717368005449334, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -604
+      objectReference: {fileID: 0}
+    - target: {fileID: 8334717368005449334, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -387
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
