@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Gulper_Eel
   voicelines:
   - There have only been 7 sightings, wow. I needed this.
-  charPerSecond: 12
+  charPerSecond: 12.3
   OnVoicelineStart:
   - Guid:
       Data1: -1369863634

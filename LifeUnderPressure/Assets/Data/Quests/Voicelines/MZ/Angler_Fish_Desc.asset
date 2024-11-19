@@ -17,7 +17,7 @@ MonoBehaviour:
   - 'The male angler fish has the quality of attaching itself to the female and never
     detaching from her. '
   - It will fuse with the female and after a while becomes a part of her.
-  charPerSecond: 12
+  charPerSecond: 18.9
   OnVoicelineStart:
   - Guid:
       Data1: 44316244

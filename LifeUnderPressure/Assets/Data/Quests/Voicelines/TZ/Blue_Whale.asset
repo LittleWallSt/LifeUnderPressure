@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - Blue Whales are able to eat up to 6 tons of krill in one day. And weight between
     3 and 5 tons when fully grown.
-  charPerSecond: 12
+  charPerSecond: 15
   OnVoicelineStart:
   - Guid:
       Data1: -1254696863

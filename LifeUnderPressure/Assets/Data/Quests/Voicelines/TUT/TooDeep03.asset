@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: TooDeep03
   voicelines:
   - Go up again. Do you want to implode?
-  charPerSecond: 12
+  charPerSecond: 15.65
   OnVoicelineStart:
   - Guid:
       Data1: 1950620847
