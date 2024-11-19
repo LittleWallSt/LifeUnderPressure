@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - "You really risked the sub only to get this bastard scanned? That\u2019s awesome
     for us."
-  charPerSecond: 12
+  charPerSecond: 17.8
   OnVoicelineStart:
   - Guid:
       Data1: 665036491

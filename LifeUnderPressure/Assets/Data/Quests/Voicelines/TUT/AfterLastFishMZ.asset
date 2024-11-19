@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - "Amazing work, I\u2019m getting signals that the fish I was after is close by."
   - I might finally get the scan I wanted.. For so long.. umm, can you go check?
-  charPerSecond: 12
+  charPerSecond: 12.3
   OnVoicelineStart:
   - Guid:
       Data1: 2092599319

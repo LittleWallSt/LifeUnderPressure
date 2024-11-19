@@ -17,7 +17,7 @@ MonoBehaviour:
   - The Clown Fish A.K.A Nemo. Is a striking orange-and-white fish known for its
     vibrant coloration.
   - They usually stay in shallow coastal seaward reefs, at depths of 1 to 12 meters.
-  charPerSecond: 12
+  charPerSecond: 16.1
   OnVoicelineStart:
   - Guid:
       Data1: 1658368535

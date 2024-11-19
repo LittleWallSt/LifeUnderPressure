@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - Adult sunfish can weigh between 250 and 1000 kilograms and grow over 3 meters
     long.
-  charPerSecond: 12
+  charPerSecond: 14.3
   OnVoicelineStart:
   - Guid:
       Data1: 603036723

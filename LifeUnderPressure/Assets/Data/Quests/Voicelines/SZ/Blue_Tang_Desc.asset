@@ -17,7 +17,7 @@ MonoBehaviour:
   - 'Blue tang is a small colored fish known for its vibrant blue body. '
   - Usually staying in coral reefs, rocky and inshore areas. They stay between 2
     and 40 meters.
-  charPerSecond: 12
+  charPerSecond: 17.36
   OnVoicelineStart:
   - Guid:
       Data1: 1969945049

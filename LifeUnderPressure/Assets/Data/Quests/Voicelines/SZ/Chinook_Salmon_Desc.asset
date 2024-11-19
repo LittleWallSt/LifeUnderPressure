@@ -17,7 +17,7 @@ MonoBehaviour:
   - The Chinook Salmon is the biggest Pacific salmon species. They have irregular
     black spots on their tails, backs, and upper fins.
   - They stay in open waters usually swimming in depths from 20 to 150 meters.
-  charPerSecond: 12
+  charPerSecond: 17
   OnVoicelineStart:
   - Guid:
       Data1: -430312364

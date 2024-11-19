@@ -17,7 +17,7 @@ MonoBehaviour:
   - 'Spider Crab is one of the largest crabs in the world. It has a leg span that
     can reach up to four meters and weigh over 40 kilograms. '
   - Spider crabs are found on the sea floor around around 200 - 550 meters.
-  charPerSecond: 12
+  charPerSecond: 15.77
   OnVoicelineStart:
   - Guid:
       Data1: -484877314

@@ -15,7 +15,7 @@ MonoBehaviour:
   voicelineName: Dumbo_Octopus
   voicelines:
   - Dumbo Octopus can lay up to 200 thousand eggs at a time.
-  charPerSecond: 12
+  charPerSecond: 16
   OnVoicelineStart:
   - Guid:
       Data1: -139228123
