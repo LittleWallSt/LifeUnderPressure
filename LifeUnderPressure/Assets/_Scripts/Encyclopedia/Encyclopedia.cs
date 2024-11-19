@@ -16,6 +16,9 @@ public class Encyclopedia : MonoBehaviour
 
     [SerializeField] GameObject firstHighlight;
 
+    [SerializeField] private ScrollRect scrollView = null;
+    [SerializeField] private float scrollSensitivity = 30f;
+
     [Header("Images")]
     [Tooltip("Fish's states (None, Marked, Scanned)")]
     public Sprite[] FishStates;
@@ -75,7 +78,15 @@ public class Encyclopedia : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
+        {
             EnableMenu(false, submarineBody);
+            return;
+        }
+        // Aleksis >> Scrolling
+        float scroll = Input.mouseScrollDelta.y;
+        scrollView.verticalNormalizedPosition += scroll * scrollSensitivity * Time.deltaTime;
+        scrollView.verticalNormalizedPosition = Mathf.Clamp01(scrollView.verticalNormalizedPosition);
+        // Aleksis <<
     }
 
     void PlayShortVoiceline()
