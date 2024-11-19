@@ -17,4 +17,10 @@ MonoBehaviour:
   - "Amazing work, I\u2019m getting signals that the fish I was after is close by."
   - I might finally get the scan I wanted.. For so long.. umm, can you go check?
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 2092599319
+      Data2: 1157699414
+      Data3: 1440901002
+      Data4: -203249869
+    Path: event:/SFX/VO/GAMEPLAY/VO_03_AfterThirdFishMZ

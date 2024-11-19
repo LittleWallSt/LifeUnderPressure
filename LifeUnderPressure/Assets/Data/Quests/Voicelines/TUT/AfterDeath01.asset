@@ -18,4 +18,10 @@ MonoBehaviour:
   - There is a sea log at the wreckage, I can give you a waypoint, but it won't be
     100 percent accurate.
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 137098929
+      Data2: 1217765937
+      Data3: -1912369785
+      Data4: 2104976274
+    Path: event:/SFX/VO/GAMEPLAY/VO_11_AfterDeath01

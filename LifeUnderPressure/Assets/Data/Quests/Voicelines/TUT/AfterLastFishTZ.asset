@@ -18,4 +18,10 @@ MonoBehaviour:
 
 '
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1097258333
+      Data2: 1210642331
+      Data3: -463788884
+      Data4: 1398477080
+    Path: event:/SFX/VO/GAMEPLAY/VO_02_AfterThirdFishTZ

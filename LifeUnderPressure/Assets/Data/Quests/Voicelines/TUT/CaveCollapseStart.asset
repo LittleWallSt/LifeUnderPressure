@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - It shouldn't be an issue, unless you weren't prepared for this.
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1556893222
+      Data2: 1311218655
+      Data3: -325953906
+      Data4: 811841737
+    Path: event:/SFX/VO/GAMEPLAY/VO_04_CaveCollapseStart

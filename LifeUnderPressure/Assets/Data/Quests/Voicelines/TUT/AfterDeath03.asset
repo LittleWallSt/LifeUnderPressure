@@ -18,4 +18,10 @@ MonoBehaviour:
     sea log."
   - There was an accident and we kind of need it.
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -842172304
+      Data2: 1252528056
+      Data3: -1682316868
+      Data4: -2116307176
+    Path: event:/SFX/VO/GAMEPLAY/VO_13_AfterDeath03

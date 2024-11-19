@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - Really? You know that you have to upgrade the submarine before going deeper.
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -426757037
+      Data2: 1268756033
+      Data3: -661034088
+      Data4: 879590688
+    Path: event:/SFX/VO/GAMEPLAY/VO_07_TooDeep_02

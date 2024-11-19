@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - "Won\u2019t get many scans if you're gonna keep crashing, are we?"
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -1088697888
+      Data2: 1273182608
+      Data3: -1953080147
+      Data4: 1779958835
+    Path: event:/SFX/VO/GAMEPLAY/VO_10_Collision_02

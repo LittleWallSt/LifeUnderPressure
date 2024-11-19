@@ -17,4 +17,10 @@ MonoBehaviour:
   - 'Great, we needed that scan. I will be able to sell uhh.. the information, to
     get a better budget for the submarine. '
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 233519504
+      Data2: 1175071418
+      Data3: 996768906
+      Data4: 585939155
+    Path: event:/SFX/VO/GAMEPLAY/VO_05_CaveCollapseEnd
