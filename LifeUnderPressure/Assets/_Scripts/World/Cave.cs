@@ -11,6 +11,9 @@ public class Cave : MonoBehaviour, IDistanceLoad
     [SerializeField] private GameObject exit = null;
     [SerializeField] private Animator animator = null;
 
+    [SerializeField] private Voiceline collapseStart = null;
+    [SerializeField] private Voiceline collapseEnd = null;
+
     private bool collapsed = false;
     private Vector3 position;
 
@@ -78,6 +81,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     public void StartCaveCollapseSequence(int invokeIndex)
     {
         AudioManager.instance.StartCaveCollapse();
+        VoicelinesUI.Instance.CallVoiceline(collapseStart);
         this.invokeIndex = invokeIndex;
         animator.SetFloat("Offset", 0f);
         StartCoroutine(Collapse(collapseDelay));
@@ -98,6 +102,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
             Debug.Log("outside when collapsed");
             Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(false);
             StartCoroutine(BlockExit());
+            VoicelinesUI.Instance.CallVoiceline(collapseEnd);
         }
         else if (Inside && !collapsed)
         {

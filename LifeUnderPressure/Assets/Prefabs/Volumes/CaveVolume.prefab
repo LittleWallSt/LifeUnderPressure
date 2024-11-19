@@ -3401,6 +3401,8 @@ MonoBehaviour:
   entrance: {fileID: 9108883653483971165}
   exit: {fileID: 4058314048911488990}
   animator: {fileID: 6415040820830182082}
+  collapseStart: {fileID: 11400000, guid: 100daa9d6c9179e41ae7ca6c528deff4, type: 2}
+  collapseEnd: {fileID: 11400000, guid: c6a02eac2e119e043b3c9d2f1389a17e, type: 2}
 --- !u!114 &8902851579322462207
 MonoBehaviour:
   m_ObjectHideFlags: 0
