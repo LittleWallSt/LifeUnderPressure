@@ -17,4 +17,10 @@ MonoBehaviour:
   - Woah, not so fast. Pressure is high and you don't have the upgrades yet. We want
     to get all the scans, don't we?
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1894686297
+      Data2: 1078954393
+      Data3: 486097307
+      Data4: 1234156996
+    Path: event:/SFX/VO/GAMEPLAY/VO_06_TooDeep_01

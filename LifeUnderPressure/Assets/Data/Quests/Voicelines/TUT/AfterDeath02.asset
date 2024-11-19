@@ -18,4 +18,10 @@ MonoBehaviour:
     lost in a submarine accident. '
   - "I\u2019ll give you some estimated coordinates."
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -2093749227
+      Data2: 1233041954
+      Data3: 1921996428
+      Data4: -1360731178
+    Path: event:/SFX/VO/GAMEPLAY/VO_12_AfterDeath02

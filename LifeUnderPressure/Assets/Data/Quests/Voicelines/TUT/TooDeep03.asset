@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - Go up again. Do you want to implode?
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: 1950620847
+      Data2: 1267794070
+      Data3: -1278324591
+      Data4: 317892088
+    Path: event:/SFX/VO/GAMEPLAY/VO_08_TooDeep_03

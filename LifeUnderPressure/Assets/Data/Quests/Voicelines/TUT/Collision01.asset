@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - Navigate more carefully, will you?
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -488967783
+      Data2: 1077113972
+      Data3: -1799656001
+      Data4: -228287515
+    Path: event:/SFX/VO/GAMEPLAY/VO_09_Collision_01

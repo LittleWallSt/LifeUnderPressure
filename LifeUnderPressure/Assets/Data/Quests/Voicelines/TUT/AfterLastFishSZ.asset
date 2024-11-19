@@ -16,4 +16,10 @@ MonoBehaviour:
   voicelines:
   - "Now you can reach the Twilight Zone, don\u2019t forget to upgrade"
   charPerSecond: 12
-  OnVoicelineStart: []
+  OnVoicelineStart:
+  - Guid:
+      Data1: -2106328909
+      Data2: 1116322877
+      Data3: -335200847
+      Data4: -1441184468
+    Path: event:/SFX/VO/GAMEPLAY/VO_01_AfterThirdFishSZ

@@ -486,12 +486,12 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
+  - Desktop/Master
   Banks:
-  - Ambience
-  - Music
-  - SFX
-  - VO
+  - Desktop/Ambience
+  - Desktop/Music
+  - Desktop/SFX
+  - Desktop/VO
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
