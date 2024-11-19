@@ -21,7 +21,7 @@ MonoBehaviour:
   fishFullDescription: 'Interesting catch, I had no idea caves were so dangerous
     underwater. Well worth the risk, though. Great scan!
 
-    
+
 
     The Giant Pacific
     Octopus has an interesting feature: its skin has special pigment cells. These
@@ -29,18 +29,19 @@ MonoBehaviour:
     it can blend in with even the most intricately patterned corals, plants, and
     rocks.
 
-    
 
-    Hunting is something they do at night, surviving mainly on
-    shrimps, clams, lobsters and fish. They have been known to attack and eat sharks
-    aswell.
 
-    
+    Hunting is something they do at night, surviving mainly on shrimps,
+    clams, lobsters and fish. They have been known to attack and eat sharks aswell.
 
-    They are highly intelligent creatures. They have learned
-    to open jars, mimic other octopuses and solve mazes in lab tests. Their population
-    numbers arent known and they do not currently appear on any lists of endangered
-    or vulnerable animals.'
+
+
+    They
+    are highly intelligent creatures. They have learned to open jars, mimic other
+    octopuses and solve mazes in lab tests. Their population numbers arent known
+    and they do not currently appear on any lists of endangered or vulnerable animals.'
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
+  shortVO: {fileID: 11400000, guid: 8576dea809b1eea49aaf899049f24314, type: 2}
+  longVO: {fileID: 11400000, guid: f4e1da94e5fe66943ba904b5b54e1499, type: 2}

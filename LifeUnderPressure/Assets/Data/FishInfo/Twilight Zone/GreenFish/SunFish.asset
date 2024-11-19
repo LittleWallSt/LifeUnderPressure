@@ -36,5 +36,7 @@ MonoBehaviour:
     part of ocean health.\n\nAlso when giving birth they release 300 million eggs
     at a time.\r"
   fishPrefab: {fileID: 0}
-  locked: 1
+  locked: 0
   scale: 0
+  shortVO: {fileID: 11400000, guid: 19de51dad1d3f454aa48c6f75968f113, type: 2}
+  longVO: {fileID: 11400000, guid: b12db2d755d4c79459714e2c617949c1, type: 2}

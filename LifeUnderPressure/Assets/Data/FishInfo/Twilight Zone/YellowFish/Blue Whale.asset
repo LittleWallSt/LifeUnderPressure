@@ -56,5 +56,7 @@ MonoBehaviour:
     Blue whales occasionally
     swimes in small groups but usually alone or in pairs.'
   fishPrefab: {fileID: 0}
-  locked: 1
+  locked: 0
   scale: 0
+  shortVO: {fileID: 11400000, guid: 61c9cb03ecdc9604f903f2c31f214f68, type: 2}
+  longVO: {fileID: 11400000, guid: 3f6203f931338484ba122756a5cea1e3, type: 2}

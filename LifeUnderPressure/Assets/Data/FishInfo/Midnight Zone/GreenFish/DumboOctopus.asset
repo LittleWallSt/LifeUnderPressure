@@ -30,3 +30,5 @@ MonoBehaviour:
   fishPrefab: {fileID: 0}
   locked: 1
   scale: 0
+  shortVO: {fileID: 11400000, guid: 3d24b17b2eb329e4188ddab16ef3a2b5, type: 2}
+  longVO: {fileID: 11400000, guid: 4ae0bcb8eb8ac6b448784ec2ea61e696, type: 2}
