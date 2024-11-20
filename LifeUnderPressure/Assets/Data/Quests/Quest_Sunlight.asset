@@ -31,7 +31,7 @@ MonoBehaviour:
     position: {x: 90.19, y: -13.58, z: -35.21}
     closeDistance: 5
     name: Docking Station
-  voicelineOnAssign: {fileID: 11400000, guid: b4d467940819ddd49bbfbb78630fa51d, type: 2}
+  voicelineOnAssign: {fileID: 0}
   voicelineOnProgress: []
   voicelineOnEnd: {fileID: 11400000, guid: d42b4b86c1989d54b99dec14c044f4f6, type: 2}
   audioOnAssign:

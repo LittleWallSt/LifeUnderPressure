@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: Collision02
   voicelines:
-  - "Won\u2019t get many scans if you're gonna keep crashing, are we?"
+  - "Won\u2019t get many scans if you're gonna keep crashing, will we?"
   charPerSecond: 21
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: -1088697888

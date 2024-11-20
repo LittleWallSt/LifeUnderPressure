@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
   m_Name: Gulper_Eel
   m_EditorClassIdentifier: 
-  voicelineName: Gulper_Eel
+  voicelineName: Gulper_Eel_Desc
   voicelines:
-  - There have only been 7 sightings, wow. I needed this.
-  charPerSecond: 12.3
+  - Gulper eel, I need you to find this one. It's one of the rarest fish in the world.
+  - "They swim between 1,500 and 2,000 meters.\r"
+  charPerSecond: 22.3
   OnVoicelineStart:
   - Guid:
-      Data1: -1369863634
-      Data2: 1201834880
-      Data3: 1090811059
-      Data4: -1008360747
-    Path: event:/SFX/VO/MZ/VO_MZ_Gulper_Eel
+      Data1: 190431297
+      Data2: 1113968457
+      Data3: -1296345439
+      Data4: 454624450
+    Path: event:/SFX/VO/MZ/VO_MZ_Gulper_Eel_Desc
