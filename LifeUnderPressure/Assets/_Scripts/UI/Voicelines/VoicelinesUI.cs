@@ -37,7 +37,7 @@ public class VoicelinesUI : MonoBehaviour
         }
         else
         {
-            Debug.Log("supposedly run");
+            //Debug.Log("supposedly run");
             StartCoroutine(RunCoroutinesInSequence(v)); 
         }
     }
@@ -47,7 +47,7 @@ public class VoicelinesUI : MonoBehaviour
         if (!CD)
         {
             CD = true;
-            Debug.Log("called");
+            //Debug.Log("called");
             ResetBox();
             StartCoroutine(CDVoiceline(v, CDTime));
         }
@@ -80,7 +80,7 @@ public class VoicelinesUI : MonoBehaviour
 
     IEnumerator WaitForCD(float CDTime)
     {
-        Debug.Log("started");
+        //Debug.Log("started");
         yield return new WaitForSecondsRealtime(CDTime);
         CD = false;
     }
@@ -121,7 +121,7 @@ public class VoicelinesUI : MonoBehaviour
             }
 
             j++;
-            Debug.Log(j);
+            //Debug.Log(j);
             yield return new WaitForSecondsRealtime(0.6f);
 
         }

@@ -97,7 +97,7 @@ public class BeaconZone : MonoBehaviour
         // Area outside range
         else
         {
-            Debug.Log("invoked");
+            //Debug.Log("invoked");
             onInArea.Invoke();
             EnablePing(false);
         }

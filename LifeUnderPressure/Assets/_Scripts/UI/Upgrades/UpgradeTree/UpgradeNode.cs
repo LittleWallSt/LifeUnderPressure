@@ -88,7 +88,7 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Click");
+        //Debug.Log("Click");
         Submarine submarine = Submarine.Instance;
         if (!skillNode.LockedBehindQuest) UnlockUpgrade(true);
         if (!skillNode.isUnlocked) return;
@@ -135,7 +135,7 @@ public class UpgradeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void UnlockQuestNode()
     {
-        Debug.Log("unlockee");
+        //Debug.Log("unlockee");
         UnlockUpgrade(true);
         
     }
