@@ -65,6 +65,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
 
     [Header("Audio")]
     [SerializeField] private Voiceline[] Collision = null;
+    [SerializeField] private Voiceline[] TooDeep = null;
 
     private EventInstance warningInstance;
 
@@ -339,6 +340,11 @@ public class Submarine : MonoBehaviour, IDepthDependant
         {
             warning = true;
             health.DealDamage(((stress - 100f) / maxStressTreshold) * health.MaxHealth * Time.fixedDeltaTime * stressDamageModifier, Vector3.down, DamageType.Depth);
+            if (TooDeep != null && TooDeep.Length > 0)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, TooDeep.Length);
+                VoicelinesUI.Instance?.CallCDVoiceline(TooDeep[randomIndex]); 
+            }
         }
         UpdateDepthMeterMaterial(warning);
         redlightAnimator.SetBool("Warning", warning);

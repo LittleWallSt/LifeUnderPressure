@@ -9,6 +9,8 @@ public class VoicelinesUI : MonoBehaviour
     public static VoicelinesUI Instance { get; private set; } = null;
 
     private bool gameIsPaused = false;
+
+    bool CD = false;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -40,11 +42,32 @@ public class VoicelinesUI : MonoBehaviour
         }
     }
 
+    public void CallCDVoiceline(Voiceline v)
+    {
+        if (!CD)
+        {
+            CD = true;
+            Debug.Log("called");
+            ResetBox();
+            StartCoroutine(CDVoiceline(v));
+        }
+    }
+
     private void ResetBox()
     {
         StopAllCoroutines();
         voicelineText.text = "";
         voicelineBox.SetActive(false);
+    }
+
+    IEnumerator CDVoiceline(Voiceline v)
+    {
+        voicelineBox.SetActive(true);
+        yield return StartCoroutine(TypeTextUncapped(v, true));
+        voicelineText.text = "";
+        voicelineBox.SetActive(false);
+        yield return StartCoroutine(WaitForCD(6f));
+        StopAllCoroutines();  
     }
 
     IEnumerator RunCoroutinesInSequence(Voiceline v)
@@ -55,8 +78,15 @@ public class VoicelinesUI : MonoBehaviour
         yield return StartCoroutine(TypeTextUncapped(v));
     }
 
+    IEnumerator WaitForCD(float CDTime)
+    {
+        Debug.Log("started");
+        yield return new WaitForSecondsRealtime(CDTime);
+        CD = false;
+    }
 
-    IEnumerator TypeTextUncapped(Voiceline v)
+
+    IEnumerator TypeTextUncapped(Voiceline v, bool cd = false)
     {
         
         int j = 0;
@@ -96,7 +126,7 @@ public class VoicelinesUI : MonoBehaviour
 
         }
 
-        ResetBox();
+        if (!cd)ResetBox();
     }
     private void OnDestroy()
     {
