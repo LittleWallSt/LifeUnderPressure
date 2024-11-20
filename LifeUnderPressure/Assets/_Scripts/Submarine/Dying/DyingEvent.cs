@@ -87,7 +87,7 @@ public class DyingEvent : MonoBehaviour
 
         if (sonar == null) sonar = FindAnyObjectByType<ImageAnimation>();
         if (sonar != null) sonar.enabled = false;
-
+        StopAllCoroutines(); 
         StartCoroutine(FadeOutAfterCooldown(placeOfDeath, direction));
     }
 

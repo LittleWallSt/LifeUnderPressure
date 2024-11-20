@@ -56,12 +56,17 @@ public class UpgradeTreeCanvas : MonoBehaviour
         return state;
     }
 
-    
+    private float hoverMenuWidth = 400f;
+    private float screenWidth = 1920f;
+    private float borderOff = 20f;
 
     public void SetHoverMenu(bool state, string description = "", string req = "", RectTransform buttonPos = null)
     {
         hoverPanel.SetActive(state);
-        if (state)_hoverPanel.position = buttonPos.position + new Vector3(offset, 0, 0); 
+        
+        if (state) {
+            int sign = (buttonPos.position.x + offset + -hoverMenuWidth * 0.5f - borderOff) >= screenWidth * 0.5 ? 1 : -1;
+            _hoverPanel.position = buttonPos.position + new Vector3(sign * offset, 0, 0); }
         upgradeDescription.text = "Description: " + description;
         upgradeRequirement.text = req;
 

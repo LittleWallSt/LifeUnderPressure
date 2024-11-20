@@ -628,27 +628,27 @@ PrefabInstance:
     - target: {fileID: 6085714554403027948, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6085714554403027948, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6085714554403027948, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 6085714554403027948, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6085714554403027948, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 6162810004885605434, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
@@ -663,27 +663,27 @@ PrefabInstance:
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6423053613598937743, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -215
       objectReference: {fileID: 0}
     - target: {fileID: 6737114713771767178, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
@@ -699,6 +699,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UpgradeTreeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245708013315640744, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8334717368005449334, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
