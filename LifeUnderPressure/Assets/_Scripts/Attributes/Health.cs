@@ -4,6 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float regeneratePerMinute = 25f;
 
     private Action<Vector3, DamageType> onDie;
     private Action onDamage;
@@ -11,8 +12,6 @@ public class Health : MonoBehaviour
     private Action<float> onValueChanged;
 
     private float hp = 0;
-
-    
 
     private DamageType lastDamageType;
     private Vector3 lastDamageDirection;
@@ -37,7 +36,6 @@ public class Health : MonoBehaviour
                 hp = value;
             }
             Call_OnValueChanged(hp);
-            //Debug.Log(lastDamageType.ToString());
         }
     }
     public float MaxHealth => maxHealth;
@@ -54,6 +52,19 @@ public class Health : MonoBehaviour
     {
         ResetHealth();
     }
+    private void Update()
+    {
+        RegenerationProcess();
+    }
+
+    private void RegenerationProcess()
+    {
+        if (Value < MaxHealth && regeneratePerMinute != 0f)
+        {
+            Value += regeneratePerMinute * (Time.deltaTime / 60f);
+        }
+    }
+
     public void DealDamage(float damage, Vector3 direction, DamageType damageType)
     {
         if (Value <= 0f) return; 
