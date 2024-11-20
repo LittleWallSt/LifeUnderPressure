@@ -154,6 +154,7 @@ public static class DataManager
         File.Delete(FilePath);
         Reset();
     }
+#if UNITY_EDITOR
     [MenuItem("LUP/Clear Main Save")]
     public static void ClearMainSave()
     {
@@ -163,6 +164,7 @@ public static class DataManager
         File.Delete(filePath);
         Reset();
     }
+#endif
     public static void Reset()
     {
         Data = new List<DataStruct>();

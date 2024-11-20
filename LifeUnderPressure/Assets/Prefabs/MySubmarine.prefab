@@ -1398,6 +1398,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c06923232ffb5a04f8023f76e1ef3a8b, type: 2}
   - {fileID: 11400000, guid: acbc1d41a5259b843a88622166b0a3f5, type: 2}
   - {fileID: 11400000, guid: f8770249d5ccda845a74ef2a2abb8e69, type: 2}
+  intro:
+    Guid:
+      Data1: 1465443374
+      Data2: 1197344399
+      Data3: -1758655083
+      Data4: 612755649
+    Path: event:/SFX/VO/INTRO/VO_Intro
   sceneToLoad: Credits
   lights: {fileID: 478550146530887109}
   questionIcon: {fileID: 0}
@@ -19076,32 +19083,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inDeepMaxTime: 10
   deepOffset: -0.64
+  upgradeCanvas: {fileID: 0}
+  heightText: {fileID: 4048657896102895975}
+  warningText: {fileID: 2843870540943983611}
+  dockText: {fileID: 3103798612887251836}
   radiusOfHull: 3.2
   thicknessOfHull: 0.08
   maxStressTreshold: 24
   stressDamageModifier: 0.125
-  heightText: {fileID: 4048657896102895975}
-  warningText: {fileID: 2843870540943983611}
-  dockText: {fileID: 3103798612887251836}
-  zoneText: {fileID: 5402134795807801460}
-  upgradeCanvas: {fileID: 0}
   upgradeTreeCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}
   encyclopedia: {fileID: 0}
   sun: {fileID: 0}
-  redlightAnimator: {fileID: 2476202423565129948}
   cracksMaterial: {fileID: 2100000, guid: 1ed0da2bccd987f43937f1bf0bd8eafe, type: 2}
-  depthMeterMaterial: {fileID: 2100000, guid: 74bacac8dea8d294cb431323158b2965, type: 2}
   crackLevel1: 0.25
   crackLevel2: 0.5
   crackLevel3: 0.75
-  dyingEvent: {fileID: 3135518312450490496}
+  depthMeterMaterial: {fileID: 2100000, guid: 74bacac8dea8d294cb431323158b2965, type: 2}
+  depthMeterMeshRenderer: {fileID: 8825506992747990702}
+  zoneText: {fileID: 5402134795807801460}
   submarineBody: {fileID: 7225724622715461617}
   submarineMeshRenderer: {fileID: 4375975015138722327}
-  depthMeterMeshRenderer: {fileID: 8825506992747990702}
+  redlightAnimator: {fileID: 2476202423565129948}
+  dyingEvent: {fileID: 3135518312450490496}
   Collision:
   - {fileID: 11400000, guid: 5cae83f64ede37c479fb061e9b0fdd7e, type: 2}
   - {fileID: 11400000, guid: 06242677a0d923546b1c64d759a3783f, type: 2}
+  TooDeep:
+  - {fileID: 11400000, guid: 23e871a23937d1f4795ecb0ed1a5e743, type: 2}
+  - {fileID: 11400000, guid: cd4b4509caabb2145aa931e6e24a3093, type: 2}
+  - {fileID: 11400000, guid: f7a6a0a59b9dc4945aadd86c5c060327, type: 2}
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19117,7 +19128,7 @@ MonoBehaviour:
   debugMode: 0
   submarineCamera: {fileID: 5897422571100704064}
   controlAnimator: {fileID: 7937843593826252885}
-  controlRigLerp: 2
+  controlRigLerpSpeed: 2
   screenShakeTimer: 0.5
   screenShakeFrequency: 0.1
   shakePositionOffset: {x: -0.01, y: 0.01}
