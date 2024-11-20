@@ -7,6 +7,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     [SerializeField] private float updateTimer = 1f;
     [SerializeField] private float distanceLoadOffset = 20f;
     [SerializeField] private float collapseDelay = 3f;
+    [SerializeField] private GameObject collapseParticles = null;
     [SerializeField] private GameObject entrance = null;
     [SerializeField] private GameObject exit = null;
     [SerializeField] private Animator animator = null;
@@ -82,6 +83,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     {
         AudioManager.instance.StartCaveCollapse();
         VoicelinesUI.Instance.CallVoiceline(collapseStart);
+        collapseParticles.SetActive(true);
         this.invokeIndex = invokeIndex;
         animator.SetFloat("Offset", 0f);
         StartCoroutine(Collapse(collapseDelay));
@@ -100,6 +102,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
         if(!Inside && collapsed)
         {
             Debug.Log("outside when collapsed");
+            collapseParticles.SetActive(false);
             Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(false);
             StartCoroutine(BlockExit());
             VoicelinesUI.Instance.CallVoiceline(collapseEnd);
@@ -139,6 +142,7 @@ public class Cave : MonoBehaviour, IDistanceLoad
     private void PlayerDiedWhileCollapsing()
     {
         Submarine submarine = Submarine.Instance;
+        collapseParticles.SetActive(false);
         collapsed = false;
         UpdateCollapsed();
         GameManager.Instance.ResetEventForScannedFish(invokeIndex);
