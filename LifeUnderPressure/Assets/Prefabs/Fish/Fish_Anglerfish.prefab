@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Angler_low
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7545377856517425246, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
