@@ -10,155 +10,176 @@ public class CookieSharkBehaviour : BoidUnit
     [SerializeField] public float damageInterval = 0.5f;
     [SerializeField] public float movRangeToScareAway = 2.0f;
     [SerializeField] public float damage = 5.0f;
-    // [SerializedField] Blabla playerGlass or maybe it's fine only with player instance
+    [SerializeField] public float approachSpeed = 7.0f;
+    [SerializeField] private Animator animator;
 
     private bool nomnomPlayer = true;
     private bool inFrontOfGlass = false;
-    private float damageTimer = 0.0f;
-    private float movAccumulatedTimer = 0.0f;
-    private float lastRot;
-    private float currentRot;
+    private bool approaching = false;
     private float cooldown = 10.0f;
     private float cooldownTimer = 0.0f;
-    private bool approaching = false;
+
+
+    private float lastPlayerRotationY = 0.0f;                
+    private int directionChanges = 0;                
+    private bool rotatingRight = false;              
+    private float freneticMovementThreshold = 1.0f;  
+    private int maxDirectionChanges = 10;              
+    private float timeToReset = 0.5f;                 
+    private float freneticTimer = 0.0f;
+
+    private bool hasReachedPosition = false;
 
     public override void MoveFish()
     {
-        //If there are no waypoints
-        if (path == null)
-            return;
-        if (path.Length == 0)
-            return;
+        if (path == null || path.Length == 0) return;
 
-        Transform targetWaypoint = path.GetWaypoint(assignedBoid.currWayPointIndex);
-        directionToWaypoint = Vector3.zero;
-
-        FindNeighbours();
-        CalculateAverageSpeed();
-
-        FishBehaviour();
-        // Path following behaviour
         if (!approaching && !inFrontOfGlass)
         {
+            Transform targetWaypoint = path.GetWaypoint(assignedBoid.currWayPointIndex);
             directionToWaypoint = (targetWaypoint.position - transform.position).normalized;
             ObstacleAvoidance(ref directionToWaypoint);
         }
 
-        // Cooldown for the fish to be curious
-        if (curiousCooldown)
+        FishBehaviour();
+
+        if (!inFrontOfGlass)
         {
-            cooldownTimer += Time.deltaTime;
-            if (cooldownTimer > curiousCooldownTime)
+            if (approaching)
             {
-                cooldownTimer = 0f;
-                curiousCooldown = false;
+                smoothDamp = 0;
+                if (speed > 7.0f) speed *= 1.01f;
             }
+            else smoothDamp = 1;
+            Vector3 moveVector = Vector3.SmoothDamp(myTransform.forward, directionToWaypoint, ref currentVelocity, smoothDamp);
+            moveVector = moveVector.normalized * speed;
+            myTransform.forward = moveVector;
+            myTransform.position += moveVector * Time.deltaTime;
         }
 
-        //Vector3 cohesionVector = CalculateCohesionVector() * assignedBoid.cohesionWeight;
-        //Vector3 avoidanceVector = CalculateAvoidanceVector() * assignedBoid.avoidanceWeight;
-        //Vector3 aligementVector = CalculateAligementVector() * assignedBoid.aligementWeight;
-
-        Vector3 moveVector = directionToWaypoint;
-        moveVector = Vector3.SmoothDamp(myTransform.forward, moveVector, ref currentVelocity, smoothDamp);
-        moveVector = moveVector.normalized;
-        moveVector *= speed;
-
-
-        if (moveVector == Vector3.zero)
-            moveVector = transform.forward;
-
-        myTransform.forward = moveVector;
-        myTransform.position += moveVector * Time.deltaTime;
-
-        if (Vector3.Distance(transform.position, targetWaypoint.position) < path.Radius)
+        if (Vector3.Distance(transform.position, path.GetWaypoint(assignedBoid.currWayPointIndex).position) < path.Radius)
         {
-            if (assignedBoid != null) assignedBoid.SetNextWaypoint();
-
+            assignedBoid.SetNextWaypoint();
         }
-
     }
+
     protected override void FishBehaviour()
     {
-        if(nomnomPlayer)
+        float dist = Vector3.Distance(transform.position, player.position);
+
+        if (nomnomPlayer && !inFrontOfGlass)
         {
-            float dist = Vector3.Distance(transform.position, player.position);
-            if( !inFrontOfGlass && dist < minDist )
+            if (dist < minDist)
             {
-                //Debug.Log("Gonna ite u >:D");
                 approaching = true;
-                directionToWaypoint = (player.position - transform.position).normalized;
-                if (speed > 0f)speed *= 0.99f;
-                if (dist <= 1.5)
+                directionToWaypoint = (player.position + player.forward * 1.5f - transform.position).normalized;
+
+                Quaternion targetRotation = Quaternion.LookRotation(directionToWaypoint);
+                myTransform.rotation = Quaternion.Slerp(myTransform.rotation, targetRotation, Time.deltaTime * 7.0f);
+
+                if (dist <= 2.5f)
                 {
-                    lastRot = player.eulerAngles.y;
                     inFrontOfGlass = true;
                     approaching = false;
                 }
             }
-            else if(inFrontOfGlass)
+
+
+        }
+        else if (inFrontOfGlass)
+        {
+            PositionAndFacePlayer();
+            if(!DetectFreneticMouseMovement())
             {
-                //Debug.Log("I'm bitting u ^V-V^");
-                PositionAndFacePlayer();
                 DamagePlayer();
-                DetectLateralMov();
             }
+            else
+            {
+                nomnomPlayer = false;
+                inFrontOfGlass = false;
+                directionChanges = 0;
+                freneticTimer = 0.0f;
+                myTransform.SetParent(null);
+            }
+
         }
         else
         {
-            // Timer para poner nomnom a true a lo mejor
             GoAway();
-            //Debug.Log666666666666666666666("I should go to waypoint");
         }
+        
+        animator.SetBool("InFrontOfGlass", inFrontOfGlass);
     }
 
     private void PositionAndFacePlayer()
     {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        Vector3 fixedPositionInFrontOfPlayer = player.position + player.forward * 1.5f;
+        float epsilon = 0.05f; 
 
-        myTransform.position = player.position + player.forward * 1.5f;
+        if (!hasReachedPosition) 
+        {
+            myTransform.position = Vector3.MoveTowards(myTransform.position, fixedPositionInFrontOfPlayer, Time.deltaTime * 7.0f);
 
-        myTransform.LookAt(player.position);
+            Vector3 directionToPlayer = (player.position - myTransform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+            myTransform.rotation = Quaternion.Slerp(myTransform.rotation, targetRotation, Time.deltaTime * 7.0f);
+
+            if (Vector3.Distance(myTransform.position, fixedPositionInFrontOfPlayer) <= epsilon)
+            {
+                hasReachedPosition = true; 
+                myTransform.position = fixedPositionInFrontOfPlayer; 
+                myTransform.rotation = Quaternion.LookRotation(player.position - myTransform.position); 
+                myTransform.rotation *= Quaternion.Euler(-30, 0, 0); 
+            }
+        }
+        else
+        {
+            myTransform.position = fixedPositionInFrontOfPlayer;
+            myTransform.rotation = Quaternion.LookRotation(player.position - myTransform.position);
+            myTransform.rotation *= Quaternion.Euler(-30, 0, 0);
+            
+        }
     }
 
-    private void DetectLateralMov()
+
+    private bool DetectFreneticMouseMovement()
     {
-        currentRot = player.eulerAngles.y;
-        float latMovement = Mathf.Abs(currentRot - lastRot);
+        float currentRotationY = player.eulerAngles.y;
+        float rotationChange = currentRotationY - lastPlayerRotationY;
 
-        //Debug.Log("Lateral mov: " + latMovement);
-        if (latMovement > 0.003f /*&& latMovement <= movRangeToScareAway*/) // bonita
+        if (Mathf.Abs(rotationChange) > freneticMovementThreshold)
         {
-            movAccumulatedTimer += Time.deltaTime;
+            bool currentRotatingRight = rotationChange > 0;
 
+            if (currentRotatingRight != rotatingRight)
+            {
+                directionChanges++;
+                rotatingRight = currentRotatingRight;
+                freneticTimer = 0.0f; 
+            }
         }
-        else // feaAAAAAAAAAA
-        {
-            movAccumulatedTimer = 0f;
-            //Debug.Log("nopnonpnopnonopnop");
-        }
-        //Debug.Log("Timer: " + movAccumulatedTimer);
 
-        if (movAccumulatedTimer >= timeToGoAway)
+        lastPlayerRotationY = currentRotationY;
+        freneticTimer += Time.deltaTime;
+
+        if (freneticTimer > timeToReset)
         {
-            inFrontOfGlass = false;
-            nomnomPlayer = false;
-           // Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + movAccumulatedTimer + "    " + timeToGoAway);
-            movAccumulatedTimer = 0.0f;
+            directionChanges = 0;
+            freneticTimer = 0.0f;
         }
-        lastRot = currentRot;
+        return directionChanges >= maxDirectionChanges;
     }
+
 
     private void DamagePlayer()
     {
-        // Not the best way but to try
-        player.GetComponentInParent<Health>().DealDamage(0.5f * Time.fixedDeltaTime, transform.position - player.position, DamageType.CookieShark);
+        Submarine.Instance.getSubmarineHealth().DealDamage(damage * Time.fixedDeltaTime, Vector3.zero, DamageType.CookieShark);
     }
 
-    private void GoAway()
+private void GoAway()
     {
         cooldownTimer += Time.deltaTime;
-        if(speed < initialSpeed)
+        if (speed < initialSpeed)
         {
             speed *= 1.1f;
         }
