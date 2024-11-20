@@ -492,13 +492,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.74546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.74546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.74546
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1883736160574908718, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -123
+      value: -102
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918122835070197099, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918122835070197099, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918122835070197099, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.17735851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918122835070197099, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.1409695
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918122835070197099, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.059900314
       objectReference: {fileID: 0}
     - target: {fileID: 5621899399034688882, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
@@ -600,6 +640,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6066068983764337259, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066068983764337259, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 08d541c6be9b4d240a1ca598cdc13c2b,
+        type: 2}
+    - target: {fileID: 6066068983764337259, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066068983764337259, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5400733223581167427, guid: 08d541c6be9b4d240a1ca598cdc13c2b,
+        type: 2}
     - target: {fileID: 6067157504806003683, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -699,6 +761,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UpgradeTreeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260629344610633494, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260629344610633494, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 08d541c6be9b4d240a1ca598cdc13c2b,
+        type: 2}
+    - target: {fileID: 7260629344610633494, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260629344610633494, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5400733223581167427, guid: 08d541c6be9b4d240a1ca598cdc13c2b,
+        type: 2}
+    - target: {fileID: 8245708013315640744, guid: fb12e13a91ca57c489e02454fe1bcbb9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8334717368005449334, guid: fb12e13a91ca57c489e02454fe1bcbb9,
         type: 3}
