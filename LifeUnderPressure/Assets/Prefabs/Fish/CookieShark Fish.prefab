@@ -118,7 +118,7 @@ MonoBehaviour:
   FOVAngle: 180
   smoothDamp: 1
   timeToGoAway: 2
-  minDist: 15
+  minDist: 10
   damageInterval: 0.5
   movRangeToScareAway: 3
   damage: 5
