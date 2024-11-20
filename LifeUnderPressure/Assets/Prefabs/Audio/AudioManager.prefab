@@ -198,6 +198,13 @@ MonoBehaviour:
       Data3: 1462828417
       Data4: 1611673868
     Path: event:/SFX/SFX_Explosion
+  <SFX_HeavyBreathing>k__BackingField:
+    Guid:
+      Data1: -102263863
+      Data2: 1304903009
+      Data3: -1406150769
+      Data4: 474793404
+    Path: event:/SFX/VO/VO_Outro_Breathing_Heart
 --- !u!1 &5198397898280333016
 GameObject:
   m_ObjectHideFlags: 0

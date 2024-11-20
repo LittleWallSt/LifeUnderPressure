@@ -84,6 +84,10 @@ public class FMODEvents : MonoBehaviour
 
     [field: SerializeField]
     public EventReference SFX_Explosion { get; private set; }
+
+    [field: SerializeField]
+    public EventReference SFX_HeavyBreathing { get; private set; }
+
     private void Awake()
     {
         if (instance == null) instance = this;
