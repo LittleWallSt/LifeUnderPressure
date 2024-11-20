@@ -42,14 +42,14 @@ public class VoicelinesUI : MonoBehaviour
         }
     }
 
-    public void CallCDVoiceline(Voiceline v)
+    public void CallCDVoiceline(Voiceline v, float CDTime)
     {
         if (!CD)
         {
             CD = true;
             Debug.Log("called");
             ResetBox();
-            StartCoroutine(CDVoiceline(v));
+            StartCoroutine(CDVoiceline(v, CDTime));
         }
     }
 
@@ -60,13 +60,13 @@ public class VoicelinesUI : MonoBehaviour
         voicelineBox.SetActive(false);
     }
 
-    IEnumerator CDVoiceline(Voiceline v)
+    IEnumerator CDVoiceline(Voiceline v, float CDTime)
     {
         voicelineBox.SetActive(true);
         yield return StartCoroutine(TypeTextUncapped(v, true));
         voicelineText.text = "";
         voicelineBox.SetActive(false);
-        yield return StartCoroutine(WaitForCD(6f));
+        yield return StartCoroutine(WaitForCD(CDTime));
         StopAllCoroutines();  
     }
 

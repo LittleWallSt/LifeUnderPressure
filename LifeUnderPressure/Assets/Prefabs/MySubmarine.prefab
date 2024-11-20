@@ -1398,6 +1398,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c06923232ffb5a04f8023f76e1ef3a8b, type: 2}
   - {fileID: 11400000, guid: acbc1d41a5259b843a88622166b0a3f5, type: 2}
   - {fileID: 11400000, guid: f8770249d5ccda845a74ef2a2abb8e69, type: 2}
+  intro:
+    Guid:
+      Data1: 1465443374
+      Data2: 1197344399
+      Data3: -1758655083
+      Data4: 612755649
+    Path: event:/SFX/VO/INTRO/VO_Intro
   sceneToLoad: Credits
   lights: {fileID: 478550146530887109}
   questionIcon: {fileID: 0}

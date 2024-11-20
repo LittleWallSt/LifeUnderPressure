@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class DyingEvent : MonoBehaviour
 
     [Header("Voicelines")]
     [SerializeField] private Voiceline[] afterDeath;
+
+    [SerializeField] private EventReference intro;
     int VOiterator = 0;
 
     [Header("Endgame")]
@@ -246,7 +249,8 @@ public class DyingEvent : MonoBehaviour
 
     IEnumerator OnStart()
     {
-        yield return new WaitForSecondsRealtime(5f);
+        if (!intro.IsNull) AudioManager.instance?.PlayOneShot(intro, Submarine.Instance.transform.position);  
+        yield return new WaitForSecondsRealtime(8f);
 
         controlsScreen?.SetActive(true);
 

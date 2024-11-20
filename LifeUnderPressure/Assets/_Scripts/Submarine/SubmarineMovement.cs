@@ -274,7 +274,7 @@ public class SubmarineMovement : MonoBehaviour
             if (Submarine.Instance.getCollisionVoicelines()!=null && Submarine.Instance.getCollisionVoicelines().Length>0)
             {
                 int randomIndex = UnityEngine.Random.Range(0, Submarine.Instance.getCollisionVoicelines().Length);
-                VoicelinesUI.Instance?.CallVoiceline(Submarine.Instance.getCollisionVoicelines()[randomIndex]);  
+                VoicelinesUI.Instance?.CallCDVoiceline(Submarine.Instance.getCollisionVoicelines()[randomIndex], 3f);  
             }
             
         }

@@ -343,7 +343,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
             if (TooDeep != null && TooDeep.Length > 0)
             {
                 int randomIndex = UnityEngine.Random.Range(0, TooDeep.Length);
-                VoicelinesUI.Instance?.CallCDVoiceline(TooDeep[randomIndex]); 
+                VoicelinesUI.Instance?.CallCDVoiceline(TooDeep[randomIndex], 6f); 
             }
         }
         UpdateDepthMeterMaterial(warning);
