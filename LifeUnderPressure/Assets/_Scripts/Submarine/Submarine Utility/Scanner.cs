@@ -259,6 +259,8 @@ public class Scanner : MonoBehaviour
         currentFish = null;
         DisplayInfo("Sealog obtained.");
 
+        Submarine.Instance.GetEncyclopedia().IntroFinished();
+
         Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
         Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
         currentState = ScannerState.Inactive;

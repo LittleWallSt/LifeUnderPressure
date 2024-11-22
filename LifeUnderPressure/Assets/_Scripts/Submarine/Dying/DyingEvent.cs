@@ -70,7 +70,7 @@ public class DyingEvent : MonoBehaviour
         Instantiate(submarineBroken, SealogPlacement, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, SealogPlacement + sealogOffset, Quaternion.identity);
 
-        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
+        
 
         
     }
@@ -257,6 +257,8 @@ public class DyingEvent : MonoBehaviour
         yield return new WaitForSecondsRealtime(5f);
 
         controlsScreen?.SetActive(false);
+
+        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
 
     }
 
