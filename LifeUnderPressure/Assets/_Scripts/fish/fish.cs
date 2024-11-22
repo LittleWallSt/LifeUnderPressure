@@ -26,7 +26,7 @@ public class Fish : MonoBehaviour
 
 
     //MOVEMENT WAYPOINT BASED
-    protected Path path;
+    [SerializeField]protected Path path;
     protected int currentWaypointIndex;
 
     protected Transform player;
@@ -56,7 +56,9 @@ public class Fish : MonoBehaviour
     protected Vector3 directionToWaypoint = new Vector3(0,1,0);
 
     [SerializeField]
-    protected bool update = true; 
+    protected bool update = true;
+    [SerializeField]
+    private bool solo = false;
 
    // Start is called before the first frame update
     void Start()
@@ -291,7 +293,11 @@ public class Fish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(update)HeadTowards(directionToWaypoint);
+        if (update)
+        {
+            HeadTowards(directionToWaypoint);
+            if (solo) MoveFish();
+        }
     }
 
     private void OnDrawGizmos()
