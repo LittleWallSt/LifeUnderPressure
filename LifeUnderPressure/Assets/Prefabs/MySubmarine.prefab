@@ -1405,6 +1405,20 @@ MonoBehaviour:
       Data3: -1758655083
       Data4: 612755649
     Path: event:/SFX/VO/INTRO/VO_Intro
+  outro:
+    Guid:
+      Data1: 657568537
+      Data2: 1262624447
+      Data3: 620381865
+      Data4: 290753729
+    Path: event:/SFX/VO/INTRO/VO_Outro_End
+  choking:
+    Guid:
+      Data1: -102263863
+      Data2: 1304903009
+      Data3: -1406150769
+      Data4: 474793404
+    Path: event:/SFX/VO/VO_Outro_Breathing_Heart
   sceneToLoad: Credits
   lights: {fileID: 478550146530887109}
   questionIcon: {fileID: 0}
