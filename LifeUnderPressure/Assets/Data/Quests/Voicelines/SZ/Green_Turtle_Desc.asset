@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: Green_Turtle_Desc
   voicelines:
-  - Green Sea Turtles are big graceful marine reptiles. They are known for their
-    distinctive olive-green shells.
-  - Mostly they inhabit shallow coastal waters, coral reefs, seagrass beds and can
-    be found near shorelines.
-  charPerSecond: 22.9
+  - Green Sea Turtles are big  marine reptiles. They are known for their distinctive
+    olive-green shells.
+  - They mostly inhabit shallow coastal waters, coral reefs and seagrass beds.
+  charPerSecond: 21
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: -1181754687
