@@ -18,7 +18,7 @@ MonoBehaviour:
 
 '
   charPerSecond: 12
-  delay: 7
+  delay: 10
   OnVoicelineStart:
   - Guid:
       Data1: -1097258333
