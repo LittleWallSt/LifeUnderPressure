@@ -65,6 +65,13 @@ MonoBehaviour:
       Data3: -364148815
       Data4: 961672543
     Path: event:/SFX/SFX_Whale
+  <SFX_CookieCutter>k__BackingField:
+    Guid:
+      Data1: 1762667576
+      Data2: 1247328876
+      Data3: -1809889655
+      Data4: -1351199706
+    Path: event:/SFX/SFX_CookieCutter
   <upgradeFX>k__BackingField:
     Guid:
       Data1: -1863119098
