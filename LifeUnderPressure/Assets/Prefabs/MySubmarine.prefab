@@ -19416,6 +19416,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 23e871a23937d1f4795ecb0ed1a5e743, type: 2}
   - {fileID: 11400000, guid: cd4b4509caabb2145aa931e6e24a3093, type: 2}
   - {fileID: 11400000, guid: f7a6a0a59b9dc4945aadd86c5c060327, type: 2}
+  cookieSHark:
+    Guid:
+      Data1: 1762667576
+      Data2: 1247328876
+      Data3: -1809889655
+      Data4: -1351199706
+    Path: event:/SFX/SFX_CookieCutter
 --- !u!114 &6457192390758754892
 MonoBehaviour:
   m_ObjectHideFlags: 0
