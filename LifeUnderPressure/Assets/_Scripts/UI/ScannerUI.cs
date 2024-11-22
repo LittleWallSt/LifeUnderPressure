@@ -25,13 +25,15 @@ public class ScannerUI : MonoBehaviour
         outOfRangeText.gameObject.SetActive(false);
     }
 
-    public void DisplayInfo()
+    public void DisplayInfo(string info)
     {
         scanPanel.gameObject.SetActive(true);
         scanPanel.alpha = 1.0f;
-        fishName.text = "Sealog updated!!";
+        fishName.text = info;
         StartCoroutine(FadeOutAfterCooldown());
     }
+
+    
 
     public void SetScanBarValue(float value)
     {
