@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
-            QuestSystem.ForceCompleteQuest();
+            QuestSystem.ForceScanFish();
         }
 #endif
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
@@ -138,7 +138,8 @@ public class GameManager : MonoBehaviour
     }
     public void ScannedFish(FishInfo fish)
     {
-        for(int i = 0; i < scannedFishEvents.Length; i++)
+        fish.locked = false;
+        for (int i = 0; i < scannedFishEvents.Length; i++)
         {
             if (scannedFishEvents[i].invoked) continue;
 

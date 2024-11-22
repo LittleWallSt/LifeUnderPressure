@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: Cookie_Cutter
   voicelines:
-  - "You really risked the sub only to get this bastard scanned? That\u2019s awesome
-    for us."
-  charPerSecond: 17.8
+  - 'Be careful of cookie-cutter sharks. Despite being very tiny they can bite into
+    hard surfaces like submarines. '
+  - They will stay at ranges between 1000 - 3700 meters, swimming in open waters
+    as they look for food.
+  charPerSecond: 16.9
+  delay: 0
   OnVoicelineStart:
   - Guid:
-      Data1: 665036491
-      Data2: 1155281834
-      Data3: -1283804760
-      Data4: -1905516372
-    Path: event:/SFX/VO/MZ/VO_MZ_Cookie_Cutter
+      Data1: 1573195218
+      Data2: 1308639265
+      Data3: 42185858
+      Data4: -690564253
+    Path: event:/SFX/VO/MZ/VO_MZ_Cookie_Cutter_Desc

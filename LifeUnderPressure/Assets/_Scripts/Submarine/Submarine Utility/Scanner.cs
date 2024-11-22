@@ -24,7 +24,7 @@ public class Scanner : MonoBehaviour
     float timeLeft;
 
 #region Events
-    public Action scanFinished;
+    public Action<string> scanFinished;
     public Action<float> updateScanner;
     public Action resetScannerLock;
 
@@ -169,7 +169,7 @@ public class Scanner : MonoBehaviour
             else if (currentFish!=null) ///??????/
                 FinishedScanner();
         }
-    }
+    } 
 
     private void InRangeUpdate() // update for when fish is in range but not scanned
     {
@@ -204,7 +204,7 @@ public class Scanner : MonoBehaviour
         if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
 
         //Aleksis>>
-        fishInfo.locked = false;
+        // fish info gets locked = false in game manager
         GameManager.Instance.ScannedFish(fishInfo);
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         // Aleksis <<
@@ -240,6 +240,13 @@ public class Scanner : MonoBehaviour
         Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
+
+
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
+        // Janko <<
+
         FindObjectOfType<DyingEvent>().onDieEnd();
     }
 
@@ -250,11 +257,18 @@ public class Scanner : MonoBehaviour
         if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
         ResetScanner(false);
         currentFish = null;
+        DisplayInfo("Sealog obtained.");
 
         Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
         Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
+
+
+        // Janko >>
+        scanningInstance.setParameterByName("ScanningInput", 0);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.scannedNotificationSFX, transform.position);
+        // Janko <<
 
     }
 
@@ -323,8 +337,13 @@ public class Scanner : MonoBehaviour
     public void DisplayInfo(FishInfo fishInfo)
     {
         if (fishInfo == null) return;
-        if (scanFinished!=null) scanFinished.Invoke();
+        if (scanFinished!=null) scanFinished.Invoke("Sealog updated!!");
         currentFish = null;
+    }
+
+    public void DisplayInfo(string info)
+    {
+        scanFinished.Invoke(info);
     }
 
     private void ResetScanner(bool scan)

@@ -115,8 +115,9 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
+  update: 1
   FOVAngle: 0
-  smoothDamp: 0
+  smoothDamp: 5
 --- !u!1 &7409649755223761223
 GameObject:
   m_ObjectHideFlags: 0
