@@ -169,7 +169,7 @@ public class Scanner : MonoBehaviour
             else if (currentFish!=null) ///??????/
                 FinishedScanner();
         }
-    }
+    } 
 
     private void InRangeUpdate() // update for when fish is in range but not scanned
     {
@@ -204,7 +204,7 @@ public class Scanner : MonoBehaviour
         if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
 
         //Aleksis>>
-        fishInfo.locked = false;
+        // fish info gets locked = false in game manager
         GameManager.Instance.ScannedFish(fishInfo);
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         // Aleksis <<

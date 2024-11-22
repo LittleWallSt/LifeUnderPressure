@@ -112,6 +112,13 @@ public static class QuestSystem
     {
         QuestFinish();
     }
+    public static void ForceScanFish()
+    {
+        foreach(var f in CurrentQuest.Fishes)
+        {
+            GameManager.Instance.ScannedFish(f.fish);
+        }
+    }
     // Actions
     private static void Call_OnQuestUpdated()
     {
