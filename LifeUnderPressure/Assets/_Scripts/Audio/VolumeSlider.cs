@@ -25,9 +25,7 @@ public class VolumeSlider : MonoBehaviour
     }
     private void OnEnable()
     {
-        AudioManager manager = AudioManager.instance;
-        if (!manager) return;
-
+        if (!AudioManager.instance) return;
         switch (volumeType)
         {
             case VolumeType.MASTER:
@@ -52,6 +50,7 @@ public class VolumeSlider : MonoBehaviour
     }
     public void OnSliderValueChanged()
     {
+        if (!AudioManager.instance) return;
         switch (volumeType)
         {
             case VolumeType.MASTER:
@@ -72,6 +71,7 @@ public class VolumeSlider : MonoBehaviour
                 break;
             case VolumeType.VO:
                 AudioManager.instance.voVolume = volumeSlider.value;
+                DataManager.WriteSettings("Volume_Voiceover", (int)(volumeSlider.value * 100f));
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);

@@ -104,7 +104,7 @@ public class AudioManager : MonoBehaviour
         gameSoundVolume = DataManager.GetSettings("Volume_SFX", 100) / 100f;
         musicVolume = DataManager.GetSettings("Volume_Music", 100) / 100f;
         ambienceVolume = DataManager.GetSettings("Volume_Ambience", 100) / 100f;
-        voVolume = gameSoundVolume;
+        voVolume = DataManager.GetSettings("Volume_Voiceover", 100) / 100f;
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
