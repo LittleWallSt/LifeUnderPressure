@@ -19,7 +19,7 @@ MonoBehaviour:
     often lurking in caves or crevices waiting for prey.\r\n"
   fishFullDescription: 'That was quite a scan. Great job that was needed.
 
-    
+
 
     The
     moray eel is a stealthy predator, known for its long, snake-like body and sharp,
@@ -27,7 +27,7 @@ MonoBehaviour:
     jaws, which help it grab and pull prey into its mouth. Its diet consists primarily
     of fish, crustaceans, and even octopuses, making it a formidable hunter.
 
-    
+
 
     Moray
     eels are masters of disguise. They often blend into rocky crevices and coral
@@ -36,7 +36,7 @@ MonoBehaviour:
 
 '
   fishPrefab: {fileID: 0}
-  locked: 0
+  locked: 1
   scale: 0
-  shortVO: {fileID: 0}
+  shortVO: {fileID: 11400000, guid: 87ca9a528c3245040af313bac5de96d4, type: 2}
   longVO: {fileID: 0}
