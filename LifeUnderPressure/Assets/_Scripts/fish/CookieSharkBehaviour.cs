@@ -97,12 +97,14 @@ public class CookieSharkBehaviour : BoidUnit
             if(!DetectFreneticMouseMovement())
             {
                 DamagePlayer();
+                //>> sound
                 if (!attached)
                 {
                     AudioManager.instance.PlayOneShot(Submarine.Instance.getCookieVoicelines(), 
                         Submarine.Instance.transform.position);
                     attached = true; 
                 }
+                //<<
             }
             else
             {
