@@ -50,11 +50,9 @@ public class InternalSettings : MonoBehaviour
     {
         while (!DataLoaded)
         {
-            Debug.Log("waitng");
             if (!Get) throw new Exception("NO INTERNAL SETTINGS IN THE SCENE");
             yield return null;
         }
-        Debug.Log("stop waitng");
         yield return null;
     }
     public static LayerMask FishLayer => Get.fishLayer;

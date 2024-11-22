@@ -54,9 +54,6 @@ public static class DataManager
 
     public static IEnumerator LoadAllData()
     {
-        Data = new List<DataStruct>();
-        SettingsData = new List<DataStruct>();
-
         LoadSaveFile(ref Data, FilePath);
         LoadSaveFile(ref SettingsData, SettingsPath);
         yield return null;
@@ -179,6 +176,7 @@ public static class DataManager
 
         File.Delete(filePath);
         Reset();
+        Debug.Log("Deleted " + filePath);
     }
 #endif
     public static void Reset()

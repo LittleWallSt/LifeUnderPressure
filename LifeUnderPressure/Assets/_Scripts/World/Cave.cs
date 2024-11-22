@@ -153,7 +153,6 @@ public class Cave : MonoBehaviour, IDistanceLoad
     }
     private void OnPlayerDeath(Vector3 direction, DamageType dType)
     {
-        Debug.Log("duie");
         if (Inside && collapsed)
         {
             PlayerDiedWhileCollapsing();
