@@ -54,6 +54,9 @@ public static class DataManager
 
     public static IEnumerator LoadAllData()
     {
+        Data = new List<DataStruct>();
+        SettingsData = new List<DataStruct>();
+
         LoadSaveFile(ref Data, FilePath);
         LoadSaveFile(ref SettingsData, SettingsPath);
         yield return null;
