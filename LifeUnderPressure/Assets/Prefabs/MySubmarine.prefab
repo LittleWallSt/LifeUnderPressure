@@ -19410,6 +19410,8 @@ MonoBehaviour:
   Collision:
   - {fileID: 11400000, guid: 5cae83f64ede37c479fb061e9b0fdd7e, type: 2}
   - {fileID: 11400000, guid: 06242677a0d923546b1c64d759a3783f, type: 2}
+  - {fileID: 11400000, guid: 1e9cebb6c7a921b489531a509394e4ac, type: 2}
+  - {fileID: 11400000, guid: 2e411b9badf3d8545b90692b7bf48022, type: 2}
   TooDeep:
   - {fileID: 11400000, guid: 23e871a23937d1f4795ecb0ed1a5e743, type: 2}
   - {fileID: 11400000, guid: cd4b4509caabb2145aa931e6e24a3093, type: 2}

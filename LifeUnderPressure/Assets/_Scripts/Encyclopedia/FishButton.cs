@@ -60,7 +60,7 @@ public class FishButton : MonoBehaviour
         switch(fishState)
         {
             case FishState.None:
-                stateIcon.sprite = encyclopedia.FishStates[0];
+                stateIcon.sprite = encyclopedia.FishStates[0]; 
                 break;
             case FishState.Marked:
                 stateIcon.sprite = encyclopedia.FishStates[1];

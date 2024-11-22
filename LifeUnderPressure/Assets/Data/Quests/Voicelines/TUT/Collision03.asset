@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 967b55054d582d5498940747eea85cbd, type: 3}
-  m_Name: CaveCollapseStart
+  m_Name: Collision03
   m_EditorClassIdentifier: 
-  voicelineName: 'CaveCollapseStart '
+  voicelineName: Collision03
   voicelines:
-  - Quickly, get out of there! The cave is collapsing.
-  charPerSecond: 20
+  - ' It doesn''t end well for you if you keep hitting stuff.'
+  charPerSecond: 15
   delay: 0
   OnVoicelineStart:
   - Guid:
-      Data1: -1556893222
-      Data2: 1311218655
-      Data3: -325953906
-      Data4: 811841737
-    Path: event:/SFX/VO/GAMEPLAY/VO_04_CaveCollapseStart
+      Data1: -1704607627
+      Data2: 1240600028
+      Data3: -926187080
+      Data4: -1484100736
+    Path: event:/SFX/VO/GAMEPLAY/VO_14_Collision_03
