@@ -24,16 +24,13 @@ public class CreditsTimer : MonoBehaviour
         if (timer >= creditsTimer)
         {
             timerFinished = true;
-            StartCoroutine(fadeIn());
+            //StartCoroutine(fadeIn());
         }
 
         if (timerFinished)
         {
-            if (Input.anyKeyDown)
-            {
-                
-                SceneManager.LoadScene(sceneToLoad);
-            }
+            SceneManager.LoadScene(sceneToLoad);
+            enabled = false;
         }
     }
 
