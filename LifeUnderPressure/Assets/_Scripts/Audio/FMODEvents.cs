@@ -24,6 +24,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField]
     public EventReference SFX_CookieCutter { get; set; }
 
+    [field: SerializeField]
+    public EventReference SFX_CaveCollapse { get; set; }
+
     [field: Header("Upgrades")]
     [field: SerializeField]
     public EventReference upgradeFX { get; private set; }

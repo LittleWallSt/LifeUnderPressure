@@ -72,6 +72,13 @@ MonoBehaviour:
       Data3: -1809889655
       Data4: -1351199706
     Path: event:/SFX/SFX_CookieCutter
+  <SFX_CaveCollapse>k__BackingField:
+    Guid:
+      Data1: -1749491851
+      Data2: 1265696647
+      Data3: -696229186
+      Data4: -519813431
+    Path: event:/SFX/SFX_CaveCollapse
   <upgradeFX>k__BackingField:
     Guid:
       Data1: -1863119098
