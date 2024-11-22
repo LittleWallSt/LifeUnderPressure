@@ -80,7 +80,7 @@ public class FishButton : MonoBehaviour
     // Aleksis >>
     public void LoadFishInfo()
     {
-        fishInfo.locked = DataManager.Get("FishScanned_" + fishInfo.name, 0) == 1 ? false : true;
+        fishInfo.locked = DataManager.Get(fishInfo.name, 0) == 1 ? false : true;
         if (!fishInfo.locked)
         {
             fishState = FishState.Scanned;

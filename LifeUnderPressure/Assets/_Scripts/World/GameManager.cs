@@ -80,6 +80,10 @@ public class GameManager : MonoBehaviour
         {
             QuestSystem.ForceScanFish();
         }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            DataManager.DebugString();
+        }
 #endif
         if (QuestSystem.HasQuest() && QuestSystem.GetQuestType() == Quest.QuestType.Location)
         {
@@ -139,6 +143,7 @@ public class GameManager : MonoBehaviour
     public void ScannedFish(FishInfo fish)
     {
         fish.locked = false;
+        DataManager.Write(fish.name, 1);
         for (int i = 0; i < scannedFishEvents.Length; i++)
         {
             if (scannedFishEvents[i].invoked) continue;
@@ -146,7 +151,7 @@ public class GameManager : MonoBehaviour
             bool allScanned = true;
             foreach(FishInfo scannedFish in scannedFishEvents[i].fish)
             {
-                if (scannedFish.locked) allScanned = false;
+                if (!DataManager.IsFishScanned(scannedFish.name)) allScanned = false;
             }
             if (!allScanned) continue;
 
@@ -155,7 +160,6 @@ public class GameManager : MonoBehaviour
         }
 
         QuestSystem.ScannedFish(fish);
-        DataManager.Write("FishScanned_" + fish.name, 1);
     }
     public void ResetEventForScannedFish(int index)
     {

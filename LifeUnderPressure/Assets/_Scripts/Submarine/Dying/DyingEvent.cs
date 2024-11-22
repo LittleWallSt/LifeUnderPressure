@@ -22,6 +22,8 @@ public class DyingEvent : MonoBehaviour
     [SerializeField] private Voiceline[] afterDeath;
 
     [SerializeField] private EventReference intro;
+    [SerializeField] private EventReference outro;
+    [SerializeField] private EventReference choking;
     int VOiterator = 0;
 
     [Header("Endgame")]
@@ -70,7 +72,7 @@ public class DyingEvent : MonoBehaviour
         Instantiate(submarineBroken, SealogPlacement, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, SealogPlacement + sealogOffset, Quaternion.identity);
 
-        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
+        
 
         
     }
@@ -79,6 +81,7 @@ public class DyingEvent : MonoBehaviour
     {
         if (damageType == DamageType.End) return; 
         if (encyclopedia!=null)encyclopedia.ClearSealog();
+        controlsScreen?.SetActive(false);
 
         if (submarine== null) submarine= FindObjectOfType<Submarine>();
         submarine.getSubmarineMovement().enabled= false;
@@ -206,13 +209,17 @@ public class DyingEvent : MonoBehaviour
 
     IEnumerator CallEndScreen()
     {
+
+        if (!outro.IsNull)AudioManager.instance?.PlayOneShot(outro, Submarine.Instance.transform.position);
         /*you lose control over the submarine, and ben's voiceline starts to play.
          * he tells you that he is happy that you found the rare fish, but that he has to kill you to get the rewards 100% for himself.
          */
-        yield return new WaitForSecondsRealtime(firstVoiceline);
-
+        firstVoiceline = 7f;
+        yield return new WaitForSecondsRealtime(firstVoiceline); //7 seconds  add red loght and choking /// 15 seconds choking
+        chokingTime = 15f;
         /*you will start taking damage slowly while a sound effect of choking is playing.
          */
+        if (!choking.IsNull)AudioManager.instance?.PlayOneShot(choking, Submarine.Instance.transform.position); 
         float elapsedTime = 0f;
         lights.gameObject.SetActive(false);
         float dmgPerFrame = Time.deltaTime / chokingTime * Submarine.Instance.getSubmarineHealth().MaxHealth;
@@ -224,9 +231,6 @@ public class DyingEvent : MonoBehaviour
             yield return null;
         }
 
-        /*he says goodbye and thank you, screen fades out. THE END
-         * 
-         */
 
         elapsedTime = 0f;
         while (elapsedTime < cooldown)
@@ -257,6 +261,8 @@ public class DyingEvent : MonoBehaviour
         yield return new WaitForSecondsRealtime(5f);
 
         controlsScreen?.SetActive(false);
+
+        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
 
     }
 

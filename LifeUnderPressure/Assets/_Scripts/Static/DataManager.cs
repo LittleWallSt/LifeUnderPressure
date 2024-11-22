@@ -154,6 +154,19 @@ public static class DataManager
         File.Delete(FilePath);
         Reset();
     }
+    public static bool IsFishScanned(string fishInfoName)
+    {
+        return Get(fishInfoName, 0) > 0;
+    }
+    public static void DebugString()
+    {
+        string debug = "";
+        foreach(var str in Data)
+        {
+            debug += str.name + " - " + str.value + "\n";
+        }
+        Debug.Log(debug);
+    }
 #if UNITY_EDITOR
     [MenuItem("LUP/Clear Main Save")]
     public static void ClearMainSave()
@@ -163,6 +176,7 @@ public static class DataManager
 
         File.Delete(filePath);
         Reset();
+        Debug.Log("Deleted " + filePath);
     }
 #endif
     public static void Reset()

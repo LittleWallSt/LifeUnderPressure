@@ -190,6 +190,7 @@ public class Encyclopedia : MonoBehaviour
     // Aleksis >> changed from void to bool, added return state;
     public bool EnableMenu(bool state, GameObject _submarineBody)
     {
+        if (intro) return false; 
         if (submarineBody == null) submarineBody = _submarineBody;
         gameObject.SetActive(state);
         //submarineBody.SetActive(!state);  ??
@@ -264,6 +265,11 @@ public class Encyclopedia : MonoBehaviour
     // Aleksis <<
 
 
+    private bool intro = true;
 
+    public void IntroFinished()
+    {
+        intro = false;
+    }
 
 }

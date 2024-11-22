@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554244901700382238}
+  - component: {fileID: 5556336315644754656}
+  - component: {fileID: 2600763036200250876}
   m_Layer: 8
   m_Name: FinalFish
   m_TagString: FinalFish
@@ -32,6 +34,63 @@ Transform:
   - {fileID: 3757626993516120963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5556336315644754656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814916364933014816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d8f667fda13d94da8521e6785a3062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishInfo: {fileID: 11400000, guid: 2c165657e3be3974bb3d4af21e9dd266, type: 2}
+  scaredFactor: 0
+  scaredDistance: 0
+  scaredSpeed: 0
+  scaredTimer: 0
+  curiousFactor: 0
+  curiousDistance: 0
+  curiousSpeed: 0
+  curiousTimer: 0
+  curiousCooldownTime: 0
+  curiousRange: 0
+  path: {fileID: 0}
+  random: 0
+  speed: 0.1
+  rotationSpeed: 100
+  alignmentThreshold: 30
+  avoidanceDetection: {x: 10, y: 10, z: 10}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
+  update: 1
+  solo: 1
+--- !u!136 &2600763036200250876
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814916364933014816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.59906
+  m_Height: 22.533848
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.89}
 --- !u!1001 &3724332490678070376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,10 +167,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8460052812902075542}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 538b654f28e7859458de888069113a9e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6663967206509845936}
   m_SourcePrefab: {fileID: 100100000, guid: 538b654f28e7859458de888069113a9e, type: 3}
 --- !u!4 &3757626993516120963 stripped
 Transform:
@@ -146,26 +201,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &6663967206509845936
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4570614290259824953}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.59906
-  m_Height: 22.533848
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.89}
