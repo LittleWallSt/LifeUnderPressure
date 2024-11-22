@@ -30,6 +30,11 @@ public class CookieSharkBehaviour : BoidUnit
 
     private bool hasReachedPosition = false;
 
+
+    // >> Ulia change
+    bool attached = false;
+    // <<
+
     public override void MoveFish()
     {
         if (path == null || path.Length == 0) return;
@@ -92,9 +97,18 @@ public class CookieSharkBehaviour : BoidUnit
             if(!DetectFreneticMouseMovement())
             {
                 DamagePlayer();
+                //>> sound
+                if (!attached)
+                {
+                    AudioManager.instance.PlayOneShot(Submarine.Instance.getCookieVoicelines(), 
+                        Submarine.Instance.transform.position);
+                    attached = true; 
+                }
+                //<<
             }
             else
             {
+                attached = false;
                 nomnomPlayer = false;
                 inFrontOfGlass = false;
                 directionChanges = 0;
@@ -105,6 +119,7 @@ public class CookieSharkBehaviour : BoidUnit
         }
         else
         {
+            attached = false;
             GoAway();
         }
         

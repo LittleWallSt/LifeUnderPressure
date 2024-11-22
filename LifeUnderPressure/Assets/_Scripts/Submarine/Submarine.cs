@@ -1,4 +1,5 @@
 using FMOD.Studio;
+using FMODUnity;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -66,6 +67,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [Header("Audio")]
     [SerializeField] private Voiceline[] Collision = null;
     [SerializeField] private Voiceline[] TooDeep = null;
+
+    [SerializeField] private EventReference cookieSHark;
 
     private EventInstance warningInstance;
 
@@ -388,7 +391,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
         health.Remove_OnValueChanged(UpdateCracksOnWindshield);
         health.Remove_OnDie(Die);
         // Janko >>
-        warningInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        warningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
 
         getSubmarineHealth().Remove_OnDie(OnDie);
         getSubmarineHealth().Remove_OnRespawn(OnRespawn);
@@ -487,5 +490,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public Voiceline[] getCollisionVoicelines()
     {
         return Collision;
+    }
+
+    public EventReference getCookieVoicelines()
+    {
+        return cookieSHark;
     }
 }
