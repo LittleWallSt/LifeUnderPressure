@@ -17,7 +17,7 @@ public class CookieSharkBehaviour : BoidUnit
     private bool inFrontOfGlass = false;
     private bool approaching = false;
     private float cooldown = 10.0f;
-    private float cooldownTimer = 0.0f;
+    //private float cooldownTimer = 0.0f;
 
 
     private float lastPlayerRotationY = 0.0f;                

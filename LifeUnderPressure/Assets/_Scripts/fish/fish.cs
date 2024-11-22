@@ -41,7 +41,7 @@ public class Fish : MonoBehaviour
 
     private Vector3 currentDirection;
 
-    [SerializeField] protected Vector3 avoidanceDetection;
+    [SerializeField] protected Vector3 avoidanceDetection; 
     [SerializeField] protected LayerMask mask;
     
     protected float averageSpeed;
