@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private string sceneToLoad = "SCENE";
     [SerializeField] private float delayToStart = 2.5f;
     [SerializeField] private Animator menuAnimator = null;
+    [SerializeField] private GameObject sceneLoadedText = null;
     [SerializeField] private GameObject buttonsGrid = null;
     [SerializeField] private GameObject controlsMenu = null;
     [SerializeField] private GameObject controlsButton = null;
@@ -20,8 +21,12 @@ public class MainMenu : MonoBehaviour
 
     private bool pressedPlay = false;
     private float timer = 0f;
+
+    private AsyncOperation operation = null;
+    private bool playSceneLoaded = false;
     private void Start()
     {
+        sceneLoadedText.SetActive(false);
         buttonsGrid.SetActive(true);
         controlsMenu.SetActive(false);
         // Janko >>
@@ -30,7 +35,24 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        PressPlayProcess();
+        //PressPlayProcess();
+        SceneLoadingProcess();
+    }
+
+    private void SceneLoadingProcess()
+    {
+        if (operation == null) return;
+
+        if (!playSceneLoaded && operation.progress >= 0.9f)
+        {
+            playSceneLoaded = true;
+            sceneLoadedText.SetActive(true);
+        }
+        if (playSceneLoaded && Input.anyKeyDown)
+        {
+            operation.allowSceneActivation = true;
+            operation = null;
+        }
     }
 
     private void PressPlayProcess()
@@ -40,7 +62,6 @@ public class MainMenu : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > delayToStart)
         {
-            SceneManager.LoadScene(sceneToLoad);
             pressedPlay = false;
         }
     }
@@ -49,6 +70,8 @@ public class MainMenu : MonoBehaviour
     {
         pressedPlay = true;
         menuAnimator.SetTrigger("PressPlay");
+        operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        operation.allowSceneActivation = false;
     }
     public void Button_Options()
     {
@@ -111,5 +134,4 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_UI_Hover, transform.position);
     }
-    // Janko <<
 }
