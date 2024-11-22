@@ -189,6 +189,15 @@ public class CookieSharkBehaviour : BoidUnit
     private void DamagePlayer()
     {
         Submarine.Instance.getSubmarineHealth().DealDamage(damage * Time.fixedDeltaTime, Vector3.zero, DamageType.CookieShark);
+        if (Submarine.Instance.getSubmarineHealth().Value == 0) {
+            attached = false;
+            nomnomPlayer = false;
+            inFrontOfGlass = false;
+            directionChanges = 0;
+            freneticTimer = 0.0f;
+            myTransform.SetParent(null);  
+
+            GoAway(); }
     }
 
 private void GoAway()

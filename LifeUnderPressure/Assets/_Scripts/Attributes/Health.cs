@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     private DamageType lastDamageType;
     private Vector3 lastDamageDirection;
+    private float lastDamageTime;
 
     public float Value
     {
@@ -59,6 +60,7 @@ public class Health : MonoBehaviour
 
     private void RegenerationProcess()
     {
+        if (Time.time - lastDamageTime < 5) return; 
         if (Value < MaxHealth && regeneratePerMinute != 0f)
         {
             Value += regeneratePerMinute * (Time.deltaTime / 60f);
@@ -71,7 +73,7 @@ public class Health : MonoBehaviour
         Value -= damage;
         lastDamageType = damageType;
         lastDamageDirection = direction;
-        
+        lastDamageTime = Time.time;
         Call_OnDamage(damageType);
     }
     private void Call_OnDie(Vector3 direction, DamageType damageType)
