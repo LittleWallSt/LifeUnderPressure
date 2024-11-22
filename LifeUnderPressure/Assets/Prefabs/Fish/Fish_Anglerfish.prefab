@@ -118,7 +118,7 @@ MonoBehaviour:
     m_Bits: 0
   update: 1
   FOVAngle: 0
-  smoothDamp: 0
+  smoothDamp: 5
 --- !u!1001 &6350787601807115978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7545377856517425246, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
