@@ -253,7 +253,9 @@ public class DyingEvent : MonoBehaviour
 
     IEnumerator OnStart()
     {
-        if (!intro.IsNull) AudioManager.instance?.PlayOneShot(intro, Submarine.Instance.transform.position);  
+        //if (!intro.IsNull) AudioManager.instance?.PlayOneShot(intro, Submarine.Instance.transform.position);  
+        yield return InternalSettings.WaitForDataLoading();
+        if (!intro.IsNull) AudioManager.instance.PlayVoiceline(intro);
         yield return new WaitForSecondsRealtime(8f);
 
         controlsScreen?.SetActive(true);
