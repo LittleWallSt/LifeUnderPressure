@@ -12,8 +12,11 @@ public class Cave : MonoBehaviour, IDistanceLoad
     [SerializeField] private GameObject exit = null;
     [SerializeField] private Animator animator = null;
 
+    [Header("Audio")]
     [SerializeField] private Voiceline collapseStart = null;
     [SerializeField] private Voiceline collapseEnd = null;
+
+    [SerializeField] private Vector2 collapsingSoundsFrequencyRange = new Vector2(0.3f, 1f);
 
     private bool collapsed = false;
     private Vector3 position;
@@ -90,12 +93,26 @@ public class Cave : MonoBehaviour, IDistanceLoad
     }
     public IEnumerator Collapse(float delay)
     {
+        StartCoroutine(CollapsingSoundProcess());
         Submarine.Instance.getSubmarineMovement().SetScreenShakeContinuous(true);
         yield return new WaitForSeconds(delay);
 
         collapsed = true;
         UpdateCollapsed();
         DataManager.Write("CaveCollapsed", 1);
+    }
+    private IEnumerator CollapsingSoundProcess()
+    {
+        while (Inside)
+        {
+            AudioManager.instance.PlayOneShot(
+            FMODEvents.instance.SFX_CaveCollapse,
+            Submarine.Instance.transform.position + new Vector3(UnityEngine.Random.Range(
+                -2f, 2f), UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(
+                -2f, 2f)));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(collapsingSoundsFrequencyRange.x,
+                collapsingSoundsFrequencyRange.y));
+        }
     }
     private void UpdateInside()
     {
