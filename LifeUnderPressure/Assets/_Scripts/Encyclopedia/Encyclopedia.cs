@@ -272,4 +272,7 @@ public class Encyclopedia : MonoBehaviour
         intro = false;
     }
 
+    public bool GetIntro() { return intro; } 
+
+
 }

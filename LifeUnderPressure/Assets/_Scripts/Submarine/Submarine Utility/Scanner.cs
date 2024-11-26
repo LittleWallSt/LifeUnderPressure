@@ -125,6 +125,11 @@ public class Scanner : MonoBehaviour
             if (ShowWarning != null) ShowWarning.Invoke(false);
             if (currentState == ScannerState.InRange && Input.GetMouseButton(0) && !mouseDown)
             {
+                if (Submarine.Instance.GetEncyclopedia().GetIntro() && currentFish.tag != "Sealog")
+                {
+                    DisplayInfo("Scan sealog first.");  
+                    return;
+                }
                 currentState = ScannerState.Scanning;
                 mouseDown = true;
                 ResetScanner(true);
