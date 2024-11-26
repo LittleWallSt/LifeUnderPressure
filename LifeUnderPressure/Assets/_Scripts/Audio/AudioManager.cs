@@ -94,11 +94,11 @@ public class AudioManager : MonoBehaviour
         musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
 
-        yield return InternalSettings.WaitForDataLoading();
-
         SceneManager.activeSceneChanged += OnSceneChanged;
         Scene scena = SceneManager.GetActiveScene();
         OnSceneChanged(new Scene(), scena);
+
+        yield return InternalSettings.WaitForDataLoading();
 
         masterVolume = DataManager.GetSettings("Volume_Master", 100) / 100f;
         gameSoundVolume = DataManager.GetSettings("Volume_SFX", 100) / 100f;
@@ -192,8 +192,9 @@ public class AudioManager : MonoBehaviour
     {
         // current instance is ambience, stop it and play music
         currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        SwapCurrentInstance();
-        StartCoroutine(StartInstanceDelay(2f));
+        currentInstance = musicEventInstance;
+        StartCoroutine(StartInstanceDelay(2f)); 
+        timeLastSetInstance = Time.time;
     }
     private void OnCaveInsideChanged()
     {

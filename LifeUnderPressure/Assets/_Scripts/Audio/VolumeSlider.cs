@@ -50,7 +50,7 @@ public class VolumeSlider : MonoBehaviour
     }
     public void OnSliderValueChanged()
     {
-        if (!AudioManager.instance) return;
+        if (!AudioManager.instance || !InternalSettings.DataLoaded) return;
         switch (volumeType)
         {
             case VolumeType.MASTER:
