@@ -193,7 +193,7 @@ public class AudioManager : MonoBehaviour
         // current instance is ambience, stop it and play music
         currentInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         currentInstance = musicEventInstance;
-        StartCoroutine(StartInstanceDelay(2f)); 
+        currentInstance.start();
         timeLastSetInstance = Time.time;
     }
     private void OnCaveInsideChanged()
