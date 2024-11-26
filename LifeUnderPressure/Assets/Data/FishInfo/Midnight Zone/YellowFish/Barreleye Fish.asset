@@ -20,7 +20,7 @@ MonoBehaviour:
     found alone, swimming slowly around in dark waters.
   fishFullDescription: 'Now this is an interesting looking fella. Cool scan
 
-    
+
 
     This
     weird looking fish has big fins that let them stay almost perfectly still in
@@ -29,12 +29,15 @@ MonoBehaviour:
     them to see both above and in front of them as they search for food. Like zooplankton,
     crustaceans, and siphonophores.
 
-    
+
 
     This little one has only been spotted
     a few times ever. This makes it so little is known about their reproduction,
     but scientists do believe they are pelagic spawners, meaning that they release
     their eggs and sperm directly into the water.'
-  fishPrefab: {fileID: 0}
+  fishPrefab: {fileID: 5117038511062740693, guid: e0a7a4eb785c9c6498a48579553c81e0,
+    type: 3}
   locked: 1
   scale: 0
+  shortVO: {fileID: 11400000, guid: 3241e40bf577e604fbb0bc1901020b91, type: 2}
+  longVO: {fileID: 11400000, guid: c0219a6f71357c8448be4e23a4d95217, type: 2}
