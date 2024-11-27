@@ -142,7 +142,13 @@ public class GameManager : MonoBehaviour
     }
     public void ScannedFish(FishInfo fish)
     {
-        fish.locked = false;
+        if (fish.locked)
+        {
+            Submarine.Instance.AddMoney(1);
+            fish.locked = false;
+            if (fish.OnLockedChange != null) fish.OnLockedChange.Invoke();
+        }
+
         DataManager.Write(fish.name, 1);
         for (int i = 0; i < scannedFishEvents.Length; i++)
         {

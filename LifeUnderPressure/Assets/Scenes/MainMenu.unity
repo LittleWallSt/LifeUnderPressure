@@ -1642,6 +1642,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8957690173819050034, guid: 4f0655da26f706b41b3bea9126463f64,
+        type: 3}
+      propertyPath: m_text
+      value: 'WASD to move
+
+
+
+        Mouse to look around
+
+
+
+        Left Shift
+        to ascend
+
+
+
+        Ctrl to descend
+
+
+
+        Left Click to scan the fish
+
+
+
+        Hold
+        Right Click to boost
+
+
+
+        Q for sealog
+
+
+
+        Escape to pause game.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

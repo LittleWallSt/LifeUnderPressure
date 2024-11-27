@@ -197,7 +197,6 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
-        
         // Aleksis >>
         Fish fish = currentFish?.GetComponent<Fish>();
         if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
@@ -207,24 +206,22 @@ public class Scanner : MonoBehaviour
         //Aleki <<
 
         if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
+        DisplayInfo(fishInfo);
 
         //Aleksis>>
-        // fish info gets locked = false in game manager
+        // fish info gets (locked = false) in game manager
         GameManager.Instance.ScannedFish(fishInfo);
-        if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         // Aleksis <<
 
-
-
-        if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
-
-        DisplayInfo(fishInfo);
-        Submarine.Instance.AddMoney(1);
+        if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
 
         ResetScanner(false);
         currentFish = null;
-        Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
-        Submarine.Instance.GetEncyclopedia().ping.pingArea = null; 
+        if (Encyclopedia.CurrFish && Encyclopedia.CurrFish.fishInfo.fishName == fish.FishInfo.fishName)
+        {
+            Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
+            Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
+        }
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
 
@@ -343,9 +340,10 @@ public class Scanner : MonoBehaviour
 
     public void DisplayInfo(FishInfo fishInfo)
     {
-        if (fishInfo == null) return;
-        if (scanFinished!=null) scanFinished.Invoke("Sealog updated!!");
-        currentFish = null;
+        if (fishInfo == null || scanFinished == null) return;
+
+        if (fishInfo.locked) scanFinished.Invoke("Sealog updated!");
+        else scanFinished.Invoke(fishInfo.fishName + " was already scanned.");
     }
 
     public void DisplayInfo(string info)

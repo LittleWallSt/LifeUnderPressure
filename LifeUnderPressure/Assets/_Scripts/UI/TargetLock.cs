@@ -31,6 +31,7 @@ public class TargetLock : MonoBehaviour
     [SerializeField] RectTransform[] LockPositionsRect;
     private void Start()
     {
+        ActivateLock(ScannerState.Inactive);
         scanner.lockActive += ActivateLock;
         scanner.targetLock += LockOnTarget;
         scanner.updateScanner += DecreaseZoom;

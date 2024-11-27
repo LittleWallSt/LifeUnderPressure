@@ -266,8 +266,8 @@ public class DyingEvent : MonoBehaviour
 
         controlsScreen?.SetActive(false);
 
-        encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
-
+        if (encyclopedia.GetIntro()) 
+            encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
     }
 
 
