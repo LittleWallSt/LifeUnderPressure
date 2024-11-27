@@ -219,11 +219,10 @@ public class Scanner : MonoBehaviour
         if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 
         DisplayInfo(fishInfo);
-        Submarine.Instance.AddMoney(1);
 
         ResetScanner(false);
         currentFish = null;
-        if (Encyclopedia.CurrFish.fishInfo.fishName == fish.FishInfo.fishName)
+        if (Encyclopedia.CurrFish && Encyclopedia.CurrFish.fishInfo.fishName == fish.FishInfo.fishName)
         {
             Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
             Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
