@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
         {
             Submarine.Instance.AddMoney(1);
             fish.locked = false;
+            if (fish.OnLockedChange != null) fish.OnLockedChange.Invoke();
         }
 
         DataManager.Write(fish.name, 1);

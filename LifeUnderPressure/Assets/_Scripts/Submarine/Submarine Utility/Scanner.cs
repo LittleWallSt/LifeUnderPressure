@@ -211,13 +211,9 @@ public class Scanner : MonoBehaviour
         //Aleksis>>
         // fish info gets (locked = false) in game manager
         GameManager.Instance.ScannedFish(fishInfo);
-        if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         // Aleksis <<
 
-
-
-        if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
-
+        if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
 
         ResetScanner(false);
         currentFish = null;
