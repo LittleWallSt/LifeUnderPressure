@@ -216,6 +216,7 @@ public class DyingEvent : MonoBehaviour
          */
         firstVoiceline = 7f;
         yield return new WaitForSecondsRealtime(firstVoiceline); //7 seconds  add red loght and choking /// 15 seconds choking
+        Submarine.Instance.EnableRedlights(true);
         chokingTime = 15f;
         /*you will start taking damage slowly while a sound effect of choking is playing.
          */
@@ -245,6 +246,7 @@ public class DyingEvent : MonoBehaviour
         blackScreen.alpha = 1f;
 
         yield return new WaitForSecondsRealtime(blackScreenDuration);
+        Submarine.Instance.EnableRedlights(false); 
         dyingText.text = "";
         SceneManager.LoadScene(sceneToLoad);
 
