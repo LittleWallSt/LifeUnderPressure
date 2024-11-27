@@ -114,7 +114,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         depthMeterMaterialInstance = Instantiate(depthMeterMaterial);
 
-        depthMeterMaterialInstance.SetInteger("_On", 0);
+        UpdateDepthMeterMaterial(false);
         List<Material> mats = new List<Material>(depthMeterMeshRenderer.materials);
         mats[1] = depthMeterMaterialInstance;
         depthMeterMeshRenderer.SetMaterials(mats);
@@ -131,7 +131,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void UpdateDepthMeterMaterial(bool warningOn)
     {
-        depthMeterMaterialInstance.SetInteger("_On", warningOn ? 1 : 0);
+        depthMeterMaterialInstance.SetInt("_On", warningOn ? 1 : 0);
     }
     private void UpdateCracksOnWindshield(float value)
     {
