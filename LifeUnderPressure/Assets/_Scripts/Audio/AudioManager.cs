@@ -109,11 +109,12 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
     {
-        if (newScene.name.Contains("MainMenu"))
+        if (!inMenu && newScene.name.Contains("MainMenu") || newScene.name.Contains("Credits"))
         {
             inMenu = true;
             ambienceEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            musicEventInstance.setParameterByName("Area", 0);
             currentInstance = menuMusicEventInstance;
             currentInstance.start();
         }

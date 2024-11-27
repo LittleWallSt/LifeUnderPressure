@@ -209,7 +209,7 @@ public class Scanner : MonoBehaviour
         if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
 
         //Aleksis>>
-        // fish info gets locked = false in game manager
+        // fish info gets (locked = false) in game manager
         GameManager.Instance.ScannedFish(fishInfo);
         if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         // Aleksis <<
@@ -219,12 +219,14 @@ public class Scanner : MonoBehaviour
         if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 
         DisplayInfo(fishInfo);
-        Submarine.Instance.AddMoney(1);
 
         ResetScanner(false);
         currentFish = null;
-        Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
-        Submarine.Instance.GetEncyclopedia().ping.pingArea = null; 
+        if (Encyclopedia.CurrFish && Encyclopedia.CurrFish.fishInfo.fishName == fish.FishInfo.fishName)
+        {
+            Submarine.Instance.GetEncyclopedia().ping.EnablePing(false);
+            Submarine.Instance.GetEncyclopedia().ping.pingArea = null;
+        }
         currentState = ScannerState.Inactive;
         lockActive.Invoke(currentState);
 
