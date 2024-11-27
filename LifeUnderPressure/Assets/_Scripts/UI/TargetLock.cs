@@ -17,9 +17,10 @@ public class TargetLock : MonoBehaviour
     [SerializeField] Vector2[] lockImagesInitialPos;
     [SerializeField] Vector2[] desiredPos;
 
-    Color inRange = new Color(1f, 0f, 0f, 0.6f);
-    Color scanning = new Color(0f, 1f, 0f, 0.6f);
-
+    [SerializeField] private Color inactive = new Color(1.0f, 0.682f, 0.0f, 0f);
+    [SerializeField] private Color inRange = new Color(1f, 0f, 0f, 0.6f);
+    [SerializeField] private Color scanning = new Color(0f, 1f, 0f, 0.6f);
+    
 
     Color currentColor;
 
@@ -61,12 +62,14 @@ public class TargetLock : MonoBehaviour
         switch (state)
         {
             case ScannerState.Inactive:
-                currentColor = new Color(1.0f, 0.682f, 0.0f, 0.5f);
+                currentColor = inactive;
                 break;
             case ScannerState.InRange:
-                currentColor = inRange; break;
+                currentColor = inRange; 
+                break;
             case ScannerState.Scanning:
-                currentColor = scanning; break;
+                currentColor = scanning; 
+                break;
         }
 
         foreach(Image image in lockImages)

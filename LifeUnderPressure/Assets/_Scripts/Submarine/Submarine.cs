@@ -351,7 +351,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
         }
         UpdateDepthMeterMaterial(warning);
         EnableRedlights(warning);
-        warningInstance.setParameterByName("shouldPlay", warning ? 1 : 0);
     }
 
     public void DamageSubmarine(float damage, DamageType damageType)
@@ -437,6 +436,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public void EnableRedlights(bool state)
     {
         redlightAnimator.SetBool(WarningHash, state);
+        warningInstance.setParameterByName("shouldPlay", state ? 1 : 0);
     }
     public void SetThicknessOfHull(float newThickness)
     {
