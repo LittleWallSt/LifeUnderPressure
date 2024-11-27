@@ -16,6 +16,8 @@ public class Submarine : MonoBehaviour, IDepthDependant
     [HideInInspector][SerializeField] private TMP_Text warningText = null;
     [HideInInspector][SerializeField] private TMP_Text dockText = null;
 
+    private static readonly int WarningHash = Animator.StringToHash("Warning");
+
     [Header("Submarine Parameters")]
     [SerializeField] private float radiusOfHull = 10f;
     [SerializeField] private float thicknessOfHull = 10f;
@@ -112,7 +114,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         depthMeterMaterialInstance = Instantiate(depthMeterMaterial);
 
-        depthMeterMaterialInstance.SetInt("_On", 0);
+        depthMeterMaterialInstance.SetInteger("_On", 0);
         List<Material> mats = new List<Material>(depthMeterMeshRenderer.materials);
         mats[1] = depthMeterMaterialInstance;
         depthMeterMeshRenderer.SetMaterials(mats);
@@ -121,9 +123,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         cracksMaterialInstance = Instantiate(cracksMaterial);
 
-        cracksMaterialInstance.SetFloat("_Cracks1", 0f);
-        cracksMaterialInstance.SetFloat("_Cracks2", 0f);
-        cracksMaterialInstance.SetFloat("_Cracks3", 0f);
+        ResetCracksOnWindshield();
 
         List<Material> mats = new List<Material>(submarineMeshRenderer.materials);
         mats[1] = cracksMaterialInstance;
@@ -131,7 +131,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
     private void UpdateDepthMeterMaterial(bool warningOn)
     {
-        depthMeterMaterialInstance.SetInt("_On", warningOn ? 1 : 0);
+        depthMeterMaterialInstance.SetInteger("_On", warningOn ? 1 : 0);
     }
     private void UpdateCracksOnWindshield(float value)
     {
@@ -350,7 +350,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
             }
         }
         UpdateDepthMeterMaterial(warning);
-        redlightAnimator.SetBool("Warning", warning);
+        EnableRedlights(warning);
         warningInstance.setParameterByName("shouldPlay", warning ? 1 : 0);
     }
 
@@ -433,6 +433,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     public void EnableMovement(bool state)
     {
         movement.enabled = state;
+    }
+    public void EnableRedlights(bool state)
+    {
+        redlightAnimator.SetBool(WarningHash, state);
     }
     public void SetThicknessOfHull(float newThickness)
     {
