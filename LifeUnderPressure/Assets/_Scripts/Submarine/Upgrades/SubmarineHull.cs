@@ -9,13 +9,7 @@ public class SubmarineHull : SubmarineUpgrade
     [Header("Hull")]
     [SerializeField] private float[] upgrades = null;
 
-    [Header("Pop Up")]
-    [SerializeField] private CanvasGroup _upgradeText;
-
     private Submarine submarine;
-
-    private float text_cooldown = 3f;
-    private float text_fadeDuration = 3f;
 
     [ContextMenu("SU_EditorSetup")]
     protected override void SU_EditorSetup()
@@ -40,8 +34,6 @@ public class SubmarineHull : SubmarineUpgrade
         }
 
         submarine.SetThicknessOfHull(upgrades[level]);
-        _upgradeText.enabled = false;
-        _upgradeText.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -58,39 +50,6 @@ public class SubmarineHull : SubmarineUpgrade
         base.UpgradeLevel();
 
         submarine.SetThicknessOfHull(upgrades[level]);
-
-        UpgradeText();
-    }
-
-    public void UpgradeText()
-    {
-        _upgradeText.gameObject.SetActive(true);
-
-        _upgradeText.alpha = 1.0f;
-
-        StartCoroutine(FadeOutAfterCooldown());
-    }
-
-    IEnumerator FadeOutAfterCooldown()
-    {
-        // Wait for the cooldown period before starting the fade
-        yield return new WaitForSeconds(text_cooldown);
-
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < text_fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-
-            // Calculate the new alpha based on how much time has passed
-            _upgradeText.alpha = Mathf.Lerp(1f, 0f, elapsedTime / text_fadeDuration);
-
-            yield return null;
-        }
-
-        _upgradeText.alpha = 0f;
-        _upgradeText.gameObject.SetActive(false);
 
     }
 }
