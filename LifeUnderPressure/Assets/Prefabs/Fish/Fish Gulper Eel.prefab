@@ -107,6 +107,7 @@ MonoBehaviour:
   curiousTimer: 0
   curiousCooldownTime: 0
   curiousRange: 0
+  path: {fileID: 0}
   random: 0
   speed: 0
   rotationSpeed: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   update: 1
+  solo: 0
   FOVAngle: 0
   smoothDamp: 5
 --- !u!1 &7409649755223761223
@@ -294,6 +296,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a6ef94b108beb874ebe80fc3e017e98d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2762f240d01ddaa41bfab97ce4a18634, type: 2}
+    - target: {fileID: -7511558181221131132, guid: a6ef94b108beb874ebe80fc3e017e98d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fd3f1f2e74ea6e47b50c8f3ab1c6613, type: 2}
     - target: {fileID: 919132149155446097, guid: a6ef94b108beb874ebe80fc3e017e98d,
         type: 3}
       propertyPath: m_Name

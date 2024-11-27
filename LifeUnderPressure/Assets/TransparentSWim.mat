@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BluetangSwimShader
-  m_Shader: {fileID: -6465566751694194690, guid: 360ba64708cbd354b8ce930687518090,
+  m_Name: TransparentSWim
+  m_Shader: {fileID: -6465566751694194690, guid: e814a8bdb07c8794996d2a865d922d49,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e8ca06cdcf49ca047b1cec56383dc4ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalicSmoothnes:
@@ -55,16 +55,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _Amplitude: 0.2
-    - _HeightWaveFreq: 0
+    - _HeightWaveFreq: 1
     - _MaxMask: 0.44
     - _MinMask: -0.07
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 1
     - _waveSpeed: 5.07
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &4460631056767793161
+--- !u!114 &3606102305326185584
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

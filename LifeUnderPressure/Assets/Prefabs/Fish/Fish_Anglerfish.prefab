@@ -108,6 +108,7 @@ MonoBehaviour:
   curiousTimer: 0
   curiousCooldownTime: 0
   curiousRange: 0
+  path: {fileID: 0}
   random: 0
   speed: 0
   rotationSpeed: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   update: 1
+  solo: 0
   FOVAngle: 0
   smoothDamp: 5
 --- !u!1001 &6350787601807115978
@@ -181,17 +183,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 240c36d33b46bf24d818a275c13ac6f8, type: 2}
+      objectReference: {fileID: 2100000, guid: 83140724d3bd3084ab41f2f2e4537f15, type: 2}
     - target: {fileID: -7511558181221131132, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 240c36d33b46bf24d818a275c13ac6f8, type: 2}
+      objectReference: {fileID: 2100000, guid: 83140724d3bd3084ab41f2f2e4537f15, type: 2}
     - target: {fileID: -7511558181221131132, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 60be2eac969e7c0429dc9cab1d8c0106, type: 2}
+      objectReference: {fileID: 2100000, guid: ff048766c5cae6d44a90a4eb311e5239, type: 2}
     - target: {fileID: 37369001464425608, guid: bc14a510cfed31e4eaec31c3cd4d60a5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BluetangSwimShader
+  m_Name: BarreleyeSwim
   m_Shader: {fileID: -6465566751694194690, guid: 360ba64708cbd354b8ce930687518090,
     type: 3}
   m_Parent: {fileID: 0}
@@ -25,11 +25,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Abedo:
-        m_Texture: {fileID: 2800000, guid: 24353473159645049ba39d9c0e721673, type: 3}
+        m_Texture: {fileID: 2800000, guid: e3b3ddcfed30c7c4fb24489a31c293b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e2c59d463c47b504388024d60f18c5e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalicSmoothnes:
@@ -54,14 +54,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.2
+    - _Amplitude: 0.06
+    - _EmissionStrength: 4
     - _HeightWaveFreq: 0
-    - _MaxMask: 0.44
-    - _MinMask: -0.07
+    - _MaxMask: -1.41
+    - _MinMask: 2.29
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 1
-    - _waveSpeed: 5.07
+    - _waveSpeed: 2
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &4460631056767793161
