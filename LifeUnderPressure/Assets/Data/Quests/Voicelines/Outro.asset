@@ -18,7 +18,7 @@ MonoBehaviour:
     this time, ever since Blue Exploration Network (B.E.N.) got shut down\u2026 "
   - "And the fact that you trusted me\u2026 all along, I almost feel bad. I\u2019ll
     leave now. Thank you so much for your cooperation."
-  charPerSecond: 10
+  charPerSecond: 13.2
   delay: 0
   OnVoicelineStart:
   - Guid:

@@ -16,7 +16,7 @@ MonoBehaviour:
   voicelines:
   - 'Be careful of cookie-cutter sharks. Despite being very tiny they can bite into
     hard surfaces like submarines. '
-  - They will stay at ranges between 1000 - 3700 meters, swimming in open waters
+  - They will stay at ranges between 1000 and 3700 meters, swimming in open waters
     as they look for food.
   charPerSecond: 16.9
   delay: 0

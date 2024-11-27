@@ -17,9 +17,10 @@ MonoBehaviour:
   - Firefly squids are small and bioluminescent. They reach about 7 centimeters in
     length.
   - They are known for their striking blue and green glow, which might be the reason
-    they are attracted to light. Firefly squid stay in depths of about 100 and 300
-    meters.
+    they are attracted to lights. Firefly squid's stay at depths of about 100 and
+    300 meters.
   charPerSecond: 16.82
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: -1318377005

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voicelineName: Gulper_Eel_Desc
   voicelines:
-  - Gulper eel, I need you to find this one. It's one of the rarest fish in the world.
+  - It's one of the rarest fish in the world.
   - "They swim between 1,500 and 2,000 meters.\r"
-  charPerSecond: 22.3
+  charPerSecond: 17
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: 190431297
