@@ -197,7 +197,6 @@ public class Scanner : MonoBehaviour
 
     private void FinishedScanner()
     {
-        
         // Aleksis >>
         Fish fish = currentFish?.GetComponent<Fish>();
         if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
@@ -207,6 +206,7 @@ public class Scanner : MonoBehaviour
         //Aleki <<
 
         if (fishInfo.locked && fishInfo.longVO!=null) VoicelinesUI.Instance.CallVoiceline(fishInfo.longVO); 
+        DisplayInfo(fishInfo);
 
         //Aleksis>>
         // fish info gets (locked = false) in game manager
@@ -218,7 +218,6 @@ public class Scanner : MonoBehaviour
 
         if (ScanEffect!=null)ScanEffect.Invoke(currentFish.gameObject, false);
 
-        DisplayInfo(fishInfo);
 
         ResetScanner(false);
         currentFish = null;
@@ -345,9 +344,10 @@ public class Scanner : MonoBehaviour
 
     public void DisplayInfo(FishInfo fishInfo)
     {
-        if (fishInfo == null) return;
-        if (scanFinished!=null) scanFinished.Invoke("Sealog updated!!");
-        currentFish = null;
+        if (fishInfo == null || scanFinished == null) return;
+
+        if (fishInfo.locked) scanFinished.Invoke("Sealog updated!");
+        else scanFinished.Invoke(fishInfo.fishName + " was already scanned.");
     }
 
     public void DisplayInfo(string info)
