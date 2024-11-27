@@ -61,7 +61,7 @@ Material:
     - _MinMask: -0.8
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.2
+    - _Smoothness: 0.04
     - _waveSpeed: 1
     m_Colors: []
   m_BuildTextureStacks: []
