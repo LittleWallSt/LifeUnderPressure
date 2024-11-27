@@ -15,8 +15,9 @@ MonoBehaviour:
   voicelineName: CaveCollapseEnd
   voicelines:
   - 'Great, we needed that scan. I will be able to sell uhh.. the information, to
-    get a better budget for the submarine. '
+    get a better budget for our submarine. '
   charPerSecond: 16.3
+  delay: 0
   OnVoicelineStart:
   - Guid:
       Data1: 233519504
