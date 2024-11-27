@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -66,12 +67,40 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void Button_Play()
+    public async void Button_Play()
     {
         pressedPlay = true;
         menuAnimator.SetTrigger("PressPlay");
-        operation = SceneManager.LoadSceneAsync(sceneToLoad);
-        operation.allowSceneActivation = false;
+        //operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        //operation.allowSceneActivation = false;
+        buttonsGrid.SetActive(false);
+        await LoadSceneWithProgress();
+    }
+    private async Task LoadSceneWithProgress()
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
+
+        asyncOperation.allowSceneActivation = false;
+
+        while (!asyncOperation.isDone)
+        {
+            // Update progress bar
+            //progressBar.value = Mathf.Clamp01(asyncOperation.progress / 0.9f);
+
+            // Check if loading is done
+            if (asyncOperation.progress >= 0.9f)
+            {
+                //Debug.Log("Press any key to activate the scene...");
+
+                sceneLoadedText.SetActive(true);
+                if (Input.anyKeyDown)
+                {
+                    asyncOperation.allowSceneActivation = true;
+                }
+            }
+
+            await Task.Yield(); // Wait for the next frame
+        }
     }
     public void Button_Options()
     {

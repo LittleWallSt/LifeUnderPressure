@@ -5,7 +5,7 @@ using UnityEngine;
 public class Voiceline : ScriptableObject
 {
     public string voicelineName;
-    [TextArea(5, 5)]
+    [TextArea(5, 10)]
     public string[] voicelines;
 
     public float charPerSecond = 10;

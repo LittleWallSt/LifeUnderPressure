@@ -22,7 +22,7 @@ public class DyingEvent : MonoBehaviour
     [SerializeField] private Voiceline[] afterDeath;
 
     [SerializeField] private EventReference intro;
-    [SerializeField] private EventReference outro;
+    [SerializeField] private Voiceline outro;
     [SerializeField] private EventReference choking;
     int VOiterator = 0;
 
@@ -210,7 +210,7 @@ public class DyingEvent : MonoBehaviour
     IEnumerator CallEndScreen()
     {
 
-        if (!outro.IsNull)AudioManager.instance?.PlayOneShot(outro, Submarine.Instance.transform.position);
+        if (outro !=null) VoicelinesUI.Instance.CallVoiceline(outro); 
         /*you lose control over the submarine, and ben's voiceline starts to play.
          * he tells you that he is happy that you found the rare fish, but that he has to kill you to get the rewards 100% for himself.
          */

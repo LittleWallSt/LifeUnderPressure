@@ -104,9 +104,9 @@ public class SubmarineMovement : MonoBehaviour
         propellerSFX.setParameterByName("Input", input.magnitude);
 
         //Boost change >>
-        inputSpacePressed = Input.GetKeyDown(KeyCode.B);
-        inputSpace = Input.GetKey(KeyCode.B);
-        inputSpaceUp = Input.GetKeyUp(KeyCode.B);
+        inputSpacePressed = Input.GetMouseButtonDown(1);
+        inputSpace = Input.GetMouseButton(1);
+        inputSpaceUp = Input.GetMouseButtonUp(1); 
 
         if (boostCD)
         {
