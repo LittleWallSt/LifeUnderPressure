@@ -54,11 +54,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.1
+    - _Amplitude: 0.8
     - _EmissionStrength: 10
     - _HeightWaveFreq: 0
     - _MaxMask: 1.8
-    - _MinMask: -0.8
+    - _MinMask: -0.4
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0.04

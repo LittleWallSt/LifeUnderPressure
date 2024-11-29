@@ -54,7 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amplitude: 0.06
+    - _Amplitude: 0.4
     - _EmissionStrength: 4
     - _HeightWaveFreq: 0
     - _MaxMask: -1.41
