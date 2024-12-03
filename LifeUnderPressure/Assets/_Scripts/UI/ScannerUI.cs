@@ -40,9 +40,9 @@ public class ScannerUI : MonoBehaviour
         scannerSlider.value = value;
     }
 
-    private void ShowWarning(bool on) { 
-
-        outOfRangeText.gameObject.SetActive(on);
+    private void ShowWarning(bool on) 
+    { 
+        //outOfRangeText.gameObject.SetActive(on);
     }
 
     

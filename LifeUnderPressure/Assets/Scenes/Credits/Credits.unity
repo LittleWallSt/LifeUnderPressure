@@ -564,6 +564,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &958967733
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311281127685465133, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001483603539200025, guid: 41d38a506c902db4a8bc5d65ca80b365,
+        type: 3}
+      propertyPath: m_Name
+      value: InternalSettings
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 41d38a506c902db4a8bc5d65ca80b365, type: 3}
 --- !u!1 &1163784663
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1621910579fe6741871e42742395706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsTimer: 30
+  creditsTimer: 36
   pressButonText: {fileID: 904246972}
   sceneToLoad: MainMenu
 --- !u!1 &1662683018
@@ -802,42 +870,46 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=124><b>Life Under Pressure</b></size>
+  m_text: '<size=94>Thank You for Playing</size>
 
 
-    <size=80>by BEN</size>
+    <size=124><b>Life Under Pressure</b></size>
+
+
+    <size=80>made
+    by BEN</size>
 
 
 
-    <size=46><b>Henrik
-    Aasvik </b></size>- Team Leader | 3d Artist
+    <size=46><b>Henrik Aasvik </b></size>- Team Leader | 3d
+    Artist
 
 
-    <size=46><b>Erik Green Leth-Olsen
-    </b></size>- 3d Artist
+    <size=46><b>Erik Green Leth-Olsen </b></size>- 3d Artist
 
 
-    <size=46><b>Eirik Smith Olsen </b></size>- 3d Artist
+    <size=46><b>Eirik
+    Smith Olsen </b></size>- 3d Artist
 
 
-    <size=46><b>Aleksis
-    Bojaruns </b></size>- Gameplay/Generalist Programmer
+    <size=46><b>Aleksis Bojaruns </b></size>-
+    Gameplay/Generalist Programmer
 
 
-    <size=46><b>Uliana
-    Sechkar </b></size>- Game Programmer
+    <size=46><b>Uliana Sechkar </b></size>-
+    Game Programmer
 
 
-    <size=46><b>Javier Murillo Gonzalez
-    </b></size>- Graphics Programmer | Project Manager
+    <size=46><b>Javier Murillo Gonzalez </b></size>- Graphics
+    Programmer | Project Manager
 
 
-    <size=46><b>Paula Roman
-    Lopez </b></size>- Game Programmer
+    <size=46><b>Paula Roman Lopez </b></size>-
+    Game Programmer
 
 
-    <size=46><b>Janko Zorbas </b></size>-
-    Sound Producer | Audio Designer
+    <size=46><b>Janko Zorbas </b></size>- Sound Producer |
+    Audio Designer | Voice Actor
 
 
     <size=46><b>Danu Ioann Pumnea </b></size>-
@@ -849,14 +921,9 @@ MonoBehaviour:
 
 
 
+    Audio Engine: FMOD Studio by Firelight Technologies Pty Ltd.
 
-    Special thanks to our diving crew that fearlessly explored 95%
-    of the world ocean to provide us with the unique information to make this game
-    possible.
-
-
-
-    Protect our World, Save Our world.'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08d541c6be9b4d240a1ca598cdc13c2b, type: 2}
   m_sharedMaterial: {fileID: 5400733223581167427, guid: 08d541c6be9b4d240a1ca598cdc13c2b,
@@ -1467,3 +1534,4 @@ SceneRoots:
   - {fileID: 511950817}
   - {fileID: 1220260658}
   - {fileID: 589440395}
+  - {fileID: 958967733}

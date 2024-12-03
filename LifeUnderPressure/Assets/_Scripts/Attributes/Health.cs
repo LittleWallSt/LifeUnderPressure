@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float regeneratePerMinute = 25f;
+    [SerializeField] private float regenerationCooldown = 7f;
 
     private Action<Vector3, DamageType> onDie;
     private Action onDamage;
@@ -60,8 +61,9 @@ public class Health : MonoBehaviour
 
     private void RegenerationProcess()
     {
-        if (Time.time - lastDamageTime < 5) return; 
-        if (Value < MaxHealth && regeneratePerMinute != 0f)
+        if (Time.time - lastDamageTime < regenerationCooldown) return; 
+
+        if (Value > 0f && Value < MaxHealth && regeneratePerMinute != 0f)
         {
             Value += regeneratePerMinute * (Time.deltaTime / 60f);
         }
@@ -70,11 +72,11 @@ public class Health : MonoBehaviour
     public void DealDamage(float damage, Vector3 direction, DamageType damageType)
     {
         if (Value <= 0f) return; 
-        Value -= damage;
         lastDamageType = damageType;
         lastDamageDirection = direction;
         lastDamageTime = Time.time;
         Call_OnDamage(damageType);
+        Value -= damage;
     }
     private void Call_OnDie(Vector3 direction, DamageType damageType)
     {

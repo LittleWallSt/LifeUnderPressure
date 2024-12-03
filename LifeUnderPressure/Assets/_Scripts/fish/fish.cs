@@ -60,6 +60,9 @@ public class Fish : MonoBehaviour
     [SerializeField]
     private bool solo = false;
 
+    private bool scanned = false;
+    public bool Scanned => scanned;
+
    // Start is called before the first frame update
     void Start()
     {
@@ -299,7 +302,10 @@ public class Fish : MonoBehaviour
             if (solo) MoveFish();
         }
     }
-
+    public void SetScanned(bool state)
+    {
+        scanned = state;
+    }
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position, -transform.right * avoidanceDetection.z, Color.yellow);

@@ -1,6 +1,7 @@
 using UnityEngine;
 using FMOD.Studio;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class SubmarineMovement : MonoBehaviour
 {
@@ -26,8 +27,11 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private float bumpStrength = 0.8f;
     [SerializeField] private float bumpDamageModifier = 10f;
 
+    private bool _enabled = true;
+
     private bool bumped = false;
-    private float bumpDuration = 0f;    
+    private float bumpDuration = 0f;
+    private float lastBumpTime = 0f;
 
     private bool shaking = false;
     private bool continuousShaking = false;
@@ -66,16 +70,16 @@ public class SubmarineMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         health = GetComponent<Health>();
-        input = new Vector3();
+
     }
     private void OnEnable()
     {
-        ResetMovement();
-        propellerSFX.start();
-    }
 
+    }
     private void Start()
     {
+        ResetMovement();
+
         // Janko and Aleksis
         propellerSFX = AudioManager.instance.CreateInstance(FMODEvents.instance.propellerSFX);
         propellerSFX.setParameterByName("Input", 0f);
@@ -98,6 +102,13 @@ public class SubmarineMovement : MonoBehaviour
         input = new Vector3(Input.GetAxisRaw("Horizontal"), inputUp, Input.GetAxisRaw("Vertical"));
         mouse = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
+        if (!_enabled)
+        {
+            input = new Vector3();
+            mouse = new Vector2();
+            UpdateControlRig();
+            return;
+        }
         UpdateControlRig();
 
         // Janko and Aleksis 
@@ -121,9 +132,8 @@ public class SubmarineMovement : MonoBehaviour
             }
         }
 
-        if ((inputSpacePressed || inputSpace) && !boostCD && !charging)
+        if (inputSpacePressed && !boostCD)
         {
-
             charging = true;
             chargeTimer = 0f;
         }
@@ -252,7 +262,10 @@ public class SubmarineMovement : MonoBehaviour
 
     private void BumpCollision(Collision collision)
     {
-        if(collision.transform.gameObject.layer == 8 || collision.transform.gameObject.layer == 4) // just for now to block going higher than water surface, 8 is fish layer, 4 is water
+        if (Time.time - lastBumpTime < 0.05) { Debug.LogWarning("Bumped several times in a row"); return; }
+        
+        if (collision.transform.gameObject.layer == 8 ||
+            collision.transform.gameObject.layer == 4) // just for now to block going higher than water surface, 8 is fish layer, 4 is water
         {
             return;
         }
@@ -287,6 +300,7 @@ public class SubmarineMovement : MonoBehaviour
         {
             StartCoroutine(ScreenShake());
         }
+        lastBumpTime = Time.time;
 
         // Janko >>
         AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Collision, collision.transform.position);
@@ -352,9 +366,9 @@ public class SubmarineMovement : MonoBehaviour
         return new Vector3(position.x, 0f, position.z).normalized;
     }
 
-    public void StopSubmarine()
+    public void Enable(bool state)
     {
-        rb.velocity = Vector3.zero;
+        _enabled = state;
     }
 
     private void OnGUI()

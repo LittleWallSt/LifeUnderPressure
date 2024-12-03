@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class DyingEvent : MonoBehaviour
 {
+    [SerializeField] private Vector3 startSealogPosition;
+
     [Header("Dying")]
     [SerializeField] GameObject submarineBroken;
-    [SerializeField] GameObject sealogPickable;
+    [SerializeField] TempSealog sealogPickable;
 
     [SerializeField] Vector3 sealogOffset = new Vector3(0, 2, 1);
 
@@ -46,13 +48,13 @@ public class DyingEvent : MonoBehaviour
     private float waitBeforePlayingSound = .5f;
     // Janko <<
 
-    GameObject tempSealog;
+    private TempSealog tempSealog;
 
     ImageAnimation sonar;
 
     void Awake()
     {
-        if (encyclopedia==null) encyclopedia = FindObjectOfType<Encyclopedia>();
+        if (encyclopedia == null) encyclopedia = FindObjectOfType<Encyclopedia>();
         finalFish.SetActive(false); //?
         questionIcon.SetActive(false);
 
@@ -63,27 +65,23 @@ public class DyingEvent : MonoBehaviour
     }
     private void Start()
     {
-        OnStartSetup(GameManager.Instance.InitialSpawnPoint + new Vector3(-12, 0, 0));
+        OnStartSetup(startSealogPosition);
     }
 
     void OnStartSetup(Vector3 SealogPlacement)
     {
-
         Instantiate(submarineBroken, SealogPlacement, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, SealogPlacement + sealogOffset, Quaternion.identity);
-
-        
-
-        
+        tempSealog.Set(new System.Collections.Generic.List<FishButton>(), encyclopedia);
     }
 
     public void OnDie(Vector3 placeOfDeath, Vector3 direction, DamageType damageType)
     {
         if (damageType == DamageType.End) return; 
-        if (encyclopedia!=null)encyclopedia.ClearSealog();
+        tempSealog = encyclopedia.ClearSealog();
         controlsScreen?.SetActive(false);
 
-        if (submarine== null) submarine= FindObjectOfType<Submarine>();
+        if (submarine == null) submarine = FindObjectOfType<Submarine>();
         submarine.getSubmarineMovement().enabled= false;
         submarine.enabled = false;
         dyingText.text = "You died " + damageType.ToCustomString();
@@ -149,8 +147,10 @@ public class DyingEvent : MonoBehaviour
             }
         }
 
-        Instantiate(submarineBroken, placeOfDeath, Quaternion.Euler(0, Random.Range(0, 360), 0));
-        tempSealog = Instantiate(sealogPickable, placeOfDeath + direction.normalized * distance, Quaternion.identity);
+        //Instantiate(submarineBroken, placeOfDeath, Quaternion.Euler(0, Random.Range(0, 360), 0));
+        //tempSealog = Instantiate(sealogPickable, placeOfDeath + direction.normalized * distance, Quaternion.identity);
+        tempSealog.transform.position = placeOfDeath + direction.normalized * distance;
+        tempSealog.gameObject.SetActive(true);
 
         encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
 
@@ -167,8 +167,9 @@ public class DyingEvent : MonoBehaviour
 
     public void ResetSealog()
     {
-        encyclopedia.ResetSealogCache();
-        tempSealog.SetActive(false); 
+        encyclopedia.ResetSealogCache(null);
+        tempSealog.gameObject.SetActive(false);
+        tempSealog = null;
     }
 
     IEnumerator FadeOutAfterCooldown(Vector3 placeOfDeath, Vector3 direction)
@@ -270,8 +271,12 @@ public class DyingEvent : MonoBehaviour
             encyclopedia.ping.setPingTransform(tempSealog.transform, "Sealog");
     }
 
-
-
-
-
+    public TempSealog GetTempSealog()
+    {
+        return tempSealog;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawSphere(startSealogPosition, 1f);
+    }
 }

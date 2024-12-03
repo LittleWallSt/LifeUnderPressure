@@ -90,7 +90,7 @@ public class SonarRadar : MonoBehaviour
         if (frameIndex > framesPerSprite * numberOfSprites) frameIndex = 0;
 
         //Debug.Log(timeFrames.Count);
-        if (timeFrames.ContainsKey(frameIndex))
+        if (timeFrames.ContainsKey(frameIndex) && timeFrames[frameIndex])
         {
             Vector3 angle;
             int sIndex;
@@ -134,7 +134,6 @@ public class SonarRadar : MonoBehaviour
 
     public void fishAngle(Collider fish, out Vector3 angle, out int spriteIndex)
     {
-        
         Vector3 directionToFish = fish.transform.position - submarine.transform.position;
 
         Vector3 submarineForward = submarine.transform.forward;

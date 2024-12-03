@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Scanner : MonoBehaviour
@@ -95,7 +96,8 @@ public class Scanner : MonoBehaviour
         if (Input.GetMouseButton(0) && currentState == ScannerState.Inactive)
         {
             if (ShowWarning != null) ShowWarning.Invoke(true);
-        } else if (Input.GetMouseButtonUp(0) && currentState == ScannerState.Inactive)
+        } 
+        else if (Input.GetMouseButtonUp(0) && currentState == ScannerState.Inactive)
         {
             if (ShowWarning != null) ShowWarning.Invoke(false);
         }
@@ -201,6 +203,7 @@ public class Scanner : MonoBehaviour
         Fish fish = currentFish?.GetComponent<Fish>();
         if (!fish) { Debug.LogError("No fish script on the object scanned"); return; }
 
+        fish.SetScanned(true);
         FishInfo fishInfo = fish.FishInfo;
 
         //Aleki <<
@@ -252,10 +255,11 @@ public class Scanner : MonoBehaviour
         FindObjectOfType<DyingEvent>().onDieEnd();
     }
 
-    void FinishScanningSealog() {
-
-        Debug.Log("scanned sealog");
-        FindObjectOfType<DyingEvent>().ResetSealog();
+    void FinishScanningSealog() 
+    {
+        TempSealog tempSealog = currentFish.transform.root.GetComponent<TempSealog>();
+        tempSealog.Scanned();
+        //FindObjectOfType<DyingEvent>().ResetSealog();
         if (ScanEffect != null) ScanEffect.Invoke(currentFish.gameObject, false);
         ResetScanner(false);
         currentFish = null;
@@ -293,8 +297,24 @@ public class Scanner : MonoBehaviour
 
     private bool getHitColliders()
     {
-        return (Physics.OverlapBox(transform.position, borders.transform.localScale / 2, 
-            Quaternion.identity, fishLayerMask).Length > 0);
+        Collider[] colls = Physics.OverlapBox(transform.position, borders.transform.localScale / 2,
+            transform.rotation, fishLayerMask);
+
+        List<Collider> collsList = new List<Collider>(colls);
+        List<Collider> toRemove = new List<Collider>();
+        foreach(Collider coll in collsList)
+        {
+            if(coll.TryGetComponent<Fish>(out Fish fish) && fish.Scanned)
+            {
+                toRemove.Add(coll);
+            }
+        }
+        foreach(Collider coll in toRemove)
+        {
+            collsList.Remove(coll);
+        }
+
+        return collsList.Count > 0;
     }
 
     private void ScannerAnimation()
@@ -322,6 +342,8 @@ public class Scanner : MonoBehaviour
 
         foreach (var collider in hitColliders)
         {
+            if (collider.TryGetComponent<Fish>(out Fish fish) && fish.Scanned) continue;
+
             Vector3 screenPos = Camera.main.WorldToScreenPoint(collider.gameObject.transform.position);
 
             float distance = Vector2.Distance(screenCenter, screenPos);

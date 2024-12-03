@@ -7,6 +7,10 @@ public class BoostUI : MonoBehaviour
     [SerializeField] Slider boostSlider;
     [SerializeField] TextMeshProUGUI CDText;
 
+    private void Start()
+    {
+        boostSlider.value = 0;
+    }
     public void UpdateUI(float value, float CD)
     {
         boostSlider.value = value;

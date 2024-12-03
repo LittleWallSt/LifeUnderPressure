@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Encyclopedia : MonoBehaviour
 {
+    [SerializeField] private TempSealog tempSealogPrefab = null;
+
     [Header("UI")]
     [SerializeField] TextMeshProUGUI fishName;
     [SerializeField] TextMeshProUGUI smallDescription;
@@ -32,7 +34,6 @@ public class Encyclopedia : MonoBehaviour
     
 
     FishButton[] fishes;
-    List<FishButton> cashedFish = new List<FishButton>();
     GameObject submarineBody;
     FishInfo fishInfo; 
     // Aleksis >>
@@ -194,8 +195,8 @@ public class Encyclopedia : MonoBehaviour
         if (submarineBody == null) submarineBody = _submarineBody;
         gameObject.SetActive(state);
         //submarineBody.SetActive(!state);  ??
-        Submarine.Instance.getSubmarineMovement().StopSubmarine();
-        Submarine.Instance.getSubmarineMovement().enabled = !state;
+        Submarine.Instance.getSubmarineMovement().Enable(!state);
+        //Submarine.Instance.getSubmarineMovement().enabled = !state;
         InternalSettings.EnableCursor(gameObject.activeSelf);
         if (state)
         {
@@ -207,7 +208,7 @@ public class Encyclopedia : MonoBehaviour
 
     void UpdateIcons()
     {
-        if (fishes==null || fishes.Length <=0) fishes = FindObjectsOfType<FishButton>();
+        if (fishes == null || fishes.Length <= 0) fishes = FindObjectsOfType<FishButton>();
         if (fishes.Length > 0)
         {
             foreach(var fish in fishes)
@@ -218,15 +219,15 @@ public class Encyclopedia : MonoBehaviour
         }
     }
 
-    public void ClearSealog()
+    public TempSealog ClearSealog()
     {
-        cashedFish.Clear();
+        List<FishButton> cashedFish = new List<FishButton>();
         if (fishes == null || fishes.Length <= 0) fishes = FindObjectsOfType<FishButton>();
-        if (fishes.Length > 0 )
+        if (fishes.Length > 0)
         {
             foreach (FishButton fish in fishes)
             {
-                if (fish.GetFishState()==FishState.Scanned)
+                if (fish.GetFishState() == FishState.Scanned)
                 {
                     cashedFish.Add(fish);
                     fish.SetFishState(FishState.None);
@@ -234,17 +235,39 @@ public class Encyclopedia : MonoBehaviour
                 }
             }
         }
+        TempSealog tempSealog = Instantiate(tempSealogPrefab);
+        tempSealog.gameObject.SetActive(false);
+        tempSealog.Set(cashedFish, this);
+        return tempSealog;
     }
 
-    public void ResetSealogCache()
+    public void ResetSealogCache(List<FishButton> cashedFish)
     {
-        if (cashedFish!=null && cashedFish.Count>0)
+        if (cashedFish != null && cashedFish.Count > 0)
         {
             foreach(FishButton fish in cashedFish)
             {
                 fish.SetFishState(FishState.Scanned);
                 fish.SetIcon();
             }
+        }
+    }
+    public void Button_SetDeathSealogWaypoint()
+    {
+        TempSealog tempSealog = Submarine.Instance.GetDyingEvent().GetTempSealog();
+        if (tempSealog)
+        {
+            ping.setPingTransform(tempSealog.transform, "Sealog");
+            if (CurrFish != null)
+            {
+                if (currFish.GetFishState() != FishState.Scanned)
+                {
+                    currFish.SetFishState(FishState.None);
+                    currFish.SetIcon();
+                }
+            }
+            CurrFish = null;
+            EnableMenu(false, submarineBody);
         }
     }
 

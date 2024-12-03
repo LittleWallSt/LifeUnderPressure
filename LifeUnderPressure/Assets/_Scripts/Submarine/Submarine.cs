@@ -140,8 +140,21 @@ public class Submarine : MonoBehaviour, IDepthDependant
             ResetCracksOnWindshield();
             return;
         }
-        float fraction = Mathf.Abs(1f - (value / health.MaxHealth));
+        float perc = value / health.MaxHealth;
+        float fraction = Mathf.Abs(1f - perc);
+        float crackLevel = 0.25f;
+        for(int i = 0; i < 3; i++)
+        {
+            fraction -= crackLevel;
+            float crack = fraction > 0f ? 1f : 0f;
+            if(crack > 0f && cracksMaterialInstance.GetFloat("_Cracks" + (i + 1))  == 0f)
+            {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Cracking, transform.position);
+            }
+            cracksMaterialInstance.SetFloat("_Cracks" + (i + 1), crack);
+        }
 
+        /*
         bool cracked = false;
         if (cracksMaterialInstance.GetFloat("_Cracks1") < 1f)
         {
@@ -158,7 +171,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
             cracked = fraction > crackLevel3;
             cracksMaterialInstance.SetFloat("_Cracks3", cracked ? 1f : 0f);
         }
-        if (cracked) AudioManager.instance.PlayOneShot(FMODEvents.instance.SFX_Cracking, transform.position);
+        */
     }
     private void ResetCracksOnWindshield()
     {
@@ -170,7 +183,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
     {
         currDepth = -transform.position.y;
         // Janko >>
-        getSubmarineHealth().Assign_OnDie(OnDie);
         getSubmarineHealth().Assign_OnRespawn(OnRespawn);
 
         warningInstance = AudioManager.instance.CreateInstance(FMODEvents.instance.SFX_Warning);
@@ -332,6 +344,7 @@ public class Submarine : MonoBehaviour, IDepthDependant
     private void Die(Vector3 direction, DamageType damageType)
     {
         dyingEvent.OnDie(transform.position, direction, damageType);
+        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     private void LCStressCalculation(float depth)
@@ -389,11 +402,9 @@ public class Submarine : MonoBehaviour, IDepthDependant
         LevelVolume.Remove_OnCurrentVolumeChanged(OnLevelVolumeChanged);
         health.Remove_OnValueChanged(UpdateCracksOnWindshield);
         health.Remove_OnDie(Die);
+        health.Remove_OnRespawn(OnRespawn);
         // Janko >>
         warningInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); 
-
-        getSubmarineHealth().Remove_OnDie(OnDie);
-        getSubmarineHealth().Remove_OnRespawn(OnRespawn);
         // Janko <<
     }
     // Events
@@ -402,11 +413,6 @@ public class Submarine : MonoBehaviour, IDepthDependant
         UpdateZoneText();
     }
         // Janko >>
-    private void OnDie(Vector3 direction, DamageType type)
-    {
-        warningInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-    }
-
     private void OnRespawn()
     {
         warningInstance.start();
@@ -471,6 +477,10 @@ public class Submarine : MonoBehaviour, IDepthDependant
     }
 
     // Getters
+    public DyingEvent GetDyingEvent()
+    {
+        return dyingEvent;
+    }
     public SubmarineMovement getSubmarineMovement()
     {
         return movement;
