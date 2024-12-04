@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1621910579fe6741871e42742395706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsTimer: 36
+  creditsTimer: 42
   pressButonText: {fileID: 904246972}
   sceneToLoad: MainMenu
 --- !u!1 &1662683018

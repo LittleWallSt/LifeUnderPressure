@@ -111,6 +111,12 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(true);
         // Janko <<
     }
+    public void Button_Credits()
+    {
+        if (pressedPlay) return;
+
+        SceneManager.LoadScene("Credits");
+    }
     public void Button_DeleteSave()
     {
         if (pressedPlay) return;
