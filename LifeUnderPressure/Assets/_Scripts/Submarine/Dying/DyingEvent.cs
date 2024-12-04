@@ -72,13 +72,14 @@ public class DyingEvent : MonoBehaviour
     {
         Instantiate(submarineBroken, SealogPlacement, Quaternion.identity);
         tempSealog = Instantiate(sealogPickable, SealogPlacement + sealogOffset, Quaternion.identity);
-        tempSealog.Set(new System.Collections.Generic.List<FishButton>(), encyclopedia);
+        tempSealog.Set(new System.Collections.Generic.List<FishInfo>(), encyclopedia);
     }
 
     public void OnDie(Vector3 placeOfDeath, Vector3 direction, DamageType damageType)
     {
         if (damageType == DamageType.End) return; 
         tempSealog = encyclopedia.ClearSealog();
+        encyclopedia.ResetSelection();
         controlsScreen?.SetActive(false);
 
         if (submarine == null) submarine = FindObjectOfType<Submarine>();
@@ -142,7 +143,6 @@ public class DyingEvent : MonoBehaviour
             if(++count > 5)
             {
                 distance = 2f;
-                Debug.Log("brea");
                 break;
             }
         }

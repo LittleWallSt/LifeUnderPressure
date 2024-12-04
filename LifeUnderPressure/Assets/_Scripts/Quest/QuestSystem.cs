@@ -57,6 +57,19 @@ public static class QuestSystem
         }
         QuestFinish();
     }
+    public static void ResetFishProgress(FishInfo fish)
+    {
+        if (!CurrentQuest) return;
+
+        for(int i = 0; i < CurrentValues.Length; i++)
+        {
+            if (CurrentQuest.Fishes[i].fish == fish)
+            {
+                CurrentValues[i] = 0;
+            }
+        }
+        Call_OnQuestUpdated();
+    }
     private static void QuestFinish()
     {
         if (CurrentQuest.VoicelineOnEnd)

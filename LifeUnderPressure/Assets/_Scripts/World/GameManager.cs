@@ -140,16 +140,16 @@ public class GameManager : MonoBehaviour
         }
         DataManager.Write(boolName, value);
     }
-    public void ScannedFish(FishInfo fish)
+    public void ScannedFish(FishInfo fishInfo)
     {
-        if (fish.locked)
+        if (fishInfo.locked)
         {
             Submarine.Instance.AddMoney(1);
-            fish.locked = false;
-            if (fish.OnLockedChange != null) fish.OnLockedChange.Invoke();
+            fishInfo.locked = false;
+            if (fishInfo.OnLockedChange != null) fishInfo.OnLockedChange.Invoke();
         }
 
-        DataManager.Write(fish.name, 1);
+        DataManager.Write(fishInfo.name, 1);
         for (int i = 0; i < scannedFishEvents.Length; i++)
         {
             if (scannedFishEvents[i].invoked) continue;
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
             scannedFishEvents[i].invoked = true;
         }
 
-        QuestSystem.ScannedFish(fish);
+        QuestSystem.ScannedFish(fishInfo);
     }
     public void ResetEventForScannedFish(int index)
     {

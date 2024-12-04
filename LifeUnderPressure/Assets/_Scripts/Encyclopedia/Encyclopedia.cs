@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Encyclopedia : MonoBehaviour
 {
     [SerializeField] private TempSealog tempSealogPrefab = null;
+    [SerializeField] private List<FishButton> fishButtons = null;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI fishName;
@@ -70,7 +71,7 @@ public class Encyclopedia : MonoBehaviour
     // Aleksis >>
     public void LoadFishData()
     {
-        foreach (FishButton button in GetComponentsInChildren<FishButton>())
+        foreach (FishButton button in fishButtons)
         {
             button.LoadFishInfo();
         }
@@ -117,7 +118,7 @@ public class Encyclopedia : MonoBehaviour
         if (!firstTime&& fishInfo == fishButton.fishInfo)
         {
             fishButton.no = true;
-            currFish.SetIcon();
+            currFish?.SetIcon();
             if (fishButton.GetFishState() != FishState.Scanned)
             {
                 fishButton.SetFishState(FishState.None);
@@ -130,9 +131,9 @@ public class Encyclopedia : MonoBehaviour
             ShowTheBeacon(fishInfo);
             ping.EnablePing(false);
             UpdateIcons();
-            
 
-            fishInfo = null; 
+            fishInfo = null;
+            CurrFish = null;
             return; 
         }
         // << Javi
@@ -214,25 +215,24 @@ public class Encyclopedia : MonoBehaviour
             foreach(var fish in fishes)
             {
                 fish.SetIcon();
-                fish.fishInfo.locked = true;
+                //fish.fishInfo.locked = true;
             }
         }
     }
 
     public TempSealog ClearSealog()
     {
-        List<FishButton> cashedFish = new List<FishButton>();
-        if (fishes == null || fishes.Length <= 0) fishes = FindObjectsOfType<FishButton>();
-        if (fishes.Length > 0)
+        List<FishInfo> cashedFish = new List<FishInfo>();
+        foreach (FishButton fishButton in fishButtons)
         {
-            foreach (FishButton fish in fishes)
+            if (DataManager.Get(fishButton.fishInfo.name, 0) == 1)
             {
-                if (fish.GetFishState() == FishState.Scanned)
-                {
-                    cashedFish.Add(fish);
-                    fish.SetFishState(FishState.None);
-                    fish.SetIcon();
-                }
+                fishButton.fishInfo.locked = true;
+                cashedFish.Add(fishButton.fishInfo);
+                fishButton.SetFishState(FishState.None);
+                fishButton.SetIcon();
+                QuestSystem.ResetFishProgress(fishButton.fishInfo);
+                DataManager.Write(fishButton.fishInfo.name, 0);
             }
         }
         TempSealog tempSealog = Instantiate(tempSealogPrefab);
@@ -241,16 +241,24 @@ public class Encyclopedia : MonoBehaviour
         return tempSealog;
     }
 
-    public void ResetSealogCache(List<FishButton> cashedFish)
+    public void ResetSealogCache(List<FishInfo> cashedFish)
     {
         if (cashedFish != null && cashedFish.Count > 0)
         {
-            foreach(FishButton fish in cashedFish)
+            foreach(FishInfo fish in cashedFish)
             {
-                fish.SetFishState(FishState.Scanned);
-                fish.SetIcon();
+                DataManager.Write(fish.name, 1);
+
+                fish.locked = false;
+                //fish.SetFishState(FishState.Scanned);
+                //fish.SetIcon();
+                QuestSystem.ScannedFish(fish);
             }
         }
+    }
+    public void ResetSelection()
+    {
+        CurrFish = null;
     }
     public void Button_SetDeathSealogWaypoint()
     {

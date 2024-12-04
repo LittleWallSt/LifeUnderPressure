@@ -5,19 +5,19 @@ using UnityEngine;
 public class TempSealog : MonoBehaviour
 {
     private Encyclopedia encyclopedia;
-    private List<FishButton> cashedFish = new List<FishButton>();
+    private List<FishInfo> cashedFish = new List<FishInfo>();
 
     public void Scanned()
     {
         encyclopedia.ResetSealogCache(cashedFish);
         Destroy(gameObject);
     }
-    public void Set(List<FishButton> fishes, Encyclopedia encyc)
+    public void Set(List<FishInfo> fishes, Encyclopedia encyc)
     {
         cashedFish = fishes;
         encyclopedia = encyc;
     }
-    public List<FishButton> GetCashedFish()
+    public List<FishInfo> GetCashedFish()
     {
         return cashedFish;
     }
