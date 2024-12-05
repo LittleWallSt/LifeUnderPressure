@@ -71,10 +71,6 @@ public class SubmarineMovement : MonoBehaviour
         health = GetComponent<Health>();
 
     }
-    private void OnEnable()
-    {
-
-    }
     private void Start()
     {
         ResetMovement();
@@ -386,7 +382,7 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
+        //propellerSFX.stop(STOP_MODE.ALLOWFADEOUT);
         StopAllCoroutines();
     }
 

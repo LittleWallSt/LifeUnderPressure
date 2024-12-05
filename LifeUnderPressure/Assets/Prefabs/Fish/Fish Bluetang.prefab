@@ -58,6 +58,7 @@ MonoBehaviour:
   curiousTimer: 0
   curiousCooldownTime: 0
   curiousRange: 0
+  path: {fileID: 0}
   random: 0
   speed: 1.4
   rotationSpeed: 1
@@ -66,6 +67,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 384
+  update: 1
+  solo: 0
 --- !u!136 &1279890184145906600
 CapsuleCollider:
   m_ObjectHideFlags: 0
