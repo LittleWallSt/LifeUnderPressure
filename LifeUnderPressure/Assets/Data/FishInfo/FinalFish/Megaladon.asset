@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afcdc796b90ed04da8d778e2f450bf7, type: 3}
   m_Name: Megaladon
   m_EditorClassIdentifier: 
-  fishName: Megaladon
+  fishName: Megalodon
   fishSmallDescription: An ancient shark, it should be extinct?
   infoWhere: 'Midnight Zone, more specific isn''t possible. Inside of history books
     maybe?
