@@ -99,9 +99,13 @@ public class DyingEvent : MonoBehaviour
         /* voiceline about fish spawned
          */
         finalFish.SetActive(true);
-        
+        StartCoroutine(SetPingDelay(finalFish.transform, "?", 8f));
     }
-
+    private IEnumerator SetPingDelay(Transform t, string n, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        encyclopedia.ping.setPingTransform(t, n);
+    }
     public void onDieEnd()
     {
         if (submarine == null) submarine = FindObjectOfType<Submarine>();

@@ -78,7 +78,11 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.O))
         {
-            QuestSystem.ForceScanFish();
+            QuestSystem.ForceScanFish(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            QuestSystem.ForceScanFish(1);
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {

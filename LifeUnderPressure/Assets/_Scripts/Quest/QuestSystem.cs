@@ -125,11 +125,17 @@ public static class QuestSystem
     {
         QuestFinish();
     }
-    public static void ForceScanFish()
+    public static void ForceScanFish(int number)
     {
+        if (number <= 0) return;
+        for(int i = 0; i < CurrentValues.Length; i++)
+        {
+            if (CurrentValues[i] == 1) continue;
+            GameManager.Instance.ScannedFish(CurrentQuest.Fishes[i].fish);
+            if (--number <= 0) return;
+        }
         foreach(var f in CurrentQuest.Fishes)
         {
-            GameManager.Instance.ScannedFish(f.fish);
         }
     }
     // Actions

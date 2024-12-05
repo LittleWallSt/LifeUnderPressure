@@ -204,6 +204,7 @@ public class BeaconZone : MonoBehaviour
 
     public void setPingTransform(Transform loc, string name = " ")
     {
+        if (!IsEnable()) EnablePing(true);
         if (loc != null)
         {
             pingArea = loc;
